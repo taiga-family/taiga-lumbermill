@@ -8,6 +8,7 @@ tmp
 # dependencies
 node_modules
 .history
+.vscode
 
 # IDEs and editors
 /.idea
