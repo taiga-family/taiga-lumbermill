@@ -1,7 +1,9 @@
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import type {ApplicationConfig} from '@angular/core';
+import {provideZoneChangeDetection} from '@angular/core';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import {provideRouter} from '@angular/router';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+
 import {appRoutes} from './app.routes';
 
 export const appConfig: ApplicationConfig = {

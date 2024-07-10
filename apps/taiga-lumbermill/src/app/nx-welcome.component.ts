@@ -1,9 +1,9 @@
-import {Component, ViewEncapsulation} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'app-nx-welcome',
     standalone: true,
+    selector: 'app-nx-welcome',
     imports: [CommonModule],
     template: `
         <!--
@@ -994,5 +994,6 @@ nx affected:e2e</pre>
     `,
     styles: [],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxWelcomeComponent {}
