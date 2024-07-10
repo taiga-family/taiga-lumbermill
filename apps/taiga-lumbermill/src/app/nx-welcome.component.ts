@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {CommonModule} from '@angular/common';
 import {Component, ViewEncapsulation} from '@angular/core';
 
@@ -994,6 +995,5 @@ nx affected:e2e</pre>
     `,
     styles: [],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxWelcomeComponent {}

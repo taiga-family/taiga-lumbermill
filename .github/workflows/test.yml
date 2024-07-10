@@ -1,0 +1,28 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - v1
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.2
+      - uses: taiga-family/ci/actions/setup/node@v1.65.2
+
+      - name: Run tests
+        run: npx nx run-many --target test --all --coverage
+
+      - name: Archive coverage artifacts
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: coverage-${{ github.workflow }}-${{ github.run_id }}
+          path: coverage
+
+concurrency:
+  group: test-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
