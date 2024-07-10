@@ -8,21 +8,35 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/taiga-lumbermill",
         "index": "apps/taiga-lumbermill/src/index.html",
         "browser": "apps/taiga-lumbermill/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/taiga-lumbermill/tsconfig.app.json",
         "inlineStyleLanguage": "less",
         "assets": [
           {
             "glob": "**/*",
             "input": "apps/taiga-lumbermill/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons/src",
+            "output": "assets/taiga-ui/icons"
           }
         ],
-        "styles": ["apps/taiga-lumbermill/src/styles.less"],
+        "styles": [
+          "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+          "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+          "apps/taiga-lumbermill/src/styles.less"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -72,7 +86,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/taiga-lumbermill/jest.config.ts"
       }

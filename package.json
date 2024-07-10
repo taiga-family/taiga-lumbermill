@@ -2,7 +2,9 @@
   "name": "@taiga-lumbermill/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve taiga-lumbermill"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.0.0",
@@ -14,6 +16,11 @@
     "@angular/platform-browser-dynamic": "~18.0.0",
     "@angular/router": "~18.0.0",
     "@nx/angular": "19.4.2",
+    "@taiga-ui/cdk": "^4.0.0-rc.4",
+    "@taiga-ui/core": "^4.0.0-rc.4",
+    "@taiga-ui/icons": "^4.0.0-rc.4",
+    "@taiga-ui/kit": "^4.0.0-rc.4",
+    "@taiga-ui/styles": "^4.0.0-rc.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
