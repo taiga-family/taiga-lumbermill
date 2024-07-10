@@ -16,7 +16,8 @@ Run `npx nx serve taiga-lumbermill` to start the development server. Happy codin
 
 ## Build for production
 
-Run `npx nx build taiga-lumbermill` to build the application. The build artifacts are stored in the output directory (e.g. `dist/` or `build/`), ready to be deployed.
+Run `npx nx build taiga-lumbermill` to build the application. The build artifacts are stored in the output directory
+(e.g. `dist/` or `build/`), ready to be deployed.
 
 ## Running tasks
 
@@ -38,7 +39,8 @@ npx nx run-many -t <target1> <target2>
 npx nx run-many -t <target1> <target2> -p <proj1> <proj2>
 ```
 
-Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/features/run-tasks).
+Targets can be defined in the `package.json` or `projects.json`. Learn more
+[in the docs](https://nx.dev/features/run-tasks).
 
 ## Set up CI!
 
@@ -50,8 +52,7 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 
 ## Explore the project graph
 
-Run `npx nx graph` to show the graph of the workspace.
-It will show tasks that you can run with Nx.
+Run `npx nx graph` to show the graph of the workspace. It will show tasks that you can run with Nx.
 
 - [Learn more about Exploring the Project Graph](https://nx.dev/core-features/explore-graph)
 
