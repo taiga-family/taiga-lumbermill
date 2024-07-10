@@ -7,6 +7,7 @@ tmp
 
 # dependencies
 node_modules
+.history
 
 # IDEs and editors
 /.idea

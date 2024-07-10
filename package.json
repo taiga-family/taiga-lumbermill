@@ -8,6 +8,7 @@
         "start": "nx serve taiga-lumbermill",
         "lint": "eslint .",
         "test": "nx run-many --target test --all",
+        "cspell": "cspell --relative --dot --gitignore .",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
         "format": "npm run prettier -- --write",
         "stylelint": "stylelint './apps/**/*.{less,css}' --config package.json"
@@ -63,6 +64,7 @@
         "@angular/platform-browser-dynamic": "~18.0.0",
         "@angular/router": "~18.0.0",
         "@nx/angular": "19.4.2",
+        "@taiga-ui/browserslist-config": "^0.113.7",
         "@taiga-ui/cdk": "^4.0.0-rc.4",
         "@taiga-ui/commitlint-config": "^0.113.7",
         "@taiga-ui/core": "^4.0.0-rc.4",
@@ -74,6 +76,7 @@
         "@taiga-ui/styles": "^4.0.0-rc.4",
         "@taiga-ui/tsconfig": "^0.113.7",
         "@tinkoff/eslint-config-react": "^4.1.1",
+        "cspell": "^8.10.4",
         "husky": "^9.0.11",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
