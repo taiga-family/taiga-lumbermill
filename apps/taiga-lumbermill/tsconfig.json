@@ -8,8 +8,7 @@
         "noImplicitOverride": true,
         "noPropertyAccessFromIndexSignature": true,
         "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "types": ["jest", "node"]
+        "noFallthroughCasesInSwitch": true
     },
     "files": [],
     "include": [],
