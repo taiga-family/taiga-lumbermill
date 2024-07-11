@@ -1,9 +1,0 @@
-{
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "outDir": "./out-tsc/spec",
-        "module": "esnext",
-        "types": ["jest"]
-    },
-    "exclude": ["**/schematics/**/*", "projects/demo-playwrights", "taiga-ui"]
-}
