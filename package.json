@@ -66,6 +66,7 @@
         "@nx/angular": "19.4.2",
         "@taiga-ui/cdk": "^4.0.0-rc.4",
         "@taiga-ui/core": "^4.0.0-rc.4",
+        "@taiga-ui/cspell-config": "^0.113.7",
         "@taiga-ui/icons": "^4.0.0-rc.4",
         "@taiga-ui/kit": "^4.0.0-rc.4",
         "@taiga-ui/styles": "^4.0.0-rc.4",

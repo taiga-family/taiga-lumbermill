@@ -14,13 +14,13 @@ jobs:
   #     - uses: taiga-family/ci/actions/setup/node@v1.65.2
   #     - run: npm run typecheck
 
-  # cspell:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: taiga-family/ci/actions/setup/checkout@v1.65.2
-  #     - uses: taiga-family/ci/actions/setup/variables@v1.65.2
-  #     - uses: taiga-family/ci/actions/setup/node@v1.65.2
-  #     - run: npm run cspell -- --no-progress
+  cspell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.2
+      - uses: taiga-family/ci/actions/setup/node@v1.65.2
+      - run: npm run cspell -- --no-progress
 
   prettier:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       - run: npm run lint -- --fix
 
   result:
-    needs: [prettier, eslint, stylelint]
+    needs: [cspell, prettier, eslint, stylelint]
     runs-on: ubuntu-latest
     name: Lint result
     steps:
