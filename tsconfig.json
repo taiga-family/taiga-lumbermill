@@ -1,5 +1,5 @@
 {
-    "extends": "@taiga-ui/tsconfig",
+    "extends": "./node_modules/@taiga-ui/tsconfig",
     "compilerOptions": {
         "target": "ES2022",
         "useDefineForClassFields": false
