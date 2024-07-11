@@ -1,3 +1,10 @@
 {
-    "extends": "@taiga-ui/tsconfig"
+    "extends": "@taiga-ui/tsconfig",
+    "compilerOptions": {
+        "target": "ES2022",
+        "useDefineForClassFields": false
+    },
+    "angularCompilerOptions": {
+        "compilationMode": "full"
+    }
 }
