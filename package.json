@@ -8,7 +8,7 @@
         "start": "nx serve taiga-lumbermill",
         "build": "npx nx build taiga-lumbermill",
         "lint": "eslint .",
-        "test": "nx run-many --target test --all",
+        "test": "nx test taiga-lumbermill",
         "cspell": "cspell --relative --dot --gitignore .",
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.json",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
