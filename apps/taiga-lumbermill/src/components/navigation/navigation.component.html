@@ -7,7 +7,7 @@
         Menu
     </button>
     <span tuiNavigationLogo>
-        <tui-icon icon="https://taiga-ui.dev/next/assets/taiga-ui/icons/home.svg" />
+        <tui-icon icon="@tui.home" />
         <span tuiFade>A very very long product name</span>
         <tui-badge>Test</tui-badge>
     </span>
@@ -80,7 +80,6 @@
         <a
             iconStart="@tui.users"
             routerLinkActive="active"
-            tuiAppearance="flat"
             tuiButton
             tuiHintAside
             [routerLink]="routes.Navigation"
@@ -89,7 +88,6 @@
         </a>
         <button
             iconStart="@tui.settings"
-            tuiAppearance="flat"
             tuiButton
             [tuiAppearanceState]="open ? 'hover' : null"
             [tuiChevron]="expanded && submenu"
@@ -146,44 +144,4 @@
             </button>
         </footer>
     </aside>
-    <main tuiNavigationMain>
-        <nav
-            tuiNavigationNav
-            [style.position]="'sticky'"
-        >
-            <a routerLink=".">
-                <tui-icon icon="@tui.chevron-left" />
-                Back
-            </a>
-            /
-            <span tuiNavigationLogo>
-                <span tuiFade>Groups</span>
-                <tui-badge iconStart="@tui.lock">Status</tui-badge>
-            </span>
-            <hr />
-            <tui-tabs tuiFade>
-                <button tuiTab>Default view</button>
-                <button tuiTab>Details</button>
-                <button tuiTab>Followers</button>
-            </tui-tabs>
-            <button
-                appearance="secondary"
-                tuiButton
-            >
-                Secondary
-            </button>
-            <button tuiButton>Primary</button>
-        </nav>
-        <div
-            *tuiRepeatTimes="let index of 10"
-            tuiCardLarge
-            tuiHeader
-            tuiSurface="elevated"
-        >
-            <h2 tuiTitle>
-                Some random content
-                <span tuiSubtitle>A subtitle</span>
-            </h2>
-        </div>
-    </main>
 </div>
