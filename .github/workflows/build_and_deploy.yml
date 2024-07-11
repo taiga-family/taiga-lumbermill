@@ -23,7 +23,7 @@ jobs:
       - run: npx run build-gh-pages
       - uses: JamesIves/github-pages-deploy-action@v4.6.3
         with:
-          branch: gh-pages
+          # branch: gh-pages
           folder: dist/apps/taiga-lumbermill/browser
           silent: false
           clean: true
