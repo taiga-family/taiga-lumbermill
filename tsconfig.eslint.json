@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "rootDir": ".",
+        "baseUrl": ".",
+        "strict": true,
+        "module": "esnext",
+        "incremental": true
+    },
+    "include": ["apps/**/*.ts", "apps/**/*.ts", "scripts", "setup-jest.ts", "jest.config.ts", "*.spec.ts", "*.cy.ts"],
+    "exclude": ["**/node_modules", "*.js"]
+}
