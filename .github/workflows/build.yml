@@ -1,9 +1,9 @@
-name: ⚙️ Build lib
+name: Build
 on:
   pull_request:
   push:
     branches:
-      - v1
+      - main
 
 jobs:
   build:

@@ -1,9 +1,5 @@
 name: Lint
-# on: [pull_request]
-on:
-  push:
-    branches:
-      - v1
+on: [pull_request]
 
 jobs:
   typecheck:
