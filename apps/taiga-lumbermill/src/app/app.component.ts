@@ -9,7 +9,6 @@ import {NxWelcomeComponent} from './nx-welcome.component';
     selector: 'app-root',
     imports: [NxWelcomeComponent, RouterModule, TuiRoot],
     templateUrl: './app.component.html',
-    styleUrl: './app.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
