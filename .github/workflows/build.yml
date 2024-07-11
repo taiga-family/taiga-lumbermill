@@ -1,0 +1,28 @@
+name: Build
+on:
+  pull_request:
+  push:
+    branches: [v1]
+
+jobs:
+  build-packages:
+    name: Packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.2
+      - uses: taiga-family/ci/actions/setup/node@v1.65.2
+      - run: npx nx run-many --target build --all --exclude=demo
+
+  build-demo:
+    name: Demo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.2
+      - uses: taiga-family/ci/actions/setup/node@v1.65.2
+      - run: npx nx build-gh-pages
+
+concurrency:
+  group: build-${{ github.head_ref }}
+  cancel-in-progress: true
