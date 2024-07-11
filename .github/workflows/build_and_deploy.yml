@@ -12,7 +12,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.65.2
       - uses: taiga-family/ci/actions/setup/variables@v1.65.2
       - uses: taiga-family/ci/actions/setup/node@v1.65.2
-      - run: npx nx run-many --target build --all --exclude=demo
+      - run: npm run build
 
   deploy:
     runs-on: ubuntu-latest
