@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 export default {
     displayName: 'taiga-lumbermill',
     preset: '../../jest.preset.js',

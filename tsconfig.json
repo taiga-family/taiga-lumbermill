@@ -1,1 +1,11 @@
-{}
+{
+    "extends": "./node_modules/@taiga-ui/tsconfig/tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2022",
+        "useDefineForClassFields": false,
+        "typeRoots": ["node_modules/@types"]
+    },
+    "angularCompilerOptions": {
+        "compilationMode": "full"
+    }
+}
