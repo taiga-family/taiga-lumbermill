@@ -5,6 +5,7 @@
         "useDefineForClassFields": false,
         "typeRoots": ["node_modules/@types"]
     },
+    "exclude": ["apps/**/*.spec.ts"],
     "angularCompilerOptions": {
         "compilationMode": "full"
     }
