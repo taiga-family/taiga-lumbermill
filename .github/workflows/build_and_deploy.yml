@@ -12,7 +12,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.65.2
       - uses: taiga-family/ci/actions/setup/variables@v1.65.2
       - uses: taiga-family/ci/actions/setup/node@v1.65.2
-      - run: npm run build
+      - run: npx nx build-gh-pages taiga-lumbermill
 
   deploy:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
       - run: npx run build-gh-pages
       - uses: JamesIves/github-pages-deploy-action@v4.6.3
         with:
-          # branch: gh-pages
+          branch: gh-pages
           folder: dist/apps/taiga-lumbermill/browser
           silent: false
           clean: true
