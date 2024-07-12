@@ -1,0 +1,26 @@
+name: 🚀 Deploy / preview
+on: pull_request
+
+jobs:
+  build_and_preview:
+    name: Firebase
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.1
+      - uses: taiga-family/ci/actions/setup/node@v1.65.1
+      - run: npx nx build --base-href='/'
+      - name: Debug output
+        run: tree dist/apps/taiga-lumbermill/browser -P '*.html'
+      - name: Deploy preview
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        if: env.IS_OWNER_MODE == 'true'
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_TAIGA_LUMBERMILL_SA }}
+          projectId: taiga-lumbermill-a3373
+          expires: 1d
+
+concurrency:
+  group: firebase-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
