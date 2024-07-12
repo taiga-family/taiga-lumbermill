@@ -1,0 +1,59 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.color() {
+    color: var(--tui-chart-categorical-01);
+
+    &:first-child {
+        color: var(--tui-chart-categorical-08);
+    }
+
+    &:last-child {
+        color: var(--tui-chart-categorical-12);
+    }
+}
+
+.axes {
+    height: 12.5rem;
+}
+
+.controls {
+    display: flex;
+
+    tui-input-date-range {
+        flex: 1;
+    }
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    .color();
+
+    display: flex;
+    align-items: center;
+    margin: 0 0.75rem;
+
+    &:before {
+        content: '';
+        border-bottom: 0.125rem solid;
+        width: 1rem;
+        margin-right: 0.5rem;
+    }
+}
+
+.name {
+    color: var(--tui-text-primary);
+}
+
+.value {
+    color: #fff;
+}
+
+.chart {
+    .color();
+    .fullsize();
+}
