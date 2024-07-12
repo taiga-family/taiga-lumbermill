@@ -80,14 +80,15 @@
         <a
             iconStart="@tui.users"
             routerLinkActive="active"
+            tuiAppearance="flat"
             tuiButton
             tuiHintAside
-            [routerLink]="routes.Navigation"
         >
             Groups
         </a>
         <button
             iconStart="@tui.settings"
+            tuiAppearance="flat"
             tuiButton
             [tuiAppearanceState]="open ? 'hover' : null"
             [tuiChevron]="expanded && submenu"

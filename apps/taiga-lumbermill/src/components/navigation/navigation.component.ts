@@ -57,7 +57,4 @@ export class NavigationComponent {
     protected open = false;
     protected expanded = false;
     protected submenu = false;
-    protected readonly routes = {
-        Navigation: '/',
-    };
 }
