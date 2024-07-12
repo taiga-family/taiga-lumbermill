@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -27,6 +27,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     selector: 'app-navigation',
     imports: [
+        RouterModule,
         CommonModule,
         TuiNavigation,
         TuiButton,

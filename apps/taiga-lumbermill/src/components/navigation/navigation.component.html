@@ -78,17 +78,17 @@
             Search
         </button>
         <a
+            appearance="flat"
             iconStart="@tui.users"
             routerLinkActive="active"
-            tuiAppearance="flat"
             tuiButton
             tuiHintAside
         >
             Groups
         </a>
         <button
+            appearance="flat"
             iconStart="@tui.settings"
-            tuiAppearance="flat"
             tuiButton
             [tuiAppearanceState]="open ? 'hover' : null"
             [tuiChevron]="expanded && submenu"
@@ -145,5 +145,8 @@
             </button>
         </footer>
     </aside>
-    <main class="show"></main>
+    <main
+        tuiNavigationMain
+        class="show"
+    ></main>
 </div>
