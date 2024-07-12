@@ -6,7 +6,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     selector: 'app-iot',
     imports: [CommonModule],
     templateUrl: './iot.component.html',
-    styleUrl: './iot.component.css',
+    styleUrl: './iot.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IotComponent {}

@@ -23,6 +23,8 @@ import {
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
+import {IotComponent} from '../../dashboards/iot/iot.component';
+
 @Component({
     standalone: true,
     selector: 'app-navigation',
@@ -49,6 +51,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiSurface,
         TuiTitle,
+        IotComponent,
     ],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.less',
