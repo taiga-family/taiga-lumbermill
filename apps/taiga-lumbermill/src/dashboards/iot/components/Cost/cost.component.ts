@@ -20,8 +20,8 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
         TuiHint,
         TuiAxes,
     ],
-    templateUrl: './bar-chart.component.html',
-    styleUrl: './bar-chart.component.less',
+    templateUrl: './cost.component.html',
+    styleUrl: './cost.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarChartCmponent {

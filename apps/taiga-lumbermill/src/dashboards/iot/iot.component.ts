@@ -2,10 +2,10 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
-import {BarChartCmponent} from './components/BarChart/bar-chart.component';
 import {CleaningCmponent} from './components/Cleaning/cleaning.component';
+import {BarChartCmponent} from './components/Cost/cost.component';
+import {LineChartComponent} from './components/Electro/electro.component';
 import {LightingCmponent} from './components/Lighting/lighting.component';
-import {LineChartComponent} from './components/LineChart/line-chart.component';
 import {SafetyComponent} from './components/Safety/safety.component';
 import {SmallCardCmponent} from './components/SmallCard/small-card.component';
 import {ClimateControlCmponent} from './components/СlimateСontrol/climate-control.component';

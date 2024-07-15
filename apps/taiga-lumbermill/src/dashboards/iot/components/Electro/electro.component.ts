@@ -40,8 +40,8 @@ import {map, of} from 'rxjs';
         TuiFilterPipe,
         TuiMapperPipe,
     ],
-    templateUrl: './line-chart.component.html',
-    styleUrl: './line-chart.component.less',
+    templateUrl: './electro.component.html',
+    styleUrl: './electro.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LineChartComponent {
