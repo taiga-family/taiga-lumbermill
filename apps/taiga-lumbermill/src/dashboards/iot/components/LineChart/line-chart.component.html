@@ -7,20 +7,13 @@
         >
             Data
         </tui-input-date-range>
-        <tui-input-date-range
-            class="tui-space_left-4"
-            [maxLength]="maxLength"
-            [(ngModel)]="show"
-        >
-            Visible range
-        </tui-input-date-range>
     </p>
     <p class="legend">
         <span
             *ngFor="let chart of days; let index = index"
             class="item"
         >
-            <small class="name">Chart {{ index + 1 }}</small>
+            <small class="name">Счета за электричество</small>
         </span>
     </p>
     <tui-axes

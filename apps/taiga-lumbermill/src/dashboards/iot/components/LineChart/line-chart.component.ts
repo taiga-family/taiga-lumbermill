@@ -178,11 +178,7 @@ export class LineChartComponent {
     }
 
     private random(data: TuiDayRange): ReadonlyArray<ReadonlyArray<[TuiDay, number]>> {
-        return [
-            this.generateRandomData(data, 100),
-            this.generateRandomData(data, 75),
-            this.generateRandomData(data, 50),
-        ];
+        return [this.generateRandomData(data, 100)];
     }
 }
 
