@@ -1,0 +1,71 @@
+<div class="cleaning">
+    <h3 class="title">
+        Robot vacuum
+        <br />
+        cleaning schedule
+    </h3>
+    <div>
+        <div
+            class="wrapper Group tui-space_top-3"
+            [tuiDateFormat]="{mode: 'YMD'}"
+        >
+            <tui-input-date
+                [formControl]="control"
+                [tuiDateFormat]="{separator: '-'}"
+            >
+                New Cleaning
+                <input tuiTextfieldLegacy />
+            </tui-input-date>
+            <label
+                *ngIf="value$ | async as value"
+                tuiProgressLabel
+                class="Progress"
+            >
+                <span class="text">COMPLETED</span>
+                <span class="percent">{{ value }}%</span>
+
+                <tui-progress-circle
+                    size="l"
+                    [max]="max"
+                    [style.color]="color$ | async"
+                    [value]="value"
+                />
+            </label>
+        </div>
+        <div
+            class="wrapper Group tui-space_top-3"
+            [tuiDateFormat]="{mode: 'YMD'}"
+        >
+            <tui-input-date
+                [formControl]="control2"
+                [tuiDateFormat]="{separator: '-'}"
+            >
+                New Cleaning
+                <input tuiTextfieldLegacy />
+            </tui-input-date>
+            <label
+                *ngIf="value$ | async as value"
+                tuiProgressLabel
+                class="Progress hidden"
+            >
+                <span class="text">COMPLETED</span>
+                <span class="percent">{{ value }}%</span>
+
+                <tui-progress-circle
+                    size="l"
+                    [max]="max"
+                    [style.color]="color$ | async"
+                    [value]="value"
+                />
+            </label>
+        </div>
+    </div>
+
+    <button
+        appearance="primary"
+        tuiButton
+        class="Add"
+    >
+        Add
+    </button>
+</div>

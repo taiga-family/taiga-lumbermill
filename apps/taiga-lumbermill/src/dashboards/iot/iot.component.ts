@@ -3,6 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
 import {BarChartCmponent} from './components/BarChart/bar-chart.component';
+import {CleaningCmponent} from './components/Cleaning/cleaning.component';
 import {LightingCmponent} from './components/Lighting/lighting.component';
 import {LineChartComponent} from './components/LineChart/line-chart.component';
 import {SafetyComponent} from './components/Safety/safety.component';
@@ -20,6 +21,7 @@ import {ClimateControlCmponent} from './components/СlimateСontrol/climate-cont
         SafetyComponent,
         ClimateControlCmponent,
         LightingCmponent,
+        CleaningCmponent,
         TuiTiles,
     ],
     templateUrl: './iot.component.html',
