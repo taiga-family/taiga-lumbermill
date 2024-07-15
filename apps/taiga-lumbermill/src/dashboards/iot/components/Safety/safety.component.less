@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-height: calc(100% - 40px);
-    flex-shrink: 0;
+    // min-height: calc(100% - 40px);
+    // flex-shrink: 0;
+    height: calc(100% - 40px);
     padding: 20px;
     border: 1px var(--tui-border-normal) solid;
+    background-color: var(--white);
 }
 
 .title {
@@ -18,4 +20,9 @@
     margin-top: auto;
     margin-bottom: auto;
     padding-bottom: 20%;
+}
+
+.BlockLabel {
+    display: flex;
+    justify-content: space-between;
 }

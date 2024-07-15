@@ -7,65 +7,107 @@
         [collapsed]="true"
         [formGroup]="testForm"
     >
-        <label
-            tuiBlock
-            class="BlockLabel"
-        >
-            <div class="LeftSize">
-                <input
-                    formControlName="testValue1"
-                    tuiCheckbox
-                    type="checkbox"
-                />
-                Kitchen
-            </div>
-            @if (testForm.get('testValue1')!.value) {
+        @if (testForm.get('testValue1')!.value) {
+            <label
+                tuiBlock
+                class="BlockLabel Checked"
+            >
+                <div class="LeftSize">
+                    <input
+                        formControlName="testValue1"
+                        tuiCheckbox
+                        type="checkbox"
+                    />
+                    Kitchen
+                </div>
                 <img
                     alt=""
                     src="/light.svg"
                     class="light-svg"
                 />
-            }
-        </label>
-        <label
-            tuiBlock
-            class="BlockLabel"
-        >
-            <div class="LeftSize">
-                <input
-                    formControlName="testValue2"
-                    tuiCheckbox
-                    type="checkbox"
-                />
-                Bedroom
-            </div>
-            @if (testForm.get('testValue2')!.value) {
+            </label>
+        } @else {
+            <label
+                tuiBlock
+                class="BlockLabel"
+            >
+                <div class="LeftSize">
+                    <input
+                        formControlName="testValue1"
+                        tuiCheckbox
+                        type="checkbox"
+                    />
+                    Kitchen
+                </div>
+            </label>
+        }
+        @if (testForm.get('testValue2')!.value) {
+            <label
+                tuiBlock
+                class="BlockLabel Checked"
+            >
+                <div class="LeftSize">
+                    <input
+                        formControlName="testValue2"
+                        tuiCheckbox
+                        type="checkbox"
+                    />
+                    Bedroom
+                </div>
                 <img
                     alt=""
                     src="/light.svg"
                     class="light-svg"
                 />
-            }
-        </label>
-        <label
-            tuiBlock
-            class="BlockLabel"
-        >
-            <div class="LeftSize">
-                <input
-                    formControlName="testValue3"
-                    tuiCheckbox
-                    type="checkbox"
-                />
-                Living room
-            </div>
-            @if (testForm.get('testValue3')!.value) {
+            </label>
+        } @else {
+            <label
+                tuiBlock
+                class="BlockLabel"
+            >
+                <div class="LeftSize">
+                    <input
+                        formControlName="testValue2"
+                        tuiCheckbox
+                        type="checkbox"
+                    />
+                    Bedroom
+                </div>
+            </label>
+        }
+        @if (testForm.get('testValue3')!.value) {
+            <label
+                tuiBlock
+                class="BlockLabel Checked"
+            >
+                <div class="LeftSize">
+                    <input
+                        formControlName="testValue3"
+                        tuiCheckbox
+                        type="checkbox"
+                    />
+                    Living room
+                </div>
                 <img
                     alt=""
                     src="/light.svg"
                     class="light-svg"
                 />
-            }
-        </label>
+            </label>
+        } @else {
+            <label
+                tuiBlock
+                class="BlockLabel"
+            >
+                <div class="LeftSize">
+                    <input
+                        formControlName="testValue3"
+                        tuiCheckbox
+                        type="checkbox"
+                    />
+                    Living room
+                </div>
+            </label>
+        }
     </form>
 </div>

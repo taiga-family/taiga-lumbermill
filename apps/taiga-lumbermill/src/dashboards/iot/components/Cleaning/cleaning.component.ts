@@ -47,7 +47,7 @@ export class CleaningCmponent {
                 return '#ecec53';
             }
 
-            return '#53ec53';
+            return '#235ad1';
         }),
     );
 }

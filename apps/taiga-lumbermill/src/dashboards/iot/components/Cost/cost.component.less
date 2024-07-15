@@ -13,8 +13,9 @@
 }
 
 .axes {
-    height: 18.75rem;
-    width: 37.5rem;
+    min-height: 18.75rem;
+    // width: 37.5rem;
+    width: 100%;
 
     &:first-child {
         --tui-chart-categorical-00: var(--electricity);
@@ -24,7 +25,8 @@
 
 .flex {
     display: flex;
-    min-width: 31.25rem;
+    // min-width: 31.25rem;
+    width: 100%;
 }
 
 .select {
@@ -32,9 +34,9 @@
 }
 
 .bar-chart {
-    max-width: 500px;
+    // width: 500px;
     padding: 20px;
-    border: 1px var(--tui-border-normal) solid;
+    width: 100%;
 }
 
 .legend {
@@ -68,4 +70,12 @@
     text-align: center;
     font-weight: 500;
     font-size: 18px;
+}
+
+.cost {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px var(--tui-border-normal) solid;
+    background-color: var(--white);
 }
