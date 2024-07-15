@@ -1,0 +1,71 @@
+<div class="lighting">
+    <h3 class="title">Lighting</h3>
+    <form
+        orientation="vertical"
+        tuiGroup
+        class="group"
+        [collapsed]="true"
+        [formGroup]="testForm"
+    >
+        <label
+            tuiBlock
+            class="BlockLabel"
+        >
+            <div class="LeftSize">
+                <input
+                    formControlName="testValue1"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                Kitchen
+            </div>
+            @if (testForm.get('testValue1')!.value) {
+                <img
+                    alt=""
+                    src="/light.svg"
+                    class="light-svg"
+                />
+            }
+        </label>
+        <label
+            tuiBlock
+            class="BlockLabel"
+        >
+            <div class="LeftSize">
+                <input
+                    formControlName="testValue2"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                Bedroom
+            </div>
+            @if (testForm.get('testValue2')!.value) {
+                <img
+                    alt=""
+                    src="/light.svg"
+                    class="light-svg"
+                />
+            }
+        </label>
+        <label
+            tuiBlock
+            class="BlockLabel"
+        >
+            <div class="LeftSize">
+                <input
+                    formControlName="testValue3"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                Living room
+            </div>
+            @if (testForm.get('testValue3')!.value) {
+                <img
+                    alt=""
+                    src="/light.svg"
+                    class="light-svg"
+                />
+            }
+        </label>
+    </form>
+</div>
