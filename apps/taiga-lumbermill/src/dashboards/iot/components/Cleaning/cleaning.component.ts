@@ -40,14 +40,14 @@ export class CleaningCmponent {
     protected readonly color$ = this.value$.pipe(
         map((value) => {
             if (value < 33) {
-                return 'red';
+                return '#ec5353';
             }
 
             if (value < 66) {
-                return 'yellow';
+                return '#ecec53';
             }
 
-            return 'green';
+            return '#53ec53';
         }),
     );
 }
