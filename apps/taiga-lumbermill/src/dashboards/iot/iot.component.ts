@@ -4,6 +4,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 
 import {BarChartCmponent} from './components/BarChart/bar-chart.component';
 import {LineChartComponent} from './components/LineChart/line-chart.component';
+import {SafetyComponent} from './components/Safety/Safety.component';
 import {SmallCardCmponent} from './components/SmallCard/small-card.component';
 
 @Component({
@@ -14,6 +15,7 @@ import {SmallCardCmponent} from './components/SmallCard/small-card.component';
         LineChartComponent,
         SmallCardCmponent,
         BarChartCmponent,
+        SafetyComponent,
         TuiTiles,
     ],
     templateUrl: './iot.component.html',

@@ -1,0 +1,35 @@
+<div class="Safety">
+    <h3 class="title">Safety</h3>
+    <form
+        orientation="vertical"
+        tuiGroup
+        class="group"
+        [collapsed]="true"
+        [formGroup]="testForm"
+    >
+        <label tuiBlock>
+            Alarm system
+            <input
+                formControlName="testValue1"
+                tuiCheckbox
+                type="checkbox"
+            />
+        </label>
+        <label tuiBlock>
+            Close the curtains
+            <input
+                formControlName="testValue2"
+                tuiCheckbox
+                type="checkbox"
+            />
+        </label>
+        <label tuiBlock>
+            Сall security
+            <input
+                formControlName="testValue3"
+                tuiCheckbox
+                type="checkbox"
+            />
+        </label>
+    </form>
+</div>

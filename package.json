@@ -70,7 +70,7 @@
         "@taiga-ui/core": "^4.0.0-rc.5",
         "@taiga-ui/experimental": "^4.0.0-rc.5",
         "@taiga-ui/icons": "^4.0.0-rc.4",
-        "@taiga-ui/kit": "^4.0.0-rc.4",
+        "@taiga-ui/kit": "^4.0.0-rc.5",
         "@taiga-ui/layout": "^4.0.0-rc.5",
         "@taiga-ui/legacy": "^4.0.0-rc.5",
         "@taiga-ui/styles": "^4.0.0-rc.4",
