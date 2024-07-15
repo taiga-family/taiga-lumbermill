@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: max-content;
+    min-height: calc(100% - 40px);
+    flex-shrink: 0;
     padding: 20px;
     border: 1px var(--tui-border-normal) solid;
 }
@@ -30,4 +31,10 @@
 
 .hidden {
     display: none;
+}
+
+.group {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-bottom: 20%;
 }
