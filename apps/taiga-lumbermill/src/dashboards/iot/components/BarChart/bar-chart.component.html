@@ -1,0 +1,39 @@
+<div class="flex">
+    <tui-axes
+        class="axes"
+        [axisXLabels]="labelsX"
+        [axisYLabels]="labelsY"
+    >
+        <tui-bar-chart
+            [max]="10000"
+            [tuiHintAppearance]="appearance"
+            [tuiHintContent]="hint"
+            [value]="value"
+        />
+    </tui-axes>
+
+    <tui-axes
+        class="axes"
+        [axisXLabels]="labelsX"
+        [axisYLabels]="labelsY"
+    >
+        <tui-bar-chart
+            [collapsed]="true"
+            [max]="10000"
+            [tuiHintAppearance]="appearance"
+            [tuiHintContent]="hint"
+            [value]="value"
+        />
+    </tui-axes>
+</div>
+
+<tui-select
+    class="select"
+    [(ngModel)]="appearance"
+>
+    Hint appearance
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="appearances"
+    />
+</tui-select>

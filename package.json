@@ -66,7 +66,7 @@
         "@angular/router": "~18.0.0",
         "@nx/angular": "19.4.2",
         "@taiga-ui/addon-charts": "^4.0.0-rc.5",
-        "@taiga-ui/cdk": "^4.0.0-rc.4",
+        "@taiga-ui/cdk": "^4.0.0-rc.5",
         "@taiga-ui/core": "^4.0.0-rc.5",
         "@taiga-ui/experimental": "^4.0.0-rc.4",
         "@taiga-ui/icons": "^4.0.0-rc.4",
