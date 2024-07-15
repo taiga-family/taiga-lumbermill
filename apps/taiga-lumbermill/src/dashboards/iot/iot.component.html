@@ -2,11 +2,41 @@
     class="tiles"
     [debounce]="500"
 >
-    <app-line-chart />
-    <app-small-card />
-    <app-bar-chart />
-    <app-safety />
-    <app-climate-control />
-    <app-lighting />
-    <app-cleaning />
+    <div class="Cards">
+        <app-small-card
+            img="/door.svg"
+            name="Open the door"
+        />
+        <app-small-card
+            img="/audio.svg"
+            name="Play music"
+        />
+        <app-small-card
+            img="/audio.svg"
+            name="Play music"
+        />
+        <app-small-card
+            img="/audio.svg"
+            name="Play music"
+        />
+        <app-small-card
+            img="/audio.svg"
+            name="Play music"
+        />
+    </div>
+    <div class="Group2">
+        <app-line-chart />
+        <div class="Group3">
+            <app-safety />
+            <app-lighting />
+        </div>
+    </div>
+
+    <div class="Group2">
+        <app-bar-chart />
+        <div class="Group3">
+            <app-cleaning />
+            <app-climate-control />
+        </div>
+    </div>
 </tui-tiles>

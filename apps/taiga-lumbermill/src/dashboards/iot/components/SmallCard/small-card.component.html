@@ -7,7 +7,7 @@
     <aside tuiAccessories>
         <tui-avatar
             appearance=""
-            src="/door.svg"
+            [src]="img"
         />
     </aside>
 
@@ -15,6 +15,6 @@
         tuiTitle
         class="big-text"
     >
-        Open the door
+        {{ name }}
     </h1>
 </button>
