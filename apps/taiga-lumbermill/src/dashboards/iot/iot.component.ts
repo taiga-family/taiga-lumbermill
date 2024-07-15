@@ -4,8 +4,9 @@ import {TuiTiles} from '@taiga-ui/kit';
 
 import {BarChartCmponent} from './components/BarChart/bar-chart.component';
 import {LineChartComponent} from './components/LineChart/line-chart.component';
-import {SafetyComponent} from './components/Safety/Safety.component';
+import {SafetyComponent} from './components/Safety/safety.component';
 import {SmallCardCmponent} from './components/SmallCard/small-card.component';
+import {ClimateControlCmponent} from './components/СlimateСontrol/climate-control.component';
 
 @Component({
     standalone: true,
@@ -16,6 +17,7 @@ import {SmallCardCmponent} from './components/SmallCard/small-card.component';
         SmallCardCmponent,
         BarChartCmponent,
         SafetyComponent,
+        ClimateControlCmponent,
         TuiTiles,
     ],
     templateUrl: './iot.component.html',
