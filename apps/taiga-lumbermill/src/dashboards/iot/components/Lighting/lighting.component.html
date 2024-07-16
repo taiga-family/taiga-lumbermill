@@ -5,16 +5,16 @@
         tuiGroup
         class="group"
         [collapsed]="true"
-        [formGroup]="testForm"
+        [formGroup]="safetyForm"
     >
-        @if (testForm.get('testValue1')!.value) {
+        @if (safetyForm.get('safetyValue1')!.value) {
             <label
                 tuiBlock
                 class="block-label checked"
             >
                 <div class="left-size">
                     <input
-                        formControlName="testValue1"
+                        formControlName="safetyValue1"
                         tuiCheckbox
                         type="checkbox"
                         class="hidden"
@@ -34,7 +34,7 @@
             >
                 <div class="left-size">
                     <input
-                        formControlName="testValue1"
+                        formControlName="safetyValue1"
                         tuiCheckbox
                         type="checkbox"
                         class="hidden"
@@ -43,14 +43,14 @@
                 </div>
             </label>
         }
-        @if (testForm.get('testValue2')!.value) {
+        @if (safetyForm.get('safetyValue2')!.value) {
             <label
                 tuiBlock
                 class="block-label checked"
             >
                 <div class="left-size">
                     <input
-                        formControlName="testValue2"
+                        formControlName="safetyValue2"
                         tuiCheckbox
                         type="checkbox"
                         class="hidden"
@@ -70,7 +70,7 @@
             >
                 <div class="left-size">
                     <input
-                        formControlName="testValue2"
+                        formControlName="safetyValue2"
                         tuiCheckbox
                         type="checkbox"
                         class="hidden"
@@ -79,14 +79,14 @@
                 </div>
             </label>
         }
-        @if (testForm.get('testValue3')!.value) {
+        @if (safetyForm.get('safetyValue3')!.value) {
             <label
                 tuiBlock
                 class="block-label checked"
             >
                 <div class="left-size">
                     <input
-                        formControlName="testValue3"
+                        formControlName="safetyValue3"
                         tuiCheckbox
                         type="checkbox"
                         class="hidden"
@@ -106,7 +106,7 @@
             >
                 <div class="left-size">
                     <input
-                        formControlName="testValue3"
+                        formControlName="safetyValue3"
                         tuiCheckbox
                         type="checkbox"
                         class="hidden"

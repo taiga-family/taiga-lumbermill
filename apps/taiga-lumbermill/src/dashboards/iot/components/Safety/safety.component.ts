@@ -21,10 +21,10 @@ import {TuiBlock, TuiCheckbox, TuiFade, TuiRadio} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SafetyComponent {
-    protected readonly testForm = new FormGroup({
-        testValue1: new FormControl(true),
-        testValue2: new FormControl(false),
-        testValue3: new FormControl(true),
-        testValue4: new FormControl(false),
+    protected readonly safetyForm = new FormGroup({
+        safetyValue1: new FormControl(true),
+        safetyValue2: new FormControl(false),
+        safetyValue3: new FormControl(true),
+        safetyValue4: new FormControl(false),
     });
 }
