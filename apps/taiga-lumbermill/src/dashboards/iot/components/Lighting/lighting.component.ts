@@ -21,7 +21,7 @@ import {TuiBlock, TuiCheckbox, TuiRadioList} from '@taiga-ui/kit';
     styleUrl: './lighting.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LightingCmponent {
+export class LightingComponent {
     protected readonly testForm = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),

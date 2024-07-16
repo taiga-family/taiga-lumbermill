@@ -20,7 +20,7 @@ import {TuiInputNumberModule, tuiInputNumberOptionsProvider} from '@taiga-ui/leg
         }),
     ],
 })
-export class ClimateControlCmponent {
+export class ClimateControlComponent {
     protected value = 32;
     protected value2 = 0;
     protected value3 = 10;

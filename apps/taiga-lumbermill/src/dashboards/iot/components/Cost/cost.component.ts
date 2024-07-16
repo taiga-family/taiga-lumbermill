@@ -24,7 +24,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     styleUrl: './cost.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BarChartCmponent {
+export class BarChartComponent {
     protected readonly value = [
         [1000, 8000, 4000, 3000, 4000],
         [6000, 2000, 4500, 7000, 5000],

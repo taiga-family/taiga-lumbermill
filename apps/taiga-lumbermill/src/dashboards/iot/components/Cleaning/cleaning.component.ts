@@ -24,7 +24,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
     styleUrl: './cleaning.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CleaningCmponent {
+export class CleaningComponent {
     protected readonly control = new FormControl('20-01-2024');
     protected readonly control2 = new FormControl();
     protected readonly max = 100;

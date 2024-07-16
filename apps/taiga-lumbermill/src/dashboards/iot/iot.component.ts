@@ -2,13 +2,13 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
-import {CleaningCmponent} from './components/Cleaning/cleaning.component';
-import {BarChartCmponent} from './components/Cost/cost.component';
+import {CleaningComponent} from './components/Cleaning/cleaning.component';
+import {BarChartComponent} from './components/Cost/cost.component';
 import {LineChartComponent} from './components/Electro/electro.component';
-import {LightingCmponent} from './components/Lighting/lighting.component';
+import {LightingComponent} from './components/Lighting/lighting.component';
 import {SafetyComponent} from './components/Safety/safety.component';
-import {SmallCardCmponent} from './components/SmallCard/small-card.component';
-import {ClimateControlCmponent} from './components/СlimateСontrol/climate-control.component';
+import {SmallCardComponent} from './components/SmallCard/small-card.component';
+import {ClimateControlComponent} from './components/СlimateСontrol/climate-control.component';
 
 @Component({
     standalone: true,
@@ -16,12 +16,12 @@ import {ClimateControlCmponent} from './components/СlimateСontrol/climate-cont
     imports: [
         CommonModule,
         LineChartComponent,
-        SmallCardCmponent,
-        BarChartCmponent,
+        SmallCardComponent,
+        BarChartComponent,
         SafetyComponent,
-        ClimateControlCmponent,
-        LightingCmponent,
-        CleaningCmponent,
+        ClimateControlComponent,
+        LightingComponent,
+        CleaningComponent,
         TuiTiles,
     ],
     templateUrl: './iot.component.html',

@@ -23,7 +23,7 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
     styleUrl: './small-card.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SmallCardCmponent {
+export class SmallCardComponent {
     @Input()
     public img!: string;
 
