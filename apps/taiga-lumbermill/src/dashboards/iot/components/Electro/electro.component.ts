@@ -48,14 +48,14 @@ export class LineChartComponent {
 
     protected data = new TuiDayRange(
         TuiDay.currentLocal(),
-        TuiDay.currentLocal().append({month: 5}),
+        TuiDay.currentLocal().append({month: 3}),
     );
 
     protected show = this.data;
 
     protected days = this.random(this.data);
 
-    protected readonly maxLength: TuiDayLike = {month: 6};
+    protected readonly maxLength: TuiDayLike = {month: 4};
 
     protected get range(): TuiDayRange {
         return this.computeRange(this.show);
