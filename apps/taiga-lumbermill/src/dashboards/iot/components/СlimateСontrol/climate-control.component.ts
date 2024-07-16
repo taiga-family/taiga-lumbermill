@@ -1,8 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputNumberModule, tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
+
+import {ClimateControlService} from '../../data/services/climate-control.service';
 
 @Component({
     standalone: true,
@@ -21,7 +23,5 @@ import {TuiInputNumberModule, tuiInputNumberOptionsProvider} from '@taiga-ui/leg
     ],
 })
 export class ClimateControlComponent {
-    protected value = 32;
-    protected value2 = 0;
-    protected value3 = 10;
+    protected data = inject(ClimateControlService);
 }

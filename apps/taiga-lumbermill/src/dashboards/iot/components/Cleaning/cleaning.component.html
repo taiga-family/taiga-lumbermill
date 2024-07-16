@@ -7,14 +7,14 @@
         >
             <tui-input-date
                 class="last-date"
-                [formControl]="control"
+                [formControl]="data.control"
                 [tuiDateFormat]="{separator: '-'}"
             >
                 New Cleaning
                 <input tuiTextfieldLegacy />
             </tui-input-date>
             <label
-                *ngIf="value$ | async as value"
+                *ngIf="data.value$ | async as value"
                 tuiProgressLabel
                 class="progress"
             >
@@ -22,8 +22,8 @@
 
                 <tui-progress-circle
                     size="l"
-                    [max]="max"
-                    [style.color]="color$ | async"
+                    [max]="data.max"
+                    [style.color]="data.color$ | async"
                     [value]="value"
                 />
             </label>
@@ -33,14 +33,14 @@
             [tuiDateFormat]="{mode: 'YMD'}"
         >
             <tui-input-date
-                [formControl]="control2"
+                [formControl]="data.control2"
                 [tuiDateFormat]="{separator: '-'}"
             >
                 New Cleaning
                 <input tuiTextfieldLegacy />
             </tui-input-date>
             <label
-                *ngIf="value$ | async as value"
+                *ngIf="data.value$ | async as value"
                 tuiProgressLabel
                 class="progress hidden"
             >
@@ -49,8 +49,8 @@
 
                 <tui-progress-circle
                     size="l"
-                    [max]="max"
-                    [style.color]="color$ | async"
+                    [max]="data.max"
+                    [style.color]="data.color$ | async"
                     [value]="value"
                 />
             </label>

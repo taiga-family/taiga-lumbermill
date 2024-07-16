@@ -12,14 +12,14 @@
         <div class="flex">
             <tui-axes
                 class="axes"
-                [axisXLabels]="labelsX"
-                [axisYLabels]="labelsY"
+                [axisXLabels]="data.labelsX"
+                [axisYLabels]="data.labelsY"
             >
                 <tui-bar-chart
                     [max]="10000"
-                    [tuiHintAppearance]="appearance"
-                    [tuiHintContent]="hint"
-                    [value]="value"
+                    [tuiHintAppearance]="data.appearance"
+                    [tuiHintContent]="data.hint"
+                    [value]="data.value"
                 />
             </tui-axes>
         </div>

@@ -1,44 +1,48 @@
 <div class="line-chart">
     <p class="controls">
         <tui-input-date-range
-            [maxLength]="maxLength"
-            [(ngModel)]="data"
-            (ngModelChange)="onDataChange($event)"
+            [maxLength]="dataElectro.maxLength"
+            [(ngModel)]="dataElectro.data"
+            (ngModelChange)="dataElectro.onDataChange($event)"
         >
             Data
         </tui-input-date-range>
     </p>
     <p class="legend">
         <span
-            *ngFor="let chart of days; let index = index"
+            *ngFor="let chart of dataElectro.days; let index = index"
             class="item"
         >
             <small class="name">Electricity bills</small>
         </span>
     </p>
     <tui-axes
-        *ngIf="labels(show) | async as labels"
+        *ngIf="dataElectro.labels(dataElectro.show) | async as labels"
         class="axes"
         [axisXLabels]="labels"
         [horizontalLines]="4"
         [tuiLineChartHint]="hint"
         [verticalLines]="labels.length"
     >
-        <ng-container *ngIf="getWidth(show) > 90; else line">
+        <ng-container *ngIf="dataElectro.getWidth(dataElectro.show) > 90; else line">
             <tui-line-days-chart
-                *ngFor="let chart of days"
+                *ngFor="let chart of dataElectro.days"
                 class="chart"
                 [height]="200"
-                [value]="chart | tuiFilter: filter : range"
+                [value]="chart | tuiFilter: dataElectro.filter : dataElectro.range"
             />
         </ng-container>
         <ng-template #line>
             <tui-line-chart
-                *ngFor="let chart of days"
+                *ngFor="let chart of dataElectro.days"
                 class="chart"
                 [height]="200"
-                [value]="chart | tuiFilter: filter : range | tuiMapper: toNumbers : range"
-                [width]="getWidth(range)"
+                [value]="
+                    chart
+                        | tuiFilter: dataElectro.filter : dataElectro.range
+                        | tuiMapper: dataElectro.toNumbers : dataElectro.range
+                "
+                [width]="dataElectro.getWidth(dataElectro.range)"
             />
         </ng-template>
     </tui-axes>
@@ -48,7 +52,7 @@
         let-data
     >
         <div class="tui-space_bottom-2">
-            <strong>{{ getDate(data[0][0], range.from) }}</strong>
+            <strong>{{ dataElectro.getDate(data[0][0], dataElectro.range.from) }}</strong>
         </div>
         <div>
             <div
