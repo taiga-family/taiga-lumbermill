@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import type {TuiDayLike, TuiMapper, TuiMatcher} from '@taiga-ui/cdk';
-import {TuiDay, TuiDayRange, TuiMonth, tuiPure} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
@@ -27,17 +27,14 @@ export class ElectroService {
         return this.computeRange(this.show);
     }
 
-    @tuiPure
     public getWidth({from, to}: TuiDayRange): number {
         return TuiDay.lengthBetween(from, to);
     }
 
-    @tuiPure
     public getDate(day: TuiDay | number, date: TuiDay): TuiDay {
         return day instanceof TuiDay ? day : date.append({day});
     }
 
-    @tuiPure
     public labels({from, to}: TuiDayRange): Observable<readonly string[]> {
         const length = TuiDay.lengthBetween(from, to);
 
@@ -86,7 +83,6 @@ export class ElectroService {
         this.days = this.random(data);
     }
 
-    @tuiPure
     private computeRange(range: TuiDayRange): TuiDayRange {
         const {from, to} = range;
         const length = TuiDay.lengthBetween(from, to);
@@ -114,7 +110,6 @@ export class ElectroService {
         return new TuiDayRange(from, to.append({day: length % 2}));
     }
 
-    @tuiPure
     private generateRandomData(
         {from, to}: TuiDayRange,
         initial: number,
