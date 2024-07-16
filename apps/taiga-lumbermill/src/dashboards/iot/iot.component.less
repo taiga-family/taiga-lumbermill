@@ -11,6 +11,7 @@
 
 .cards {
     display: flex;
+    flex: 1;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
@@ -63,4 +64,22 @@
     gap: 10px;
     padding-top: 20px;
     flex-direction: column;
+}
+
+@media (max-width: 800px) {
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .cards {
+        display: flex;
+    }
+
+    .grow2 {
+        width: 100%;
+        height: 100%;
+    }
 }
