@@ -1,8 +1,8 @@
 import type {Route} from '@angular/router';
 
-import {AppComponent} from './app.component';
+import {IotComponent} from '../../dashboards/iot/iot.component';
 
 export const appRoutes: Route[] = [
-    {path: 'dashboards', component: AppComponent},
+    {path: 'dashboards', component: IotComponent},
     {path: '**', redirectTo: 'dashboards'},
 ];
