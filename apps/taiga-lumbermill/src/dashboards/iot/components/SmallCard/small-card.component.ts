@@ -25,8 +25,8 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 })
 export class SmallCardComponent {
     @Input()
-    public img!: string;
+    public img = '';
 
     @Input()
-    public name!: string;
+    public name = '';
 }

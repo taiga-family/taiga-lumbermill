@@ -1,7 +1,6 @@
 import {AsyncPipe, CommonModule, isPlatformServer, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiButton, TuiDateFormat} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
@@ -28,14 +27,13 @@ export class CleaningComponent {
     protected readonly control = new FormControl('20-01-2024');
     protected readonly control2 = new FormControl();
     protected readonly max = 100;
-    protected readonly value$ =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID))
-            ? of(30)
-            : timer(300, 200).pipe(
-                  map((i) => i + 30),
-                  startWith(30),
-                  takeWhile((value) => value <= this.max),
-              );
+    protected readonly value$ = isPlatformServer(inject(PLATFORM_ID))
+        ? of(30)
+        : timer(300, 200).pipe(
+              map((i) => i + 30),
+              startWith(30),
+              takeWhile((value) => value <= this.max),
+          );
 
     protected readonly color$ = this.value$.pipe(
         map((value) => {

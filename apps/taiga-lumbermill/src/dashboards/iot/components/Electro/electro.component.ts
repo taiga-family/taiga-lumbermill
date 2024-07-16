@@ -9,7 +9,6 @@ import {
 } from '@taiga-ui/addon-charts';
 import type {TuiDayLike, TuiMapper, TuiMatcher} from '@taiga-ui/cdk';
 import {
-    TUI_IS_E2E,
     TuiDay,
     TuiDayRange,
     TuiFilterPipe,
@@ -45,7 +44,6 @@ import {map, of} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LineChartComponent {
-    private readonly isE2E = inject(TUI_IS_E2E);
     private readonly months$ = inject(TUI_MONTHS);
 
     protected data = new TuiDayRange(
@@ -162,14 +160,10 @@ export class LineChartComponent {
                     ...array,
                     [
                         from.append({day: i}),
-                        this.isE2E
-                            ? initial
-                            : Math.max(
-                                  (i ? array[i - 1][1] : initial) +
-                                      Math.random() * 10 -
-                                      5,
-                                  0,
-                              ),
+                        Math.max(
+                            (i ? array[i - 1][1] : initial) + Math.random() * 10 - 5,
+                            0,
+                        ),
                     ],
                 ],
                 [],
