@@ -7,113 +7,71 @@
         [collapsed]="true"
         [formGroup]="safetyForm"
     >
-        @if (safetyForm.get('safetyValue1')!.value) {
-            <label
-                tuiBlock
-                class="block-label checked"
-            >
-                <div class="left-size">
-                    <input
-                        formControlName="safetyValue1"
-                        tuiCheckbox
-                        type="checkbox"
-                        class="hidden"
-                    />
-                    Kitchen
-                </div>
-                <img
-                    alt=""
-                    src="/light.svg"
-                    class="light-svg"
+        <label
+            tuiBlock
+            class="block-label"
+            [ngClass]="{checked: safetyForm.get('safetyValue1')!.value}"
+        >
+            <div class="left-size">
+                <input
+                    formControlName="safetyValue1"
+                    tuiCheckbox
+                    type="checkbox"
+                    class="hidden"
                 />
-            </label>
-        } @else {
-            <label
-                tuiBlock
-                class="block-label"
-            >
-                <div class="left-size">
-                    <input
-                        formControlName="safetyValue1"
-                        tuiCheckbox
-                        type="checkbox"
-                        class="hidden"
-                    />
-                    Kitchen
-                </div>
-            </label>
-        }
-        @if (safetyForm.get('safetyValue2')!.value) {
-            <label
-                tuiBlock
-                class="block-label checked"
-            >
-                <div class="left-size">
-                    <input
-                        formControlName="safetyValue2"
-                        tuiCheckbox
-                        type="checkbox"
-                        class="hidden"
-                    />
-                    Bedroom
-                </div>
-                <img
-                    alt=""
-                    src="/light.svg"
-                    class="light-svg"
+                Kitchen
+            </div>
+            <tui-icon
+                alt=""
+                icon="/light.svg"
+                class="light-svg"
+                [ngClass]="{hidden: !safetyForm.get('safetyValue1')!.value}"
+                [style.color]="'var(--light)'"
+            />
+        </label>
+        <label
+            tuiBlock
+            class="block-label"
+            [ngClass]="{checked: safetyForm.get('safetyValue2')!.value}"
+        >
+            <div class="left-size">
+                <input
+                    formControlName="safetyValue2"
+                    tuiCheckbox
+                    type="checkbox"
+                    class="hidden"
                 />
-            </label>
-        } @else {
-            <label
-                tuiBlock
-                class="block-label"
-            >
-                <div class="left-size">
-                    <input
-                        formControlName="safetyValue2"
-                        tuiCheckbox
-                        type="checkbox"
-                        class="hidden"
-                    />
-                    Bedroom
-                </div>
-            </label>
-        }
-        @if (safetyForm.get('safetyValue3')!.value) {
-            <label
-                tuiBlock
-                class="block-label checked"
-            >
-                <div class="left-size">
-                    <input
-                        formControlName="safetyValue3"
-                        tuiCheckbox
-                        type="checkbox"
-                        class="hidden"
-                    />
-                    Living room
-                </div>
-                <img
-                    alt=""
-                    src="/light.svg"
-                    class="light-svg"
+                Bedroom
+            </div>
+            <tui-icon
+                alt=""
+                icon="/light.svg"
+                class="light-svg"
+                [ngClass]="{hidden: !safetyForm.get('safetyValue2')!.value}"
+                [style.color]="'var(--light)'"
+            />
+        </label>
+        <label
+            tuiBlock
+            class="block-label"
+            [ngClass]="{checked: safetyForm.get('safetyValue3')!.value}"
+        >
+            <div class="left-size">
+                <input
+                    formControlName="safetyValue3"
+                    tuiCheckbox
+                    type="checkbox"
+                    class="hidden"
                 />
-            </label>
-        } @else {
-            <label
-                tuiBlock
-                class="block-label"
-            >
-                <div class="left-size">
-                    <input
-                        formControlName="safetyValue3"
-                        tuiCheckbox
-                        type="checkbox"
-                        class="hidden"
-                    />
-                    Living room
-                </div>
-            </label>
-        }
+                Living room
+            </div>
+            <tui-icon
+                alt=""
+                icon="/light.svg"
+                class="light-svg"
+                [ngClass]="{hidden: !safetyForm.get('safetyValue3')!.value}"
+                [style.color]="'var(--light)'"
+            />
+        </label>
     </form>
 </div>

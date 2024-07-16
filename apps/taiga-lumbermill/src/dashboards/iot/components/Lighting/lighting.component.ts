@@ -1,7 +1,7 @@
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgClass} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiGroup, TuiTitle} from '@taiga-ui/core';
+import {TuiGroup, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiBlock, TuiCheckbox, TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
@@ -16,6 +16,8 @@ import {TuiBlock, TuiCheckbox, TuiRadioList} from '@taiga-ui/kit';
         TuiCheckbox,
         TuiGroup,
         TuiBlock,
+        NgClass,
+        TuiIcon,
     ],
     templateUrl: './lighting.component.html',
     styleUrl: './lighting.component.less',
