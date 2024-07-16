@@ -2,11 +2,11 @@
     <h3 class="title">Cleaning schedule</h3>
     <div>
         <div
-            class="wrapper Group tui-space_top-3"
+            class="wrapper group tui-space_top-3"
             [tuiDateFormat]="{mode: 'YMD'}"
         >
             <tui-input-date
-                class="LastDate"
+                class="last-date"
                 [formControl]="control"
                 [tuiDateFormat]="{separator: '-'}"
             >
@@ -16,7 +16,7 @@
             <label
                 *ngIf="value$ | async as value"
                 tuiProgressLabel
-                class="Progress"
+                class="progress"
             >
                 <span class="percent">{{ value }}%</span>
 
@@ -29,7 +29,7 @@
             </label>
         </div>
         <div
-            class="wrapper Group tui-space_top-3"
+            class="wrapper group tui-space_top-3"
             [tuiDateFormat]="{mode: 'YMD'}"
         >
             <tui-input-date
@@ -42,7 +42,7 @@
             <label
                 *ngIf="value$ | async as value"
                 tuiProgressLabel
-                class="Progress hidden"
+                class="progress hidden"
             >
                 <span class="text">COMPLETED</span>
                 <span class="percent">{{ value }}%</span>
@@ -60,7 +60,7 @@
     <button
         appearance="primary"
         tuiButton
-        class="Add"
+        class="add"
     >
         Add
     </button>

@@ -5,11 +5,11 @@
     padding-top: 20px;
 }
 
-.TilesBlock {
+.tiles-block {
     max-width: 500px;
 }
 
-.Cards {
+.cards {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -17,48 +17,48 @@
     justify-content: space-around;
 }
 
-.Group2 {
+.group2 {
     display: flex;
     flex-wrap: wrap;
     flex: auto;
     gap: 20px;
 }
 
-.Group3 {
+.group3 {
     display: flex;
     flex: 1;
 }
 
-.Grow {
+.grow {
     width: 100%;
     height: 100%;
 }
 
-.Row {
+.row {
     display: grid;
     grid-template-columns: 4fr 6fr 4fr;
     gap: 15px;
 }
 
 @media (max-width: 900px) {
-    .Row {
+    .row {
         display: flex;
         flex: 1;
         flex-wrap: wrap;
     }
 
-    .Grow {
+    .grow {
         height: max-content;
     }
 }
 
 @media (max-width: 570px) {
-    .Grow {
+    .grow {
         width: 100%;
     }
 }
 
-.Column {
+.column {
     display: flex;
     gap: 10px;
     flex-direction: column;
