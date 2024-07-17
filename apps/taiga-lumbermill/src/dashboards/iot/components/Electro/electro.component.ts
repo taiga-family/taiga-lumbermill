@@ -14,7 +14,7 @@ import {ElectroService} from '../../data/services/electro.service';
 
 @Component({
     standalone: true,
-    selector: 'app-line-chart',
+    selector: 'lmb-line-chart',
     imports: [
         CommonModule,
         TuiInputDateRangeModule,

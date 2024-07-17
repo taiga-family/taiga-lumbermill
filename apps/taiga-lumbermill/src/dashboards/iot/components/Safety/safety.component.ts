@@ -6,7 +6,7 @@ import {TuiBlock, TuiCheckbox, TuiFade, TuiRadio} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'app-safety',
+    selector: 'lmb-safety',
     imports: [
         CommonModule,
         TuiRadio,

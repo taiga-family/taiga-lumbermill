@@ -8,7 +8,7 @@ import {ClimateControlService} from '../../data/services/climate-control.service
 
 @Component({
     standalone: true,
-    selector: 'app-climate-control',
+    selector: 'lmb-climate-control',
     imports: [CommonModule, TuiInputNumberModule, FormsModule],
     templateUrl: './climate-control.component.html',
     styleUrl: './climate-control.component.less',

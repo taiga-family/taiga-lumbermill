@@ -6,7 +6,7 @@ import {TuiBlock, TuiCheckbox, TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'app-lighting',
+    selector: 'lmb-lighting',
     imports: [
         CommonModule,
         FormsModule,

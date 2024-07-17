@@ -10,7 +10,7 @@ import {CleaningService} from '../../data/services/cleaning.service';
 
 @Component({
     standalone: true,
-    selector: 'app-cleaning',
+    selector: 'lmb-cleaning',
     imports: [
         CommonModule,
         TuiInputDateModule,
