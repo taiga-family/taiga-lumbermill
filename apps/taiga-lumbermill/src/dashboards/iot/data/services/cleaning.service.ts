@@ -7,7 +7,7 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
     providedIn: 'root',
 })
 export class CleaningService {
-    public control = new FormControl('24.07.2024');
+    public control = new FormControl('2024-07-01');
     public control2 = new FormControl();
     public readonly max = 100;
     public readonly value$ = isPlatformServer(inject(PLATFORM_ID))

@@ -1,14 +1,10 @@
 <div class="cleaning">
     <h3 class="title">Cleaning schedule</h3>
     <div>
-        <div
-            class="wrapper group tui-space_top-3"
-            [tuiDateFormat]="{mode: 'YMD'}"
-        >
+        <div class="wrapper group tui-space_top-3">
             <tui-input-date
                 class="last-date"
                 [formControl]="data.control"
-                [tuiDateFormat]="{separator: '-'}"
             >
                 New Cleaning
                 <input tuiTextfieldLegacy />
