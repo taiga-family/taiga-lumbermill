@@ -2,13 +2,13 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
-import {CleaningComponent} from './components/Cleaning/cleaning.component';
-import {BarChartComponent} from './components/Cost/cost.component';
-import {LineChartComponent} from './components/Electro/electro.component';
-import {LightingComponent} from './components/Lighting/lighting.component';
-import {SafetyComponent} from './components/Safety/safety.component';
-import {SmallCardComponent} from './components/SmallCard/small-card.component';
-import {ClimateControlComponent} from './components/СlimateСontrol/climate-control.component';
+import {CleaningComponent} from './components/cleaning/cleaning.component';
+import {ClimateControlComponent} from './components/climate-control/climate-control.component';
+import {BarChartComponent} from './components/cost/cost.component';
+import {LineChartComponent} from './components/electro/electro.component';
+import {LightingComponent} from './components/lighting/lighting.component';
+import {SafetyComponent} from './components/safety/safety.component';
+import {SmallCardComponent} from './components/small-card/small-card.component';
 
 @Component({
     standalone: true,

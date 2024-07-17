@@ -27,7 +27,6 @@ export class CleaningService {
             if (value < 66) {
                 return '#ecec53';
             }
-            // alert(this.control2.value);
 
             return '#235ad1';
         }),
