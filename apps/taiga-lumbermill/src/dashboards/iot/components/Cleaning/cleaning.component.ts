@@ -32,4 +32,8 @@ export class CleaningComponent {
         new FormControl(new TuiDay(2024, 10, 20)),
         new FormControl(),
     ]);
+
+    protected addNew(): void {
+        this.forms.push(new FormControl());
+    }
 }
