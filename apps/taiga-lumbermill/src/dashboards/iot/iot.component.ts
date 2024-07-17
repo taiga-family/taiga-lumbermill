@@ -1,6 +1,5 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiTiles} from '@taiga-ui/kit';
 
 import {CleaningComponent} from './components/cleaning/cleaning.component';
 import {ClimateControlComponent} from './components/climate-control/climate-control.component';
@@ -22,7 +21,6 @@ import {SmallCardComponent} from './components/small-card/small-card.component';
         ClimateControlComponent,
         LightingComponent,
         CleaningComponent,
-        TuiTiles,
     ],
     templateUrl: './iot.component.html',
     styleUrl: './iot.component.less',
