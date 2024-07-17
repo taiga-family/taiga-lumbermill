@@ -1,6 +1,6 @@
 import {AsyncPipe, CommonModule, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiButton, TuiDateFormat} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
@@ -16,6 +16,7 @@ import {CleaningService} from '../../data/services/cleaning.service';
         TuiDateFormat,
         ReactiveFormsModule,
         TuiButton,
+        FormsModule,
         TuiProgress,
         NgIf,
         AsyncPipe,
@@ -26,4 +27,5 @@ import {CleaningService} from '../../data/services/cleaning.service';
 })
 export class CleaningComponent {
     protected data = inject(CleaningService);
+    protected forms = new FormArray([new FormControl('2024-07-01'), new FormControl()]);
 }

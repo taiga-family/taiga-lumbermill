@@ -1,56 +1,32 @@
 <div class="cleaning">
     <h3 class="title">Cleaning schedule</h3>
     <div>
-        <div class="wrapper group tui-space_top-3">
-            <tui-input-date
-                class="last-date"
-                [formControl]="data.control"
-            >
-                New Cleaning
-                <input tuiTextfieldLegacy />
-            </tui-input-date>
-            <label
-                *ngIf="data.value$ | async as value"
-                tuiProgressLabel
-                class="progress"
-            >
-                <span class="percent">{{ value }}%</span>
+        @for (i of forms['controls']; track $index) {
+            <div class="wrapper group tui-space_top-3">
+                <tui-input-date
+                    class="last-date"
+                    [formControl]="i"
+                >
+                    New Cleaning
+                    <input tuiTextfieldLegacy />
+                </tui-input-date>
+                <label
+                    *ngIf="data.value$ | async as value"
+                    tuiProgressLabel
+                    class="progress"
+                    [ngClass]="{hidden: $index != 0}"
+                >
+                    <span class="percent">{{ value }}%</span>
 
-                <tui-progress-circle
-                    size="l"
-                    [max]="data.max"
-                    [style.color]="data.color$ | async"
-                    [value]="value"
-                />
-            </label>
-        </div>
-        <div
-            class="wrapper group tui-space_top-3"
-            [tuiDateFormat]="{mode: 'YMD'}"
-        >
-            <tui-input-date
-                [formControl]="data.control2"
-                [tuiDateFormat]="{separator: '-'}"
-            >
-                New Cleaning
-                <input tuiTextfieldLegacy />
-            </tui-input-date>
-            <label
-                *ngIf="data.value$ | async as value"
-                tuiProgressLabel
-                class="progress hidden"
-            >
-                <span class="text">COMPLETED</span>
-                <span class="percent">{{ value }}%</span>
-
-                <tui-progress-circle
-                    size="l"
-                    [max]="data.max"
-                    [style.color]="data.color$ | async"
-                    [value]="value"
-                />
-            </label>
-        </div>
+                    <tui-progress-circle
+                        size="l"
+                        [max]="100"
+                        [style.color]="data.color$ | async"
+                        [value]="value"
+                    />
+                </label>
+            </div>
+        }
     </div>
 
     <button

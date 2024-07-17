@@ -1,22 +1,15 @@
-import {isPlatformServer} from '@angular/common';
-import {inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {map, of, startWith, takeWhile, timer} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {map, startWith, takeWhile, timer} from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CleaningService {
-    public control = new FormControl('2024-07-01');
-    public control2 = new FormControl();
-    public readonly max = 100;
-    public readonly value$ = isPlatformServer(inject(PLATFORM_ID))
-        ? of(30)
-        : timer(300, 200).pipe(
-              map((i) => i + 30),
-              startWith(30),
-              takeWhile((value) => value <= this.max),
-          );
+    public readonly value$ = timer(300, 200).pipe(
+        map((i) => i + 30),
+        startWith(30),
+        takeWhile((value) => value <= 100),
+    );
 
     public readonly color$ = this.value$.pipe(
         map((value) => {
