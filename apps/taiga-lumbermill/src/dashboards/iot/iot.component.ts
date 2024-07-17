@@ -1,13 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
-import {CleaningComponent} from './components/cleaning/cleaning.component';
+import {CleaningComponent} from './components/Cleaning/cleaning.component';
 import {ClimateControlComponent} from './components/climate-control/climate-control.component';
 import {ControlPanelComponent} from './components/control-panel/control-panel.component';
-import {CostComponent} from './components/cost/cost.component';
-import {ElectroComponent} from './components/electro/electro.component';
-import {LightingComponent} from './components/lighting/lighting.component';
-import {SafetyComponent} from './components/safety/safety.component';
+import {CostComponent} from './components/Cost/cost.component';
+import {ElectroComponent} from './components/Electro/electro.component';
+import {LightingComponent} from './components/Lighting/lighting.component';
+import {SafetyComponent} from './components/Safety/safety.component';
 
 @Component({
     standalone: true,
