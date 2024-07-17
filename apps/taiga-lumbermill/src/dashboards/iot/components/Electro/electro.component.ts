@@ -33,6 +33,6 @@ import {ElectroService} from '../../data/services/electro.service';
     styleUrl: './electro.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LineChartComponent {
+export class ElectroComponent {
     protected dataElectro = inject(ElectroService);
 }

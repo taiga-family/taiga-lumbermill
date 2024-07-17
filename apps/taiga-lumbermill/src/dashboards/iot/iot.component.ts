@@ -4,8 +4,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CleaningComponent} from './components/cleaning/cleaning.component';
 import {ClimateControlComponent} from './components/climate-control/climate-control.component';
 import {ControlPanelComponent} from './components/control-panel/control-panel.component';
-import {BarChartComponent} from './components/cost/cost.component';
-import {LineChartComponent} from './components/electro/electro.component';
+import {CostComponent} from './components/cost/cost.component';
+import {ElectroComponent} from './components/electro/electro.component';
 import {LightingComponent} from './components/lighting/lighting.component';
 import {SafetyComponent} from './components/safety/safety.component';
 
@@ -14,8 +14,8 @@ import {SafetyComponent} from './components/safety/safety.component';
     selector: 'app-iot',
     imports: [
         CommonModule,
-        LineChartComponent,
-        BarChartComponent,
+        ElectroComponent,
+        CostComponent,
         SafetyComponent,
         ClimateControlComponent,
         LightingComponent,

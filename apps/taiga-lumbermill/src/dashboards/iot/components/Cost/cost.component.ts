@@ -25,6 +25,6 @@ import {CostService} from '../../data/services/cost.service';
     styleUrl: './cost.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BarChartComponent {
+export class CostComponent {
     protected data = inject(CostService);
 }
