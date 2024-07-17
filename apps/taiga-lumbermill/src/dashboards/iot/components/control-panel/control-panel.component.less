@@ -1,9 +1,3 @@
-:host {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
 .actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -39,7 +33,7 @@
     }
 }
 
-.cards {
+:host {
     display: flex;
     flex: 1;
     flex-wrap: wrap;
@@ -54,14 +48,14 @@
 }
 
 @media (max-width: 800px) {
-    .cards {
+    :host {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 500px) {
-    .cards {
+    :host {
         display: flex;
     }
 

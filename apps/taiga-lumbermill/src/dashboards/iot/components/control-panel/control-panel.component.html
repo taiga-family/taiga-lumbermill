@@ -1,29 +1,27 @@
-<div class="cards">
-    <div
-        *ngFor="let i of data.data; let ind = index"
-        class="grow2"
-        [ngClass]="{Last: ind == data.data.length - 1 && data.data.length % 2 == 1}"
+<div
+    *ngFor="let i of data.data; let ind = index"
+    class="grow2"
+    [ngClass]="{Last: ind == data.data.length - 1 && data.data.length % 2 == 1}"
+>
+    <button
+        tuiCardLarge
+        tuiHeader
+        tuiSurface="elevated"
+        class="button"
     >
-        <button
-            tuiCardLarge
-            tuiHeader
-            tuiSurface="elevated"
-            class="button"
-        >
-            <aside tuiAccessories>
-                <tui-avatar
-                    appearance=""
-                    [src]="i.img"
-                    [style.color]="'#000'"
-                />
-            </aside>
+        <aside tuiAccessories>
+            <tui-avatar
+                appearance=""
+                [src]="i.img"
+                [style.color]="'#000'"
+            />
+        </aside>
 
-            <h3
-                tuiTitle
-                class="big-text"
-            >
-                {{ i.name }}
-            </h3>
-        </button>
-    </div>
+        <h3
+            tuiTitle
+            class="big-text"
+        >
+            {{ i.name }}
+        </h3>
+    </button>
 </div>
