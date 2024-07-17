@@ -1,17 +1,19 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAppearance, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
+import {ControlPanelService} from '../../data/services/control-panel.service';
+
 @Component({
     standalone: true,
-    selector: 'app-small-card',
+    selector: 'lmb-small-card',
     imports: [
+        CommonModule,
         TuiCell,
         TuiTitle,
-        CommonModule,
         TuiCardLarge,
         TuiIcon,
         TuiHeader,
@@ -19,14 +21,10 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
         TuiSurface,
         TuiAppearance,
     ],
-    templateUrl: './small-card.component.html',
-    styleUrl: './small-card.component.less',
+    templateUrl: './control-panel.component.html',
+    styleUrl: './control-panel.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SmallCardComponent {
-    @Input()
-    public img = '';
-
-    @Input()
-    public name = '';
+export class ControlPanelComponent {
+    protected data = inject(ControlPanelService);
 }

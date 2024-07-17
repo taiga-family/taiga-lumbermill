@@ -1,40 +1,5 @@
 <div class="tiles">
-    <div class="cards">
-        <div class="grow2">
-            <app-small-card
-                img="/door.svg"
-                name="Open the door"
-            />
-        </div>
-        <div class="grow2">
-            <app-small-card
-                img="/audio.svg"
-                name="Play music"
-            />
-        </div>
-        <div class="grow2">
-            <app-small-card
-                img="/security.svg"
-                name="Call security"
-            />
-        </div>
-        <div class="grow2">
-            <app-small-card
-                img="/heat.svg"
-                name="Turn up the heat"
-            />
-        </div>
-        <div
-            class="grow2"
-            [style.grid-column-end]="3"
-            [style.grid-column-start]="1"
-        >
-            <app-small-card
-                img="/kettle.svg"
-                name="Turn on the kettle"
-            />
-        </div>
-    </div>
+    <lmb-small-card />
     <div class="column">
         <div class="row">
             <div class="grow"><app-safety /></div>
