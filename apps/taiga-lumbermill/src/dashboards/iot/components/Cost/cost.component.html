@@ -1,25 +1,38 @@
-<div class="bar-chart">
-    <h3 class="title">Utility costs</h3>
-    <p class="legend">
-        <span class="item">
-            <small class="name">Electricity bills</small>
-        </span>
-        <span class="item">
-            <small class="name">Light bills</small>
-        </span>
-    </p>
-    <div class="flex">
-        <tui-axes
-            class="axes"
-            [axisXLabels]="data.labelsX"
-            [axisYLabels]="data.labelsY"
-        >
-            <tui-bar-chart
-                [max]="10000"
-                [tuiHintAppearance]="data.appearance"
-                [tuiHintContent]="data.hint"
-                [value]="data.value"
-            />
-        </tui-axes>
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="bar-chart"
+>
+    <div>
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Utility costs
+            </h2>
+        </header>
+        <p class="legend">
+            <span class="item">
+                <small class="name">Electricity bills</small>
+            </span>
+            <span class="item">
+                <small class="name">Light bills</small>
+            </span>
+        </p>
+        <div class="flex">
+            <tui-axes
+                class="axes"
+                [axisXLabels]="data.labelsX"
+                [axisYLabels]="data.labelsY"
+            >
+                <tui-bar-chart
+                    [max]="10000"
+                    [tuiHintAppearance]="data.appearance"
+                    [tuiHintContent]="data.hint"
+                    [value]="data.value"
+                />
+            </tui-axes>
+        </div>
     </div>
 </div>

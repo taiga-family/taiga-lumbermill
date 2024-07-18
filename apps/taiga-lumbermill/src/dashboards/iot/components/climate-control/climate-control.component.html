@@ -1,6 +1,19 @@
-<h3 class="title">Climate control</h3>
-<div class="group">
-    <tui-input-number [(ngModel)]="data.value">Room temperature С°</tui-input-number>
-    <tui-input-number [(ngModel)]="data.value2">Water temperature</tui-input-number>
-    <tui-input-number [(ngModel)]="data.value3">Air humidity, %</tui-input-number>
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Climate control
+        </h2>
+    </header>
+    <div class="group">
+        <tui-input-number [(ngModel)]="data.value">Room temperature С°</tui-input-number>
+        <tui-input-number [(ngModel)]="data.value2">Water temperature</tui-input-number>
+        <tui-input-number [(ngModel)]="data.value3">Air humidity, %</tui-input-number>
+    </div>
 </div>

@@ -1,39 +1,52 @@
-<h3 class="tui-space_top-0">Cleaning schedule</h3>
-<div class="timetable">
-    <div class="list">
-        @for (i of forms['controls']; track $index) {
-            <tui-input-date
-                class="input-date"
-                [ariaValueMin]="now"
-                [formControl]="i"
-                [min]="now"
-                [readOnly]="$index == 0 ? true : false"
-            >
-                cleaning time
-                <input tuiTextfieldLegacy />
-            </tui-input-date>
-        }
-    </div>
-    <label
-        *ngIf="cleaningService.progress$ | async as value"
-        tuiProgressLabel
-        [style.margin-bottom]="'auto'"
-    >
-        <span class="percent">{{ value }}%</span>
-
-        <tui-progress-circle
-            size="s"
-            [max]="100"
-            [style.color]="color$ | async"
-            [value]="value"
-        />
-    </label>
-</div>
-<button
-    appearance="primary"
-    tuiButton
-    class="add-button"
-    (click)="addNew()"
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
 >
-    Add
-</button>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Cleaning schedule
+        </h2>
+    </header>
+    <div class="timetable">
+        <div class="list">
+            @for (i of forms['controls']; track $index) {
+                <tui-input-date
+                    class="input-date"
+                    [ariaValueMin]="now"
+                    [formControl]="i"
+                    [min]="now"
+                    [readOnly]="$index == 0 ? true : false"
+                >
+                    cleaning time
+                    <input tuiTextfieldLegacy />
+                </tui-input-date>
+            }
+        </div>
+        <label
+            *ngIf="cleaningService.progress$ | async as value"
+            tuiProgressLabel
+            [style.margin-bottom]="'auto'"
+        >
+            <span class="percent">{{ value }}%</span>
+
+            <tui-progress-circle
+                size="s"
+                [max]="100"
+                [style.color]="color$ | async"
+                [value]="value"
+            />
+        </label>
+    </div>
+    <button
+        appearance="primary"
+        tuiButton
+        class="add-button"
+        (click)="addNew()"
+    >
+        Add
+    </button>
+</div>

@@ -1,8 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {TuiGroup} from '@taiga-ui/core';
+import {TuiAppearance, TuiGroup} from '@taiga-ui/core';
 import {TuiBlock, TuiCheckbox, TuiFade, TuiRadio} from '@taiga-ui/kit';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -15,6 +16,8 @@ import {TuiBlock, TuiCheckbox, TuiFade, TuiRadio} from '@taiga-ui/kit';
         TuiBlock,
         TuiFade,
         TuiCheckbox,
+        TuiCardLarge,
+        TuiAppearance,
     ],
     templateUrl: './safety.component.html',
     styleUrl: './safety.component.less',

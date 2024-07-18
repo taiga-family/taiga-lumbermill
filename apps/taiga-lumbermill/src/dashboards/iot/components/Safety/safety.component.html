@@ -1,52 +1,65 @@
-<h3 class="title">Safety</h3>
-<form
-    orientation="vertical"
-    tuiGroup
-    [collapsed]="true"
-    [formGroup]="safetyForm"
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
 >
-    <label
-        tuiBlock
-        class="block-label"
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Safety
+        </h2>
+    </header>
+    <form
+        orientation="vertical"
+        tuiGroup
+        [collapsed]="true"
+        [formGroup]="safetyForm"
     >
-        Alarm system
-        <input
-            formControlName="safetyValue1"
-            tuiCheckbox
-            type="checkbox"
-        />
-    </label>
-    <label
-        tuiBlock
-        class="block-label"
-    >
-        Close the curtains
-        <input
-            formControlName="safetyValue2"
-            tuiCheckbox
-            type="checkbox"
-        />
-    </label>
-    <label
-        tuiBlock
-        class="block-label"
-    >
-        Video monitoring
-        <input
-            formControlName="safetyValue3"
-            tuiCheckbox
-            type="checkbox"
-        />
-    </label>
-    <label
-        tuiBlock
-        class="block-label"
-    >
-        Enable gas sensor notification
-        <input
-            formControlName="safetyValue4"
-            tuiCheckbox
-            type="checkbox"
-        />
-    </label>
-</form>
+        <label
+            tuiBlock
+            class="block-label"
+        >
+            Alarm system
+            <input
+                formControlName="safetyValue1"
+                tuiCheckbox
+                type="checkbox"
+            />
+        </label>
+        <label
+            tuiBlock
+            class="block-label"
+        >
+            Close the curtains
+            <input
+                formControlName="safetyValue2"
+                tuiCheckbox
+                type="checkbox"
+            />
+        </label>
+        <label
+            tuiBlock
+            class="block-label"
+        >
+            Video monitoring
+            <input
+                formControlName="safetyValue3"
+                tuiCheckbox
+                type="checkbox"
+            />
+        </label>
+        <label
+            tuiBlock
+            class="block-label"
+        >
+            Enable gas sensor notification
+            <input
+                formControlName="safetyValue4"
+                tuiCheckbox
+                type="checkbox"
+            />
+        </label>
+    </form>
+</div>

@@ -1,14 +1,13 @@
-:host {
+.card {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
-    margin-top: 0 !important;
+    height: 100%;
+    background-color: var(--tui-background-base);
 }
 
-.title {
-    display: inline-block;
-    text-align: center;
-    margin: 0;
+.card[tuiCardLarge] form:last-child {
+    margin-top: 0;
 }
 
 .block-label {

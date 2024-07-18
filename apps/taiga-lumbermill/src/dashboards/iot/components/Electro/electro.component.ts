@@ -8,6 +8,8 @@ import {
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
 import {TuiFilterPipe, TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiAppearance} from '@taiga-ui/core';
+import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
 import {ElectroService} from '../../data/services/electro.service';
@@ -28,6 +30,8 @@ import {ElectroService} from '../../data/services/electro.service';
         TuiLineChart,
         TuiFilterPipe,
         TuiMapperPipe,
+        TuiCardLarge,
+        TuiAppearance,
     ],
     templateUrl: './electro.component.html',
     styleUrl: './electro.component.less',
