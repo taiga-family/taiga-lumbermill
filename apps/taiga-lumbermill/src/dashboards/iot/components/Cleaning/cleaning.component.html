@@ -1,9 +1,9 @@
-<h3 class="title tui-space_top-0 tui-space_bottom-0">Cleaning schedule</h3>
-<div class="list">
-    @for (i of forms['controls']; track $index) {
-        <div class="wrapper group">
+<h3 class="tui-space_top-0 tui-space_bottom-0">Cleaning schedule</h3>
+<div class="timetable">
+    <div class="list">
+        @for (i of forms['controls']; track $index) {
             <tui-input-date
-                class="last-date"
+                class="input-date"
                 [ariaValueMin]="now"
                 [formControl]="i"
                 [min]="now"
@@ -12,24 +12,23 @@
                 cleaning time
                 <input tuiTextfieldLegacy />
             </tui-input-date>
-            <label
-                *ngIf="cleaningSevice.progress$ | async as value"
-                tuiProgressLabel
-                [ngClass]="{hidden: $index != 0}"
-            >
-                <span class="percent">{{ value }}%</span>
+        }
+    </div>
+    <label
+        *ngIf="cleaningSevice.progress$ | async as value"
+        tuiProgressLabel
+        [style.margin-bottom]="'auto'"
+    >
+        <span class="percent">{{ value }}%</span>
 
-                <tui-progress-circle
-                    size="s"
-                    [max]="100"
-                    [style.color]="color$ | async"
-                    [value]="value"
-                />
-            </label>
-        </div>
-    }
+        <tui-progress-circle
+            size="s"
+            [max]="100"
+            [style.color]="color$ | async"
+            [value]="value"
+        />
+    </label>
 </div>
-
 <button
     appearance="primary"
     tuiButton
