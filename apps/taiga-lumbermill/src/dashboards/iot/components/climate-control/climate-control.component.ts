@@ -5,7 +5,7 @@ import {TuiAppearance, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiInputNumberModule, tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
 
-import {ClimateControlService} from '../../data/services/climate-control.service';
+import {ClimateControlService} from './climate-control.service';
 
 @Component({
     standalone: true,
@@ -30,5 +30,5 @@ import {ClimateControlService} from '../../data/services/climate-control.service
     ],
 })
 export class ClimateControlComponent {
-    protected data = inject(ClimateControlService);
+    protected climateControlService = inject(ClimateControlService);
 }

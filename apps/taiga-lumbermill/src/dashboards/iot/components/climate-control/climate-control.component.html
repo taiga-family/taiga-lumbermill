@@ -12,8 +12,11 @@
         </h2>
     </header>
     <div class="group">
-        <tui-input-number [(ngModel)]="data.value">Room temperature С°</tui-input-number>
-        <tui-input-number [(ngModel)]="data.value2">Water temperature</tui-input-number>
-        <tui-input-number [(ngModel)]="data.value3">Air humidity, %</tui-input-number>
+        <tui-input-number
+            *ngFor="let input of climateControlService.climateControlData"
+            [(ngModel)]="input.value"
+        >
+            {{ input.name }}
+        </tui-input-number>
     </div>
 </div>
