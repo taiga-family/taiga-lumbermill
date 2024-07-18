@@ -5,8 +5,9 @@ import {TuiDay} from '@taiga-ui/cdk';
 import {TuiButton, TuiDateFormat} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
+import {map} from 'rxjs';
 
-import {CleaningService} from '../../data/services/cleaning.service';
+import {CleaningService} from './cleaning.service';
 
 @Component({
     standalone: true,
@@ -27,11 +28,34 @@ import {CleaningService} from '../../data/services/cleaning.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CleaningComponent {
-    protected data = inject(CleaningService);
-    protected forms = new FormArray([
-        new FormControl(new TuiDay(2024, 10, 20)),
-        new FormControl(),
-    ]);
+    protected cleaningSevice = inject(CleaningService);
+    protected readonly now = TuiDay.currentLocal();
+    protected forms = new FormArray(
+        this.cleaningSevice.schedule.map(
+            (item) =>
+                new FormControl(
+                    new TuiDay(
+                        TuiDay.parseRawDateString(item.date).year,
+                        TuiDay.parseRawDateString(item.date).month,
+                        TuiDay.parseRawDateString(item.date).day,
+                    ),
+                ),
+        ),
+    );
+
+    protected readonly color$ = this.cleaningSevice.progress$.pipe(
+        map((value) => {
+            if (value < 33) {
+                return '#ec5353';
+            }
+
+            if (value < 66) {
+                return '#ecec53';
+            }
+
+            return '#235ad1';
+        }),
+    );
 
     protected addNew(): void {
         this.forms.push(new FormControl());

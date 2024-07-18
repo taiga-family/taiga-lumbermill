@@ -3,22 +3,24 @@
     flex-direction: column;
     gap: 0.625rem;
     padding: 1.25rem;
-    min-height: calc(100% - 2.5rem);
-    flex-shrink: 0;
+    min-height: calc(100% - 2.625rem);
     border: 1px var(--tui-border-normal) solid;
-    background-color: #fff;
+    background-color: var(--tui-background-base);
 }
 
 .title {
     display: inline-block;
     text-align: center;
-    margin: 0;
 }
 
-.add {
-    padding-left: 1.875rem;
-    padding-right: 1.875rem;
-    margin-right: auto;
+.add-button {
+    max-width: 7rem;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
 }
 
 .text {
@@ -27,7 +29,7 @@
 }
 
 .percent {
-    font: var(--tui-font-heading-6);
+    font: var(--tui-font-text-l);
 }
 
 tui-progress-circle {
@@ -36,14 +38,8 @@ tui-progress-circle {
 
 .group {
     display: flex;
-    margin-top: 0;
-    margin-bottom: -0.375rem;
     gap: 0.625rem;
     align-items: center;
-}
-
-.progress {
-    transform: scale(0.7);
 }
 
 .hidden {
