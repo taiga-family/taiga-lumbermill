@@ -12,7 +12,7 @@ import {TuiAppearance} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
-import {ElectroService} from '../../data/services/electro.service';
+import {ElectroService} from './electro.service';
 
 @Component({
     standalone: true,
@@ -38,5 +38,5 @@ import {ElectroService} from '../../data/services/electro.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ElectroComponent {
-    protected dataElectro = inject(ElectroService);
+    protected electroService = inject(ElectroService);
 }

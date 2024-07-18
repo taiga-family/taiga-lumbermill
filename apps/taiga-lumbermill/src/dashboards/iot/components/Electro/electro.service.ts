@@ -12,14 +12,12 @@ import {map, of} from 'rxjs';
 export class ElectroService {
     private readonly months$ = inject(TUI_MONTHS);
 
-    public data = new TuiDayRange(
+    public show = new TuiDayRange(
         TuiDay.currentLocal(),
         TuiDay.currentLocal().append({month: 3}),
     );
 
-    public show = this.data;
-
-    public days = this.random(this.data);
+    public days = this.random(this.show);
 
     public readonly maxLength: TuiDayLike = {month: 4};
 
