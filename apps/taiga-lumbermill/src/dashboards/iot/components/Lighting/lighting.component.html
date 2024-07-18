@@ -1,74 +1,30 @@
-<h3 class="title">Lighting</h3>
+<h3 class="tui-space_top-0">Lighting</h3>
 <form
     orientation="vertical"
     tuiGroup
-    class="group"
     [collapsed]="true"
     [formGroup]="safetyForm"
 >
     <label
+        *ngFor="let name of namesRoom"
         tuiBlock
         class="block-label"
-        [ngClass]="{checked: safetyForm.get('safetyValue1')!.value}"
+        [ngClass]="{checked: safetyForm.get(name)!.value}"
     >
         <div class="left-size">
             <input
-                formControlName="safetyValue1"
                 tuiCheckbox
                 type="checkbox"
-                class="hidden"
+                [formControlName]="name"
+                [style.display]="'none'"
             />
-            Kitchen
+            {{ name }}
         </div>
         <tui-icon
             alt=""
             icon="@tui.lightbulb"
             class="light-svg"
-            [ngClass]="{hidden: !safetyForm.get('safetyValue1')!.value}"
-            [style.color]="'var(--tui-chart-categorical-12)'"
-        />
-    </label>
-    <label
-        tuiBlock
-        class="block-label"
-        [ngClass]="{checked: safetyForm.get('safetyValue2')!.value}"
-    >
-        <div class="left-size">
-            <input
-                formControlName="safetyValue2"
-                tuiCheckbox
-                type="checkbox"
-                class="hidden"
-            />
-            Bedroom
-        </div>
-        <tui-icon
-            alt=""
-            icon="@tui.lightbulb"
-            class="light-svg"
-            [ngClass]="{hidden: !safetyForm.get('safetyValue2')!.value}"
-            [style.color]="'var(--tui-chart-categorical-12)'"
-        />
-    </label>
-    <label
-        tuiBlock
-        class="block-label"
-        [ngClass]="{checked: safetyForm.get('safetyValue3')!.value}"
-    >
-        <div class="left-size">
-            <input
-                formControlName="safetyValue3"
-                tuiCheckbox
-                type="checkbox"
-                class="hidden"
-            />
-            Living room
-        </div>
-        <tui-icon
-            alt=""
-            icon="@tui.lightbulb"
-            class="light-svg"
-            [ngClass]="{hidden: !safetyForm.get('safetyValue3')!.value}"
+            [ngClass]="{hidden: !safetyForm.get(name)!.value}"
             [style.color]="'var(--tui-chart-categorical-12)'"
         />
     </label>

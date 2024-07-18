@@ -24,10 +24,10 @@ import {TuiBlock, TuiCheckbox, TuiRadioList} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LightingComponent {
+    protected readonly namesRoom = ['Kitchen', 'Bedroom', 'Bathroom'];
     protected readonly safetyForm = new FormGroup({
-        safetyValue1: new FormControl(true),
-        safetyValue2: new FormControl(false),
-        safetyValue3: new FormControl(true),
-        safetyValue4: new FormControl(false),
+        Kitchen: new FormControl(true),
+        Bedroom: new FormControl(false),
+        Bathroom: new FormControl(true),
     });
 }
