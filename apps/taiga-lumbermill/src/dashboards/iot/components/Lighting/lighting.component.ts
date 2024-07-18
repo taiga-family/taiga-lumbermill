@@ -30,7 +30,7 @@ import {LightingService} from './lighting.service';
 })
 export class LightingComponent {
     protected lightingService = inject(LightingService);
-    protected safetyForm = new FormArray(
+    protected lightingForm = new FormArray(
         this.lightingService.lightingData.map((item) => new FormControl(item.state)),
     );
 }

@@ -1,9 +1,11 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {FormArray, FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAppearance, TuiGroup} from '@taiga-ui/core';
 import {TuiBlock, TuiCheckbox, TuiFade, TuiRadio} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
+
+import {SafetyService} from './safety.service';
 
 @Component({
     standalone: true,
@@ -24,10 +26,8 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SafetyComponent {
-    protected readonly safetyForm = new FormGroup({
-        safetyValue1: new FormControl(true),
-        safetyValue2: new FormControl(false),
-        safetyValue3: new FormControl(true),
-        safetyValue4: new FormControl(false),
-    });
+    protected safetyService = inject(SafetyService);
+    protected safetyForm = new FormArray(
+        this.safetyService.safetyData.map((item) => new FormControl(item.state)),
+    );
 }

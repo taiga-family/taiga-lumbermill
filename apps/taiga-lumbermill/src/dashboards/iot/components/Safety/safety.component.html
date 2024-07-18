@@ -15,50 +15,17 @@
         orientation="vertical"
         tuiGroup
         [collapsed]="true"
-        [formGroup]="safetyForm"
     >
         <label
+            *ngFor="let control of safetyForm['controls']; let ind = index"
             tuiBlock
-            class="block-label"
         >
-            Alarm system
+            {{ safetyService.safetyData[ind].name }}
             <input
-                formControlName="safetyValue1"
                 tuiCheckbox
                 type="checkbox"
-            />
-        </label>
-        <label
-            tuiBlock
-            class="block-label"
-        >
-            Close the curtains
-            <input
-                formControlName="safetyValue2"
-                tuiCheckbox
-                type="checkbox"
-            />
-        </label>
-        <label
-            tuiBlock
-            class="block-label"
-        >
-            Video monitoring
-            <input
-                formControlName="safetyValue3"
-                tuiCheckbox
-                type="checkbox"
-            />
-        </label>
-        <label
-            tuiBlock
-            class="block-label"
-        >
-            Enable gas sensor notification
-            <input
-                formControlName="safetyValue4"
-                tuiCheckbox
-                type="checkbox"
+                [formControl]="control"
+                [style.margin-left]="'auto'"
             />
         </label>
     </form>
