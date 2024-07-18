@@ -1,13 +1,16 @@
 <div
-    *ngFor="let i of data.data; let ind = index"
-    class="grow2"
-    [ngClass]="{Last: ind == data.data.length - 1 && data.data.length % 2 == 1}"
+    *ngFor="let i of controlPanelService.controlPanelData; let ind = index"
+    [ngClass]="{
+        LastCard:
+            ind == controlPanelService.controlPanelData.length - 1 &&
+            controlPanelService.controlPanelData.length % 2 == 1,
+    }"
 >
     <button
         tuiCardLarge
         tuiHeader
         tuiSurface="elevated"
-        class="button"
+        class="buttonCard"
     >
         <aside tuiAccessories>
             <tui-avatar
@@ -19,7 +22,7 @@
 
         <h3
             tuiTitle
-            class="big-text"
+            class="text"
         >
             {{ i.name }}
         </h3>

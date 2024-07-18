@@ -1,36 +1,3 @@
-.actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-}
-
-.big-text {
-    font: var(--tui-font-heading-6);
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.button {
-    max-width: max-content;
-    padding-right: 1.75rem;
-    gap: 1rem;
-}
-
-@media (max-width: 50rem) {
-    .button {
-        width: 100%;
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 31.25rem) {
-    .button {
-        width: calc(100vw - 3rem - 2.5rem);
-        max-width: calc(100vw - 3rem - 2.5rem);
-        flex-shrink: 0;
-    }
-}
-
 :host {
     display: flex;
     flex: 1;
@@ -38,27 +5,37 @@
     gap: 0.625rem;
     align-items: center;
     justify-content: space-around;
-}
 
-.Last {
-    grid-column-end: 3;
-    grid-column-start: 1;
-}
-
-@media (max-width: 50rem) {
-    :host {
+    @media (max-width: 50rem) and (min-width: 31.35rem) {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media (max-width: 31.25rem) {
-    :host {
-        display: flex;
+.text {
+    font: var(--tui-font-heading-6);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.buttonCard {
+    max-width: max-content;
+    padding-right: 1.75rem;
+    gap: 1rem;
+
+    @media (max-width: 50rem) {
+        width: 100%;
+        max-width: 100%;
     }
 
-    .grow2 {
-        width: 100%;
-        height: 100%;
+    @media (max-width: 31.25rem) {
+        width: calc(100vw - 5.5rem);
+        max-width: calc(100vw - 5.5rem);
+        flex-shrink: 0;
     }
+}
+
+.LastCard {
+    grid-column-end: 3;
+    grid-column-start: 1;
 }

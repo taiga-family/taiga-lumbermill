@@ -5,7 +5,7 @@ import {TuiHeader} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
-import {ControlPanelService} from '../../data/services/control-panel.service';
+import {ControlPanelService} from './control-panel.service';
 
 @Component({
     standalone: true,
@@ -26,5 +26,5 @@ import {ControlPanelService} from '../../data/services/control-panel.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ControlPanelComponent {
-    protected data = inject(ControlPanelService);
+    protected controlPanelService = inject(ControlPanelService);
 }
