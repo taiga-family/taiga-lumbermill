@@ -3,27 +3,26 @@
     orientation="vertical"
     tuiGroup
     [collapsed]="true"
-    [formGroup]="safetyForm"
 >
     <label
-        *ngFor="let name of namesRoom"
+        *ngFor="let control of safetyForm['controls']; let ind = index"
         tuiBlock
-        [ngClass]="{checked: safetyForm.get(name)!.value}"
+        [ngClass]="{checked: control!.value}"
     >
         <div>
             <input
                 tuiCheckbox
                 type="checkbox"
-                [formControlName]="name"
+                [formControl]="control"
                 [style.display]="'none'"
             />
-            {{ name }}
+            {{ lightingService.lightingData[ind].room }}
         </div>
         <tui-icon
             alt=""
             icon="@tui.lightbulb"
             class="light-svg"
-            [ngClass]="{hidden: !safetyForm.get(name)!.value}"
+            [ngClass]="{hidden: !control!.value}"
             [style.color]="'var(--tui-chart-categorical-12)'"
         />
     </label>

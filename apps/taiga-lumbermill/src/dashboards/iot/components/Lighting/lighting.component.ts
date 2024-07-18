@@ -1,8 +1,10 @@
 import {CommonModule, NgClass} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiGroup, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiBlock, TuiCheckbox, TuiRadioList} from '@taiga-ui/kit';
+
+import {LightingService} from './lighting.service';
 
 @Component({
     standalone: true,
@@ -24,10 +26,8 @@ import {TuiBlock, TuiCheckbox, TuiRadioList} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LightingComponent {
-    protected readonly namesRoom = ['Kitchen', 'Bedroom', 'Bathroom'];
-    protected readonly safetyForm = new FormGroup({
-        Kitchen: new FormControl(true),
-        Bedroom: new FormControl(false),
-        Bathroom: new FormControl(true),
-    });
+    protected lightingService = inject(LightingService);
+    protected safetyForm = new FormArray(
+        this.lightingService.lightingData.map((item) => new FormControl(item.state)),
+    );
 }
