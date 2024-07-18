@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 
-interface LighingData {
+interface LightingData {
     readonly room: string;
     readonly state: boolean;
 }
 
-export const INITIAL_DATA: LighingData[] = [
+export const INITIAL_DATA: LightingData[] = [
     {room: 'Kitchen', state: true},
     {room: 'Bedroom', state: false},
     {room: 'Bathroom', state: true},
