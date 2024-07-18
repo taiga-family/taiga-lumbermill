@@ -8,10 +8,9 @@
     <label
         *ngFor="let name of namesRoom"
         tuiBlock
-        class="block-label"
         [ngClass]="{checked: safetyForm.get(name)!.value}"
     >
-        <div class="left-size">
+        <div>
             <input
                 tuiCheckbox
                 type="checkbox"
