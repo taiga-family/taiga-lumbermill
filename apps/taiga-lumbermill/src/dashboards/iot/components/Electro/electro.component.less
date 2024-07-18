@@ -1,5 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
+:host {
+    margin-top: 0 !important;
+}
+
 .color() {
     color: var(--tui-chart-categorical-01);
 
@@ -56,11 +60,4 @@
 .chart {
     .color();
     .fullsize();
-}
-
-.line-chart {
-    height: calc(100% - 2.5rem);
-    padding: 1.25rem;
-    border: 1px var(--tui-border-normal) solid;
-    background-color: var(--tui-background-base);
 }

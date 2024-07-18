@@ -1,4 +1,4 @@
-<h3 class="tui-space_top-0 tui-space_bottom-0">Cleaning schedule</h3>
+<h3 class="tui-space_top-0">Cleaning schedule</h3>
 <div class="timetable">
     <div class="list">
         @for (i of forms['controls']; track $index) {
@@ -15,7 +15,7 @@
         }
     </div>
     <label
-        *ngIf="cleaningSevice.progress$ | async as value"
+        *ngIf="cleaningService.progress$ | async as value"
         tuiProgressLabel
         [style.margin-bottom]="'auto'"
     >

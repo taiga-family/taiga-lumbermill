@@ -28,10 +28,10 @@ import {CleaningService} from './cleaning.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CleaningComponent {
-    protected cleaningSevice = inject(CleaningService);
+    protected cleaningService = inject(CleaningService);
     protected readonly now = TuiDay.currentLocal();
     protected forms = new FormArray(
-        this.cleaningSevice.schedule.map(
+        this.cleaningService.schedule.map(
             (item) =>
                 new FormControl(
                     new TuiDay(
@@ -43,7 +43,7 @@ export class CleaningComponent {
         ),
     );
 
-    protected readonly color$ = this.cleaningSevice.progress$.pipe(
+    protected readonly color$ = this.cleaningService.progress$.pipe(
         map((value) => {
             if (value < 33) {
                 return '#ec5353';
