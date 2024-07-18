@@ -7,7 +7,7 @@ import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
-import {CostService} from '../../data/services/cost.service';
+import {CostService} from './cost.service';
 
 @Component({
     standalone: true,
@@ -29,5 +29,5 @@ import {CostService} from '../../data/services/cost.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CostComponent {
-    protected data = inject(CostService);
+    protected costService = inject(CostService);
 }

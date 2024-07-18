@@ -1,7 +1,7 @@
 <div
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
-    class="bar-chart"
+    class="card"
 >
     <div>
         <header tuiHeader>
@@ -23,14 +23,13 @@
         <div class="flex">
             <tui-axes
                 class="axes"
-                [axisXLabels]="data.labelsX"
-                [axisYLabels]="data.labelsY"
+                [axisXLabels]="costService.costData.labelsX"
+                [axisYLabels]="costService.costData.labelsY"
             >
                 <tui-bar-chart
                     [max]="10000"
-                    [tuiHintAppearance]="data.appearance"
-                    [tuiHintContent]="data.hint"
-                    [value]="data.value"
+                    [tuiHintContent]="costService.hint"
+                    [value]="costService.costData.value"
                 />
             </tui-axes>
         </div>

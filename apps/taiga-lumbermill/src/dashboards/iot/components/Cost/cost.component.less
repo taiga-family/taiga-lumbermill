@@ -1,11 +1,5 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.less';
-
 .color() {
-    color: var(--tui-chart-categorical-01);
-
-    &:first-child {
-        color: var(--tui-background-accent-1);
-    }
+    color: var(--tui-background-accent-1);
 
     &:last-child {
         color: var(--tui-chart-categorical-12);
@@ -16,10 +10,8 @@
     min-height: 18.75rem;
     width: 100%;
 
-    &:first-child {
-        --tui-chart-categorical-00: var(--tui-background-accent-1);
-        --tui-chart-categorical-01: var(--tui-chart-categorical-12);
-    }
+    --tui-chart-categorical-00: var(--tui-background-accent-1);
+    --tui-chart-categorical-01: var(--tui-chart-categorical-12);
 }
 
 .flex {
@@ -31,10 +23,10 @@
     max-width: 20rem;
 }
 
-.bar-chart {
+.card {
     width: 100%;
-    background-color: var(--tui-background-base);
     height: 100%;
+    background-color: var(--tui-background-base);
 }
 
 .legend {
@@ -60,10 +52,4 @@
 
 .name {
     color: var(--tui-text-primary);
-}
-
-:host {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
