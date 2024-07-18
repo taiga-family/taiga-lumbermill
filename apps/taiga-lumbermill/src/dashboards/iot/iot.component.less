@@ -9,6 +9,28 @@
     max-width: 31.25rem;
 }
 
+:host {
+    isolation: isolate;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    background-color: var(--tui-background-base-alt);
+    width: calc(100% - 3rem);
+}
+
+:host:before {
+    content: '';
+    position: sticky;
+    top: 3rem;
+    z-index: 2;
+    display: block;
+    height: 3rem;
+    width: calc(100% + 2.5rem);
+    pointer-events: none;
+    margin: 0 -1.25rem -3rem;
+    border-radius: 1.25rem 1.25rem 0 0;
+    box-shadow: 0 -1.25rem var(--tui-theme-color, #000);
+}
+
 .cards {
     display: flex;
     flex: 1;
