@@ -1,0 +1,37 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <div>
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Utility costs
+            </h2>
+        </header>
+        <p class="legend">
+            <span class="item">
+                <small class="name">Electricity bills</small>
+            </span>
+            <span class="item">
+                <small class="name">Light bills</small>
+            </span>
+        </p>
+        <div class="flex">
+            <tui-axes
+                class="axes"
+                [axisXLabels]="costService.labelsX"
+                [axisYLabels]="costService.labelsY"
+            >
+                <tui-bar-chart
+                    [max]="10000"
+                    [tuiHintContent]="hint"
+                    [value]="costService.value"
+                />
+            </tui-axes>
+        </div>
+    </div>
+</div>

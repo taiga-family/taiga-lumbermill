@@ -1,8 +1,10 @@
 import type {Route} from '@angular/router';
 
-import {AppComponent} from './app.component';
-
 export const appRoutes: Route[] = [
-    {path: 'dashboards', component: AppComponent},
+    {
+        path: 'dashboards',
+        loadComponent: async () =>
+            import('../../dashboards/iot/iot.component').then((mod) => mod.IotComponent),
+    },
     {path: '**', redirectTo: 'dashboards'},
 ];

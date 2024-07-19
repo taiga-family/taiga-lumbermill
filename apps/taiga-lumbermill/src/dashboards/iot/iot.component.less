@@ -1,0 +1,43 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.tiles {
+    gap: 1rem;
+    padding-top: 1.25rem;
+}
+
+.grow {
+    width: 100%;
+}
+
+.row {
+    position: relative;
+    display: grid;
+    flex: 0 0 auto;
+    grid-template-columns: 4fr 6fr 4fr;
+    gap: 1rem;
+}
+
+@media (max-width: 56.25rem) {
+    .row {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+    }
+
+    .grow {
+        height: max-content;
+    }
+}
+
+@media (max-width: 35.625rem) {
+    .grow {
+        width: 100%;
+    }
+}
+
+.column {
+    display: flex;
+    gap: 0.625rem;
+    padding-top: 1.25rem;
+    flex-direction: column;
+}

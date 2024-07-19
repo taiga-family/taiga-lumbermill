@@ -1,0 +1,32 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Safety
+        </h2>
+    </header>
+    <form
+        orientation="vertical"
+        tuiGroup
+        [collapsed]="true"
+    >
+        <label
+            *ngFor="let control of safetyForm['controls']; let ind = index"
+            tuiBlock
+        >
+            {{ safetyService[ind].name }}
+            <input
+                tuiCheckbox
+                type="checkbox"
+                [formControl]="control"
+                [style.margin-left]="'auto'"
+            />
+        </label>
+    </form>
+</div>

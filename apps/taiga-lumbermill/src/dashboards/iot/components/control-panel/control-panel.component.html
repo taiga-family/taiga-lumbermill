@@ -1,0 +1,23 @@
+<div *ngFor="let i of controlPanelService; let ind = index">
+    <button
+        tuiCardLarge
+        tuiHeader
+        tuiSurface="elevated"
+        class="button-card"
+    >
+        <aside tuiAccessories>
+            <tui-avatar
+                appearance=""
+                [src]="i.img"
+                [style.color]="'var(--tui-background-accent-opposite)'"
+            />
+        </aside>
+
+        <h3
+            tuiTitle
+            class="text"
+        >
+            {{ i.name }}
+        </h3>
+    </button>
+</div>

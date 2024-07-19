@@ -1,0 +1,42 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Lighting
+        </h2>
+    </header>
+    <form
+        orientation="vertical"
+        tuiGroup
+        [collapsed]="true"
+    >
+        <label
+            *ngFor="let control of lightingForm['controls']; let ind = index"
+            tuiBlock
+            [ngClass]="{checked: control!.value}"
+        >
+            <div>
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [formControl]="control"
+                    [style.display]="'none'"
+                />
+                {{ lightingService[ind].room }}
+            </div>
+            <tui-icon
+                alt=""
+                icon="@tui.lightbulb"
+                class="light-svg"
+                [ngClass]="{hidden: !control!.value}"
+                [style.color]="'var(--tui-chart-categorical-12)'"
+            />
+        </label>
+    </form>
+</div>

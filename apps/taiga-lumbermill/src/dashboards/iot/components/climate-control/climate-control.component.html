@@ -1,0 +1,22 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Climate control
+        </h2>
+    </header>
+    <div class="group">
+        <tui-input-number
+            *ngFor="let input of climateControlService"
+            [(ngModel)]="input.value"
+        >
+            {{ input.name }}
+        </tui-input-number>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    text-align: center;
+    height: 100%;
+    background-color: var(--tui-background-base);
+}
+
+.light-svg {
+    width: 1.875rem;
+    height: 1.875rem;
+    margin-left: auto;
+}
+
+.checked {
+    background-color: var(--tui-status-warning-pale);
+}
+
+.hidden {
+    display: none;
+}
+
+.card[tuiCardLarge] form:last-child {
+    margin-top: 0;
+}
