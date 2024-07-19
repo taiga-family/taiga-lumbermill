@@ -1,0 +1,71 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Weather
+        </h2>
+    </header>
+    <div class="info">
+        <div class="left-side">
+            <h3
+                tuiTitle
+                class="tui-text_body-m"
+            >
+                New York
+            </h3>
+            <h1 class="tui-space_top-3 tui-space_bottom-3">31°</h1>
+            <div class="description">
+                <p class="tui-space_top-0 tui-space_bottom-0">
+                    <span [style.font-weight]="'600'">23</span>
+                    °/
+                    <span [style.font-weight]="'600'">30</span>
+                    °
+                </p>
+                <div class="together">
+                    <tui-icon icon="@tui.wind" />
+                    3km/h
+                </div>
+                <div class="together">
+                    <tui-icon icon="@tui.droplets" />
+                    13%
+                </div>
+            </div>
+            <p class="tui-space_top-0 tui-space_bottom-0 tui-text_body-s">Sunny</p>
+        </div>
+        <div class="main-logo">
+            <tui-icon
+                icon="@tui.sun"
+                class="icon"
+            />
+        </div>
+    </div>
+    <div class="list-days">
+        <div
+            *ngFor="let card of cards"
+            class="small-card"
+        >
+            <tui-icon
+                class="card-icon"
+                [icon]="card.icon"
+            />
+            <div
+                class="left-side"
+                [style.align-items]="'center'"
+            >
+                <p
+                    class="tui-space_top-0 tui-space_bottom-0"
+                    [style.font-weight]="'600'"
+                >
+                    {{ card.day }}
+                </p>
+                <p class="tui-space_top-0 tui-space_bottom-0">{{ card.temp }}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import {CostComponent} from './components/Cost/cost.component';
 import {ElectricityComponent} from './components/electricity/electricity.component';
 import {LightingComponent} from './components/Lighting/lighting.component';
 import {SafetyComponent} from './components/Safety/safety.component';
+import {WeatherComponent} from './components/weather/weather.component';
 
 @Component({
     standalone: true,
@@ -23,6 +24,7 @@ import {SafetyComponent} from './components/Safety/safety.component';
         LightingComponent,
         CleaningComponent,
         ControlPanelComponent,
+        WeatherComponent,
         TuiAppearance,
         TuiCardLarge,
     ],
