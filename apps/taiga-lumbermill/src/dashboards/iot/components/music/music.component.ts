@@ -1,0 +1,33 @@
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/experimental';
+import {TuiSliderComponent} from '@taiga-ui/kit';
+import {TuiCardLarge} from '@taiga-ui/layout';
+
+// import {MusicService} from './music.service';
+
+@Component({
+    standalone: true,
+    selector: 'lmb-music',
+    imports: [
+        CommonModule,
+        TuiAppearance,
+        TuiCardLarge,
+        TuiTitle,
+        TuiHeader,
+        TuiSliderComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        TuiIcon,
+    ],
+    templateUrl: './music.component.html',
+    styleUrl: './music.component.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MusicComponent {
+    protected value = 4;
+    protected play = new FormControl(60);
+    protected volume = new FormControl(0);
+}
