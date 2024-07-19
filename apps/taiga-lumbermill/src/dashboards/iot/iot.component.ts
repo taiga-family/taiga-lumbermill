@@ -7,7 +7,7 @@ import {CleaningComponent} from './components/Cleaning/cleaning.component';
 import {ClimateControlComponent} from './components/climate-control/climate-control.component';
 import {ControlPanelComponent} from './components/control-panel/control-panel.component';
 import {CostComponent} from './components/Cost/cost.component';
-import {ElectroComponent} from './components/Electro/electro.component';
+import {ElectricityComponent} from './components/electricity/electricity.component';
 import {LightingComponent} from './components/Lighting/lighting.component';
 import {SafetyComponent} from './components/Safety/safety.component';
 
@@ -16,7 +16,7 @@ import {SafetyComponent} from './components/Safety/safety.component';
     selector: 'app-iot',
     imports: [
         CommonModule,
-        ElectroComponent,
+        ElectricityComponent,
         CostComponent,
         SafetyComponent,
         ClimateControlComponent,

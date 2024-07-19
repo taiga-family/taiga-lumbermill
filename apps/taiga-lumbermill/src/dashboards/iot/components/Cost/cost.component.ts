@@ -11,7 +11,7 @@ import {CostService} from './cost.service';
 
 @Component({
     standalone: true,
-    selector: 'lmb-bar-chart',
+    selector: 'lmb-cost',
     imports: [
         CommonModule,
         TuiAxes,

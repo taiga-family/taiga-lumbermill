@@ -6,48 +6,48 @@
     <div>
         <p class="controls">
             <tui-input-date-range
-                [maxLength]="electroService.maxLength"
-                [(ngModel)]="electroService.show"
-                (ngModelChange)="electroService.onDataChange($event)"
+                [maxLength]="electricityService.maxLength"
+                [(ngModel)]="electricityService.show"
+                (ngModelChange)="electricityService.onDataChange($event)"
             >
                 Data
             </tui-input-date-range>
         </p>
         <p class="legend tui-space_top-0">
             <span
-                *ngFor="let chart of electroService.days; let index = index"
+                *ngFor="let chart of electricityService.days; let index = index"
                 class="item"
             >
                 <small class="name">Electricity bills</small>
             </span>
         </p>
         <tui-axes
-            *ngIf="electroService.labels(electroService.show) | async as labels"
+            *ngIf="electricityService.labels(electricityService.show) | async as labels"
             class="axes"
             [axisXLabels]="labels"
             [horizontalLines]="4"
             [tuiLineChartHint]="hint"
             [verticalLines]="labels.length"
         >
-            <ng-container *ngIf="electroService.getWidth(electroService.show) > 90; else line">
+            <ng-container *ngIf="electricityService.getWidth(electricityService.show) > 90; else line">
                 <tui-line-days-chart
-                    *ngFor="let chart of electroService.days"
+                    *ngFor="let chart of electricityService.days"
                     class="chart"
                     [height]="200"
-                    [value]="chart | tuiFilter: electroService.filter : electroService.range"
+                    [value]="chart | tuiFilter: electricityService.filter : electricityService.range"
                 />
             </ng-container>
             <ng-template #line>
                 <tui-line-chart
-                    *ngFor="let chart of electroService.days"
+                    *ngFor="let chart of electricityService.days"
                     class="chart"
                     [height]="200"
                     [value]="
                         chart
-                            | tuiFilter: electroService.filter : electroService.range
-                            | tuiMapper: electroService.toNumbers : electroService.range
+                            | tuiFilter: electricityService.filter : electricityService.range
+                            | tuiMapper: electricityService.toNumbers : electricityService.range
                     "
-                    [width]="electroService.getWidth(electroService.range)"
+                    [width]="electricityService.getWidth(electricityService.range)"
                 />
             </ng-template>
         </tui-axes>
@@ -58,7 +58,7 @@
         let-data
     >
         <div class="tui-space_bottom-2">
-            <strong>{{ electroService.getDate(data[0][0], electroService.range.from) }}</strong>
+            <strong>{{ electricityService.getDate(data[0][0], electricityService.range.from) }}</strong>
         </div>
         <div>
             <div

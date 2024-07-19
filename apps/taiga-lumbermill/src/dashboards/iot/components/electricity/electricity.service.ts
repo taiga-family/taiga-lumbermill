@@ -9,7 +9,7 @@ import {map, of} from 'rxjs';
 @Injectable({
     providedIn: 'root',
 })
-export class ElectroService {
+export class ElectricityService {
     private readonly months$ = inject(TUI_MONTHS);
 
     public show = new TuiDayRange(

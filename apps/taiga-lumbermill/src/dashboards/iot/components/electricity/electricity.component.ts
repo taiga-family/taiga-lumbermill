@@ -12,11 +12,11 @@ import {TuiAppearance} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
-import {ElectroService} from './electro.service';
+import {ElectricityService} from './electricity.service';
 
 @Component({
     standalone: true,
-    selector: 'lmb-line-chart',
+    selector: 'lmb-electricity',
     imports: [
         CommonModule,
         TuiInputDateRangeModule,
@@ -33,10 +33,10 @@ import {ElectroService} from './electro.service';
         TuiCardLarge,
         TuiAppearance,
     ],
-    templateUrl: './electro.component.html',
-    styleUrl: './electro.component.less',
+    templateUrl: './electricity.component.html',
+    styleUrl: './electricity.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ElectroComponent {
-    protected electroService = inject(ElectroService);
+export class ElectricityComponent {
+    protected electricityService = inject(ElectricityService);
 }
