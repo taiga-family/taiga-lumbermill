@@ -52,14 +52,14 @@ export class CleaningComponent {
     protected readonly color$ = this.cleaningService.progress$.pipe(
         map((value) => {
             if (value < 33) {
-                return '#ec5353';
+                return 'var(--tui-status-negative)';
             }
 
             if (value < 66) {
-                return '#ecec53';
+                return 'var(--tui-status-warning)';
             }
 
-            return '#235ad1';
+            return 'var(--tui-status-info)';
         }),
     );
 
