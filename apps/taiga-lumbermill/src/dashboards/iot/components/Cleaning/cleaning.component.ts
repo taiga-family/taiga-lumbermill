@@ -59,7 +59,7 @@ export class CleaningComponent {
                 return 'var(--tui-status-warning)';
             }
 
-            return 'var(--tui-status-info)';
+            return 'var(--tui-background-accent-1)';
         }),
     );
 
