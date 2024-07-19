@@ -1,12 +1,12 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/experimental';
 import {TuiSliderComponent} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
-// import {MusicService} from './music.service';
+import {MusicService} from './music.service';
 
 @Component({
     standalone: true,
@@ -27,7 +27,8 @@ import {TuiCardLarge} from '@taiga-ui/layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MusicComponent {
-    protected value = 4;
-    protected play = new FormControl(60);
-    protected volume = new FormControl(0);
+    protected musicService = inject(MusicService).musicData;
+    protected safetyForm = new FormArray(
+        this.musicService.map((item) => new FormControl(item.value)),
+    );
 }
