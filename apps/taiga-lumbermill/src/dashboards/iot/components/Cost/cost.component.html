@@ -23,13 +23,13 @@
         <div class="flex">
             <tui-axes
                 class="axes"
-                [axisXLabels]="costService.costData.labelsX"
-                [axisYLabels]="costService.costData.labelsY"
+                [axisXLabels]="costService.labelsX"
+                [axisYLabels]="costService.labelsY"
             >
                 <tui-bar-chart
                     [max]="10000"
-                    [tuiHintContent]="costService.hint"
-                    [value]="costService.costData.value"
+                    [tuiHintContent]="hint"
+                    [value]="costService.value"
                 />
             </tui-axes>
         </div>

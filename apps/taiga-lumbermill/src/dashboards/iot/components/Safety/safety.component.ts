@@ -26,8 +26,8 @@ import {SafetyService} from './safety.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SafetyComponent {
-    protected safetyService = inject(SafetyService);
+    protected safetyService = inject(SafetyService).safetyData;
     protected safetyForm = new FormArray(
-        this.safetyService.safetyData.map((item) => new FormControl(item.state)),
+        this.safetyService.map((item) => new FormControl(item.state)),
     );
 }

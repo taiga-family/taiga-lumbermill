@@ -29,8 +29,8 @@ import {LightingService} from './lighting.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LightingComponent {
-    protected lightingService = inject(LightingService);
+    protected lightingService = inject(LightingService).lightingData;
     protected lightingForm = new FormArray(
-        this.lightingService.lightingData.map((item) => new FormControl(item.state)),
+        this.lightingService.map((item) => new FormControl(item.state)),
     );
 }

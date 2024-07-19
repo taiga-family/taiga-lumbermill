@@ -30,5 +30,5 @@ import {ClimateControlService} from './climate-control.service';
     ],
 })
 export class ClimateControlComponent {
-    protected climateControlService = inject(ClimateControlService);
+    protected climateControlService = inject(ClimateControlService).climateControlData;
 }

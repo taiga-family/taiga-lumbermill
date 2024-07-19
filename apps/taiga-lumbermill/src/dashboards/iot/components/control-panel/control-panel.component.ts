@@ -26,5 +26,5 @@ import {ControlPanelService} from './control-panel.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ControlPanelComponent {
-    protected controlPanelService = inject(ControlPanelService);
+    protected controlPanelService = inject(ControlPanelService).controlPanelData;
 }

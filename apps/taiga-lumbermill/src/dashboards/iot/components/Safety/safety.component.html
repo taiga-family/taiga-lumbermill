@@ -20,7 +20,7 @@
             *ngFor="let control of safetyForm['controls']; let ind = index"
             tuiBlock
         >
-            {{ safetyService.safetyData[ind].name }}
+            {{ safetyService[ind].name }}
             <input
                 tuiCheckbox
                 type="checkbox"

@@ -2,7 +2,8 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
-import {TuiAppearance, TuiHint} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {TuiAppearance, tuiFormatNumber, TuiHint} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiSelectModule} from '@taiga-ui/legacy';
@@ -29,5 +30,9 @@ import {CostService} from './cost.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CostComponent {
-    protected costService = inject(CostService);
+    protected costService = inject(CostService).costData;
+    protected hint = ({$implicit}: TuiContext<number>): string =>
+        this.costService.value
+            .reduce((result, set) => `${result}$${tuiFormatNumber(set[$implicit])}\n`, '')
+            .trim();
 }

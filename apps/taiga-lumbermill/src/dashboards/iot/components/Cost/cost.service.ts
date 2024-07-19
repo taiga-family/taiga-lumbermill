@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiFormatNumber} from '@taiga-ui/core';
 
 interface CostData {
-    value: number[][];
-    labelsX: string[];
-    labelsY: string[];
+    readonly value: number[][];
+    readonly labelsX: string[];
+    readonly labelsY: string[];
 }
 
 const INITIAL_DATA: CostData = {
@@ -22,8 +20,4 @@ const INITIAL_DATA: CostData = {
 })
 export class CostService {
     public readonly costData = INITIAL_DATA;
-    public hint = ({$implicit}: TuiContext<number>): string =>
-        this.costData.value
-            .reduce((result, set) => `${result}$${tuiFormatNumber(set[$implicit])}\n`, '')
-            .trim();
 }
