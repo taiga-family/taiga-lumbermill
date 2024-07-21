@@ -27,8 +27,8 @@ import {MusicService} from './music.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MusicComponent {
-    protected musicService = inject(MusicService).musicData;
+    protected musicService = inject(MusicService);
     protected safetyForm = new FormArray(
-        this.musicService.map((item) => new FormControl(item.value)),
+        this.musicService.musicData.inputs.map((item) => new FormControl(item.value)),
     );
 }

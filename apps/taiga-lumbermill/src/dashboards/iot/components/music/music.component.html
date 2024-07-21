@@ -13,15 +13,17 @@
     </header>
     <div class="info">
         <img
-            src="/music_1.jpg"
             class="logo"
+            [src]="musicService.musicData.musics[musicService.curMusic].logo"
         />
-        <h2 class="tui-space_top-4 tui-space_bottom-2">Believer</h2>
+        <h2 class="tui-space_top-4 tui-space_bottom-2">
+            {{ musicService.musicData.musics[musicService.curMusic].name }}
+        </h2>
         <p
             class="tui-space_top-0 tui-space_bottom-0"
             [style.color]="'var(--tui-text-primary)'"
         >
-            Imagine Dragons
+            {{ musicService.musicData.musics[musicService.curMusic].performer }}
         </p>
     </div>
     <div>
@@ -29,20 +31,44 @@
             size="m"
             tuiSlider
             type="range"
-            value="60"
             [formControl]="safetyForm['controls'][0]"
         />
         <div class="numbers">
-            <p class="tui-space_top-0 tui-space_bottom-0">00:13</p>
-            <p class="tui-space_top-0 tui-space_bottom-0">00:52</p>
+            <p class="tui-space_top-0 tui-space_bottom-0">
+                {{ musicService.getMinutes(safetyForm['controls'][0].value) }}:{{
+                    musicService.getSecods(safetyForm['controls'][0].value)
+                }}
+            </p>
+            <p class="tui-space_top-0 tui-space_bottom-0">
+                {{ musicService.getMinutes(musicService.musicData.musics[musicService.curMusic].length) }}:{{
+                    musicService.getSecods(musicService.musicData.musics[musicService.curMusic].length)
+                }}
+            </p>
         </div>
     </div>
     <div class="buttons">
-        <tui-icon icon="@tui.shuffle" />
-        <tui-icon icon="@tui.skip-back" />
-        <tui-icon icon="@tui.circle-play" />
-        <tui-icon icon="@tui.skip-forward" />
-        <tui-icon icon="@tui.repeat" />
+        <tui-icon
+            icon="@tui.shuffle"
+            [ngClass]="{checked: musicService.shuffle}"
+            (click)="musicService.shuffleButton()"
+        />
+        <tui-icon
+            icon="@tui.skip-back"
+            (click)="musicService.previousMusic()"
+        />
+        <tui-icon
+            [icon]="musicService.logoPlay"
+            (click)="musicService.playButton()"
+        />
+        <tui-icon
+            icon="@tui.skip-forward"
+            (click)="musicService.nextMusic()"
+        />
+        <tui-icon
+            icon="@tui.repeat"
+            [ngClass]="{checked: musicService.repeat}"
+            (click)="musicService.repeatButton()"
+        />
     </div>
     <hr />
     <div class="volume">
