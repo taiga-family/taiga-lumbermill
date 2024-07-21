@@ -32,16 +32,17 @@
             tuiSlider
             type="range"
             [formControl]="safetyForm['controls'][0]"
+            [max]="musicService.musicData.musics[musicService.curMusic].length"
         />
         <div class="numbers">
             <p class="tui-space_top-0 tui-space_bottom-0">
                 {{ musicService.getMinutes(safetyForm['controls'][0].value) }}:{{
-                    musicService.getSecods(safetyForm['controls'][0].value)
+                    musicService.getSeconds(safetyForm['controls'][0].value)
                 }}
             </p>
             <p class="tui-space_top-0 tui-space_bottom-0">
                 {{ musicService.getMinutes(musicService.musicData.musics[musicService.curMusic].length) }}:{{
-                    musicService.getSecods(musicService.musicData.musics[musicService.curMusic].length)
+                    musicService.getSeconds(musicService.musicData.musics[musicService.curMusic].length)
                 }}
             </p>
         </div>

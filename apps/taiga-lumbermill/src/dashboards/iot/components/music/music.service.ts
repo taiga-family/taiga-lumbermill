@@ -77,7 +77,7 @@ export class MusicService {
         );
     }
 
-    public getSecods(value: number | null): string {
+    public getSeconds(value: number | null): string {
         if (value === null) {
             return '00';
         }
