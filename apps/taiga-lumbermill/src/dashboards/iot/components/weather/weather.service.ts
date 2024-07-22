@@ -20,13 +20,27 @@ export class WeatherService {
     public readonly weatherData = INITIAL_DATA;
 
     public getTest(): Observable<ResponseData> {
-        return this.http.get<ResponseData>('http://api.weatherapi.com/v1/current.json', {
+        return this.http.get<ResponseData>('http://api.weatherapi.com/v1/forecast.json', {
             params: {
                 key: this.API_KEY,
                 q: this.city,
                 api: 'yes',
+                days: '4',
             },
         });
+    }
+
+    public getWeekDay(value: string): string {
+        const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+
+        const valueSplit = value.split('-');
+        const date = new Date(
+            parseInt(valueSplit[0], 10),
+            parseInt(valueSplit[1], 10) - 1,
+            parseInt(valueSplit[2], 10),
+        );
+
+        return days[date.getDay()];
     }
 
     public getTypeOfWeather(value: number): string {

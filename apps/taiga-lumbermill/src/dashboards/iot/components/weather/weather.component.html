@@ -51,7 +51,7 @@
     </div>
     <div class="list-days">
         <div
-            *ngFor="let card of weatherService.weatherData"
+            *ngFor="let card of weatherService.weatherData; let ind = index"
             class="small-card"
         >
             <tui-icon
@@ -66,9 +66,13 @@
                     class="tui-space_top-0 tui-space_bottom-0"
                     [style.font-weight]="'600'"
                 >
-                    {{ card.day }}
+                    {{ weatherService.getWeekDay(info.forecast.forecastday[ind + 1].date) }}
                 </p>
-                <p class="tui-space_top-0 tui-space_bottom-0">{{ card.temp }}</p>
+                <p class="tui-space_top-0 tui-space_bottom-0">
+                    {{ info.forecast.forecastday[ind + 1].day.mintemp_c }}°/{{
+                        info.forecast.forecastday[ind + 1].day.maxtemp_c
+                    }}°
+                </p>
             </div>
         </div>
     </div>

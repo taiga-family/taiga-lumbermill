@@ -23,7 +23,13 @@ export interface ResponseCurrent {
     wind_kph: string;
 }
 
+export interface ForecastDay {
+    mintemp_c: string;
+    maxtemp_c: string;
+}
+
 export interface ResponseData {
     location: ResponseLocation;
     current: ResponseCurrent;
+    forecast: ForecastDay;
 }
