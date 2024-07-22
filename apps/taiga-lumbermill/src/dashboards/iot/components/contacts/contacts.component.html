@@ -3,16 +3,39 @@
     tuiCardLarge="normal"
     class="card"
 >
-    <header tuiHeader>
-        <h2
-            tuiTitle
-            [style.text-align]="'center'"
+    <tui-tabs tuiFade>
+        <button
+            tuiTab
+            (click)="contactsService.updateFades(true)"
         >
-            Contacts
-        </h2>
-    </header>
-    <div class="contacts-list">
-        @for (person of contactsService; track $index) {
+            <header tuiHeader>
+                <h2
+                    tuiTitle
+                    [style.text-align]="'center'"
+                >
+                    Contacts
+                </h2>
+            </header>
+        </button>
+        <button
+            tuiTab
+            (click)="contactsService.updateFades(false)"
+        >
+            <header tuiHeader>
+                <h2
+                    tuiTitle
+                    [style.text-align]="'center'"
+                >
+                    Recent
+                </h2>
+            </header>
+        </button>
+    </tui-tabs>
+    <div
+        class="contacts-list"
+        [ngClass]="{hidden: !contactsService.contacts}"
+    >
+        @for (person of contactsService.contactsData.contacts; track $index) {
             <div class="person">
                 <div class="info">
                     <tui-avatar [src]="person.img" />
@@ -22,6 +45,29 @@
                     </div>
                 </div>
                 <tui-icon icon="@tui.phone" />
+            </div>
+            <hr />
+        }
+    </div>
+    <div
+        class="contacts-list"
+        [ngClass]="{hidden: contactsService.contacts}"
+    >
+        @for (person of contactsService.contactsData.recent; track $index) {
+            <div class="person">
+                <div class="info">
+                    <tui-avatar [src]="person.img" />
+                    <div class="text">
+                        <h4 class="tui-space_top-0 tui-space_bottom-0">{{ person.name }}</h4>
+                        <p class="tui-space_top-0 tui-space_bottom-0">{{ person.status }}</p>
+                    </div>
+                </div>
+                <p
+                    class="tui-space_top-0 tui-space_bottom-0"
+                    [style.color]="'var(--tui-text-secondary)'"
+                >
+                    {{ person.last }}
+                </p>
             </div>
             <hr />
         }
