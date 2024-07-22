@@ -5,7 +5,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiMedia} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/experimental';
@@ -36,7 +36,4 @@ import {MusicService} from './music.service';
 })
 export class MusicComponent {
     protected musicService = inject(MusicService);
-    protected safetyForm = new FormArray(
-        this.musicService.musicData.inputs.map((item) => new FormControl(item.value)),
-    );
 }

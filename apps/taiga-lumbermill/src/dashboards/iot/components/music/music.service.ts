@@ -1,15 +1,5 @@
 import {Injectable} from '@angular/core';
 
-interface MusicInputs {
-    readonly name: string;
-    readonly value: number;
-}
-
-export const INITIAL_INPUTS: MusicInputs[] = [
-    {name: 'Play', value: 0},
-    {name: 'Volume', value: 0},
-];
-
 interface Music {
     readonly name: string;
     readonly src: string;
@@ -17,30 +7,20 @@ interface Music {
     readonly performer: string;
 }
 
-export const INITIAL_MUSIC: Music[] = [
+export const INITIAL_DATA: Music[] = [
     {
-        name: 'Believer',
+        name: 'Against All Odds',
         logo: '/music/against.jpg',
-        performer: 'Imagine Dragons',
+        performer: 'Tiko Tiko',
         src: './music/AgainstAllOdds.mp3',
     },
     {
-        name: 'Test1',
+        name: 'Howling at the Moon',
         logo: '/music/howling.avif',
-        performer: 'Imagine Dragons2',
+        performer: 'D Fine Us',
         src: './music/HowlingAtTheMoon.mp3',
     },
 ];
-
-interface MusicData {
-    readonly inputs: MusicInputs[];
-    readonly musics: Music[];
-}
-
-export const INITIAL_DATA: MusicData = {
-    inputs: INITIAL_INPUTS,
-    musics: INITIAL_MUSIC,
-};
 
 @Injectable({
     providedIn: 'root',
@@ -49,7 +29,7 @@ export class MusicService {
     public readonly musicData = INITIAL_DATA;
     public curMusic = 0;
     public curTime = 0;
-    public volume = 0;
+    public volume = 1;
     public repeat = false;
     public shuffle = false;
     public paused = true;
@@ -71,6 +51,8 @@ export class MusicService {
     }
 
     public nextMusic(): void {
+        this.paused = true;
+
         if (this.repeat) {
             this.curTime = 0;
 
@@ -78,14 +60,14 @@ export class MusicService {
         }
 
         if (this.shuffle) {
-            this.curMusic = getRandomInt(this.musicData.musics.length);
+            this.curMusic = getRandomInt(this.musicData.length);
 
             return;
         }
 
         this.curTime = 0;
-        this.paused = true;
-        this.curMusic = (this.curMusic + 1) % this.musicData.musics.length;
+        this.curMusic = (this.curMusic + 1) % this.musicData.length;
+        this.paused = false;
     }
 
     public previousMusic(): void {
@@ -96,7 +78,7 @@ export class MusicService {
         }
 
         if (this.shuffle) {
-            this.curMusic = getRandomInt(this.musicData.musics.length);
+            this.curMusic = getRandomInt(this.musicData.length);
 
             return;
         }
@@ -104,7 +86,7 @@ export class MusicService {
         this.curTime = 0;
         this.paused = true;
         this.curMusic =
-            this.curMusic - 1 < 0 ? this.musicData.musics.length - 1 : this.curMusic - 1;
+            this.curMusic - 1 < 0 ? this.musicData.length - 1 : this.curMusic - 1;
     }
 
     public getMinutes(value: number | null): string {

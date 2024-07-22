@@ -14,24 +14,25 @@
     <div class="info">
         <img
             class="logo"
-            [src]="musicService.musicData.musics[musicService.curMusic].logo"
+            [src]="musicService.musicData[musicService.curMusic].logo"
         />
         <h2 class="tui-space_top-4 tui-space_bottom-2">
-            {{ musicService.musicData.musics[musicService.curMusic].name }}
+            {{ musicService.musicData[musicService.curMusic].name }}
         </h2>
         <p
             class="tui-space_top-0 tui-space_bottom-0"
             [style.color]="'var(--tui-text-primary)'"
         >
-            {{ musicService.musicData.musics[musicService.curMusic].performer }}
+            {{ musicService.musicData[musicService.curMusic].performer }}
         </p>
     </div>
     <audio
         #audio
         tuiMedia
-        [src]="musicService.musicData.musics[musicService.curMusic].src"
+        [src]="musicService.musicData[musicService.curMusic].src"
         [(currentTime)]="musicService.curTime"
         [(paused)]="musicService.paused"
+        [(volume)]="musicService.volume"
     ></audio>
     <div>
         <input
@@ -78,12 +79,13 @@
     <div class="volume">
         <tui-icon icon="@tui.volume-1" />
         <input
+            max="1"
             size="m"
+            step="0.01"
             tuiSlider
             type="range"
-            value="60"
-            [formControl]="safetyForm['controls'][1]"
             [style.color]="'var(--tui-status-info)'"
+            [(ngModel)]="musicService.volume"
         />
         <tui-icon icon="@tui.volume-2" />
     </div>
