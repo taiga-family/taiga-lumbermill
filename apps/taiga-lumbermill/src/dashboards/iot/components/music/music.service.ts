@@ -67,7 +67,6 @@ export class MusicService {
 
         this.curTime = 0;
         this.curMusic = (this.curMusic + 1) % this.musicData.length;
-        this.paused = false;
     }
 
     public previousMusic(): void {
