@@ -20,14 +20,17 @@ export class WeatherService {
     public readonly weatherData = INITIAL_DATA;
 
     public getTest(): Observable<ResponseData> {
-        return this.http.get<ResponseData>('http://api.weatherapi.com/v1/forecast.json', {
-            params: {
-                key: this.API_KEY,
-                q: this.city,
-                api: 'yes',
-                days: '4',
+        return this.http.get<ResponseData>(
+            'https://api.weatherapi.com/v1/forecast.json',
+            {
+                params: {
+                    key: this.API_KEY,
+                    q: this.city,
+                    api: 'yes',
+                    days: '4',
+                },
             },
-        });
+        );
     }
 
     public getWeekDay(value: string): string {
