@@ -1,6 +1,12 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
 import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiMedia} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/experimental';
 import {TuiSliderComponent} from '@taiga-ui/kit';
@@ -21,9 +27,11 @@ import {MusicService} from './music.service';
         FormsModule,
         ReactiveFormsModule,
         TuiIcon,
+        TuiMedia,
     ],
     templateUrl: './music.component.html',
     styleUrl: './music.component.less',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MusicComponent {
