@@ -18,7 +18,7 @@ import {WeatherService} from './weather.service';
 })
 export class WeatherComponent implements OnInit {
     protected weatherService = inject(WeatherService);
-    protected info: any;
+    protected info: any = null;
 
     public ngOnInit(): void {
         this.weatherService.getTest().subscribe((result: ResponseData) => {
