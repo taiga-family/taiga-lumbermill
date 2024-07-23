@@ -2,7 +2,13 @@ import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
 import type {Observable} from 'rxjs';
 
-import {CLOUD_CODES, RAINS_CODES, SNOW_CODES, WEEKDAYS} from './weather.constants';
+import {
+    CLOUD_CODES,
+    RAINS_CODES,
+    SNOW_CODES,
+    WEATHER_KEY,
+    WEEKDAYS,
+} from './weather.constants';
 import type {ResponseData, WeatherData} from './weather.interface';
 
 export const INITIAL_DATA: WeatherData[] = [
@@ -16,7 +22,7 @@ export const INITIAL_DATA: WeatherData[] = [
 })
 export class WeatherService {
     private readonly http = inject(HttpClient);
-    protected readonly API_KEY = '1df6860ee44f43d693d113704242207';
+    private readonly KEY = inject(WEATHER_KEY);
 
     public readonly weatherData = INITIAL_DATA;
 
@@ -25,7 +31,7 @@ export class WeatherService {
             'https://api.weatherapi.com/v1/forecast.json',
             {
                 params: {
-                    key: this.API_KEY,
+                    key: this.KEY,
                     q: 'London',
                     api: 'yes',
                     days: '4',

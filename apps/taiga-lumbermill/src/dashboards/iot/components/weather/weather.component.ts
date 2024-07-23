@@ -23,6 +23,7 @@ import {WeatherService} from './weather.service';
     templateUrl: './weather.component.html',
     styleUrl: './weather.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [WeatherService],
 })
 export class WeatherComponent {
     protected weatherService = inject(WeatherService);
