@@ -2,7 +2,14 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/experimental';
-import {TuiAvatar, TuiFade, TuiTab, TuiTabs} from '@taiga-ui/kit';
+import {
+    TuiAvatar,
+    TuiBadge,
+    TuiBadgedContent,
+    TuiFade,
+    TuiTab,
+    TuiTabs,
+} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 import {ContactsService} from './contacts.service';
@@ -21,6 +28,8 @@ import {ContactsService} from './contacts.service';
         TuiTabs,
         TuiTab,
         TuiFade,
+        TuiBadge,
+        TuiBadgedContent,
     ],
     templateUrl: './contacts.component.html',
     styleUrl: './contacts.component.less',

@@ -18,13 +18,38 @@ interface Recent {
     readonly status: string;
     readonly img: string;
     readonly last: string;
+    readonly took: boolean;
 }
 
 export const INITIAL_RECENT: Recent[] = [
-    {name: 'Misha Zhem4', img: './example.png', status: 'online', last: '9:12 PM'},
-    {name: 'Misha Zhem2', img: './example.png', status: 'online', last: '8:45 PM'},
-    {name: 'Misha Zhem', img: './example.png', status: 'online', last: '1:10 PM'},
-    {name: 'Misha Zhem3', img: './example.png', status: 'online', last: '11:05 AM'},
+    {
+        name: 'Misha Zhem4',
+        img: './example.png',
+        status: 'online',
+        last: '9:12 PM',
+        took: true,
+    },
+    {
+        name: 'Misha Zhem2',
+        img: './example.png',
+        status: 'online',
+        last: '8:45 PM',
+        took: false,
+    },
+    {
+        name: 'Misha Zhem',
+        img: './example.png',
+        status: 'online',
+        last: '1:10 PM',
+        took: false,
+    },
+    {
+        name: 'Misha Zhem3',
+        img: './example.png',
+        status: 'online',
+        last: '11:05 AM',
+        took: true,
+    },
 ];
 
 interface ContactsData {
