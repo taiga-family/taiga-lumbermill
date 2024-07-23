@@ -19,7 +19,7 @@ export class WeatherService {
     protected readonly city = 'Moscow';
     public readonly weatherData = INITIAL_DATA;
 
-    public getTest(): Observable<ResponseData> {
+    public getWeather(): Observable<ResponseData> {
         return this.http.get<ResponseData>(
             'https://api.weatherapi.com/v1/forecast.json',
             {
@@ -33,9 +33,12 @@ export class WeatherService {
         );
     }
 
-    public getWeekDay(value: string): string {
-        const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+    public getWeekDay(value: string | undefined): string {
+        if (value === undefined || value === null) {
+            return '';
+        }
 
+        const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
         const valueSplit = value.split('-');
         const date = new Date(
             parseInt(valueSplit[0], 10),
@@ -46,7 +49,11 @@ export class WeatherService {
         return days[date.getDay()];
     }
 
-    public getTypeOfWeather(value: number): string {
+    public getTypeOfWeather(value: number | undefined): string {
+        if (value === undefined) {
+            return '';
+        }
+
         const clouds = [1003, 1006, 1030, 1087, 1135];
         const rain = [
             1009, 1063, 1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201, 1204, 1240, 1243,
@@ -72,7 +79,11 @@ export class WeatherService {
         return 'sun';
     }
 
-    public getImage(value: number): string {
+    public getImage(value: number | undefined): string {
+        if (value === undefined) {
+            return '';
+        }
+
         const type = this.getTypeOfWeather(value);
 
         if (type === 'clouds') {

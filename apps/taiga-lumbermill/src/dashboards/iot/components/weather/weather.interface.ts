@@ -23,9 +23,18 @@ export interface ResponseCurrent {
     wind_kph: string;
 }
 
-export interface ForecastDay {
+export interface Day {
     mintemp_c: string;
     maxtemp_c: string;
+}
+
+export interface ForecastDayList {
+    day: Day;
+    date: string;
+}
+
+export interface ForecastDay {
+    forecastday: ForecastDayList[];
 }
 
 export interface ResponseData {
