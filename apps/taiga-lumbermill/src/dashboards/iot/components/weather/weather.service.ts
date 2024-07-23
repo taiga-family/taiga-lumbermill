@@ -2,13 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
 import type {Observable} from 'rxjs';
 
-import {
-    CLOUD_CODES,
-    RAINS_CODES,
-    SNOW_CODES,
-    WEATHER_KEY,
-    WEEKDAYS,
-} from './weather.constants';
+import {WEATHER_KEY} from './weather.constants';
 import type {ResponseData, WeatherData} from './weather.interface';
 
 export const INITIAL_DATA: WeatherData[] = [
@@ -38,62 +32,5 @@ export class WeatherService {
                 },
             },
         );
-    }
-
-    public getWeekDay(value: string | undefined): string {
-        if (value === undefined || value === null) {
-            return '';
-        }
-
-        const valueSplit = value.split('-');
-        const date = new Date(
-            parseInt(valueSplit[0], 10),
-            parseInt(valueSplit[1], 10) - 1,
-            parseInt(valueSplit[2], 10),
-        );
-
-        return WEEKDAYS[date.getDay()];
-    }
-
-    public getTypeOfWeather(value: number | undefined): string {
-        if (value === undefined) {
-            return '';
-        }
-
-        if (CLOUD_CODES.includes(value)) {
-            return 'clouds';
-        }
-
-        if (RAINS_CODES.includes(value)) {
-            return 'rain';
-        }
-
-        if (SNOW_CODES.includes(value)) {
-            return 'snow';
-        }
-
-        return 'sun';
-    }
-
-    public getImage(value: number | undefined): string {
-        if (value === undefined) {
-            return '';
-        }
-
-        const type = this.getTypeOfWeather(value);
-
-        if (type === 'clouds') {
-            return 'url(/weather/clouds.jpg)';
-        }
-
-        if (type === 'rain') {
-            return 'url(/weather/rain.jpg)';
-        }
-
-        if (type === 'snow') {
-            return 'url(/weather/snow.jpg)';
-        }
-
-        return 'url(/weather/sun.jpg)';
     }
 }

@@ -2,8 +2,8 @@
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
     class="card"
-    [class.card_light]="weatherService.getTypeOfWeather((info | async)?.current?.condition?.code) != 'clouds'"
-    [style.background-image]="weatherService.getImage((info | async)?.current?.condition?.code)"
+    [class.card_light]="getTypeOfWeather((info | async)?.current?.condition?.code) != 'clouds'"
+    [style.background-image]="getImage((info | async)?.current?.condition?.code)"
 >
     <header tuiHeader>
         <h2
@@ -63,7 +63,7 @@
                     class="tui-space_top-0 tui-space_bottom-0"
                     [style.font-weight]="'600'"
                 >
-                    {{ weatherService.getWeekDay((info | async)?.forecast?.forecastday?.[ind + 1]?.date) }}
+                    {{ getWeekDay((info | async)?.forecast?.forecastday?.[ind + 1]?.date) }}
                 </p>
                 <p class="tui-space_top-0 tui-space_bottom-0">
                     {{ (info | async)?.forecast?.forecastday?.[ind + 1]?.day?.mintemp_c }}°/{{
