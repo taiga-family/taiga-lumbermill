@@ -35,12 +35,9 @@
     </button>
     <hr />
 </header>
-<div
-    *ngIf="breakpoint$ | async as breakpoint"
-    [style.display]="'flex'"
->
+<div [style.display]="'flex'">
     <aside
-        *ngIf="breakpoint !== 'mobile'"
+        *ngIf="!(mobile$ | async)"
         class="aside-bar"
         [tuiNavigationAside]="expanded"
     >

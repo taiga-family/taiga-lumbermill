@@ -22,6 +22,7 @@ import {
     TuiTabs,
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {map} from 'rxjs';
 
 import {IotComponent} from '../../dashboards/iot/iot.component';
 
@@ -58,7 +59,10 @@ import {IotComponent} from '../../dashboards/iot/iot.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
-    protected readonly breakpoint$ = inject(TuiBreakpointService);
+    protected readonly mobile$ = inject(TuiBreakpointService).pipe(
+        map((key) => key === 'mobile'),
+    );
+
     protected open = false;
     protected expanded = false;
     protected submenu = false;
