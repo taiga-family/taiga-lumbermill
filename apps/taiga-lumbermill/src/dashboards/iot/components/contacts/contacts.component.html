@@ -6,7 +6,7 @@
     <tui-tabs tuiFade>
         <button
             tuiTab
-            (click)="contactsService.updateFades(true)"
+            (click)="updateFades(true)"
         >
             <header tuiHeader>
                 <h2
@@ -19,7 +19,7 @@
         </button>
         <button
             tuiTab
-            (click)="contactsService.updateFades(false)"
+            (click)="updateFades(false)"
         >
             <header tuiHeader>
                 <h2
@@ -36,9 +36,9 @@
             itemSize="100"
             tuiScrollable
             class="contacts-list example-viewport tui-zero-scrollbar"
-            [ngClass]="{hidden: !contactsService.contacts}"
+            [ngClass]="{hidden: !contacts}"
         >
-            @for (person of contactsService.contactsData.contacts; track $index) {
+            @for (person of contactsService.contacts; track $index) {
                 <div class="person">
                     <div class="info">
                         <tui-avatar [src]="person.img" />
@@ -56,9 +56,9 @@
             itemSize="100"
             tuiScrollable
             class="contacts-list example-viewport tui-zero-scrollbar"
-            [ngClass]="{hidden: contactsService.contacts}"
+            [ngClass]="{hidden: contacts}"
         >
-            @for (person of contactsService.contactsData.recent; track $index) {
+            @for (person of contactsService.recent; track $index) {
                 <div class="person">
                     <div class="info">
                         <tui-badged-content>

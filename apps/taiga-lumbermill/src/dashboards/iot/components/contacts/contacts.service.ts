@@ -67,9 +67,4 @@ export const INITIAL_DATA: ContactsData = {
 })
 export class ContactsService {
     public readonly contactsData = INITIAL_DATA;
-    public contacts = true;
-
-    public updateFades(value: boolean): void {
-        this.contacts = value;
-    }
 }

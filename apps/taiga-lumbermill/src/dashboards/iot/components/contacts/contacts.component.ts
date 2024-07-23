@@ -52,6 +52,10 @@ import {ContactsService} from './contacts.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactsComponent {
-    protected items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);
-    protected contactsService = inject(ContactsService);
+    protected contactsService = inject(ContactsService).contactsData;
+    protected contacts = true;
+
+    protected updateFades(value: boolean): void {
+        this.contacts = value;
+    }
 }
