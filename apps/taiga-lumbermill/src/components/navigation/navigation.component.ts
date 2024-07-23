@@ -1,9 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
+    TuiBreakpointService,
     TuiButton,
     TuiDataList,
     TuiDropdown,
@@ -57,6 +58,7 @@ import {IotComponent} from '../../dashboards/iot/iot.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
+    protected readonly breakpoint$ = inject(TuiBreakpointService);
     protected open = false;
     protected expanded = false;
     protected submenu = false;
