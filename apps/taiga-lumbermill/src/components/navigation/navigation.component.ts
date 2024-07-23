@@ -12,7 +12,6 @@ import {
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiNavigation} from '@taiga-ui/experimental';
 import {
     TuiAvatar,
     TuiBadge,
@@ -21,7 +20,7 @@ import {
     TuiFade,
     TuiTabs,
 } from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 import {IotComponent} from '../../dashboards/iot/iot.component';
 
