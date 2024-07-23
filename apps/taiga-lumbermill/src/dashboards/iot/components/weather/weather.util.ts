@@ -1,3 +1,6 @@
+import {Injectable} from '@angular/core';
+
+@Injectable()
 export class WeatherUtil {
     public clouds = [1003, 1006, 1030, 1087, 1135];
     public rain = [
