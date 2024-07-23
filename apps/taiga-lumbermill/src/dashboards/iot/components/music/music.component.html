@@ -47,7 +47,9 @@
                 {{ musicService.getMinutes(musicService.curTime) }}:{{ musicService.getSeconds(musicService.curTime) }}
             </p>
             <p class="tui-space_top-0 tui-space_bottom-0">
-                {{ musicService.getMinutes(audio.duration) }}:{{ musicService.getSeconds(audio.duration) }}
+                {{ musicService.getMinutes(musicService.musicData[musicService.curMusic].length) }}:{{
+                    musicService.getSeconds(musicService.musicData[musicService.curMusic].length)
+                }}
             </p>
         </div>
     </div>

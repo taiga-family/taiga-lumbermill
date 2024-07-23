@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 interface Music {
     readonly name: string;
     readonly src: string;
+    readonly length: number;
     readonly logo: string;
     readonly performer: string;
 }
@@ -13,12 +14,14 @@ export const INITIAL_DATA: Music[] = [
         logo: '/music/against.jpg',
         performer: 'Tiko Tiko',
         src: './music/AgainstAllOdds.mp3',
+        length: 208,
     },
     {
         name: 'Howling at the Moon',
         logo: '/music/howling.avif',
         performer: 'D Fine Us',
         src: './music/HowlingAtTheMoon.mp3',
+        length: 195,
     },
 ];
 
@@ -96,7 +99,7 @@ export class MusicService {
         value = Math.trunc(value);
 
         return (
-            (Math.trunc(value / 60) < 9 ? '0' : '') + Math.trunc(value / 60).toString()
+            (Math.trunc(value / 60) <= 9 ? '0' : '') + Math.trunc(value / 60).toString()
         );
     }
 
@@ -107,7 +110,7 @@ export class MusicService {
 
         value = Math.trunc(value);
 
-        return (value % 60 < 9 ? '0' : '') + (value % 60).toString();
+        return (value % 60 <= 9 ? '0' : '') + (value % 60).toString();
     }
 }
 
