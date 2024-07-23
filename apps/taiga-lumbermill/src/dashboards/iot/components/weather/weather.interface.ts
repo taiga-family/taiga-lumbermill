@@ -5,40 +5,40 @@ export interface WeatherData {
 }
 
 export interface ResponseLocation {
-    name: string;
+    readonly name: string;
 }
 
 export interface ResponseCondition {
-    code: number;
-    text: string;
-    icon: string;
+    readonly code: number;
+    readonly text: string;
+    readonly icon: string;
 }
 
 export interface ResponseCurrent {
-    condition: ResponseCondition;
-    dewpoint_c: string;
-    temp_c: string;
-    heatindex_c: string;
-    humidity: string;
-    wind_kph: string;
+    readonly condition: ResponseCondition;
+    readonly dewpoint_c: string;
+    readonly temp_c: string;
+    readonly heatindex_c: string;
+    readonly humidity: string;
+    readonly wind_kph: string;
 }
 
 export interface Day {
-    mintemp_c: string;
-    maxtemp_c: string;
+    readonly mintemp_c: string;
+    readonly maxtemp_c: string;
 }
 
 export interface ForecastDayList {
-    day: Day;
-    date: string;
+    readonly day: Day;
+    readonly date: string;
 }
 
 export interface ForecastDay {
-    forecastday: ForecastDayList[];
+    readonly forecastday: ForecastDayList[];
 }
 
 export interface ResponseData {
-    location: ResponseLocation;
-    current: ResponseCurrent;
-    forecast: ForecastDay;
+    readonly location: ResponseLocation;
+    readonly current: ResponseCurrent;
+    readonly forecast: ForecastDay;
 }

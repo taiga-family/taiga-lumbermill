@@ -2,9 +2,7 @@
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
     class="card"
-    [ngClass]="{
-        white: weatherService.getTypeOfWeather((info | async)?.current?.condition?.code) != 'clouds',
-    }"
+    [class.card_light]="weatherService.getTypeOfWeather((info | async)?.current?.condition?.code) != 'clouds'"
     [style.background-image]="weatherService.getImage((info | async)?.current?.condition?.code)"
 >
     <header tuiHeader>
