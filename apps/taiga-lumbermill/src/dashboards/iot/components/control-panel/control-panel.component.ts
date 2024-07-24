@@ -1,9 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAppearance, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiHeader} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 import {ControlPanelService} from './control-panel.service';
 

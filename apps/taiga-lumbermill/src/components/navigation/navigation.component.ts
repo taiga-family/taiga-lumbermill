@@ -1,9 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
+    TuiBreakpointService,
     TuiButton,
     TuiDataList,
     TuiDropdown,
@@ -12,7 +13,6 @@ import {
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiNavigation} from '@taiga-ui/experimental';
 import {
     TuiAvatar,
     TuiBadge,
@@ -21,7 +21,8 @@ import {
     TuiFade,
     TuiTabs,
 } from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {map} from 'rxjs';
 
 import {IotComponent} from '../../dashboards/iot/iot.component';
 
@@ -58,6 +59,10 @@ import {IotComponent} from '../../dashboards/iot/iot.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
+    protected readonly mobile$ = inject(TuiBreakpointService).pipe(
+        map((key) => key === 'mobile'),
+    );
+
     protected open = false;
     protected expanded = false;
     protected submenu = false;

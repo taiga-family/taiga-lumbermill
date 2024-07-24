@@ -37,6 +37,7 @@
 </header>
 <div [style.display]="'flex'">
     <aside
+        *ngIf="!(mobile$ | async)"
         class="aside-bar"
         [tuiNavigationAside]="expanded"
     >
