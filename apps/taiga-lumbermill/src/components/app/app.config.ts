@@ -1,3 +1,4 @@
+import {provideHttpClient} from '@angular/common/http';
 import type {ApplicationConfig} from '@angular/core';
 import {provideZoneChangeDetection} from '@angular/core';
 import {provideAnimations} from '@angular/platform-browser/animations';
@@ -11,6 +12,7 @@ export const appConfig: ApplicationConfig = {
         provideAnimations(),
         provideZoneChangeDetection({eventCoalescing: true}),
         provideRouter(appRoutes),
+        provideHttpClient(),
         NG_EVENT_PLUGINS,
     ],
 };
