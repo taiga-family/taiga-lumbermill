@@ -7,7 +7,7 @@ import {NavigationComponent} from '../navigation/navigation.component';
 @Component({
     standalone: true,
     selector: 'app-root',
-    imports: [RouterModule, TuiRoot, NavigationComponent],
+    imports: [NavigationComponent, RouterModule, TuiRoot],
     templateUrl: './app.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
