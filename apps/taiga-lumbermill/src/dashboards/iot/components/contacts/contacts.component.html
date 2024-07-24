@@ -41,7 +41,10 @@
             @for (person of contactsService.contacts; track $index) {
                 <div class="person">
                     <div class="info">
-                        <tui-avatar [src]="person.img" />
+                        <tui-avatar
+                            [src]="person.img != '' ? person.img : person.Initials"
+                            [style.background]="person.Initials | tuiAutoColor"
+                        />
                         <div class="text">
                             <h4 class="tui-space_top-0 tui-space_bottom-0">{{ person.name }}</h4>
                             <p class="tui-space_top-0 tui-space_bottom-0">{{ person.status }}</p>
@@ -71,7 +74,8 @@
                             />
                             <tui-avatar
                                 sizes="s"
-                                [src]="person.img"
+                                [src]="person.img != '' ? person.img : person.Initials"
+                                [style.background]="person.Initials | tuiAutoColor"
                             />
                         </tui-badged-content>
                         <div class="text">

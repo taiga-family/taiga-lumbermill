@@ -5,7 +5,13 @@ import {
 } from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiAppearance, TuiIcon, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiAutoColorPipe,
+    TuiIcon,
+    TuiScrollable,
+    TuiScrollbar,
+} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiBadge,
@@ -22,21 +28,22 @@ import {ContactsService} from './contacts.service';
     standalone: true,
     selector: 'lmb-contacts',
     imports: [
-        CommonModule,
-        TuiCardLarge,
-        TuiAppearance,
-        TuiAvatar,
-        TuiIcon,
-        TuiTabs,
-        TuiTab,
-        TuiFade,
-        TuiBadge,
-        TuiBadgedContent,
-        CdkVirtualScrollViewport,
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
+        CdkVirtualScrollViewport,
+        CommonModule,
+        TuiAppearance,
+        TuiAutoColorPipe,
+        TuiAvatar,
+        TuiBadge,
+        TuiBadgedContent,
+        TuiCardLarge,
+        TuiFade,
+        TuiIcon,
         TuiScrollable,
         TuiScrollbar,
+        TuiTab,
+        TuiTabs,
     ],
     templateUrl: './contacts.component.html',
     styleUrl: './contacts.component.less',
