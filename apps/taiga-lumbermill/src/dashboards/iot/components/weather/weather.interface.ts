@@ -1,6 +1,4 @@
 export interface WeatherData {
-    readonly day: string;
-    readonly temp: string;
     readonly icon: string;
 }
 

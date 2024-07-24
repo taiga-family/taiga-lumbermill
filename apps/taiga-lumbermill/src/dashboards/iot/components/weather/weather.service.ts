@@ -6,9 +6,9 @@ import {WEATHER_KEY} from './weather.constants';
 import type {ResponseData, WeatherData} from './weather.interface';
 
 export const INITIAL_DATA: WeatherData[] = [
-    {day: 'Fri', temp: '21°/25°', icon: '@tui.snowflake'},
-    {day: 'Mon', temp: '30°/33°', icon: '@tui.sun'},
-    {day: 'Tue', temp: '17°/23°', icon: '@tui.droplet'},
+    {icon: '@tui.snowflake'},
+    {icon: '@tui.sun'},
+    {icon: '@tui.droplet'},
 ];
 
 @Injectable({

@@ -37,11 +37,11 @@
                         <span [style.font-weight]="'600'">{{ current.heatindex_c }}</span>
                         °
                     </p>
-                    <div class="together">
+                    <div class="indicator">
                         <tui-icon icon="@tui.wind" />
                         {{ current.wind_kph }}km/h
                     </div>
-                    <div class="together">
+                    <div class="indicator">
                         <tui-icon icon="@tui.droplets" />
                         {{ current.humidity }}%
                     </div>
@@ -54,7 +54,7 @@
         <div class="list-days">
             <div
                 *ngFor="let card of weatherService.weatherData; let ind = index"
-                class="small-card"
+                class="card-small"
             >
                 <tui-icon
                     class="card-icon"
