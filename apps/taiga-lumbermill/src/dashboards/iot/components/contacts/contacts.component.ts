@@ -5,14 +5,7 @@ import {
 } from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {
-    TuiAppearance,
-    TuiIcon,
-    TuiScrollable,
-    TuiScrollbar,
-    TuiTitle,
-} from '@taiga-ui/core';
-import {TuiHeader} from '@taiga-ui/experimental';
+import {TuiAppearance, TuiIcon, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiBadge,
@@ -30,8 +23,6 @@ import {ContactsService} from './contacts.service';
     selector: 'lmb-contacts',
     imports: [
         CommonModule,
-        TuiTitle,
-        TuiHeader,
         TuiCardLarge,
         TuiAppearance,
         TuiAvatar,

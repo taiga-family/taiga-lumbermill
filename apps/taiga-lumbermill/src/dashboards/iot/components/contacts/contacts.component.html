@@ -35,7 +35,7 @@
         <cdk-virtual-scroll-viewport
             itemSize="100"
             tuiScrollable
-            class="contacts-list example-viewport tui-zero-scrollbar"
+            class="contacts-list viewport tui-zero-scrollbar"
             [ngClass]="{hidden: !contacts}"
         >
             @for (person of contactsService.contacts; track $index) {
@@ -55,7 +55,7 @@
         <cdk-virtual-scroll-viewport
             itemSize="100"
             tuiScrollable
-            class="contacts-list example-viewport tui-zero-scrollbar"
+            class="contacts-list viewport tui-zero-scrollbar"
             [ngClass]="{hidden: contacts}"
         >
             @for (person of contactsService.recent; track $index) {
