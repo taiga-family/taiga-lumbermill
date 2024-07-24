@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiRoot} from '@taiga-ui/core';
 
 import {NavigationComponent} from '../navigation/navigation.component';
+import {ThemeService} from '../navigation/theme.service';
 
 @Component({
     standalone: true,
@@ -12,5 +13,6 @@ import {NavigationComponent} from '../navigation/navigation.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+    protected themeService = inject(ThemeService);
     public title = 'taiga-lumbermill';
 }

@@ -25,6 +25,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 import {IotComponent} from '../../dashboards/iot/iot.component';
+import {ThemeService} from './theme.service';
 
 @Component({
     standalone: true,
@@ -59,6 +60,7 @@ import {IotComponent} from '../../dashboards/iot/iot.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
+    protected themeService = inject(ThemeService);
     protected readonly mobile$ = inject(TuiBreakpointService).pipe(
         map((key) => key === 'mobile'),
     );
@@ -66,4 +68,10 @@ export class NavigationComponent {
     protected open = false;
     protected expanded = false;
     protected submenu = false;
+    protected openTheme = false;
+
+    public chooseTheme(theme: string): void {
+        this.themeService.onTheme(theme);
+        this.openTheme = false;
+    }
 }
