@@ -6,6 +6,12 @@
     "sourceRoot": "apps/taiga-lumbermill/src",
     "tags": [],
     "targets": {
+        "e2e": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "playwright test --config {projectRoot}/playwright.config.ts"
+            }
+        },
         "build": {
             "executor": "@angular-devkit/build-angular:application",
             "outputs": ["{options.outputPath}"],
