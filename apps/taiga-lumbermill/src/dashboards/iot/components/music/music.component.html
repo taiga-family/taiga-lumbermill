@@ -14,25 +14,25 @@
     <div class="info">
         <img
             class="logo"
-            [src]="musicService.musicData[musicService.curMusic].logo"
+            [src]="musicService[curMusic].logo"
         />
         <h2 class="tui-space_top-4 tui-space_bottom-2">
-            {{ musicService.musicData[musicService.curMusic].name }}
+            {{ musicService[curMusic].name }}
         </h2>
         <p
             class="tui-space_top-0 tui-space_bottom-0"
             [style.color]="'var(--tui-text-primary)'"
         >
-            {{ musicService.musicData[musicService.curMusic].performer }}
+            {{ musicService[curMusic].performer }}
         </p>
     </div>
     <audio
         #audio
         tuiMedia
-        [src]="musicService.musicData[musicService.curMusic].src"
-        [(currentTime)]="musicService.curTime"
-        [(paused)]="musicService.paused"
-        [(volume)]="musicService.volume"
+        [src]="musicService[curMusic].src"
+        [(currentTime)]="curTime"
+        [(paused)]="paused"
+        [(volume)]="volume"
     ></audio>
     <div>
         <input
@@ -40,16 +40,12 @@
             tuiSlider
             type="range"
             [max]="audio.duration"
-            [(ngModel)]="musicService.curTime"
+            [(ngModel)]="curTime"
         />
         <div class="numbers">
+            <p class="tui-space_top-0 tui-space_bottom-0">{{ getMinutes(curTime) }}:{{ getSeconds(curTime) }}</p>
             <p class="tui-space_top-0 tui-space_bottom-0">
-                {{ musicService.getMinutes(musicService.curTime) }}:{{ musicService.getSeconds(musicService.curTime) }}
-            </p>
-            <p class="tui-space_top-0 tui-space_bottom-0">
-                {{ musicService.getMinutes(musicService.musicData[musicService.curMusic].length) }}:{{
-                    musicService.getSeconds(musicService.musicData[musicService.curMusic].length)
-                }}
+                {{ getMinutes(musicService[curMusic].length) }}:{{ getSeconds(musicService[curMusic].length) }}
             </p>
         </div>
     </div>
@@ -57,42 +53,42 @@
         <button
             appearance="invisible"
             tuiButton
-            (click)="musicService.shuffleButton()"
+            (click)="shuffleButton()"
         >
             <tui-icon
                 icon="@tui.shuffle"
-                [ngClass]="{checked: musicService.shuffle}"
+                [ngClass]="{checked: shuffle}"
             />
         </button>
         <button
             appearance="invisible"
             tuiButton
-            (click)="musicService.previousMusic()"
+            (click)="previousMusic()"
         >
             <tui-icon icon="@tui.skip-back" />
         </button>
         <button
             appearance="invisible"
             tuiButton
-            (click)="musicService.playButton()"
+            (click)="playButton()"
         >
-            <tui-icon [icon]="musicService.logoPlay" />
+            <tui-icon [icon]="logoPlay" />
         </button>
         <button
             appearance="invisible"
             tuiButton
-            (click)="musicService.nextMusic()"
+            (click)="nextMusic()"
         >
             <tui-icon icon="@tui.skip-forward" />
         </button>
         <button
             appearance="invisible"
             tuiButton
-            (click)="musicService.repeatButton()"
+            (click)="repeatButton()"
         >
             <tui-icon
                 icon="@tui.repeat"
-                [ngClass]="{checked: musicService.repeat}"
+                [ngClass]="{checked: repeat}"
             />
         </button>
     </div>
@@ -106,7 +102,7 @@
             tuiSlider
             type="range"
             [style.color]="'var(--tui-status-info)'"
-            [(ngModel)]="musicService.volume"
+            [(ngModel)]="volume"
         />
         <tui-icon icon="@tui.volume-2" />
     </div>
