@@ -1,7 +1,3 @@
-export interface WeatherData {
-    readonly icon: string;
-}
-
 export interface ResponseLocation {
     readonly name: string;
 }
@@ -24,6 +20,7 @@ export interface ResponseCurrent {
 export interface Day {
     readonly mintemp_c: string;
     readonly maxtemp_c: string;
+    readonly condition: ResponseCondition;
 }
 
 export interface ForecastDayList {

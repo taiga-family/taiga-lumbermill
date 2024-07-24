@@ -3,13 +3,7 @@ import {inject, Injectable} from '@angular/core';
 import type {Observable} from 'rxjs';
 
 import {WEATHER_KEY} from './weather.constants';
-import type {ResponseData, WeatherData} from './weather.interface';
-
-export const INITIAL_DATA: WeatherData[] = [
-    {icon: '@tui.snowflake'},
-    {icon: '@tui.sun'},
-    {icon: '@tui.droplet'},
-];
+import type {ResponseData} from './weather.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -17,8 +11,6 @@ export const INITIAL_DATA: WeatherData[] = [
 export class WeatherService {
     private readonly http = inject(HttpClient);
     private readonly KEY = inject(WEATHER_KEY);
-
-    public readonly weatherData = INITIAL_DATA;
 
     public getWeather(): Observable<ResponseData> {
         return this.http.get<ResponseData>(

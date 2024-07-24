@@ -11,7 +11,7 @@ import {WeatherService} from './weather.service';
 @Component({
     standalone: true,
     selector: 'lmb-weather',
-    imports: [CommonModule, TuiAppearance, TuiCardLarge, TuiIcon, AsyncPipe],
+    imports: [AsyncPipe, CommonModule, TuiAppearance, TuiCardLarge, TuiIcon],
     templateUrl: './weather.component.html',
     styleUrl: './weather.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,6 +45,24 @@ export class WeatherComponent {
         }
 
         return 'sun';
+    }
+
+    protected getSmallImage(value: number): string {
+        const type = this.getTypeOfWeather(value);
+
+        if (type === 'snow') {
+            return '@tui.snowflake';
+        }
+
+        if (type === 'rain') {
+            return '@tui.droplet';
+        }
+
+        if (type === 'clouds') {
+            return '@tui.cloud';
+        }
+
+        return '@tui.sun';
     }
 
     protected getImage(value: number): string {
