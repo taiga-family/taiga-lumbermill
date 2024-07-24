@@ -52,29 +52,28 @@
             </div>
         </div>
         <div class="list-days">
-            <div
-                *ngFor="let card of forecast.slice(0, 3); let ind = index"
-                class="card-small"
-            >
-                <tui-icon
-                    class="card-icon"
-                    [icon]="getSmallImage(forecast[ind + 1].day.condition.code)"
-                />
-                <div
-                    class="left-side"
-                    [style.align-items]="'center'"
-                >
-                    <p
-                        class="tui-space_top-0 tui-space_bottom-0"
-                        [style.font-weight]="'600'"
+            @for (card of forecast.slice(0, 3); track $index) {
+                <div class="card-small">
+                    <tui-icon
+                        class="card-icon"
+                        [icon]="getSmallImage(forecast[$index + 1].day.condition.code)"
+                    />
+                    <div
+                        class="left-side"
+                        [style.align-items]="'center'"
                     >
-                        {{ getWeekDay(forecast[ind + 1].date) }}
-                    </p>
-                    <p class="tui-space_top-0 tui-space_bottom-0">
-                        {{ forecast[ind + 1].day.mintemp_c }}°/{{ forecast[ind + 1].day.maxtemp_c }}°
-                    </p>
+                        <p
+                            class="tui-space_top-0 tui-space_bottom-0"
+                            [style.font-weight]="'600'"
+                        >
+                            {{ getWeekDay(forecast[$index + 1].date) }}
+                        </p>
+                        <p class="tui-space_top-0 tui-space_bottom-0">
+                            {{ forecast[$index + 1].day.mintemp_c }}°/{{ forecast[$index + 1].day.maxtemp_c }}°
+                        </p>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 }
