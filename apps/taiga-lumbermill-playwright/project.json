@@ -1,0 +1,21 @@
+{
+    "name": "taiga-lumbermill-playwright",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/{projectName}",
+    "projectType": "application",
+    "prefix": "app",
+    "targets": {
+        "e2e": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "playwright test --config {projectRoot}/playwright.config.ts"
+            }
+        },
+        "e2e-ui": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "nx e2e {projectName} -- --ui --debug"
+            }
+        }
+    }
+}
