@@ -15,17 +15,12 @@ import {WeatherService} from './weather.service';
     templateUrl: './weather.component.html',
     styleUrl: './weather.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [WeatherService],
 })
 export class WeatherComponent {
     protected weatherService = inject(WeatherService);
     protected info$: Observable<ResponseData> = this.weatherService.getWeather();
 
-    protected getWeekDay(value: string | undefined): string {
-        if (value === undefined || value === null) {
-            return '';
-        }
-
+    protected getWeekDay(value: string): string {
         const valueSplit = value.split('-');
         const date = new Date(
             parseInt(valueSplit[0], 10),
@@ -36,11 +31,7 @@ export class WeatherComponent {
         return WEEKDAYS[date.getDay()];
     }
 
-    protected getTypeOfWeather(value: number | undefined): string {
-        if (value === undefined) {
-            return '';
-        }
-
+    protected getTypeOfWeather(value: number): string {
         if (CLOUD_CODES.includes(value)) {
             return 'clouds';
         }
@@ -56,25 +47,9 @@ export class WeatherComponent {
         return 'sun';
     }
 
-    protected getImage(value: number | undefined): string {
-        if (value === undefined) {
-            return '';
-        }
-
+    protected getImage(value: number): string {
         const type = this.getTypeOfWeather(value);
 
-        if (type === 'clouds') {
-            return 'url(/weather/clouds.jpg)';
-        }
-
-        if (type === 'rain') {
-            return 'url(/weather/rain.jpg)';
-        }
-
-        if (type === 'snow') {
-            return 'url(/weather/snow.jpg)';
-        }
-
-        return 'url(/weather/sun.jpg)';
+        return `url(/weather/${type}.jpg)`;
     }
 }
