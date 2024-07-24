@@ -53,7 +53,7 @@
         </div>
         <div class="list-days">
             <div
-                *ngFor="let card of [0, 1, 2]; let ind = index"
+                *ngFor="let card of forecast.slice(0, 3); let ind = index"
                 class="card-small"
             >
                 <tui-icon
