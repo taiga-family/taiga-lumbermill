@@ -20,7 +20,7 @@ export class WeatherService {
                     key: this.KEY,
                     q: 'London',
                     api: 'yes',
-                    days: '4',
+                    days: '3',
                 },
             },
         );
