@@ -12,10 +12,10 @@ import {ClimateControlService} from './climate-control.service';
     selector: 'lmb-climate-control',
     imports: [
         CommonModule,
-        TuiInputNumberModule,
         FormsModule,
-        TuiCardLarge,
         TuiAppearance,
+        TuiCardLarge,
+        TuiInputNumberModule,
     ],
     templateUrl: './climate-control.component.html',
     styleUrl: './climate-control.component.less',
