@@ -25,7 +25,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 import {IotComponent} from '../../dashboards/iot/iot.component';
-import {ThemeService} from './theme.service';
+import {ThemeService} from '../../services/theme.service';
 
 @Component({
     standalone: true,

@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiRoot} from '@taiga-ui/core';
 
+import {ThemeService} from '../../services/theme.service';
 import {NavigationComponent} from '../navigation/navigation.component';
-import {ThemeService} from '../navigation/theme.service';
 
 @Component({
     standalone: true,
