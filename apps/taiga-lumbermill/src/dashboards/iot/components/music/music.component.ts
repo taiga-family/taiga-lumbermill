@@ -7,9 +7,9 @@ import {
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiMedia} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiSliderComponent} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 import {getRandomInt, MusicService} from './music.service';
 
@@ -20,8 +20,6 @@ import {getRandomInt, MusicService} from './music.service';
         CommonModule,
         TuiAppearance,
         TuiCardLarge,
-        TuiTitle,
-        TuiHeader,
         TuiSliderComponent,
         FormsModule,
         ReactiveFormsModule,
