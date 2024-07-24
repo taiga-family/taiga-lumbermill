@@ -12,6 +12,7 @@
         <header tuiHeader>
             <h2
                 tuiTitle
+                [class.card_light]="getTypeOfWeather(current.condition.code) != 'clouds'"
                 [style.text-align]="'center'"
             >
                 Weather
