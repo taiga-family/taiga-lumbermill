@@ -1,8 +1,7 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiHeader} from '@taiga-ui/experimental';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import type {Observable} from 'rxjs';
 
 import {CLOUD_CODES, RAINS_CODES, SNOW_CODES, WEEKDAYS} from './weather.constants';
@@ -28,7 +27,7 @@ import {WeatherService} from './weather.service';
 })
 export class WeatherComponent {
     protected weatherService = inject(WeatherService);
-    protected info: Observable<ResponseData> = this.weatherService.getWeather();
+    protected info$: Observable<ResponseData> = this.weatherService.getWeather();
 
     protected getWeekDay(value: string | undefined): string {
         if (value === undefined || value === null) {

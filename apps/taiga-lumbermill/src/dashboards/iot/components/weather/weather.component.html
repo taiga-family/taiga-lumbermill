@@ -1,76 +1,79 @@
-<div
-    tuiAppearance="whiteblock"
-    tuiCardLarge="normal"
-    class="card"
-    [class.card_light]="getTypeOfWeather((info | async)?.current?.condition?.code) != 'clouds'"
-    [style.background-image]="getImage((info | async)?.current?.condition?.code)"
->
-    <header tuiHeader>
-        <h2
-            tuiTitle
-            [style.text-align]="'center'"
-        >
-            Weather
-        </h2>
-    </header>
-    <div class="info">
-        <div class="left-side">
-            <h3
+@let info = info$ | async;
+@if (info) {
+    @let current = info.current;
+    @let forecast = info.forecast.forecastday;
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        class="card"
+        [class.card_light]="getTypeOfWeather(current.condition.code) != 'clouds'"
+        [style.background-image]="getImage(current.condition.code)"
+    >
+        <header tuiHeader>
+            <h2
                 tuiTitle
-                class="tui-text_body-m"
+                [style.text-align]="'center'"
             >
-                {{ (info | async)?.location?.name }}
-            </h3>
-            <h1 class="tui-space_top-3 tui-space_bottom-3">{{ (info | async)?.current?.temp_c }}°</h1>
-            <div class="description">
-                <p
-                    class="tui-space_top-0 tui-space_bottom-0"
-                    [style.display]="'flex'"
+                Weather
+            </h2>
+        </header>
+        <div class="info">
+            <div class="left-side">
+                <h3
+                    tuiTitle
+                    class="tui-text_body-m"
                 >
-                    <span [style.font-weight]="'600'">{{ (info | async)?.current?.dewpoint_c }}</span>
-                    °/
-                    <span [style.font-weight]="'600'">{{ (info | async)?.current?.heatindex_c }}</span>
-                    °
+                    {{ info.location.name }}
+                </h3>
+                <h1 class="tui-space_top-3 tui-space_bottom-3">{{ current.temp_c }}°</h1>
+                <div class="description">
+                    <p
+                        class="tui-space_top-0 tui-space_bottom-0"
+                        [style.display]="'flex'"
+                    >
+                        <span [style.font-weight]="'600'">{{ current.dewpoint_c }}</span>
+                        °/
+                        <span [style.font-weight]="'600'">{{ current.heatindex_c }}</span>
+                        °
+                    </p>
+                    <div class="together">
+                        <tui-icon icon="@tui.wind" />
+                        {{ current.wind_kph }}km/h
+                    </div>
+                    <div class="together">
+                        <tui-icon icon="@tui.droplets" />
+                        {{ current.humidity }}%
+                    </div>
+                </div>
+                <p class="tui-space_top-0 tui-space_bottom-0 tui-text_body-s">
+                    {{ current.condition.text }}
                 </p>
-                <div class="together">
-                    <tui-icon icon="@tui.wind" />
-                    {{ (info | async)?.current?.wind_kph }}km/h
-                </div>
-                <div class="together">
-                    <tui-icon icon="@tui.droplets" />
-                    {{ (info | async)?.current?.humidity }}%
-                </div>
             </div>
-            <p class="tui-space_top-0 tui-space_bottom-0 tui-text_body-s">
-                {{ (info | async)?.current?.condition?.text }}
-            </p>
         </div>
-    </div>
-    <div class="list-days">
-        <div
-            *ngFor="let card of weatherService.weatherData; let ind = index"
-            class="small-card"
-        >
-            <tui-icon
-                class="card-icon"
-                [icon]="card.icon"
-            />
+        <div class="list-days">
             <div
-                class="left-side"
-                [style.align-items]="'center'"
+                *ngFor="let card of weatherService.weatherData; let ind = index"
+                class="small-card"
             >
-                <p
-                    class="tui-space_top-0 tui-space_bottom-0"
-                    [style.font-weight]="'600'"
+                <tui-icon
+                    class="card-icon"
+                    [icon]="card.icon"
+                />
+                <div
+                    class="left-side"
+                    [style.align-items]="'center'"
                 >
-                    {{ getWeekDay((info | async)?.forecast?.forecastday?.[ind + 1]?.date) }}
-                </p>
-                <p class="tui-space_top-0 tui-space_bottom-0">
-                    {{ (info | async)?.forecast?.forecastday?.[ind + 1]?.day?.mintemp_c }}°/{{
-                        (info | async)?.forecast?.forecastday?.[ind + 1]?.day?.maxtemp_c
-                    }}°
-                </p>
+                    <p
+                        class="tui-space_top-0 tui-space_bottom-0"
+                        [style.font-weight]="'600'"
+                    >
+                        {{ getWeekDay(forecast[ind + 1].date) }}
+                    </p>
+                    <p class="tui-space_top-0 tui-space_bottom-0">
+                        {{ forecast[ind + 1].day.mintemp_c }}°/{{ forecast[ind + 1].day.maxtemp_c }}°
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
