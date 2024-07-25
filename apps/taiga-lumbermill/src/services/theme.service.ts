@@ -12,7 +12,7 @@ export class ThemeService {
     private readonly key = inject(TUI_THEME_KEY);
     public themes = ['light', 'dark'];
 
-    public get getTheme(): string {
+    public get theme(): string {
         const value = this.storage.getItem(this.key);
 
         if (value === null) {
