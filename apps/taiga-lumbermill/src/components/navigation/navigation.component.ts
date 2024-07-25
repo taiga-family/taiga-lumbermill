@@ -31,29 +31,29 @@ import {ThemeService} from '../../services/theme.service';
     standalone: true,
     selector: 'app-navigation',
     imports: [
-        RouterModule,
         CommonModule,
-        TuiNavigation,
-        TuiButton,
-        TuiIcon,
-        TuiChevron,
-        TuiDropdown,
-        TuiFade,
-        TuiDataList,
-        TuiBadgeNotification,
-        TuiAvatar,
+        IotComponent,
         RouterLink,
         RouterLinkActive,
+        RouterModule,
         TuiAppearance,
-        TuiExpand,
+        TuiAvatar,
         TuiBadge,
-        TuiTabs,
-        TuiRepeatTimes,
+        TuiBadgeNotification,
+        TuiButton,
         TuiCardLarge,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+        TuiExpand,
+        TuiFade,
         TuiHeader,
+        TuiIcon,
+        TuiNavigation,
+        TuiRepeatTimes,
         TuiSurface,
+        TuiTabs,
         TuiTitle,
-        IotComponent,
     ],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.less',
@@ -71,7 +71,7 @@ export class NavigationComponent {
     protected openTheme = false;
 
     public chooseTheme(theme: string): void {
-        this.themeService.onTheme(theme);
+        this.themeService.theme = theme;
         this.openTheme = false;
     }
 }

@@ -21,20 +21,21 @@
         <span tuiFade>{{ themeService.theme }}</span>
         <ng-template #products>
             <tui-data-list size="s">
-                <button
-                    *ngFor="let theme of themeService.themes"
-                    tuiOption
-                    [value]="theme"
-                    (click)="chooseTheme(theme)"
-                >
-                    {{ theme }}
-                    <tui-icon
-                        *ngIf="themeService.theme === theme"
-                        icon="@tui.check"
-                        [style.font-size.em]="1"
-                        [style.margin-left.rem]="0.5"
-                    />
-                </button>
+                @for (theme of themeService.themes; track $index) {
+                    <button
+                        tuiOption
+                        [value]="theme"
+                        (click)="chooseTheme(theme)"
+                    >
+                        {{ theme }}
+                        <tui-icon
+                            *ngIf="themeService.theme === theme"
+                            icon="@tui.check"
+                            [style.font-size.em]="1"
+                            [style.margin-left.rem]="0.5"
+                        />
+                    </button>
+                }
             </tui-data-list>
         </ng-template>
     </button>

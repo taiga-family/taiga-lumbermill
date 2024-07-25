@@ -24,7 +24,7 @@ export class ThemeService {
         return value;
     }
 
-    public onTheme(theme: string): void {
+    public set theme(theme: string) {
         this.storage.setItem(this.key, theme);
     }
 }
