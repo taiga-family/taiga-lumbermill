@@ -13,13 +13,13 @@ test('Can change lighting status', async ({page}) => {
 
     const inputs = page.locator('lmb-safety').locator('input');
 
-    const statusBefore = await inputs.first().getAttribute('apearance');
+    const statusBefore = await inputs.first().getAttribute('appearance');
 
     await expect(inputs).toHaveCount(4);
 
     await inputs.first().check();
 
-    const statusNow = await inputs.first().getAttribute('apearance');
+    const statusNow = await inputs.first().getAttribute('appearance');
 
     expect(statusBefore !== statusNow);
 });
