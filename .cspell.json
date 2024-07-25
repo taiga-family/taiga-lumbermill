@@ -26,6 +26,10 @@
         "Zhem",
         "Oleg",
         "Andrey",
-        "Gleb"
+        "Gleb",
+        "heatindex",
+        "forecastday",
+        "mintemp",
+        "maxtemp"
     ]
 }
