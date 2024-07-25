@@ -2,7 +2,6 @@
     "name": "@taiga-lumbermill/source",
     "version": "0.0.0",
     "private": true,
-    "homepage": "https://taiga-family.github.io/taiga-lumbermill/",
     "license": "MIT",
     "scripts": {
         "prepare": "husky",
