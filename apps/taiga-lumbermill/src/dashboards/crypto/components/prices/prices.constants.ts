@@ -1,6 +1,6 @@
 import type {TuiPoint} from '@taiga-ui/core';
 
-export const grapgH: TuiPoint[] = [
+export const graphH: TuiPoint[] = [
     [0, 30],
     [2, 40],
     [6, 32],
@@ -14,7 +14,7 @@ export const grapgH: TuiPoint[] = [
     [100, 83],
 ];
 
-export const grapgD: TuiPoint[] = [
+export const graphD: TuiPoint[] = [
     [0, 40],
     [8, 30],
     [19, 55],

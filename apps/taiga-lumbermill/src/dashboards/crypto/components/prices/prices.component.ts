@@ -13,7 +13,7 @@ import {TuiAppearance, TuiHint, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/c
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
-import {grapgD, grapgH} from './prices.constants';
+import {graphD, graphH} from './prices.constants';
 import {PricesService} from './prices.service';
 
 @Component({
@@ -47,14 +47,14 @@ export class PricesComponent {
     protected clicked = false;
     protected readonly filterButtons = ['H', 'D', 'M', '6M', 'Y'];
     protected filterButton = this.filterButtons[0];
-    protected choosen = -1;
+    protected chosen = -1;
 
     protected get chart(): TuiPoint[] {
         if (this.filterButton === this.filterButtons[0]) {
-            return grapgH;
+            return graphH;
         }
 
-        return grapgD;
+        return graphD;
     }
 
     protected filterCheck(value: string): void {
@@ -66,6 +66,6 @@ export class PricesComponent {
 
     protected chooseToken(value: number): void {
         this.clicked = !this.clicked;
-        this.choosen = value;
+        this.chosen = value;
     }
 }

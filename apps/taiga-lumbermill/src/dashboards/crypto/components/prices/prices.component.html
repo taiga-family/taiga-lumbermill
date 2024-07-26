@@ -43,7 +43,7 @@
     }
     <div class="list">
         @for (token of pricesService; track $index) {
-            @if (!clicked || $index === choosen) {
+            @if (!clicked || $index === chosen) {
                 <div
                     tuiCell="l"
                     (click)="chooseToken($index)"
