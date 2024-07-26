@@ -47,7 +47,7 @@ export class PricesComponent {
     protected electricityService = inject(ElectricityService);
     protected pricesService = inject(PricesService).pricesData;
     protected clicked = false;
-    protected filterButton = -1;
+    protected filterButton = 0;
     protected choosen = -1;
     protected readonly months$ = inject(TUI_MONTHS);
     protected readonly filterButtons = ['H', 'D', 'M', '6M', 'Y'];
