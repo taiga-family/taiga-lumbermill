@@ -67,7 +67,7 @@
                     "echo 'Github pages require special 404.html'",
                     "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
                     "echo ------",
-                    "nx build taiga-lumbermill -c production",
+                    "nx build taiga-lumbermill -c production --base-href='/taiga-lumbermill/'",
                     "cp dist/apps/taiga-lumbermill/browser/index.html dist/apps/taiga-lumbermill/browser/404.html"
                 ]
             }
