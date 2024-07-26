@@ -12,8 +12,10 @@ import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiHint, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import type {Observable} from 'rxjs';
 
-import {graphD, graphH} from './prices.constants';
+import {filterButtons, graphD, graphH} from './prices.constants';
+import type {ResponseData} from './prices.interface';
 import {PricesService} from './prices.service';
 
 @Component({
@@ -43,14 +45,16 @@ import {PricesService} from './prices.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PricesComponent {
-    protected pricesService = inject(PricesService).pricesData;
+    protected pricesService = inject(PricesService);
+    protected info$: Observable<ResponseData> = this.pricesService.getTokens();
     protected clicked = false;
-    protected readonly filterButtons = ['H', 'D', 'M', '6M', 'Y'];
-    protected filterButton = this.filterButtons[0];
+    protected filterButtons = filterButtons;
+    protected filterButton = filterButtons[0];
+    protected showTokens = 4;
     protected chosen = -1;
 
     protected get chart(): TuiPoint[] {
-        if (this.filterButton === this.filterButtons[0]) {
+        if (this.filterButton === filterButtons[0]) {
             return graphH;
         }
 
@@ -59,6 +63,10 @@ export class PricesComponent {
 
     protected filterCheck(value: string): void {
         this.filterButton = value;
+    }
+
+    protected addToken(): void {
+        this.showTokens += 1;
     }
 
     protected readonly hint: TuiStringHandler<TuiContext<TuiPoint>> = ({$implicit}) =>

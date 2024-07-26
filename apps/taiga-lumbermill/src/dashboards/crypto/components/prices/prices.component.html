@@ -1,81 +1,88 @@
-<div
-    tuiAppearance="whiteblock"
-    tuiCardLarge="normal"
-    class="card"
->
-    <header tuiHeader>
-        <h2
-            tuiTitle
-            [style.text-align]="'center'"
-        >
-            Cryptocurrency Prices
-        </h2>
-    </header>
-    @if (clicked) {
-        <tui-axes
-            class="axes"
-            [axisYLabels]="['0$', '10$']"
-            [horizontalLines]="4"
-            [verticalLines]="4"
-        >
-            <tui-line-chart
-                class="chart"
-                [height]="100"
-                [tuiHintContent]="hint"
-                [value]="chart"
-                [width]="100"
-                [x]="0"
-                [y]="0"
-            />
-        </tui-axes>
-        <div class="buttons">
-            @for (btn of filterButtons; track $index) {
-                <button
-                    tuiAppearance="invisible"
-                    class="period"
-                    [ngClass]="{clicked: btn === filterButton}"
-                    (click)="filterCheck(btn)"
-                >
-                    {{ btn }}
-                </button>
-            }
-        </div>
-    }
-    <div class="list">
-        @for (token of pricesService; track $index) {
-            @if (!clicked || $index === chosen) {
-                <div
-                    tuiCell="l"
-                    (click)="chooseToken($index)"
-                >
-                    <tui-avatar [src]="token.src" />
-                    <div tuiTitle>
-                        {{ token.name }}
-                        <div tuiSubtitle>
-                            {{ token.prices }}
-                            <span
-                                [style.color]="
-                                    token.dif_day[0] === '-'
-                                        ? 'var(--tui-status-negative)'
-                                        : 'var(--tui-status-positive)'
-                                "
-                            >
-                                {{ token.dif_day }}
-                            </span>
+@let info = info$ | async;
+@if (info) {
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        class="card"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Cryptocurrency Prices
+            </h2>
+        </header>
+        @let data = info.data;
+        @if (clicked) {
+            <tui-axes
+                class="axes"
+                [axisYLabels]="['0$', '10$']"
+                [horizontalLines]="4"
+                [verticalLines]="4"
+            >
+                <tui-line-chart
+                    class="chart"
+                    [height]="100"
+                    [tuiHintContent]="hint"
+                    [value]="chart"
+                    [width]="100"
+                    [x]="0"
+                    [y]="0"
+                />
+            </tui-axes>
+            <div class="buttons">
+                @for (btn of filterButtons; track $index) {
+                    <button
+                        tuiAppearance="invisible"
+                        class="period"
+                        [ngClass]="{clicked: btn === filterButton}"
+                        (click)="filterCheck(btn)"
+                    >
+                        {{ btn }}
+                    </button>
+                }
+            </div>
+        }
+        <div class="list">
+            @for (token of data.slice(0, showTokens); track $index) {
+                @if (!clicked || $index === chosen) {
+                    <div
+                        tuiCell="l"
+                        (click)="chooseToken($index)"
+                    >
+                        <tui-avatar
+                            [src]="'https://assets.coincap.io/assets/icons/' + token.symbol.toLowerCase() + '@2x.png'"
+                        />
+                        <div tuiTitle>
+                            {{ token.name }}
+                            <div tuiSubtitle>
+                                {{ token.priceUsd }}$
+                                <span
+                                    [style.color]="
+                                        token.changePercent24Hr[0] === '-'
+                                            ? 'var(--tui-status-negative)'
+                                            : 'var(--tui-status-positive)'
+                                    "
+                                >
+                                    {{ token.changePercent24Hr }}%
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
+        </div>
+        @if (!clicked && showTokens < data.length) {
+            <button
+                tuiAppearance="invisible"
+                tuiTitle
+                class="button-add"
+                (click)="addToken()"
+            >
+                <tui-icon icon="@tui.circle-plus" />
+                Add token
+            </button>
         }
     </div>
-    @if (!clicked) {
-        <button
-            tuiAppearance="invisible"
-            tuiTitle
-            class="button-add"
-        >
-            <tui-icon icon="@tui.circle-plus" />
-            Add token
-        </button>
-    }
-</div>
+}

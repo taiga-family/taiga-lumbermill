@@ -1,5 +1,7 @@
 import type {TuiPoint} from '@taiga-ui/core';
 
+export const filterButtons = ['H', 'D', 'M', '6M', 'Y'];
+
 export const graphH: TuiPoint[] = [
     [0, 30],
     [2, 40],
