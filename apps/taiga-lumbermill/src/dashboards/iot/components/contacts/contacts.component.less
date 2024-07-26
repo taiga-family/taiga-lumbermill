@@ -1,20 +1,12 @@
-.contacts-list {
-    display: flex;
-    flex-direction: column;
-}
-
 tui-tabs {
     display: flex;
     justify-content: space-around;
 }
 
-.info {
-    display: flex;
-    gap: 0.75rem;
-}
-
-[tuiCell] {
-    margin: 0 !important;
+[tuiCardLarge] [tuiCell][data-size='l'] {
+    margin: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--tui-border-normal);
 }
 
 .viewport {

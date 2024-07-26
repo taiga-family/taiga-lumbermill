@@ -1,7 +1,6 @@
 <div
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
-    class="card"
 >
     <tui-tabs tuiFade>
         <button
@@ -32,52 +31,57 @@
         </button>
     </tui-tabs>
     <tui-scrollbar>
-        <cdk-virtual-scroll-viewport
-            itemSize="5"
-            tuiScrollable
-            class="contacts-list viewport tui-zero-scrollbar"
-            [ngClass]="{hidden: !contacts}"
-        >
-            @if (contacts) {
-                @for (person of contactsService.contacts; track $index) {
-                    <div tuiCell="l">
+        @if (contacts) {
+            <cdk-virtual-scroll-viewport
+                itemSize="50"
+                tuiScrollable
+                class="contacts-list viewport tui-zero-scrollbar"
+            >
+                <div
+                    *cdkVirtualFor="let person of contactsService.contacts"
+                    tuiCell="l"
+                >
+                    <tui-avatar
+                        [src]="person.img"
+                        [style.background]="person.img | tuiAutoColor"
+                    />
+                    <div tuiTitle>
+                        {{ person.name }}
+                        <div tuiSubtitle>{{ person.status }}</div>
+                    </div>
+                    <tui-icon icon="@tui.phone" />
+                </div>
+            </cdk-virtual-scroll-viewport>
+        } @else {
+            <cdk-virtual-scroll-viewport
+                itemSize="50"
+                tuiScrollable
+                class="contacts-list viewport tui-zero-scrollbar"
+            >
+                <div
+                    *cdkVirtualFor="let person of contactsService.recent"
+                    tuiCell="l"
+                >
+                    <tui-badged-content>
                         <tui-avatar
                             [src]="person.img"
                             [style.background]="person.img | tuiAutoColor"
                         />
-                        <div tuiTitle>
-                            {{ person.name }}
-                            <div tuiSubtitle>{{ person.status }}</div>
-                        </div>
-                        <tui-icon icon="@tui.phone" />
+                        <tui-icon
+                            size="s"
+                            tuiBadge
+                            tuiSlot="top"
+                            [appearance]="person.took ? 'error' : 'success'"
+                            [icon]="person.took ? '@tui.arrow-down-left' : '@tui.arrow-up-right'"
+                        />
+                    </tui-badged-content>
+                    <div tuiTitle>
+                        {{ person.name }}
+                        <div tuiSubtitle>{{ person.status }}</div>
                     </div>
-                    <hr />
-                }
-            } @else {
-                @for (person of contactsService.recent; track $index) {
-                    <div tuiCell="l">
-                        <tui-badged-content>
-                            <tui-avatar
-                                [src]="person.img"
-                                [style.background]="person.img | tuiAutoColor"
-                            />
-                            <tui-icon
-                                size="s"
-                                tuiBadge
-                                tuiSlot="top"
-                                [appearance]="person.took ? 'error' : 'success'"
-                                [icon]="person.took ? '@tui.arrow-down-left' : '@tui.arrow-up-right'"
-                            />
-                        </tui-badged-content>
-                        <div tuiTitle>
-                            {{ person.name }}
-                            <div tuiSubtitle>{{ person.status }}</div>
-                        </div>
-                        <div tuiSubtitle>{{ person.last }}</div>
-                    </div>
-                    <hr />
-                }
-            }
-        </cdk-virtual-scroll-viewport>
+                    <div tuiSubtitle>{{ person.last }}</div>
+                </div>
+            </cdk-virtual-scroll-viewport>
+        }
     </tui-scrollbar>
 </div>
