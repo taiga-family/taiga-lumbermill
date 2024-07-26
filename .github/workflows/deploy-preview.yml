@@ -9,7 +9,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.65.1
       - uses: taiga-family/ci/actions/setup/variables@v1.65.1
       - uses: taiga-family/ci/actions/setup/node@v1.65.1
-      - run: npx nx build --base-href='/'
+      - run: npx nx build --base-href='/taiga-lumbermill/'
       - name: Debug output
         run: tree dist/apps/taiga-lumbermill/browser -P '*.html'
       - name: Deploy preview
