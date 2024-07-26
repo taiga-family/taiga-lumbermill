@@ -47,8 +47,10 @@ export class PricesComponent {
     protected electricityService = inject(ElectricityService);
     protected pricesService = inject(PricesService).pricesData;
     protected clicked = false;
+    protected filterButton = -1;
     protected choosen = -1;
     protected readonly months$ = inject(TUI_MONTHS);
+    protected readonly filterButtons = ['H', 'D', 'M', '6M', 'Y'];
 
     protected show = new TuiDayRange(
         TuiDay.currentLocal(),
@@ -66,6 +68,10 @@ export class PricesComponent {
     protected chooseToken(value: number): void {
         this.clicked = !this.clicked;
         this.choosen = value;
+    }
+
+    protected filterCheck(value: number): void {
+        this.filterButton = value;
     }
 
     protected getWidth({from, to}: TuiDayRange): number {

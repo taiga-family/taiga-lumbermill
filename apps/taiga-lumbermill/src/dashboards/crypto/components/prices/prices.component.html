@@ -37,11 +37,15 @@
             </ng-template>
         </tui-axes>
         <div class="buttons">
-            <button tuiAppearance="invisible">H</button>
-            <button tuiAppearance="invisible">D</button>
-            <button tuiAppearance="invisible">M</button>
-            <button tuiAppearance="invisible">6M</button>
-            <button tuiAppearance="invisible">Y</button>
+            @for (btn of filterButtons; track $index) {
+                <button
+                    tuiAppearance="invisible"
+                    [ngClass]="{clicked: $index === filterButton}"
+                    (click)="filterCheck($index)"
+                >
+                    {{ btn }}
+                </button>
+            }
         </div>
     }
     <div class="list">
