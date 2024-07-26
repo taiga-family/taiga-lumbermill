@@ -32,13 +32,13 @@
         </button>
     </tui-tabs>
     <tui-scrollbar>
-        @if (contacts) {
-            <cdk-virtual-scroll-viewport
-                itemSize="100"
-                tuiScrollable
-                class="contacts-list viewport tui-zero-scrollbar"
-                [ngClass]="{hidden: !contacts}"
-            >
+        <cdk-virtual-scroll-viewport
+            itemSize="1"
+            tuiScrollable
+            class="contacts-list viewport tui-zero-scrollbar"
+            [ngClass]="{hidden: !contacts}"
+        >
+            @if (contacts) {
                 @for (person of contactsService.contacts; track $index) {
                     <div class="person">
                         <div class="info">
@@ -55,13 +55,7 @@
                     </div>
                     <hr />
                 }
-            </cdk-virtual-scroll-viewport>
-        } @else {
-            <cdk-virtual-scroll-viewport
-                itemSize="100"
-                tuiScrollable
-                class="contacts-list viewport tui-zero-scrollbar"
-            >
+            } @else {
                 @for (person of contactsService.recent; track $index) {
                     <div class="person">
                         <div class="info">
@@ -93,7 +87,7 @@
                     </div>
                     <hr />
                 }
-            </cdk-virtual-scroll-viewport>
-        }
+            }
+        </cdk-virtual-scroll-viewport>
     </tui-scrollbar>
 </div>
