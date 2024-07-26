@@ -13,35 +13,28 @@
     </header>
     @if (clicked) {
         <tui-axes
-            *ngIf="labels(show) | async as labels"
             class="axes"
+            [axisYLabels]="['0$', '10$']"
             [horizontalLines]="4"
-            [verticalLines]="labels.length"
+            [verticalLines]="4"
         >
-            <ng-container *ngIf="getWidth(show) > 90; else line">
-                <tui-line-days-chart
-                    *ngFor="let chart of days"
-                    class="chart"
-                    [height]="200"
-                    [value]="chart | tuiFilter: filter : range"
-                />
-            </ng-container>
-            <ng-template #line>
-                <tui-line-chart
-                    *ngFor="let chart of days"
-                    class="chart"
-                    [height]="200"
-                    [value]="chart | tuiFilter: filter : range | tuiMapper: toNumbers : range"
-                    [width]="getWidth(range)"
-                />
-            </ng-template>
+            <tui-line-chart
+                class="chart"
+                [height]="100"
+                [tuiHintContent]="hint"
+                [value]="chart"
+                [width]="100"
+                [x]="0"
+                [y]="0"
+            />
         </tui-axes>
         <div class="buttons">
             @for (btn of filterButtons; track $index) {
                 <button
                     tuiAppearance="invisible"
-                    [ngClass]="{clicked: $index === filterButton}"
-                    (click)="filterCheck($index)"
+                    class="period"
+                    [ngClass]="{clicked: btn === filterButton}"
+                    (click)="filterCheck(btn)"
                 >
                     {{ btn }}
                 </button>
@@ -60,19 +53,29 @@
                         {{ token.name }}
                         <div tuiSubtitle>
                             {{ token.prices }}
-                            <span [style.color]="'var(--tui-text-negative)'">{{ token.dif_day }}</span>
+                            <span
+                                [style.color]="
+                                    token.dif_day[0] === '-'
+                                        ? 'var(--tui-status-negative)'
+                                        : 'var(--tui-status-positive)'
+                                "
+                            >
+                                {{ token.dif_day }}
+                            </span>
                         </div>
                     </div>
                 </div>
             }
         }
     </div>
-    <button
-        tuiAppearance="invisible"
-        tuiTitle
-        class="button-add"
-    >
-        <tui-icon icon="@tui.circle-plus" />
-        Add token
-    </button>
+    @if (!clicked) {
+        <button
+            tuiAppearance="invisible"
+            tuiTitle
+            class="button-add"
+        >
+            <tui-icon icon="@tui.circle-plus" />
+            Add token
+        </button>
+    }
 </div>

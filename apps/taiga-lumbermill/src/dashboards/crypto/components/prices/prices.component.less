@@ -17,6 +17,15 @@
     }
 }
 
+.color() {
+    color: var(--tui-chart-categorical-07);
+}
+
+.chart {
+    .color();
+    .fullsize();
+}
+
 .list {
     background-color: var(--tui-background-base-alt);
     border-radius: 1rem;
@@ -47,11 +56,18 @@
     });
 }
 
-.clicked {
+.clicked[tuiAppearance][data-appearance='invisible'] {
     color: var(--tui-background-accent-1);
+    background-color: var(--tui-background-neutral-2);
 }
 
 .button-add {
     display: flex;
     align-items: center;
+}
+
+.period {
+    width: 2.5rem;
+    height: 1.5rem;
+    border-radius: 10rem;
 }
