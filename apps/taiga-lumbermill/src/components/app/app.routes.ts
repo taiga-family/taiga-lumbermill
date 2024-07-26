@@ -4,7 +4,9 @@ export const appRoutes: Route[] = [
     {
         path: 'dashboards',
         loadComponent: async () =>
-            import('../../dashboards/iot/iot.component').then((mod) => mod.IotComponent),
+            import('../../dashboards/crypto/crypto.component').then(
+                (mod) => mod.CryptoComponent,
+            ),
     },
     {path: '**', redirectTo: 'dashboards'},
 ];
