@@ -1,6 +1,5 @@
 @let info = info$ | async;
-@let history = history$ | async;
-@if (info && history) {
+@if (info) {
     <div
         tuiAppearance="whiteblock"
         tuiCardLarge="normal"
@@ -15,7 +14,6 @@
             </h2>
         </header>
         @let data = info.data;
-        @let dataHistory = history.data;
         @if (clicked) {
             <tui-axes
                 class="axes"
@@ -23,15 +21,19 @@
                 [horizontalLines]="4"
                 [verticalLines]="4"
             >
-                <tui-line-chart
-                    class="chart"
-                    [height]="maxPrice - minPrice + 1000"
-                    [tuiHintContent]="hint"
-                    [value]="validateData(history)"
-                    [width]="dataHistory.length"
-                    [x]="0"
-                    [y]="minPrice"
-                />
+                @let history = history$ | async;
+                @if (history) {
+                    @let dataHistory = history.data;
+                    <tui-line-chart
+                        class="chart"
+                        [height]="maxPrice - minPrice + 1000"
+                        [tuiHintContent]="hint"
+                        [value]="validateData(history)"
+                        [width]="dataHistory.length"
+                        [x]="0"
+                        [y]="minPrice"
+                    />
+                }
             </tui-axes>
             <div class="buttons">
                 @for (btn of filterButtons; track $index) {
@@ -48,10 +50,10 @@
         }
         <div class="list">
             @for (token of data.slice(0, showTokens); track $index) {
-                @if (!clicked || $index === chosen) {
+                @if (!clicked || token.id === chosen) {
                     <div
                         tuiCell="l"
-                        (click)="chooseToken($index)"
+                        (click)="chooseToken(token.id)"
                     >
                         <tui-avatar
                             [src]="'https://assets.coincap.io/assets/icons/' + token.symbol.toLowerCase() + '@2x.png'"

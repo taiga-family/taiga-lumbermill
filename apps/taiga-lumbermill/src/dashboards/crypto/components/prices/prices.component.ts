@@ -47,29 +47,26 @@ import {PricesService} from './prices.service';
 export class PricesComponent {
     protected pricesService = inject(PricesService);
     protected info$: Observable<ResponseData> = this.pricesService.getTokens();
-    protected history$: Observable<ResponeHistoryData> = this.pricesService.getHistory(
-        'bitcoin',
-        'h1',
-    );
+    protected history$: Observable<ResponeHistoryData> | null = null;
 
-    protected uniquePrices = 0;
     protected minPrice = 10000000000;
     protected maxPrice = 0;
     protected clicked = false;
     protected filterButtons = filterButtons;
     protected filterButton = filterButtons[0];
     protected showTokens = 4;
-    protected chosen = -1;
+    protected chosen = '';
 
     protected step(value: number): number {
         return Math.ceil(value / maxPoints);
     }
 
     protected validateData(data: ResponeHistoryData): TuiPoint[] {
+        this.minPrice = 10000000000;
+        this.maxPrice = 0;
         const map = new Map();
         const result = [];
         const step = this.step(data.data.length);
-        let count = 0;
 
         for (let i = 0; i < data.data.length; i += step) {
             const value: TuiPoint = [i, Number(data.data[i].priceUsd)];
@@ -77,20 +74,45 @@ export class PricesComponent {
             result.push(value);
 
             if (!map.has(Number(data.data[i].priceUsd))) {
-                count += 1;
                 map.set(Number(data.data[i].priceUsd), 1);
                 this.minPrice = Math.min(this.minPrice, Number(data.data[i].priceUsd));
                 this.maxPrice = Math.max(this.maxPrice, Number(data.data[i].priceUsd));
             }
         }
 
-        this.uniquePrices = count;
-
         return result;
+    }
+
+    protected newGraph(id: string): void {
+        this.history$ = this.pricesService.getHistory(
+            id,
+            this.validateInterval(this.filterButton),
+        );
+    }
+
+    protected validateInterval(value: string): string {
+        if (value === 'H') {
+            return 'h1';
+        }
+
+        if (value === 'D') {
+            return 'd1';
+        }
+
+        if (value === 'M') {
+            return 'm1';
+        }
+
+        if (value === 'M6') {
+            return 'm5';
+        }
+
+        return 'm15';
     }
 
     protected filterCheck(value: string): void {
         this.filterButton = value;
+        this.newGraph(this.chosen);
     }
 
     protected toNormalView(value: number | string): string {
@@ -104,8 +126,9 @@ export class PricesComponent {
     protected readonly hint: TuiStringHandler<TuiContext<TuiPoint>> = ({$implicit}) =>
         `Price: ${$implicit[1]}$`;
 
-    protected chooseToken(value: number): void {
+    protected chooseToken(value: string): void {
         this.clicked = !this.clicked;
         this.chosen = value;
+        this.newGraph(this.chosen);
     }
 }
