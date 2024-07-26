@@ -26,7 +26,6 @@
         "heatindex",
         "forecastday",
         "mintemp",
-        "maxtemp",
-        "Сomponent"
+        "maxtemp"
     ]
 }

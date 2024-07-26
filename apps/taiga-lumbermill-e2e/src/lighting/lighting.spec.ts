@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 
-test('Сomponent Availability', async ({page}) => {
+test('component Availability', async ({page}) => {
     await page.goto('/');
 
     const title = page.getByText('Lighting');
