@@ -15,7 +15,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import type {Observable} from 'rxjs';
 
 import {filterButtons, maxPoints} from './prices.constants';
-import type {ResponeHistoryData, ResponseData} from './prices.interface';
+import type {ResponseData, ResponseHistoryData} from './prices.interface';
 import {PricesService} from './prices.service';
 
 @Component({
@@ -47,7 +47,7 @@ import {PricesService} from './prices.service';
 export class PricesComponent {
     protected pricesService = inject(PricesService);
     protected info$: Observable<ResponseData> = this.pricesService.getTokens();
-    protected history$: Observable<ResponeHistoryData> | null = null;
+    protected history$: Observable<ResponseHistoryData> | null = null;
 
     protected minPrice = 10000000000;
     protected maxPrice = 0;
@@ -61,7 +61,7 @@ export class PricesComponent {
         return Math.ceil(value / maxPoints);
     }
 
-    protected validateData(data: ResponeHistoryData): TuiPoint[] {
+    protected validateData(data: ResponseHistoryData): TuiPoint[] {
         this.minPrice = 10000000000;
         this.maxPrice = 0;
         const map = new Map();

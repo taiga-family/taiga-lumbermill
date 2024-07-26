@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {inject, Injectable} from '@angular/core';
 import type {Observable} from 'rxjs';
 
-import type {ResponeHistoryData, ResponseData} from './prices.interface';
+import type {ResponseData, ResponseHistoryData} from './prices.interface';
 
 @Injectable({
     providedIn: 'root',
@@ -15,8 +15,8 @@ export class PricesService {
         return this.http.get<ResponseData>(this.API);
     }
 
-    public getHistory(id: string, interval: string): Observable<ResponeHistoryData> {
-        return this.http.get<ResponeHistoryData>(`${this.API}/${id}/history`, {
+    public getHistory(id: string, interval: string): Observable<ResponseHistoryData> {
+        return this.http.get<ResponseHistoryData>(`${this.API}/${id}/history`, {
             params: {
                 interval,
             },

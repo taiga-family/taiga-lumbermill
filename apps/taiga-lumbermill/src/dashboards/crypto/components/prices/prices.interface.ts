@@ -18,6 +18,6 @@ export interface HistoryData {
     readonly date: string;
 }
 
-export interface ResponeHistoryData {
+export interface ResponseHistoryData {
     readonly data: HistoryData[];
 }
