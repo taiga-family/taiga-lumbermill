@@ -1,5 +1,6 @@
 @let info = info$ | async;
-@if (info) {
+@let history = history$ | async;
+@if (info && history) {
     <div
         tuiAppearance="whiteblock"
         tuiCardLarge="normal"
@@ -14,21 +15,22 @@
             </h2>
         </header>
         @let data = info.data;
+        @let dataHistory = history.data;
         @if (clicked) {
             <tui-axes
                 class="axes"
-                [axisYLabels]="['0$', '10$']"
+                [axisYLabels]="[toNormalView(minPrice) + '$', toNormalView(maxPrice) + '$']"
                 [horizontalLines]="4"
                 [verticalLines]="4"
             >
                 <tui-line-chart
                     class="chart"
-                    [height]="100"
+                    [height]="maxPrice - minPrice + 1000"
                     [tuiHintContent]="hint"
-                    [value]="chart"
-                    [width]="100"
+                    [value]="validateData(history)"
+                    [width]="dataHistory.length"
                     [x]="0"
-                    [y]="0"
+                    [y]="minPrice"
                 />
             </tui-axes>
             <div class="buttons">
@@ -57,7 +59,7 @@
                         <div tuiTitle>
                             {{ token.name }}
                             <div tuiSubtitle>
-                                {{ token.priceUsd }}$
+                                {{ toNormalView(token.priceUsd) }}$
                                 <span
                                     [style.color]="
                                         token.changePercent24Hr[0] === '-'
@@ -65,7 +67,7 @@
                                             : 'var(--tui-status-positive)'
                                     "
                                 >
-                                    {{ token.changePercent24Hr }}%
+                                    {{ toNormalView(token.changePercent24Hr) }}%
                                 </span>
                             </div>
                         </div>

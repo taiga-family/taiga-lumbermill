@@ -11,3 +11,13 @@ export interface PricesData {
 export interface ResponseData {
     readonly data: PricesData[];
 }
+
+export interface HistoryData {
+    readonly priceUsd: string;
+    readonly time: number;
+    readonly date: string;
+}
+
+export interface ResponeHistoryData {
+    readonly data: HistoryData[];
+}
