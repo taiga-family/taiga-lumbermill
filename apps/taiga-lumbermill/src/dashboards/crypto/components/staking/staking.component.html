@@ -1,0 +1,48 @@
+@let info = info$ | async;
+@if (info) {
+    @let data = info.data;
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        [style.height]="'100%'"
+    >
+        <header
+            tuiHeader
+            class="info"
+        >
+            <tui-avatar
+                size="l"
+                src="https://assets.coincap.io/assets/icons/btc@2x.png"
+            />
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Staking Bitcoin
+            </h2>
+            <div
+                tuiSubtitle
+                [style.text-align]="'center'"
+            >
+                Earn a share of the protocol`s fees
+                <br />
+                while staking BITCOIN
+            </div>
+        </header>
+        <div class="group-buttons">
+            <button
+                appearance="accent"
+                tuiButton
+            >
+                Stake
+            </button>
+            <button
+                appearance="whiteblock"
+                tuiButton
+            >
+                Unstake
+            </button>
+        </div>
+        <div></div>
+    </div>
+}
