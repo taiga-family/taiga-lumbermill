@@ -26,6 +26,8 @@
         "heatindex",
         "forecastday",
         "mintemp",
-        "maxtemp"
+        "maxtemp",
+        "Unstake",
+        "Unstaking"
     ]
 }

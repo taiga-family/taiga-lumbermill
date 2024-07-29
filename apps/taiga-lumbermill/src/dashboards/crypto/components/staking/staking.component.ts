@@ -38,7 +38,7 @@ export class StakingComponent {
     protected cryptoService = inject(CryptoService);
     protected info$ = this.cryptoService.info$;
     protected amount = 0;
-    protected avaliable = 100;
+    protected available = 100;
 
     protected openStake = false;
     protected openUnstake = false;

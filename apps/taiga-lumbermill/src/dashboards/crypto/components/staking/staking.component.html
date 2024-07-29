@@ -111,10 +111,10 @@
         [tuiDialogOptions]="{label: 'Staking Bitcoin', size: 's'}"
         [(tuiDialog)]="openStake"
     >
-        <p>Avaliable: {{ avaliable }} BTC</p>
+        <p>Available: {{ available }} BTC</p>
         <tui-input-number
             tuiAutoFocus
-            [max]="avaliable"
+            [max]="available"
             [min]="0"
             [(ngModel)]="amount"
         >
@@ -136,7 +136,7 @@
         [tuiDialogOptions]="{label: 'Unstaking Bitcoin', size: 's'}"
         [(tuiDialog)]="openUnstake"
     >
-        <p>Avaliable: {{ amount }} BTC</p>
+        <p>Available: {{ amount }} BTC</p>
         <tui-input-number
             tuiAutoFocus
             [max]="amount"
