@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -20,6 +20,8 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
+import type {PricesData} from '../../../../services/crypto.service';
+import {CryptoService} from '../../../../services/crypto.service';
 import {SwapService} from './swap.service';
 
 @Component({
@@ -53,24 +55,30 @@ import {SwapService} from './swap.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwapComponent {
+    protected cryptoService = inject(CryptoService);
+    protected info$ = this.cryptoService.info$;
     protected swapService = inject(SwapService).swapData;
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl('1'),
-    });
+    protected swapForm = new FormArray([new FormControl(0.22), new FormControl(0.22)]);
 
-    protected open = false;
-
-    protected onClick(): void {
-        this.open = !this.open;
+    protected openInfo(index: number): void {
+        this.swapService[index].status = !this.swapService[index].status;
     }
 
-    protected onObscured(obscured: boolean): void {
-        if (obscured) {
-            this.open = false;
+    protected newToken(index: number, title: string): void {
+        this.swapService[index].chosen = title;
+    }
+
+    protected getPrice(data: PricesData[], title: string, value: number | null): string {
+        if (value === null) {
+            return '0';
         }
-    }
 
-    protected onActiveZone(active: boolean): void {
-        this.open = active && this.open;
+        for (const token of data) {
+            if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
+                return (Number(token.priceUsd) * value).toFixed(2);
+            }
+        }
+
+        return value.toFixed(2);
     }
 }

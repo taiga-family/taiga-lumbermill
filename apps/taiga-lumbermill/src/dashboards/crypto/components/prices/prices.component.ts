@@ -14,9 +14,9 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import type {Observable} from 'rxjs';
 
+import type {ResponseHistoryData} from '../../../../services/crypto.service';
+import {CryptoService} from '../../../../services/crypto.service';
 import {filterButtons, maxPoints} from './prices.constants';
-import type {ResponseData, ResponseHistoryData} from './prices.interface';
-import {PricesService} from './prices.service';
 
 @Component({
     standalone: true,
@@ -45,8 +45,8 @@ import {PricesService} from './prices.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PricesComponent {
-    protected pricesService = inject(PricesService);
-    protected info$: Observable<ResponseData> = this.pricesService.getTokens();
+    protected pricesService = inject(CryptoService);
+    protected info$ = this.pricesService.info$;
     protected history$: Observable<ResponseHistoryData> | null = null;
 
     protected minPrice = 1;
