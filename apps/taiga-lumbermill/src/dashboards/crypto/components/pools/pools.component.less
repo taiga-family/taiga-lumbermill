@@ -1,6 +1,7 @@
 .list-pools {
     border: solid 1px var(--tui-border-normal);
     border-radius: 1rem;
+    overflow: hidden;
 }
 
 .last-columns {
@@ -13,4 +14,13 @@
         align-items: center;
         text-align: center;
     }
+}
+
+.viewport {
+    height: 17.5rem;
+}
+
+[tuiCardLarge] [tuiCell][data-size='m'] {
+    border-radius: 0;
+    border-bottom: 1px solid var(--tui-border-normal);
 }

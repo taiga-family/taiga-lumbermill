@@ -1,7 +1,12 @@
+import {
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    CdkVirtualScrollViewport,
+} from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiHighlight} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -13,6 +18,9 @@ import {CryptoService} from '../../../../services/crypto.service';
     standalone: true,
     selector: 'lmb-pools',
     imports: [
+        CdkFixedSizeVirtualScroll,
+        CdkVirtualForOf,
+        CdkVirtualScrollViewport,
         CommonModule,
         FormsModule,
         TuiAppearance,
@@ -23,6 +31,8 @@ import {CryptoService} from '../../../../services/crypto.service';
         TuiHeader,
         TuiHighlight,
         TuiInputModule,
+        TuiScrollable,
+        TuiScrollbar,
         TuiTextfieldControllerModule,
         TuiTitle,
     ],

@@ -32,35 +32,46 @@
                     <div tuiTitle>APR</div>
                 </div>
             </div>
-            @for (i of lengthPools(data.length); track $index) {
-                <hr />
-                <div
-                    tuiCell="m"
-                    [style.padding-left]="'1rem'"
-                    [style.padding-right]="'1rem'"
+            <hr />
+            <tui-scrollbar>
+                <cdk-virtual-scroll-viewport
+                    itemSize="50"
+                    tuiScrollable
+                    class="viewport tui-zero-scrollbar"
                 >
-                    <tui-avatar-stack
-                        class="tui-space_vertical-4"
-                        [direction]="'right'"
+                    <div
+                        *cdkVirtualFor="let i of lengthPools(data.length)"
+                        tuiCell="m"
+                        [style.padding-left]="'1rem'"
+                        [style.padding-right]="'1rem'"
                     >
-                        <tui-avatar
-                            size="m"
-                            [src]="'https://assets.coincap.io/assets/icons/' + data[i].symbol.toLowerCase() + '@2x.png'"
-                        />
-                        <tui-avatar
-                            size="m"
-                            [src]="
-                                'https://assets.coincap.io/assets/icons/' + data[i + 1].symbol.toLowerCase() + '@2x.png'
-                            "
-                        />
-                    </tui-avatar-stack>
-                    <div TuiTitle>{{ data[i].symbol.toUpperCase() }}/{{ data[i + 1].symbol.toUpperCase() }}</div>
-                    <div class="last-columns">
-                        <div TuiTitle>${{ getTVL(data, i) }}M</div>
-                        <div TuiTitle>{{ getAPR(data, i) }}%</div>
+                        <tui-avatar-stack
+                            class="tui-space_vertical-4"
+                            [direction]="'right'"
+                        >
+                            <tui-avatar
+                                size="m"
+                                [src]="
+                                    'https://assets.coincap.io/assets/icons/' + data[i].symbol.toLowerCase() + '@2x.png'
+                                "
+                            />
+                            <tui-avatar
+                                size="m"
+                                [src]="
+                                    'https://assets.coincap.io/assets/icons/' +
+                                    data[i + 1].symbol.toLowerCase() +
+                                    '@2x.png'
+                                "
+                            />
+                        </tui-avatar-stack>
+                        <div TuiTitle>{{ data[i].symbol.toUpperCase() }}/{{ data[i + 1].symbol.toUpperCase() }}</div>
+                        <div class="last-columns">
+                            <div TuiTitle>${{ getTVL(data, i) }}M</div>
+                            <div TuiTitle>{{ getAPR(data, i) }}%</div>
+                        </div>
                     </div>
-                </div>
-            }
+                </cdk-virtual-scroll-viewport>
+            </tui-scrollbar>
         </div>
     </div>
 }
