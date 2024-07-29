@@ -81,4 +81,31 @@ export class SwapComponent {
 
         return value.toFixed(2);
     }
+
+    protected newSwap(data: PricesData[], current: number): void {
+        const opposite = Number(!current);
+        const curPrice = Number(
+            this.getPrice(
+                data,
+                this.swapService[current].chosen,
+                this.swapForm.controls[current].value,
+            ),
+        );
+        let priceOpposite = 1;
+
+        for (const token of data) {
+            if (
+                token &&
+                token.symbol.toLowerCase() ===
+                    this.swapService[opposite].chosen.toLowerCase()
+            ) {
+                priceOpposite = Number(token.priceUsd);
+                break;
+            }
+        }
+
+        const result = curPrice / priceOpposite;
+
+        this.swapForm.controls[opposite].setValue(result);
+    }
 }

@@ -68,6 +68,7 @@
                     type="number"
                     class="input-number"
                     [formControl]="swapForm['controls'][$index]"
+                    (change)="newSwap(data, $index)"
                 />
                 <div>
                     <div
@@ -83,6 +84,7 @@
         <button
             appearance="primary"
             tuiButton
+            (click)="newSwap(data, 0)"
         >
             Swap
         </button>
