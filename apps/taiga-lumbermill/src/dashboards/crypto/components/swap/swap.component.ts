@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
 import {
@@ -14,7 +14,13 @@ import {
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiFade} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {
+    TuiInputModule,
+    TuiInputNumberModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
+
+import {SwapService} from './swap.service';
 
 @Component({
     standalone: true,
@@ -36,6 +42,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiHeader,
         TuiIcon,
         TuiInputModule,
+        TuiInputNumberModule,
         TuiObscured,
         TuiTextfield,
         TuiTextfieldControllerModule,
@@ -46,8 +53,9 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwapComponent {
+    protected swapService = inject(SwapService).swapData;
     protected readonly testForm = new FormGroup({
-        testValue: new FormControl('mail@mail.ru'),
+        testValue: new FormControl('1'),
     });
 
     protected open = false;

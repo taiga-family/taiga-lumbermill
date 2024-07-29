@@ -11,70 +11,74 @@
             Swap
         </h2>
     </header>
-    <div>
-        <div tuiCell="l">
-            <div TuiTitle>From</div>
-            <div TuiTitle>Balance: 10 ETH</div>
-        </div>
-        <button
-            tuiButton
-            tuiChevron
-            type="button"
-            class="choose-crypto"
-            [tuiDropdown]="dropdownContent"
-            [tuiDropdownManual]="open"
-            [tuiObscuredEnabled]="open"
-            (click)="onClick()"
-            (tuiActiveZoneChange)="onActiveZone($event)"
-            (tuiObscured)="onObscured($event)"
-        >
-            <tui-avatar
-                size="s"
-                [src]="'https://assets.coincap.io/assets/icons/' + 'eth' + '@2x.png'"
-            />
-            ETH
-            <ng-template #dropdownContent>
-                <tui-data-list size="s">
-                    <button>22</button>
-                    <button>222</button>
-                    <!-- @for (theme of themeService.themes; track $index) {
-                            <button
-                                tuiOption
-                                [value]="theme"
-                                (click)="chooseTheme(theme)"
-                            >
-                                {{ theme }}
-                                <tui-icon
-                                    *ngIf="themeService.theme === theme"
-                                    icon="@tui.check"
-                                    [style.font-size.em]="1"
-                                    [style.margin-left.rem]="0.5"
-                                />
-                            </button>
-                        } -->
-                </tui-data-list>
-            </ng-template>
-        </button>
-    </div>
-    <div class="amount-crypto">
-        <form [formGroup]="testForm">
-            <tui-input
-                formControlName="testValue"
-                tuiTextfieldSize="s"
-                tuiTitle="l"
-                value="0.02"
-                [tuiTextfieldCleaner]="true"
-            >
-                <input
-                    tuiTextfieldLegacy
-                    type="text"
-                />
-            </tui-input>
-        </form>
-
+    @for (type of swapService; track $index) {
         <div>
-            <div tuiSubtitle>≈0.5$</div>
-            <hr />
+            <div tuiCell="l">
+                <div TuiTitle>{{ type.title }}</div>
+                <div TuiTitle>Balance: 10 ETH</div>
+            </div>
+            <button
+                tuiButton
+                tuiChevron
+                type="button"
+                class="choose-crypto"
+                [tuiDropdown]="dropdownContent"
+                [tuiDropdownManual]="open"
+                [tuiObscuredEnabled]="open"
+                (click)="onClick()"
+                (tuiActiveZoneChange)="onActiveZone($event)"
+                (tuiObscured)="onObscured($event)"
+            >
+                <tui-avatar
+                    size="s"
+                    [src]="'https://assets.coincap.io/assets/icons/' + 'eth' + '@2x.png'"
+                />
+                ETH
+                <ng-template #dropdownContent>
+                    <tui-data-list size="s">
+                        <button>22</button>
+                        <button>222</button>
+                        <!-- @for (theme of themeService.themes; track $index) {
+                                <button
+                                    tuiOption
+                                    [value]="theme"
+                                    (click)="chooseTheme(theme)"
+                                >
+                                    {{ theme }}
+                                    <tui-icon
+                                        *ngIf="themeService.theme === theme"
+                                        icon="@tui.check"
+                                        [style.font-size.em]="1"
+                                        [style.margin-left.rem]="0.5"
+                                    />
+                                </button>
+                            } -->
+                    </tui-data-list>
+                </ng-template>
+            </button>
         </div>
-    </div>
+        <div class="amount-crypto">
+            <input
+                tuiTitle="l"
+                type="number"
+                value="0.02"
+                class="input-number"
+            />
+            <div>
+                <div
+                    tuiSubtitle
+                    class="equal-number"
+                >
+                    ≈0.5$
+                </div>
+                <hr />
+            </div>
+        </div>
+    }
+    <button
+        appearance="primary"
+        tuiButton
+    >
+        Swap
+    </button>
 </div>
