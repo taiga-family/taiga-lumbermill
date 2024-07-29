@@ -49,7 +49,7 @@ export class PricesComponent {
     protected info$: Observable<ResponseData> = this.pricesService.getTokens();
     protected history$: Observable<ResponseHistoryData> | null = null;
 
-    protected minPrice = 10000000000;
+    protected minPrice = 1;
     protected maxPrice = 0;
     protected clicked = false;
     protected filterButtons = filterButtons;
@@ -62,7 +62,7 @@ export class PricesComponent {
     }
 
     protected validateData(data: ResponseHistoryData): TuiPoint[] {
-        this.minPrice = 10000000000;
+        this.minPrice = 1;
         this.maxPrice = 0;
         const map = new Map();
         const result = [];
@@ -75,7 +75,16 @@ export class PricesComponent {
 
             if (!map.has(Number(data.data[i].priceUsd))) {
                 map.set(Number(data.data[i].priceUsd), 1);
-                this.minPrice = Math.min(this.minPrice, Number(data.data[i].priceUsd));
+
+                if (i === 0) {
+                    this.minPrice = Number(data.data[i].priceUsd);
+                } else {
+                    this.minPrice = Math.min(
+                        this.minPrice,
+                        Number(data.data[i].priceUsd),
+                    );
+                }
+
                 this.maxPrice = Math.max(this.maxPrice, Number(data.data[i].priceUsd));
             }
         }
