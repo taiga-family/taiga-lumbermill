@@ -56,4 +56,25 @@
             </ng-template>
         </button>
     </div>
+    <div class="amount-crypto">
+        <form [formGroup]="testForm">
+            <tui-input
+                formControlName="testValue"
+                tuiTextfieldSize="s"
+                tuiTitle="l"
+                value="0.02"
+                [tuiTextfieldCleaner]="true"
+            >
+                <input
+                    tuiTextfieldLegacy
+                    type="text"
+                />
+            </tui-input>
+        </form>
+
+        <div>
+            <div tuiSubtitle>≈0.5$</div>
+            <hr />
+        </div>
+    </div>
 </div>
