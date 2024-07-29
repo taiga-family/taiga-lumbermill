@@ -33,12 +33,14 @@
             <button
                 appearance="accent"
                 tuiButton
+                (click)="showDialogStake()"
             >
                 Stake
             </button>
             <button
                 appearance="whiteblock"
                 tuiButton
+                (click)="showDialogUnstake()"
             >
                 Unstake
             </button>
@@ -57,9 +59,9 @@
                     tuiTitle="m"
                     class="tui-space_top-0 tui-space_bottom-0"
                 >
-                    0 BTC
+                    {{ amount }} BTC
                 </div>
-                <div tuiTitle>$0</div>
+                <div tuiTitle>${{ getPrice(data, 'btc', amount) }}</div>
             </div>
             <hr />
             <div class="block-position">
@@ -103,4 +105,54 @@
             </div>
         </div>
     </div>
+
+    <ng-template
+        let-observer
+        [tuiDialogOptions]="{label: 'Staking Bitcoin', size: 's'}"
+        [(tuiDialog)]="openStake"
+    >
+        <p>Avaliable: {{ avaliable }} BTC</p>
+        <tui-input-number
+            tuiAutoFocus
+            [max]="avaliable"
+            [min]="0"
+            [(ngModel)]="amount"
+        >
+            Amount BTC
+        </tui-input-number>
+        <p>
+            <button
+                tuiButton
+                type="submit"
+                (click)="observer.complete()"
+            >
+                Stake
+            </button>
+        </p>
+    </ng-template>
+
+    <ng-template
+        let-observer
+        [tuiDialogOptions]="{label: 'Unstaking Bitcoin', size: 's'}"
+        [(tuiDialog)]="openUnstake"
+    >
+        <p>Avaliable: {{ amount }} BTC</p>
+        <tui-input-number
+            tuiAutoFocus
+            [max]="amount"
+            [min]="0"
+            [(ngModel)]="amount"
+        >
+            Amount BTC
+        </tui-input-number>
+        <p>
+            <button
+                tuiButton
+                type="submit"
+                (click)="observer.complete()"
+            >
+                Unstake
+            </button>
+        </p>
+    </ng-template>
 }
