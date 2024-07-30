@@ -11,7 +11,7 @@ test('component Availability', async ({page}) => {
 test('Component got the data from the api', async ({page}) => {
     await page.goto('/');
 
-    const city = page.locator('lmb-weather').locator('.tui-text_body-m');
+    const city = page.locator('lmb-weather').locator('.left-side').locator('[tuiTitle]');
 
     expect(city !== null && city !== undefined && (await city.innerText()).length > 0);
 });
