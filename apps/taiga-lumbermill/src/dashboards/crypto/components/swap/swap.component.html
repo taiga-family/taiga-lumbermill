@@ -1,0 +1,92 @@
+@let info = info$ | async;
+@if (info) {
+    @let data = info.data;
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        [style.height]="'100%'"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Swap
+            </h2>
+        </header>
+        @for (type of swapService; track $index) {
+            <div>
+                <div tuiCell="l">
+                    <div TuiTitle>{{ type.title }}</div>
+                    <div TuiTitle>Balance: 1000 {{ swapService[$index].chosen.toUpperCase() }}</div>
+                </div>
+                <button
+                    tuiButton
+                    tuiChevron
+                    type="button"
+                    class="choose-crypto"
+                    [tuiDropdown]="dropdownContent"
+                    [tuiDropdownManual]="swapService[$index].status"
+                    (click)="openInfo($index)"
+                >
+                    <tui-avatar
+                        size="s"
+                        [src]="
+                            'https://assets.coincap.io/assets/icons/' +
+                            swapService[$index].chosen.toLowerCase() +
+                            '@2x.png'
+                        "
+                    />
+                    {{ swapService[$index].chosen.toUpperCase() }}
+                    @let current = $index;
+                    <ng-template #dropdownContent>
+                        <tui-data-list size="s">
+                            @for (token of data; track token.symbol) {
+                                <button
+                                    tuiOption
+                                    [value]="token.symbol"
+                                    (click)="newToken(current, token.symbol)"
+                                >
+                                    {{ token.symbol.toUpperCase() }}
+                                    <tui-icon
+                                        *ngIf="token.symbol.toLowerCase() === swapService[current].chosen.toLowerCase()"
+                                        icon="@tui.check"
+                                        [style.font-size.em]="1"
+                                        [style.margin-left.rem]="0.5"
+                                    />
+                                </button>
+                            }
+                        </tui-data-list>
+                    </ng-template>
+                </button>
+            </div>
+            <div class="amount-crypto">
+                <input
+                    max="1000"
+                    min="0"
+                    tuiTitle="l"
+                    type="number"
+                    class="input-number"
+                    [formControl]="swapForm['controls'][$index]"
+                    (change)="newSwap(data, $index)"
+                />
+                <div>
+                    <div
+                        tuiSubtitle
+                        class="equal-number"
+                    >
+                        ≈{{ getPrice(data, swapService[$index].chosen, swapForm.controls[$index].value) }}$
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        }
+        <button
+            appearance="primary"
+            tuiButton
+            (click)="newSwap(data, 0)"
+        >
+            Swap
+        </button>
+    </div>
+}
