@@ -66,14 +66,13 @@
                             [src]="person.img"
                             [style.background]="person.img | tuiAutoColor"
                         />
-                        <button
+                        <tui-icon
                             size="s"
                             tuiBadge
                             tuiSlot="top"
                             [appearance]="person.took ? 'error' : 'success'"
-                        >
-                            <tui-icon [icon]="person.took ? '@tui.arrow-down-left' : '@tui.arrow-up-right'" />
-                        </button>
+                            [icon]="person.took ? '@tui.arrow-down-left' : '@tui.arrow-up-right'"
+                        />
                     </tui-badged-content>
                     <div tuiTitle>
                         {{ person.name }}
