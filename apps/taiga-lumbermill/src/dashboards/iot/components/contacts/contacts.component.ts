@@ -54,9 +54,10 @@ import {ContactsService} from './contacts.service';
 })
 export class ContactsComponent {
     protected contactsService = inject(ContactsService).contactsData;
-    protected contacts = true;
+    protected tabs = ['Contacts', 'Recent'];
+    protected activeTab = 0;
 
-    protected updateFades(value: boolean): void {
-        this.contacts = value;
+    protected updateFades(value: number): void {
+        this.activeTab = value;
     }
 }

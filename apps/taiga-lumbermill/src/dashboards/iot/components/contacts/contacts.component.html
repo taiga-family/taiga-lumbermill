@@ -2,38 +2,27 @@
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
 >
-    <tui-tabs tuiFade>
-        <button
-            tuiTab
-            (click)="updateFades(true)"
-        >
-            <header tuiHeader>
-                <h2
-                    tuiTitle
-                    [style.text-align]="'center'"
-                >
-                    Contacts
-                </h2>
-            </header>
-        </button>
-        <button
-            tuiTab
-            (click)="updateFades(false)"
-        >
-            <header tuiHeader>
-                <h2
-                    tuiTitle
-                    [style.text-align]="'center'"
-                >
-                    Recent
-                </h2>
-            </header>
-        </button>
+    <tui-tabs [activeItemIndex]="activeTab">
+        @for (tab of tabs; track $index) {
+            <button
+                tuiTab
+                (click)="updateFades($index)"
+            >
+                <header tuiHeader>
+                    <h2
+                        tuiTitle
+                        [style.text-align]="'center'"
+                    >
+                        {{ tab }}
+                    </h2>
+                </header>
+            </button>
+        }
     </tui-tabs>
     <tui-scrollbar>
-        @if (contacts) {
+        @if (activeTab === 0) {
             <cdk-virtual-scroll-viewport
-                itemSize="50"
+                itemSize="57"
                 tuiScrollable
                 class="contacts-list viewport tui-zero-scrollbar"
             >
@@ -54,7 +43,7 @@
             </cdk-virtual-scroll-viewport>
         } @else {
             <cdk-virtual-scroll-viewport
-                itemSize="50"
+                itemSize="57"
                 tuiScrollable
                 class="contacts-list viewport tui-zero-scrollbar"
             >
