@@ -1,0 +1,73 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+[tuiCardLarge] [tuiCell][data-size='l'] {
+    margin: 0;
+
+    &:not(:last-child) {
+        border-radius: 0;
+        border-bottom: 1px solid var(--tui-border-normal);
+    }
+
+    &:hover {
+        background-color: var(--tui-background-neutral-1-hover);
+    }
+
+    &:active {
+        background-color: var(--tui-background-neutral-1-pressed);
+    }
+}
+
+.color() {
+    color: var(--tui-chart-categorical-07);
+}
+
+.chart {
+    .color();
+    .fullsize();
+}
+
+.list {
+    background-color: var(--tui-background-base-alt);
+    border-radius: 1rem;
+    border: 1px solid var(--tui-border-normal);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.axes {
+    height: 12.5rem;
+}
+
+[tuiAppearance][data-appearance='invisible'] {
+    background: transparent;
+    font-weight: 800;
+    padding: 0;
+    border: 0;
+
+    .appearance-hover({
+        color: var(--tui-text-action-hover);
+    });
+
+    .appearance-active({
+        color: var(--tui-background-accent-1);
+    });
+}
+
+.clicked[tuiAppearance][data-appearance='invisible'] {
+    color: var(--tui-background-accent-1);
+    background-color: var(--tui-background-neutral-2);
+}
+
+.button-add {
+    display: flex;
+    align-items: center;
+}
+
+.period {
+    width: 2.5rem;
+    height: 1.5rem;
+    border-radius: 10rem;
+}
