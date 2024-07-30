@@ -6,12 +6,7 @@ import {
     TuiLineDaysChart,
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
-import type {
-    TuiContext,
-    TuiFilterPipe,
-    TuiMapperPipe,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiHint, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
@@ -33,14 +28,12 @@ import {filterButtons, maxPoints} from './prices.constants';
         TuiAxes,
         TuiCardLarge,
         TuiCell,
-        TuiFilterPipe,
         TuiHeader,
         TuiHint,
         TuiIcon,
         TuiLineChart,
         TuiLineDaysChart,
         TuiLineDaysChartHint,
-        TuiMapperPipe,
         TuiSurface,
         TuiTitle,
     ],
