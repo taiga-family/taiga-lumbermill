@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 test('Can change date', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const calendar = page.locator('tui-calendar').first();
 
@@ -17,7 +17,7 @@ test('Can change date', async ({page}) => {
 });
 
 test('Have line chart', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const chart = page.locator('tui-line-days-chart');
 
@@ -25,7 +25,7 @@ test('Have line chart', async ({page}) => {
 });
 
 test('Can open modal info', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const chart = page.locator('tui-line-days-chart').first();
 

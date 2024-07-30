@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 test('component Availability', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const title = page.getByText('Cleaning schedule');
 
@@ -9,7 +9,7 @@ test('component Availability', async ({page}) => {
 });
 
 test('Have 1 cleaning date', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const inputs = page.locator('tui-input-date');
 
@@ -17,7 +17,7 @@ test('Have 1 cleaning date', async ({page}) => {
 });
 
 test('Can add new cleaning date', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const inputs = page.locator('tui-input-date');
 

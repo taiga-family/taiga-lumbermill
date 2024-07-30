@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 test('component Availability', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const title = page.getByText('Weather');
 
@@ -9,7 +9,7 @@ test('component Availability', async ({page}) => {
 });
 
 test('Component got the data from the api', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const city = page.locator('lmb-weather').locator('.left-side').locator('[tuiTitle]');
 
