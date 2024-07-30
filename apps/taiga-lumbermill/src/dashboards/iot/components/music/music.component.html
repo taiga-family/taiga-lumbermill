@@ -33,6 +33,7 @@
         [(currentTime)]="time"
         [(paused)]="paused"
         [(volume)]="volume"
+        (ended)="nextMusic()"
     ></audio>
     <div>
         <input

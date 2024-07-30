@@ -51,7 +51,7 @@ export class MusicComponent {
         }
 
         this.time = 0;
-        this.paused = true;
+        this.paused = false;
         this.activeIndex = (this.activeIndex + 1) % this.musicService.length;
     }
 
@@ -70,7 +70,7 @@ export class MusicComponent {
         }
 
         this.time = 0;
-        this.paused = true;
+        this.paused = false;
         this.activeIndex =
             this.activeIndex - 1 < 0
                 ? this.musicService.length - 1
