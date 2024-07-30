@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 test('component Availability', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const title = page.getByText('Lighting');
 
@@ -9,7 +9,7 @@ test('component Availability', async ({page}) => {
 });
 
 test('Can change lighting status', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const checked = page.locator('.checked');
 

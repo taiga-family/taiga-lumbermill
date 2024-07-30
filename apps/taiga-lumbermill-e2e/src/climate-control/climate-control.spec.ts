@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 test('component Availability', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const title = page.getByText('Climate control');
 
@@ -9,7 +9,7 @@ test('component Availability', async ({page}) => {
 });
 
 test('Have 3 inputs', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const inputs = page.locator('tui-input-number');
 
@@ -17,7 +17,7 @@ test('Have 3 inputs', async ({page}) => {
 });
 
 test('Have right names', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
 
     const inputs = page.locator('tui-input-number');
 
@@ -27,7 +27,7 @@ test('Have right names', async ({page}) => {
 });
 
 test('Numbers can increase', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
     const inputs = page.locator('tui-input-number');
     const button = inputs.nth(0).locator('button').first();
 
@@ -39,7 +39,7 @@ test('Numbers can increase', async ({page}) => {
 });
 
 test('Numbers can decrease', async ({page}) => {
-    await page.goto('/');
+    await page.goto('/dashboards/iot');
     const inputs = page.locator('tui-input-number');
     const button = inputs.nth(0).locator('button').last();
 
