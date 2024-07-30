@@ -111,12 +111,12 @@
         [tuiDialogOptions]="{label: 'Staking Bitcoin', size: 's'}"
         [(tuiDialog)]="openStake"
     >
-        <p>Available: {{ available }} BTC</p>
+        <p>Available for stake: {{ available - amount }} BTC</p>
         <tui-input-number
             tuiAutoFocus
-            [max]="available"
+            [max]="available - amount"
             [min]="0"
-            [(ngModel)]="amount"
+            [(ngModel)]="inputStake"
         >
             Amount BTC
         </tui-input-number>
@@ -124,7 +124,7 @@
             <button
                 tuiButton
                 type="submit"
-                (click)="observer.complete()"
+                (click)="[observer.complete(), (amount = amount + inputStake), (inputStake = 0)]"
             >
                 Stake
             </button>
@@ -136,12 +136,12 @@
         [tuiDialogOptions]="{label: 'Unstaking Bitcoin', size: 's'}"
         [(tuiDialog)]="openUnstake"
     >
-        <p>Available: {{ amount }} BTC</p>
+        <p>Available for unstake: {{ amount }} BTC</p>
         <tui-input-number
             tuiAutoFocus
             [max]="amount"
             [min]="0"
-            [(ngModel)]="amount"
+            [(ngModel)]="inputUnstake"
         >
             Amount BTC
         </tui-input-number>
@@ -149,7 +149,7 @@
             <button
                 tuiButton
                 type="submit"
-                (click)="observer.complete()"
+                (click)="[observer.complete(), (amount = amount - inputUnstake), (inputUnstake = 0)]"
             >
                 Unstake
             </button>

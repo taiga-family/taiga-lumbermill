@@ -37,6 +37,8 @@ import {CryptoService} from '../../../../services/crypto.service';
 export class StakingComponent {
     protected cryptoService = inject(CryptoService);
     protected info$ = this.cryptoService.info$;
+    protected inputStake = 0;
+    protected inputUnstake = 0;
     protected amount = 0;
     protected available = 100;
 
