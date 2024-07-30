@@ -1,0 +1,158 @@
+@let info = info$ | async;
+@if (info) {
+    @let data = info.data;
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        [style.height]="'100%'"
+    >
+        <header
+            tuiHeader
+            class="info"
+        >
+            <tui-avatar
+                size="l"
+                src="https://assets.coincap.io/assets/icons/btc@2x.png"
+            />
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Staking Bitcoin
+            </h2>
+            <div
+                tuiSubtitle
+                [style.text-align]="'center'"
+            >
+                Earn a share of the protocol`s fees
+                <br />
+                while staking BITCOIN
+            </div>
+        </header>
+        <div class="group-buttons">
+            <button
+                appearance="accent"
+                tuiButton
+                (click)="showDialogStake()"
+            >
+                Stake
+            </button>
+            <button
+                appearance="whiteblock"
+                tuiButton
+                (click)="showDialogUnstake()"
+            >
+                Unstake
+            </button>
+        </div>
+        <div class="position">
+            <div
+                tuiTitle
+                [style.padding-left]="'1rem'"
+                [style.padding-right]="'1rem'"
+            >
+                My position
+            </div>
+            <hr />
+            <div class="block-position">
+                <div
+                    tuiTitle="m"
+                    class="tui-space_top-0 tui-space_bottom-0"
+                >
+                    {{ amount }} BTC
+                </div>
+                <div tuiTitle>${{ getPrice(data, 'btc', amount) }}</div>
+            </div>
+            <hr />
+            <div class="block-position">
+                <div tuiTitle>Rewards</div>
+                <div
+                    tuiTitle="m"
+                    class="tui-space_top-0 tui-space_bottom-0"
+                >
+                    0 BTC
+                </div>
+                <div tuiTitle>$0</div>
+            </div>
+        </div>
+        <div class="position">
+            <div
+                tuiTitle
+                [style.padding-left]="'1rem'"
+                [style.padding-right]="'1rem'"
+            >
+                Overview
+            </div>
+            <hr />
+            <div class="block-position">
+                <div
+                    tuiTitle="m"
+                    class="tui-space_top-0 tui-space_bottom-0"
+                >
+                    Total stacked
+                </div>
+                <div tuiTitle>1.5M BTC</div>
+            </div>
+            <hr />
+            <div class="block-position">
+                <div
+                    tuiTitle="m"
+                    class="tui-space_top-0 tui-space_bottom-0"
+                >
+                    APR
+                </div>
+                <div tuiTitle>5%</div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template
+        let-observer
+        [tuiDialogOptions]="{label: 'Staking Bitcoin', size: 's'}"
+        [(tuiDialog)]="openStake"
+    >
+        <p>Available: {{ available }} BTC</p>
+        <tui-input-number
+            tuiAutoFocus
+            [max]="available"
+            [min]="0"
+            [(ngModel)]="amount"
+        >
+            Amount BTC
+        </tui-input-number>
+        <p>
+            <button
+                tuiButton
+                type="submit"
+                (click)="observer.complete()"
+            >
+                Stake
+            </button>
+        </p>
+    </ng-template>
+
+    <ng-template
+        let-observer
+        [tuiDialogOptions]="{label: 'Unstaking Bitcoin', size: 's'}"
+        [(tuiDialog)]="openUnstake"
+    >
+        <p>Available: {{ amount }} BTC</p>
+        <tui-input-number
+            tuiAutoFocus
+            [max]="amount"
+            [min]="0"
+            [(ngModel)]="amount"
+        >
+            Amount BTC
+        </tui-input-number>
+        <p>
+            <button
+                tuiButton
+                type="submit"
+                (click)="observer.complete()"
+            >
+                Unstake
+            </button>
+        </p>
+    </ng-template>
+}
