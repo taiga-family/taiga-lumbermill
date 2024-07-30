@@ -53,16 +53,18 @@
                 >
                     <tui-badged-content>
                         <tui-avatar
+                            class="avatar"
                             [src]="person.img"
                             [style.background]="person.img | tuiAutoColor"
                         />
-                        <tui-icon
+                        <button
                             size="s"
                             tuiBadge
                             tuiSlot="top"
                             [appearance]="person.took ? 'error' : 'success'"
-                            [icon]="person.took ? '@tui.arrow-down-left' : '@tui.arrow-up-right'"
-                        />
+                        >
+                            <tui-icon [icon]="person.took ? '@tui.arrow-down-left' : '@tui.arrow-up-right'" />
+                        </button>
                     </tui-badged-content>
                     <div tuiTitle>
                         {{ person.name }}
