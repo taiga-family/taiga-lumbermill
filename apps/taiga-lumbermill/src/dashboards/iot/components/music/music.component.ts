@@ -55,7 +55,7 @@ export class MusicComponent {
         this.activeIndex = (this.activeIndex + 1) % this.musicService.length;
     }
 
-    protected previousMusic(): void {
+    protected previousTrack(): void {
         if (this.repeat) {
             this.time = 0;
 
