@@ -18,3 +18,16 @@ tui-tabs {
 tui-badged-content tui-avatar {
     --t-size: 2.5rem;
 }
+
+[tuiAppearance][data-appearance='invisible'] {
+    background: transparent;
+    border: 0;
+
+    .appearance-hover({
+        color: var(--tui-text-action-hover);
+    });
+
+    .appearance-active({
+        color: var(--tui-background-accent-1);
+    });
+}

@@ -38,7 +38,9 @@
                         {{ person.name }}
                         <div tuiSubtitle>{{ person.status }}</div>
                     </div>
-                    <tui-icon icon="@tui.phone" />
+                    <button tuiAppearance="invisible">
+                        <tui-icon icon="@tui.phone" />
+                    </button>
                 </div>
             </cdk-virtual-scroll-viewport>
         } @else {
