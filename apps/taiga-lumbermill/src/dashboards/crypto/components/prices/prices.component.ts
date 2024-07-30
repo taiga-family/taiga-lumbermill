@@ -102,23 +102,23 @@ export class PricesComponent {
     }
 
     protected validateInterval(value: string): string {
-        if (value === 'H') {
+        if (value === 'M') {
             return 'h1';
         }
 
-        if (value === 'D') {
+        if (value === 'Y') {
             return 'd1';
         }
 
-        if (value === 'M') {
+        if (value === 'D') {
             return 'm1';
         }
 
-        if (value === 'M6') {
-            return 'm5';
+        if (value === 'W') {
+            return 'm15';
         }
 
-        return 'm15';
+        return 'h6';
     }
 
     protected filterCheck(value: string): void {

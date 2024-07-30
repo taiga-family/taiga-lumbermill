@@ -1,3 +1,3 @@
-export const filterButtons = ['H', 'D', 'M', '6M', 'Y'];
+export const filterButtons = ['D', 'W', 'M', 'M6', 'Y'];
 
 export const maxPoints = 150;
