@@ -5,6 +5,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 
 import {CleaningComponent} from './components/Cleaning/cleaning.component';
 import {ClimateControlComponent} from './components/climate-control/climate-control.component';
+import {ContactsComponent} from './components/contacts/contacts.component';
 import {ControlPanelComponent} from './components/control-panel/control-panel.component';
 import {CostComponent} from './components/Cost/cost.component';
 import {ElectricityComponent} from './components/electricity/electricity.component';
@@ -19,6 +20,7 @@ import {WeatherComponent} from './components/weather/weather.component';
         CleaningComponent,
         ClimateControlComponent,
         CommonModule,
+        ContactsComponent,
         ControlPanelComponent,
         CostComponent,
         ElectricityComponent,
