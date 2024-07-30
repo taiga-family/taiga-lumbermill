@@ -36,7 +36,7 @@ export class MusicComponent {
     protected shuffle = false;
     protected paused = true;
 
-    protected nextMusic(): void {
+    protected nextTrack(): void {
         if (this.repeat) {
             this.time = 0;
 

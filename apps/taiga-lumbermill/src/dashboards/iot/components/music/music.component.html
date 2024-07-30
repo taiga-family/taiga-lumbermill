@@ -33,7 +33,7 @@
         [(currentTime)]="time"
         [(paused)]="paused"
         [(volume)]="volume"
-        (ended)="nextMusic()"
+        (ended)="nextTrack()"
     ></audio>
     <div>
         <input
@@ -74,7 +74,7 @@
             appearance="icon"
             iconStart="@tui.skip-forward"
             tuiIconButton
-            (click)="nextMusic()"
+            (click)="nextTrack()"
         ></button>
         <button
             appearance="icon"
