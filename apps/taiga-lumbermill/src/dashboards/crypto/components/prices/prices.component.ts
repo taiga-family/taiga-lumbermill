@@ -66,10 +66,6 @@ export class PricesComponent {
         const step = this.step(data.data.length);
 
         for (let i = 0; i < data.data.length; i += step) {
-            const value: TuiPoint = [i, Number(data.data[i].priceUsd)];
-
-            result.push(value);
-
             if (!map.has(Number(data.data[i].priceUsd))) {
                 map.set(Number(data.data[i].priceUsd), 1);
 
@@ -84,6 +80,15 @@ export class PricesComponent {
 
                 this.maxPrice = Math.max(this.maxPrice, Number(data.data[i].priceUsd));
             }
+        }
+
+        for (let i = 0; i < data.data.length; i += step) {
+            const value: TuiPoint = [
+                i,
+                Number(data.data[i].priceUsd) * (this.maxPrice > 10 ? 1 : 100),
+            ];
+
+            result.push(value);
         }
 
         return result;
@@ -139,5 +144,5 @@ export class PricesComponent {
     }
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
-        `${y.toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
+        `${(this.maxPrice > 10 ? y : y / 100).toLocaleString('en-US', {maximumFractionDigits: this.maxPrice > 10 ? 0 : 2})} $`;
 }

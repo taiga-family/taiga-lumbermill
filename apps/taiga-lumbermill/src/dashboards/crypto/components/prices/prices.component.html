@@ -26,12 +26,12 @@
                     @let dataHistory = history.data;
                     <tui-line-chart
                         class="chart"
-                        [height]="maxPrice - minPrice + 1"
+                        [height]="maxPrice * (maxPrice > 10 ? 1 : 100) - minPrice * (maxPrice > 10 ? 1 : 100)"
                         [tuiHintContent]="hint"
                         [value]="validateData(history)"
                         [width]="dataHistory.length"
                         [x]="0"
-                        [y]="minPrice"
+                        [y]="minPrice * (maxPrice > 10 ? 1 : 100)"
                         [yStringify]="yStringify"
                     />
                 }
