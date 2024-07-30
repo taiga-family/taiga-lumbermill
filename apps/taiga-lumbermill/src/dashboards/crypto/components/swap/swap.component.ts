@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {FormArray, FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -12,7 +12,7 @@ import {
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiChevron, TuiFade} from '@taiga-ui/kit';
+import {TuiAvatar, TuiChevron, TuiFade, TuiInputInline} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {
     TuiInputModule,
@@ -29,6 +29,7 @@ import {SwapService} from './swap.service';
     selector: 'lmb-swap',
     imports: [
         CommonModule,
+        FormsModule,
         ReactiveFormsModule,
         TuiActiveZone,
         TuiAppearance,
@@ -43,6 +44,7 @@ import {SwapService} from './swap.service';
         TuiFade,
         TuiHeader,
         TuiIcon,
+        TuiInputInline,
         TuiInputModule,
         TuiInputNumberModule,
         TuiObscured,
@@ -59,6 +61,7 @@ export class SwapComponent {
     protected info$ = this.cryptoService.info$;
     protected swapService = inject(SwapService).swapData;
     protected swapForm = new FormArray([new FormControl(0.22), new FormControl(0.22)]);
+    protected val = 0;
 
     protected openInfo(index: number): void {
         this.swapService[index].status = !this.swapService[index].status;

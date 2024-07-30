@@ -60,16 +60,16 @@
                     </ng-template>
                 </button>
             </div>
-            <div class="amount-crypto">
-                <input
-                    max="1000"
-                    min="0"
-                    tuiTitle="l"
-                    type="number"
-                    class="input-number"
-                    [formControl]="swapForm['controls'][$index]"
-                    (change)="newSwap(data, $index)"
-                />
+            <div>
+                <tui-input-inline tuiTitle="l">
+                    <input
+                        max="1000"
+                        min="0"
+                        type="number"
+                        [formControl]="swapForm['controls'][$index]"
+                        (change)="newSwap(data, $index)"
+                    />
+                </tui-input-inline>
                 <div>
                     <div
                         tuiSubtitle
