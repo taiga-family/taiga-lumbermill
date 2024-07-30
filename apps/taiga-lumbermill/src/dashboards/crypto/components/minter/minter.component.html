@@ -15,9 +15,17 @@
         <div tuiCell="l">
             <tui-avatar src="@tui.pencil" />
             <div tuiTitle>
-                Jetton Name (Symbol)
+                {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
                 <div tuiSubtitle>Description</div>
             </div>
         </div>
     </div>
+    <tui-input [(ngModel)]="token">
+        Jetton Name
+        <input tuiTextfieldLegacy />
+    </tui-input>
+    <tui-input [(ngModel)]="symbol">
+        Jetton Symbol
+        <input tuiTextfieldLegacy />
+    </tui-input>
 </div>
