@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-interface Music {
+interface Track {
     readonly name: string;
     readonly src: string;
     readonly length: number;
@@ -8,7 +8,7 @@ interface Music {
     readonly performer: string;
 }
 
-export const INITIAL_DATA: Music[] = [
+export const INITIAL_DATA: Track[] = [
     {
         name: 'Against All Odds',
         logo: '/music/against.jpg',
@@ -29,7 +29,7 @@ export const INITIAL_DATA: Music[] = [
     providedIn: 'root',
 })
 export class MusicService {
-    public readonly musicData = INITIAL_DATA;
+    public readonly tracks = INITIAL_DATA;
 }
 
 export function getRandomInt(max: number): number {

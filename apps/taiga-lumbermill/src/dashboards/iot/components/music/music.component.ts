@@ -1,10 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    ViewEncapsulation,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiMedia} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton, TuiIcon} from '@taiga-ui/core';
@@ -18,83 +13,68 @@ import {getRandomInt, MusicService} from './music.service';
     selector: 'lmb-music',
     imports: [
         CommonModule,
-        TuiAppearance,
-        TuiCardLarge,
-        TuiSliderComponent,
         FormsModule,
         ReactiveFormsModule,
+        TuiAppearance,
+        TuiAppearance,
+        TuiButton,
+        TuiCardLarge,
         TuiIcon,
         TuiMedia,
-        TuiButton,
-        TuiAppearance,
+        TuiSliderComponent,
     ],
     templateUrl: './music.component.html',
     styleUrl: './music.component.less',
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MusicComponent {
-    protected musicService = inject(MusicService).musicData;
-    protected curMusic = 0;
-    protected curTime = 0;
+    protected musicService = inject(MusicService).tracks;
+    protected activeIndex = 0;
+    protected time = 0;
     protected volume = 1;
     protected repeat = false;
     protected shuffle = false;
     protected paused = true;
 
-    protected get logoPlay(): string {
-        return this.paused ? '@tui.circle-play' : '@tui.circle-stop';
-    }
-
-    protected shuffleButton(): void {
-        this.shuffle = !this.shuffle;
-    }
-
-    protected repeatButton(): void {
-        this.repeat = !this.repeat;
-    }
-
-    protected playButton(): void {
-        this.paused = !this.paused;
-    }
-
     protected nextMusic(): void {
         if (this.repeat) {
-            this.curTime = 0;
+            this.time = 0;
 
             return;
         }
 
         if (this.shuffle) {
-            this.curMusic = getRandomInt(this.musicService.length);
+            this.activeIndex = getRandomInt(this.musicService.length);
             this.paused = true;
 
             return;
         }
 
-        this.curTime = 0;
+        this.time = 0;
         this.paused = true;
-        this.curMusic = (this.curMusic + 1) % this.musicService.length;
+        this.activeIndex = (this.activeIndex + 1) % this.musicService.length;
     }
 
     protected previousMusic(): void {
         if (this.repeat) {
-            this.curTime = 0;
+            this.time = 0;
 
             return;
         }
 
         if (this.shuffle) {
-            this.curMusic = getRandomInt(this.musicService.length);
+            this.activeIndex = getRandomInt(this.musicService.length);
             this.paused = true;
 
             return;
         }
 
-        this.curTime = 0;
+        this.time = 0;
         this.paused = true;
-        this.curMusic =
-            this.curMusic - 1 < 0 ? this.musicService.length - 1 : this.curMusic - 1;
+        this.activeIndex =
+            this.activeIndex - 1 < 0
+                ? this.musicService.length - 1
+                : this.activeIndex - 1;
     }
 
     protected getMinutes(value: number | null): string {

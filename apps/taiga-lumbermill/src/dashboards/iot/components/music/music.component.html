@@ -14,23 +14,23 @@
     <div class="info">
         <img
             class="logo"
-            [src]="musicService[curMusic].logo"
+            [src]="musicService[activeIndex].logo"
         />
         <h2 class="tui-space_top-4 tui-space_bottom-2">
-            {{ musicService[curMusic].name }}
+            {{ musicService[activeIndex].name }}
         </h2>
         <p
             class="tui-space_top-0 tui-space_bottom-0"
             [style.color]="'var(--tui-text-primary)'"
         >
-            {{ musicService[curMusic].performer }}
+            {{ musicService[activeIndex].performer }}
         </p>
     </div>
     <audio
         #audio
         tuiMedia
-        [src]="musicService[curMusic].src"
-        [(currentTime)]="curTime"
+        [src]="musicService[activeIndex].src"
+        [(currentTime)]="time"
         [(paused)]="paused"
         [(volume)]="volume"
     ></audio>
@@ -40,12 +40,12 @@
             tuiSlider
             type="range"
             [max]="audio.duration"
-            [(ngModel)]="curTime"
+            [(ngModel)]="time"
         />
-        <div class="numbers">
-            <p class="tui-space_top-0 tui-space_bottom-0">{{ getMinutes(curTime) }}:{{ getSeconds(curTime) }}</p>
+        <div class="duration">
+            <p class="tui-space_top-0 tui-space_bottom-0">{{ getMinutes(time) }}:{{ getSeconds(time) }}</p>
             <p class="tui-space_top-0 tui-space_bottom-0">
-                {{ getMinutes(musicService[curMusic].length) }}:{{ getSeconds(musicService[curMusic].length) }}
+                {{ getMinutes(musicService[activeIndex].length) }}:{{ getSeconds(musicService[activeIndex].length) }}
             </p>
         </div>
     </div>
@@ -54,8 +54,8 @@
             appearance="icon"
             iconStart="@tui.shuffle"
             tuiIconButton
-            [ngClass]="{checked: shuffle}"
-            (click)="shuffleButton()"
+            [tuiAppearanceState]="shuffle ? 'active' : null"
+            (click)="shuffle = !shuffle"
         ></button>
         <button
             appearance="icon"
@@ -66,8 +66,8 @@
         <button
             appearance="icon"
             tuiIconButton
-            [iconStart]="logoPlay"
-            (click)="playButton()"
+            [iconStart]="this.paused ? '@tui.circle-play' : '@tui.circle-stop'"
+            (click)="paused = !paused"
         ></button>
         <button
             appearance="icon"
@@ -79,8 +79,8 @@
             appearance="icon"
             iconStart="@tui.repeat"
             tuiIconButton
-            [ngClass]="{checked: repeat}"
-            (click)="repeatButton()"
+            [tuiAppearanceState]="repeat ? 'active' : null"
+            (click)="repeat = !repeat"
         ></button>
     </div>
     <hr />
