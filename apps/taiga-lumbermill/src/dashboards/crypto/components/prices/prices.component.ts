@@ -6,8 +6,12 @@ import {
     TuiLineDaysChart,
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiFilterPipe, TuiMapperPipe} from '@taiga-ui/cdk';
+import type {
+    TuiContext,
+    TuiFilterPipe,
+    TuiMapperPipe,
+    TuiStringHandler,
+} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiHint, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
@@ -140,4 +144,7 @@ export class PricesComponent {
         this.chosen = value;
         this.newGraph(this.chosen);
     }
+
+    protected readonly yStringify: TuiStringHandler<number> = (y) =>
+        `${y.toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
 }
