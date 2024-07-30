@@ -27,10 +27,10 @@
                     <tui-line-chart
                         class="chart"
                         [height]="maxPrice * (maxPrice > 10 ? 1 : 100) - minPrice * (maxPrice > 10 ? 1 : 100)"
-                        [tuiHintContent]="hint"
-                        [value]="validateData(history)"
+                        [value]="chart"
                         [width]="dataHistory.length"
                         [x]="0"
+                        [xStringify]="xStringify"
                         [y]="minPrice * (maxPrice > 10 ? 1 : 100)"
                         [yStringify]="yStringify"
                     />

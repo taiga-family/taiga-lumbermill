@@ -6,7 +6,7 @@ import {
     TuiLineDaysChart,
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiHint, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
@@ -45,6 +45,8 @@ export class PricesComponent {
     protected pricesService = inject(CryptoService);
     protected info$ = this.pricesService.info$;
     protected history$: Observable<ResponseHistoryData> | null = null;
+    protected xTargets = new Map();
+    protected chart: TuiPoint[] = [];
 
     protected minPrice = 1;
     protected maxPrice = 0;
@@ -83,6 +85,9 @@ export class PricesComponent {
         }
 
         for (let i = 0; i < data.data.length; i += step) {
+            const date = new Date(data.data[i].date);
+
+            this.xTargets.set(i, date.toDateString());
             const value: TuiPoint = [
                 i,
                 Number(data.data[i].priceUsd) * (this.maxPrice > 10 ? 1 : 100),
@@ -99,6 +104,9 @@ export class PricesComponent {
             id,
             this.validateInterval(this.filterButton),
         );
+        this.history$.subscribe((history) => {
+            this.chart = this.validateData(history);
+        });
     }
 
     protected validateInterval(value: string): string {
@@ -134,9 +142,6 @@ export class PricesComponent {
         this.showTokens += 1;
     }
 
-    protected readonly hint: TuiStringHandler<TuiContext<TuiPoint>> = ({$implicit}) =>
-        `Price: ${$implicit[1]}$`;
-
     protected chooseToken(value: string): void {
         this.clicked = !this.clicked;
         this.chosen = value;
@@ -145,4 +150,7 @@ export class PricesComponent {
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
         `${(this.maxPrice > 10 ? y : y / 100).toLocaleString('en-US', {maximumFractionDigits: this.maxPrice > 10 ? 0 : 2})} $`;
+
+    protected readonly xStringify: TuiStringHandler<number> = (x) =>
+        `${this.xTargets.get(x)}`;
 }
