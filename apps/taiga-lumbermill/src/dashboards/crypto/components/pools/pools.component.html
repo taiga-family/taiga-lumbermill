@@ -1,0 +1,87 @@
+@let info = info$ | async;
+@if (info) {
+    @let data = info.data;
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        [style.height]="'100%'"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Pools
+            </h2>
+        </header>
+        <tui-input
+            tuiTextfieldIconLeft="@tui.search"
+            [(ngModel)]="search"
+        >
+            Search
+        </tui-input>
+        <div class="list-pools">
+            <div
+                tuiCell="l"
+                [style.padding-left]="'1rem'"
+                [style.padding-right]="'1rem'"
+            >
+                <div tuiTitle>Pair</div>
+                <div class="last-columns">
+                    <div tuiTitle>TVL</div>
+                    <div tuiTitle>APR</div>
+                </div>
+            </div>
+            <hr />
+            <tui-scrollbar>
+                <cdk-virtual-scroll-viewport
+                    itemSize="50"
+                    tuiScrollable
+                    class="viewport tui-zero-scrollbar"
+                >
+                    <div *cdkVirtualFor="let i of lengthPools(data.length)">
+                        <div
+                            *ngIf="
+                                (data[i].symbol.toUpperCase() + '/' + data[i + 1].symbol.toUpperCase()).includes(
+                                    search.toUpperCase()
+                                )
+                            "
+                            tuiCell="m"
+                            [style.padding-left]="'1rem'"
+                            [style.padding-right]="'1rem'"
+                        >
+                            <tui-avatar-stack
+                                class="tui-space_vertical-4"
+                                [direction]="'right'"
+                            >
+                                <tui-avatar
+                                    size="m"
+                                    [src]="
+                                        'https://assets.coincap.io/assets/icons/' +
+                                        data[i].symbol.toLowerCase() +
+                                        '@2x.png'
+                                    "
+                                />
+                                <tui-avatar
+                                    size="m"
+                                    [src]="
+                                        'https://assets.coincap.io/assets/icons/' +
+                                        data[i + 1].symbol.toLowerCase() +
+                                        '@2x.png'
+                                    "
+                                />
+                            </tui-avatar-stack>
+                            <div TuiTitle>
+                                {{ data[i].symbol.toUpperCase() }}/{{ data[i + 1].symbol.toUpperCase() }}
+                            </div>
+                            <div class="last-columns">
+                                <div TuiTitle>${{ getTVL(data, i) }}M</div>
+                                <div TuiTitle>{{ getAPR(data, i) }}%</div>
+                            </div>
+                        </div>
+                    </div>
+                </cdk-virtual-scroll-viewport>
+            </tui-scrollbar>
+        </div>
+    </div>
+}
