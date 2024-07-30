@@ -25,40 +25,42 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 import {IotComponent} from '../../dashboards/iot/iot.component';
+import {ThemeService} from '../../services/theme.service';
 
 @Component({
     standalone: true,
     selector: 'app-navigation',
     imports: [
-        RouterModule,
         CommonModule,
-        TuiNavigation,
-        TuiButton,
-        TuiIcon,
-        TuiChevron,
-        TuiDropdown,
-        TuiFade,
-        TuiDataList,
-        TuiBadgeNotification,
-        TuiAvatar,
+        IotComponent,
         RouterLink,
         RouterLinkActive,
+        RouterModule,
         TuiAppearance,
-        TuiExpand,
+        TuiAvatar,
         TuiBadge,
-        TuiTabs,
-        TuiRepeatTimes,
+        TuiBadgeNotification,
+        TuiButton,
         TuiCardLarge,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+        TuiExpand,
+        TuiFade,
         TuiHeader,
+        TuiIcon,
+        TuiNavigation,
+        TuiRepeatTimes,
         TuiSurface,
+        TuiTabs,
         TuiTitle,
-        IotComponent,
     ],
     templateUrl: './navigation.component.html',
     styleUrl: './navigation.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
+    protected themeService = inject(ThemeService);
     protected readonly mobile$ = inject(TuiBreakpointService).pipe(
         map((key) => key === 'mobile'),
     );
@@ -66,4 +68,10 @@ export class NavigationComponent {
     protected open = false;
     protected expanded = false;
     protected submenu = false;
+    protected openTheme = false;
+
+    public chooseTheme(theme: string): void {
+        this.themeService.theme = theme;
+        this.openTheme = false;
+    }
 }

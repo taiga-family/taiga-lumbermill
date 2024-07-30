@@ -14,5 +14,23 @@
         "**/tsconfig*.json"
     ],
 
-    "ignoreWords": ["lumbermill", "Segoe", "Roboto", "Consolas", "Menlo", "Neue", "apos", "stafffrter", "Tiko"]
+    "ignoreWords": [
+        "lumbermill",
+        "Segoe",
+        "Roboto",
+        "Consolas",
+        "Menlo",
+        "Neue",
+        "apos",
+        "stafffrter",
+        "Zhem",
+        "Oleg",
+        "Andrey",
+        "Gleb",
+        "heatindex",
+        "forecastday",
+        "mintemp",
+        "maxtemp",
+        "Tiko"
+    ]
 }
