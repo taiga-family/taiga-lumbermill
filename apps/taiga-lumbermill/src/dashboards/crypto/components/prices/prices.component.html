@@ -39,7 +39,7 @@
             <div class="buttons">
                 @for (btn of filterButtons; track $index) {
                     <button
-                        tuiAppearance="invisible"
+                        tuiAppearance="filter"
                         class="period"
                         [ngClass]="{clicked: btn === filterButton}"
                         (click)="filterCheck(btn)"
@@ -80,13 +80,13 @@
         </div>
         @if (!clicked && showTokens < data.length) {
             <button
-                tuiAppearance="invisible"
-                tuiTitle
+                appearance="icon"
+                iconStart="@tui.circle-plus"
+                tuiIconButton
                 class="button-add"
                 (click)="addToken()"
             >
-                <tui-icon icon="@tui.circle-plus" />
-                Add token
+                Add Token
             </button>
         }
     </div>

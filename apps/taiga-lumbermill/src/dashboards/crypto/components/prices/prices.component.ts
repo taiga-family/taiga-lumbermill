@@ -8,7 +8,14 @@ import {
 } from '@taiga-ui/addon-charts';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
-import {TuiAppearance, TuiHint, TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiButton,
+    TuiHint,
+    TuiIcon,
+    TuiSurface,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import type {Observable} from 'rxjs';
@@ -26,6 +33,7 @@ import {filterButtons, maxPoints} from './prices.constants';
         TuiAppearance,
         TuiAvatar,
         TuiAxes,
+        TuiButton,
         TuiCardLarge,
         TuiCell,
         TuiHeader,
