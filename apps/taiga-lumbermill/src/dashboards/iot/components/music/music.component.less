@@ -30,20 +30,10 @@
     height: 9rem;
 }
 
-.checked {
+.buttons .checked[tuiAppearance][data-appearance='icon'] {
     color: var(--tui-background-accent-1);
 }
 
-[tuiAppearance][data-appearance='invisible'] {
-    background: transparent;
-
-    --tui-border-focus: var(--tui-background-accent-opposite-hover);
-
-    .appearance-hover({
-        color: var(--tui-text-action-hover);
-    });
-
-    .appearance-active({
-        color: var(--tui-background-accent-1);
-    });
+.buttons [tuiAppearance][data-appearance='icon'] {
+    color: var(--tui-text-primary);
 }

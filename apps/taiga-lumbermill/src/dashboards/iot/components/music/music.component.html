@@ -51,46 +51,37 @@
     </div>
     <div class="buttons">
         <button
-            appearance="invisible"
-            tuiButton
+            appearance="icon"
+            iconStart="@tui.shuffle"
+            tuiIconButton
+            [ngClass]="{checked: shuffle}"
             (click)="shuffleButton()"
-        >
-            <tui-icon
-                icon="@tui.shuffle"
-                [ngClass]="{checked: shuffle}"
-            />
-        </button>
+        ></button>
         <button
-            appearance="invisible"
-            tuiButton
+            appearance="icon"
+            iconStart="@tui.skip-back"
+            tuiIconButton
             (click)="previousMusic()"
-        >
-            <tui-icon icon="@tui.skip-back" />
-        </button>
+        ></button>
         <button
-            appearance="invisible"
-            tuiButton
+            appearance="icon"
+            tuiIconButton
+            [iconStart]="logoPlay"
             (click)="playButton()"
-        >
-            <tui-icon [icon]="logoPlay" />
-        </button>
+        ></button>
         <button
-            appearance="invisible"
-            tuiButton
+            appearance="icon"
+            iconStart="@tui.skip-forward"
+            tuiIconButton
             (click)="nextMusic()"
-        >
-            <tui-icon icon="@tui.skip-forward" />
-        </button>
+        ></button>
         <button
-            appearance="invisible"
-            tuiButton
+            appearance="icon"
+            iconStart="@tui.repeat"
+            tuiIconButton
+            [ngClass]="{checked: repeat}"
             (click)="repeatButton()"
-        >
-            <tui-icon
-                icon="@tui.repeat"
-                [ngClass]="{checked: repeat}"
-            />
-        </button>
+        ></button>
     </div>
     <hr />
     <div class="volume">
