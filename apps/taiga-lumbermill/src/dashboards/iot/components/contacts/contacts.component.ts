@@ -8,19 +8,13 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
     TuiAppearance,
     TuiAutoColorPipe,
+    TuiButton,
     TuiIcon,
     TuiScrollable,
     TuiScrollbar,
     TuiSurface,
 } from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiBadge,
-    TuiBadgedContent,
-    TuiFade,
-    TuiTab,
-    TuiTabs,
-} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiTab, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 import {ContactsService} from './contacts.service';
@@ -38,9 +32,9 @@ import {ContactsService} from './contacts.service';
         TuiAvatar,
         TuiBadge,
         TuiBadgedContent,
+        TuiButton,
         TuiCardLarge,
         TuiCell,
-        TuiFade,
         TuiIcon,
         TuiScrollable,
         TuiScrollbar,
@@ -56,8 +50,4 @@ export class ContactsComponent {
     protected contactsService = inject(ContactsService).contactsData;
     protected tabs = ['Contacts', 'Recent'];
     protected activeTab = 0;
-
-    protected updateFades(value: number): void {
-        this.activeTab = value;
-    }
 }

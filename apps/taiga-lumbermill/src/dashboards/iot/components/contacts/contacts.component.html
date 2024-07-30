@@ -6,7 +6,7 @@
         @for (tab of tabs; track $index) {
             <button
                 tuiTab
-                (click)="updateFades($index)"
+                (click)="activeTab = $index"
             >
                 <header tuiHeader>
                     <h2
@@ -19,8 +19,9 @@
             </button>
         }
     </tui-tabs>
-    <tui-scrollbar>
-        @if (activeTab === 0) {
+
+    @if (activeTab === 0) {
+        <tui-scrollbar>
             <cdk-virtual-scroll-viewport
                 itemSize="57"
                 tuiScrollable
@@ -38,12 +39,18 @@
                         {{ person.name }}
                         <div tuiSubtitle>{{ person.status }}</div>
                     </div>
-                    <button tuiAppearance="invisible">
-                        <tui-icon icon="@tui.phone" />
+                    <button
+                        appearance="icon"
+                        iconStart="@tui.phone"
+                        tuiIconButton
+                    >
+                        Call
                     </button>
                 </div>
             </cdk-virtual-scroll-viewport>
-        } @else {
+        </tui-scrollbar>
+    } @else {
+        <tui-scrollbar>
             <cdk-virtual-scroll-viewport
                 itemSize="57"
                 tuiScrollable
@@ -75,6 +82,6 @@
                     <div tuiSubtitle>{{ person.last }}</div>
                 </div>
             </cdk-virtual-scroll-viewport>
-        }
-    </tui-scrollbar>
+        </tui-scrollbar>
+    }
 </div>
