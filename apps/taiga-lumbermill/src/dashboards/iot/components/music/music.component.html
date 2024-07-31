@@ -14,22 +14,22 @@
     <div class="info">
         <img
             class="logo"
-            [src]="musicService[activeIndex].logo"
+            [src]="tracks[activeIndex].logo"
         />
         <h2 class="tui-space_top-4 tui-space_bottom-2">
-            {{ musicService[activeIndex].name }}
+            {{ tracks[activeIndex].name }}
         </h2>
         <p
             class="tui-space_top-0 tui-space_bottom-0"
             [style.color]="'var(--tui-text-primary)'"
         >
-            {{ musicService[activeIndex].performer }}
+            {{ tracks[activeIndex].performer }}
         </p>
     </div>
     <audio
         #audio
         tuiMedia
-        [src]="musicService[activeIndex].src"
+        [src]="tracks[activeIndex].src"
         [(currentTime)]="time"
         [(paused)]="paused"
         [(volume)]="volume"
@@ -46,7 +46,7 @@
         <div class="duration">
             <p class="tui-space_top-0 tui-space_bottom-0">{{ getMinutes(time) }}:{{ getSeconds(time) }}</p>
             <p class="tui-space_top-0 tui-space_bottom-0">
-                {{ getMinutes(musicService[activeIndex].length) }}:{{ getSeconds(musicService[activeIndex].length) }}
+                {{ getMinutes(tracks[activeIndex].length) }}:{{ getSeconds(tracks[activeIndex].length) }}
             </p>
         </div>
     </div>

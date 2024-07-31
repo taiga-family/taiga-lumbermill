@@ -16,7 +16,6 @@ import {getRandomInt, MusicService} from './music.service';
         FormsModule,
         ReactiveFormsModule,
         TuiAppearance,
-        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiIcon,
@@ -28,7 +27,7 @@ import {getRandomInt, MusicService} from './music.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MusicComponent {
-    protected musicService = inject(MusicService).tracks;
+    protected tracks = inject(MusicService).tracks;
     protected activeIndex = 0;
     protected time = 0;
     protected volume = 1;
@@ -37,63 +36,35 @@ export class MusicComponent {
     protected paused = true;
 
     protected nextTrack(): void {
-        if (this.repeat) {
-            this.time = 0;
-
-            return;
-        }
-
-        if (this.shuffle) {
-            this.activeIndex = getRandomInt(this.musicService.length);
-            this.paused = true;
-
-            return;
-        }
-
         this.time = 0;
-        this.paused = false;
-        this.activeIndex = (this.activeIndex + 1) % this.musicService.length;
+
+        if (this.repeat) {
+            return;
+        }
+
+        this.activeIndex = this.shuffle
+            ? getRandomInt(this.tracks.length)
+            : (this.activeIndex + 1) % this.tracks.length;
     }
 
     protected previousTrack(): void {
-        if (this.repeat) {
-            this.time = 0;
-
-            return;
-        }
-
-        if (this.shuffle) {
-            this.activeIndex = getRandomInt(this.musicService.length);
-            this.paused = true;
-
-            return;
-        }
-
         this.time = 0;
-        this.paused = false;
-        this.activeIndex =
-            this.activeIndex - 1 < 0
-                ? this.musicService.length - 1
-                : this.activeIndex - 1;
-    }
 
-    protected getMinutes(value: number | null): string {
-        if (value === null) {
-            return '00';
+        if (this.repeat) {
+            return;
         }
 
-        value = Math.trunc(value);
+        const nextItem =
+            this.activeIndex - 1 < 0 ? this.tracks.length - 1 : this.activeIndex - 1;
 
-        return (
-            (Math.trunc(value / 60) <= 9 ? '0' : '') + Math.trunc(value / 60).toString()
-        );
+        this.activeIndex = this.shuffle ? getRandomInt(this.tracks.length) : nextItem;
     }
 
-    protected getSeconds(value: number | null): string {
-        if (value === null) {
-            return '00';
-        }
+    protected getMinutes(value: number): string {
+        return (value / 60 <= 9 ? '0' : '') + Math.trunc(value / 60).toString();
+    }
 
+    protected getSeconds(value: number): string {
         value = Math.trunc(value);
 
         return (value % 60 <= 9 ? '0' : '') + (value % 60).toString();
