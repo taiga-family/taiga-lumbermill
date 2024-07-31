@@ -1,8 +1,9 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
+    TuiAlertService,
     TuiAppearance,
     TuiButton,
     TuiDialog,
@@ -10,7 +11,7 @@ import {
     TuiIcon,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiPushService} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 
@@ -40,7 +41,10 @@ import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinterComponent {
+    protected readonly push = inject(TuiPushService);
+    protected readonly alert = inject(TuiAlertService);
     protected token = '';
+    protected description = '';
     protected symbol = '';
     protected amount = 0;
     protected open = false;
@@ -48,5 +52,28 @@ export class MinterComponent {
 
     protected showDialog(): void {
         this.open = true;
+    }
+
+    protected deploy(): void {
+        if (
+            this.urlIcon === '' ||
+            this.amount === 0 ||
+            this.token === '' ||
+            this.symbol === ''
+        ) {
+            this.alert
+                .open('Тot all required fields are filled in', {
+                    label: 'Try again',
+                    status: 'warning',
+                })
+                .subscribe();
+        }
+
+        this.push
+            .open('Minted yout token', {
+                heading: 'Success',
+                icon: 'check',
+            })
+            .subscribe();
     }
 }

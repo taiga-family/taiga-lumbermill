@@ -20,7 +20,7 @@
             />
             <div tuiTitle>
                 {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
-                <div tuiSubtitle>Description</div>
+                <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="block-input">
-        <tui-input [(ngModel)]="token">
+        <tui-input [(ngModel)]="symbol">
             Jetton Symbol
             <input tuiTextfieldLegacy />
         </tui-input>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <div class="block-input">
-        <tui-input [(ngModel)]="token">
+        <tui-input [(ngModel)]="description">
             Description
             <input tuiTextfieldLegacy />
         </tui-input>
@@ -72,7 +72,12 @@
             Optional sentence explaining about yor project
         </div>
     </div>
-    <button tuiButton>Deploy</button>
+    <button
+        tuiButton
+        (click)="deploy()"
+    >
+        Deploy
+    </button>
 </div>
 <ng-template
     let-observer
