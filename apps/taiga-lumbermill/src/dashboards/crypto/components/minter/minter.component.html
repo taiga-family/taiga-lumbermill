@@ -13,19 +13,86 @@
     </header>
     <div class="info">
         <div tuiCell="l">
-            <tui-avatar src="@tui.pencil" />
+            <tui-avatar
+                size="xl"
+                [src]="!open && urlIcon !== '' ? urlIcon : '@tui.pencil'"
+                (click)="showDialog()"
+            />
             <div tuiTitle>
                 {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
                 <div tuiSubtitle>Description</div>
             </div>
         </div>
     </div>
-    <tui-input [(ngModel)]="token">
-        Jetton Name
-        <input tuiTextfieldLegacy />
-    </tui-input>
-    <tui-input [(ngModel)]="symbol">
-        Jetton Symbol
-        <input tuiTextfieldLegacy />
-    </tui-input>
+    <div class="block-input">
+        <tui-input [(ngModel)]="token">
+            Jetton Name
+            <input tuiTextfieldLegacy />
+        </tui-input>
+        <div
+            tuiSubtitle
+            [style.padding-left]="'0.4rem'"
+        >
+            Your project name with spaces
+        </div>
+    </div>
+    <div class="block-input">
+        <tui-input [(ngModel)]="token">
+            Jetton Symbol
+            <input tuiTextfieldLegacy />
+        </tui-input>
+        <div
+            tuiSubtitle
+            [style.padding-left]="'0.4rem'"
+        >
+            Currency symbo appearing in balance (usually 3-5 uppercase chars)
+        </div>
+    </div>
+    <div class="block-input">
+        <tui-input-number [(ngModel)]="amount">
+            Tokens to mint
+            <input tuiTextfieldLegacy />
+        </tui-input-number>
+        <div
+            tuiSubtitle
+            [style.padding-left]="'0.4rem'"
+        >
+            Number of initial tokens to mint and send to your waller address
+        </div>
+    </div>
+    <div class="block-input">
+        <tui-input [(ngModel)]="token">
+            Description
+            <input tuiTextfieldLegacy />
+        </tui-input>
+        <div
+            tuiSubtitle
+            [style.padding-left]="'0.4rem'"
+        >
+            Optional sentence explaining about yor project
+        </div>
+    </div>
+    <button tuiButton>Deploy</button>
 </div>
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{label: 'Edit logo', size: 's'}"
+    [(tuiDialog)]="open"
+>
+    <p>URL of 256x256 pixel PNG image of token logo</p>
+    <tui-input
+        tuiAutoFocus
+        [(ngModel)]="urlIcon"
+    >
+        Logo token
+    </tui-input>
+    <p>
+        <button
+            tuiButton
+            type="submit"
+            (click)="observer.complete()"
+        >
+            Submit
+        </button>
+    </p>
+</ng-template>
