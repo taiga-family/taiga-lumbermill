@@ -18,7 +18,7 @@ const INITIAL_DATA: MinterData[] = [
         title: 'Jetton Symbol',
         defaultValue: '',
         type: 'text',
-        description: 'Currency symbo appearing in balance (usually 3-5 uppercase chars)',
+        description: 'Currency symbol appearing in balance (usually 3-5 uppercase chars)',
     },
     {
         title: 'Number of tokens',

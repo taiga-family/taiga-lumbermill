@@ -87,7 +87,7 @@ export class MinterComponent {
         }
 
         this.push
-            .open('Minted yout token', {
+            .open('Minted your token', {
                 heading: 'Success',
                 icon: 'check',
             })
