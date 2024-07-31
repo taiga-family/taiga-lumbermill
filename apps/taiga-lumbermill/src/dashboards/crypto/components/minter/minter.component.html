@@ -15,63 +15,32 @@
         <div tuiCell="l">
             <tui-avatar
                 size="xl"
-                [src]="!open && urlIcon !== '' ? urlIcon : '@tui.pencil'"
+                [src]="!openIcon && urlIcon !== '' ? urlIcon : '@tui.pencil'"
                 (click)="showDialog()"
             />
             <div tuiTitle>
+                @let token = minterForm.controls[0].value;
+                @let symbol = minterForm.controls[1].value;
+                @let description = minterForm.controls[3].value;
                 {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
                 <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
             </div>
         </div>
     </div>
-    <div class="block-input">
-        <tui-input [(ngModel)]="token">
-            Jetton Name
-            <input tuiTextfieldLegacy />
-        </tui-input>
-        <div
-            tuiSubtitle
-            [style.padding-left]="'0.4rem'"
-        >
-            Your project name with spaces
+    @for (control of minterForm['controls']; track $index) {
+        <div class="block-input">
+            <tui-input [formControl]="control">
+                {{ minterService[$index].title }}
+                <input tuiTextfieldLegacy />
+            </tui-input>
+            <div
+                tuiSubtitle
+                [style.padding-left]="'0.4rem'"
+            >
+                {{ minterService[$index].description }}
+            </div>
         </div>
-    </div>
-    <div class="block-input">
-        <tui-input [(ngModel)]="symbol">
-            Jetton Symbol
-            <input tuiTextfieldLegacy />
-        </tui-input>
-        <div
-            tuiSubtitle
-            [style.padding-left]="'0.4rem'"
-        >
-            Currency symbo appearing in balance (usually 3-5 uppercase chars)
-        </div>
-    </div>
-    <div class="block-input">
-        <tui-input-number [(ngModel)]="amount">
-            Tokens to mint
-            <input tuiTextfieldLegacy />
-        </tui-input-number>
-        <div
-            tuiSubtitle
-            [style.padding-left]="'0.4rem'"
-        >
-            Number of initial tokens to mint and send to your waller address
-        </div>
-    </div>
-    <div class="block-input">
-        <tui-input [(ngModel)]="description">
-            Description
-            <input tuiTextfieldLegacy />
-        </tui-input>
-        <div
-            tuiSubtitle
-            [style.padding-left]="'0.4rem'"
-        >
-            Optional sentence explaining about yor project
-        </div>
-    </div>
+    }
     <button
         tuiButton
         (click)="deploy()"
@@ -82,7 +51,7 @@
 <ng-template
     let-observer
     [tuiDialogOptions]="{label: 'Edit logo', size: 's'}"
-    [(tuiDialog)]="open"
+    [(tuiDialog)]="openIcon"
 >
     <p>URL of 256x256 pixel PNG image of token logo</p>
     <tui-input
@@ -98,6 +67,23 @@
             (click)="observer.complete()"
         >
             Submit
+        </button>
+    </p>
+</ng-template>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{label: 'You need upload logo token', size: 's'}"
+    [(tuiDialog)]="warningIcon"
+>
+    <p>Click on the pencil next to the token name to download the picture url</p>
+    <p>
+        <button
+            tuiButton
+            type="submit"
+            (click)="observer.complete()"
+        >
+            Ok
         </button>
     </p>
 </ng-template>

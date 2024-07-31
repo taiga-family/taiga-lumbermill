@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TuiAlertService,
@@ -14,6 +14,8 @@ import {
 import {TuiAvatar, TuiPushService} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
+
+import {MinterService} from './minter.service';
 
 @Component({
     standalone: true,
@@ -41,32 +43,47 @@ import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinterComponent {
+    protected readonly minterService = inject(MinterService).minterData;
     protected readonly push = inject(TuiPushService);
     protected readonly alert = inject(TuiAlertService);
-    protected token = '';
-    protected description = '';
-    protected symbol = '';
-    protected amount = 0;
-    protected open = false;
+    protected minterForm = new FormArray(
+        this.minterService.map((item) => new FormControl(item.defaultValue)),
+    );
+
+    protected openIcon = false;
+    protected warningIcon = false;
     protected urlIcon = '';
 
     protected showDialog(): void {
-        this.open = true;
+        this.openIcon = true;
     }
 
     protected deploy(): void {
-        if (
-            this.urlIcon === '' ||
-            this.amount === 0 ||
-            this.token === '' ||
-            this.symbol === ''
-        ) {
+        let required = true;
+
+        for (let i = 0; i < this.minterForm.length; i++) {
+            if (
+                this.minterService[i].defaultValue === this.minterForm.controls[i].value
+            ) {
+                required = false;
+            }
+        }
+
+        if (!required) {
             this.alert
                 .open('Тot all required fields are filled in', {
                     label: 'Try again',
                     status: 'warning',
                 })
                 .subscribe();
+
+            return;
+        }
+
+        if (this.urlIcon === '') {
+            this.warningIcon = true;
+
+            return;
         }
 
         this.push
