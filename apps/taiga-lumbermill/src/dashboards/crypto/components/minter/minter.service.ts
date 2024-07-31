@@ -21,7 +21,7 @@ const INITIAL_DATA: MinterData[] = [
         description: 'Currency symbo appearing in balance (usually 3-5 uppercase chars)',
     },
     {
-        title: 'Jetton Name',
+        title: 'Number of tokens',
         defaultValue: '0',
         type: 'number',
         description: 'Number of initial tokens to mint and send to your waller address',

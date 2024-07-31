@@ -29,10 +29,17 @@
     </div>
     @for (control of minterForm['controls']; track $index) {
         <div class="block-input">
-            <tui-input [formControl]="control">
-                {{ minterService[$index].title }}
-                <input tuiTextfieldLegacy />
-            </tui-input>
+            @if (minterService[$index].type === 'text') {
+                <tui-input [formControl]="control">
+                    {{ minterService[$index].title }}
+                    <input tuiTextfieldLegacy />
+                </tui-input>
+            } @else {
+                <tui-input-number [formControl]="control">
+                    {{ minterService[$index].title }}
+                    <input tuiTextfieldLegacy />
+                </tui-input-number>
+            }
             <div
                 tuiSubtitle
                 [style.padding-left]="'0.4rem'"
