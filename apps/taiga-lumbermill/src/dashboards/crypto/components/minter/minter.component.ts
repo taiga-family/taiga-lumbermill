@@ -50,6 +50,7 @@ export class MinterComponent {
         this.minterService.map((item) => new FormControl(item.defaultValue)),
     );
 
+    protected success = false;
     protected openIcon = false;
     protected warningIcon = false;
     protected urlIcon = '';
@@ -92,5 +93,6 @@ export class MinterComponent {
                 icon: 'check',
             })
             .subscribe();
+        this.success = true;
     }
 }

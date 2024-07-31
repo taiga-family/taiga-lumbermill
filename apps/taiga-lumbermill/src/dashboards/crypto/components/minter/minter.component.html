@@ -1,3 +1,7 @@
+@let token = minterForm.controls[0].value;
+@let symbol = minterForm.controls[1].value;
+@let amount = minterForm.controls[2].value;
+@let description = minterForm.controls[3].value;
 <div
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
@@ -8,52 +12,69 @@
             tuiTitle
             [style.text-align]="'center'"
         >
-            Mint your token
+            {{ !success ? 'Mint your token' : token + ' successfully created' }}
         </h2>
     </header>
-    <div class="info">
-        <div tuiCell="l">
-            <tui-avatar
-                size="xl"
-                [src]="!openIcon && urlIcon !== '' ? urlIcon : '@tui.pencil'"
-                (click)="showDialog()"
-            />
-            <div tuiTitle>
-                @let token = minterForm.controls[0].value;
-                @let symbol = minterForm.controls[1].value;
-                @let description = minterForm.controls[3].value;
-                {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
-                <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
+    @if (!success) {
+        <div class="info">
+            <div tuiCell="l">
+                <tui-avatar
+                    size="xl"
+                    [src]="!openIcon && urlIcon !== '' ? urlIcon : '@tui.pencil'"
+                    (click)="showDialog()"
+                />
+                <div tuiTitle>
+                    {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
+                    <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
+                </div>
             </div>
         </div>
-    </div>
-    @for (control of minterForm['controls']; track $index) {
-        <div class="block-input">
-            @if (minterService[$index].type === 'text') {
-                <tui-input [formControl]="control">
-                    {{ minterService[$index].title }}
-                    <input tuiTextfieldLegacy />
-                </tui-input>
-            } @else {
-                <tui-input-number [formControl]="control">
-                    {{ minterService[$index].title }}
-                    <input tuiTextfieldLegacy />
-                </tui-input-number>
-            }
-            <div
-                tuiSubtitle
-                [style.padding-left]="'0.4rem'"
-            >
-                {{ minterService[$index].description }}
+        @for (control of minterForm['controls']; track $index) {
+            <div class="block-input">
+                @if (minterService[$index].type === 'text') {
+                    <tui-input [formControl]="control">
+                        {{ minterService[$index].title }}
+                        <input tuiTextfieldLegacy />
+                    </tui-input>
+                } @else {
+                    <tui-input-number [formControl]="control">
+                        {{ minterService[$index].title }}
+                        <input tuiTextfieldLegacy />
+                    </tui-input-number>
+                }
+                <div
+                    tuiSubtitle
+                    [style.padding-left]="'0.4rem'"
+                >
+                    {{ minterService[$index].description }}
+                </div>
             </div>
-        </div>
+        }
+        <button
+            tuiButton
+            (click)="deploy()"
+        >
+            Deploy
+        </button>
+    } @else {
+        <tui-avatar
+            size="xl"
+            class="logo"
+            [src]="urlIcon"
+        />
+        <h3
+            tuiTitle
+            class="text-center"
+        >
+            {{ amount }} ${{ symbol }} have been sent to your wallet
+        </h3>
+        <button
+            tuiButton
+            (click)="success = false"
+        >
+            Create new Token
+        </button>
     }
-    <button
-        tuiButton
-        (click)="deploy()"
-    >
-        Deploy
-    </button>
 </div>
 <ng-template
     let-observer
