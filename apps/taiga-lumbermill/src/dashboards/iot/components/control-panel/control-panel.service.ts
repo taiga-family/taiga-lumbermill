@@ -19,7 +19,7 @@ export const INITIAL_DATA: ControlPanelData[] = [
     {
         name: 'Call security',
         img: '@tui.shield-alert',
-        clickedName: 'Сall off security',
+        clickedName: 'Call off security',
         clickedImg: '@tui.octagon-x',
         state: false,
     },
