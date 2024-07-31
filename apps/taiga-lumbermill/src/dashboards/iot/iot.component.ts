@@ -10,6 +10,7 @@ import {ControlPanelComponent} from './components/control-panel/control-panel.co
 import {CostComponent} from './components/Cost/cost.component';
 import {ElectricityComponent} from './components/electricity/electricity.component';
 import {LightingComponent} from './components/Lighting/lighting.component';
+import {MusicComponent} from './components/music/music.component';
 import {SafetyComponent} from './components/Safety/safety.component';
 import {WeatherComponent} from './components/weather/weather.component';
 
@@ -25,6 +26,7 @@ import {WeatherComponent} from './components/weather/weather.component';
         CostComponent,
         ElectricityComponent,
         LightingComponent,
+        MusicComponent,
         SafetyComponent,
         TuiAppearance,
         TuiCardLarge,

@@ -30,6 +30,7 @@
         "heatindex",
         "forecastday",
         "mintemp",
-        "maxtemp"
+        "maxtemp",
+        "Tiko"
     ]
 }
