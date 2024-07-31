@@ -35,7 +35,7 @@ export class MusicComponent {
     protected shuffle = false;
     protected paused = true;
 
-    protected nextTrack(): void {
+    protected nextTrack(audio: HTMLAudioElement): void {
         this.time = 0;
 
         if (this.repeat) {
@@ -45,9 +45,11 @@ export class MusicComponent {
         this.activeIndex = this.shuffle
             ? getRandomInt(this.tracks.length)
             : (this.activeIndex + 1) % this.tracks.length;
+
+        setTimeout(async () => audio.play(), 1);
     }
 
-    protected previousTrack(): void {
+    protected previousTrack(audio: HTMLAudioElement): void {
         this.time = 0;
 
         if (this.repeat) {
@@ -58,6 +60,7 @@ export class MusicComponent {
             this.activeIndex - 1 < 0 ? this.tracks.length - 1 : this.activeIndex - 1;
 
         this.activeIndex = this.shuffle ? getRandomInt(this.tracks.length) : nextItem;
+        setTimeout(async () => audio.play(), 1);
     }
 
     protected getMinutes(value: number): string {
