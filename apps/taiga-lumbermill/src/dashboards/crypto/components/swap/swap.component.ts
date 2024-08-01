@@ -67,10 +67,6 @@ export class SwapComponent {
     protected openedDialog = [false, false];
     protected val = 0;
 
-    protected openInfo(index: number): void {
-        this.openedDialog[index] = !this.openedDialog[index];
-    }
-
     protected newToken(index: number, title: string): void {
         this.chosen[index] = title;
         this.openedDialog[index] = false;

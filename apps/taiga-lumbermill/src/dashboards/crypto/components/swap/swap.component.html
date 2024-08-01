@@ -27,7 +27,7 @@
                     class="choose-crypto"
                     [tuiDropdown]="dropdownContent"
                     [(tuiDropdownOpen)]="openedDialog[$index]"
-                    (click)="openInfo($index)"
+                    (click)="openedDialog[$index] = !openedDialog[$index]"
                 >
                     <tui-avatar
                         size="xs"
