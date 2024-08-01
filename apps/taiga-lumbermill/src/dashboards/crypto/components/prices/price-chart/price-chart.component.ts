@@ -1,5 +1,4 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,7 +17,7 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiButton, TuiHint, TuiSurface} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 import type {ResponseHistoryData} from '../../../../../services/crypto.service';
 import {CryptoService} from '../../../../../services/crypto.service';
@@ -43,15 +42,16 @@ import {CryptoService} from '../../../../../services/crypto.service';
     styleUrl: './price-chart.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PriceChartComponent implements OnInit {
+export class PriceChartComponent {
     protected pricesService = inject(CryptoService);
-    protected history$: Observable<ResponseHistoryData> | null = null;
     protected history = computed(() =>
         this.pricesService.getHistory(this.chosen(), this.interval()),
     );
 
     protected xTargets = new Map();
-    protected chart: TuiPoint[] = [];
+    protected chart = computed(() =>
+        this.history().pipe(map((data) => this.validateData(data))),
+    );
 
     protected minPrice = 1;
     protected maxPrice = 0;
@@ -60,29 +60,11 @@ export class PriceChartComponent implements OnInit {
     protected filterButton = signal(this.filterButtons[0]);
     protected maxPoints = 150;
 
-    // @Input()
-    // public chosen = '';
     public chosen = input.required<string>();
     public interval = computed(() => this.validateInterval(this.filterButton()));
 
-    public ngOnInit(): void {
-        this.newGraph(this.chosen());
-    }
-
-    // protected get interval(): string {
-    //     return this.validateInterval(this.filterButton);
-    // }
-
     protected toNormalView(value: number | string): string {
         return Number(value).toFixed(2);
-    }
-
-    protected newGraph(id: string): void {
-        // console.log(history);
-        this.history$ = this.pricesService.getHistory(id, this.interval());
-        this.history$.subscribe((history) => {
-            this.chart = this.validateData(history);
-        });
     }
 
     protected step(value: number): number {
@@ -150,7 +132,6 @@ export class PriceChartComponent implements OnInit {
 
     protected filterCheck(value: string): void {
         this.filterButton.set(value);
-        this.newGraph(this.chosen());
     }
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
