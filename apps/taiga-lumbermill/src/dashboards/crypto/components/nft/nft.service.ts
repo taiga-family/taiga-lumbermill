@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-interface NFTData {
+export interface NFTData {
     readonly name: string;
     readonly src: string;
     readonly price: string;

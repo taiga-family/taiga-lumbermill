@@ -4,6 +4,7 @@ import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
+import type {NFTData} from './nft.service';
 import {NftService} from './nft.service';
 
 @Component({
@@ -24,4 +25,15 @@ import {NftService} from './nft.service';
 })
 export class NFTComponent {
     protected nftService = inject(NftService).nftData;
+    protected activeItem = '';
+
+    protected getInfo(activeItem: string): NFTData {
+        for (const nft of this.nftService) {
+            if (nft.name === activeItem) {
+                return nft;
+            }
+        }
+
+        return this.nftService[0];
+    }
 }
