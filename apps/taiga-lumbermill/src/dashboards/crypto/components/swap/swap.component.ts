@@ -62,15 +62,18 @@ export class SwapComponent {
     protected cryptoService = inject(CryptoService);
     protected info$ = this.cryptoService.info$;
     protected swapService = inject(SwapService).swapData;
-    protected swapForm = new FormArray([new FormControl(0.22), new FormControl(0.22)]);
+    protected swapForm = new FormArray([new FormControl(0), new FormControl(0)]);
+    protected chosen = ['eth', 'btc'];
+    protected openedDialog = [false, false];
     protected val = 0;
 
     protected openInfo(index: number): void {
-        this.swapService[index].status = !this.swapService[index].status;
+        this.openedDialog[index] = !this.openedDialog[index];
     }
 
     protected newToken(index: number, title: string): void {
-        this.swapService[index].chosen = title;
+        this.chosen[index] = title;
+        this.openedDialog[index] = false;
     }
 
     protected getPrice(data: PricesData[], title: string, value: number | null): number {
@@ -92,7 +95,7 @@ export class SwapComponent {
         const curPrice = Number(
             this.getPrice(
                 data,
-                this.swapService[current].chosen,
+                this.chosen[current],
                 this.swapForm.controls[current].value,
             ),
         );
@@ -101,8 +104,7 @@ export class SwapComponent {
         for (const token of data) {
             if (
                 token &&
-                token.symbol.toLowerCase() ===
-                    this.swapService[opposite].chosen.toLowerCase()
+                token.symbol.toLowerCase() === this.chosen[opposite].toLowerCase()
             ) {
                 priceOpposite = Number(token.priceUsd);
                 break;
