@@ -1,8 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
+
+import {NftService} from './nft.service';
 
 @Component({
     standalone: true,
@@ -20,4 +22,6 @@ import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
     styleUrl: './nft.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NFTComponent {}
+export class NFTComponent {
+    protected nftService = inject(NftService).nftData;
+}
