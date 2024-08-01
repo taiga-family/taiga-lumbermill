@@ -39,9 +39,9 @@
             <div class="buttons">
                 @for (btn of filterButtons; track $index) {
                     <button
-                        tuiAppearance="filter"
+                        tuiAppearance="icon"
                         class="period"
-                        [ngClass]="{clicked: btn === filterButton}"
+                        [tuiAppearanceState]="btn === filterButton ? 'active' : null"
                         (click)="filterCheck(btn)"
                     >
                         {{ btn }}
