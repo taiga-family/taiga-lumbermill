@@ -53,7 +53,7 @@ export class PriceChartComponent {
         this.history().pipe(map((data) => this.validateData(data))),
     );
 
-    protected minPrice = 1;
+    protected minPrice = 0;
     protected maxPrice = 0;
 
     protected filterButtons = ['D', 'W', 'M', 'M6', 'Y'];
@@ -72,39 +72,18 @@ export class PriceChartComponent {
     }
 
     protected validateData(data: ResponseHistoryData): TuiPoint[] {
-        this.minPrice = 1;
-        this.maxPrice = 0;
-        const map = new Map();
-        const result = [];
+        this.minPrice = Math.min(...data.data.map((val) => Number(val.priceUsd)));
+        this.maxPrice = Math.max(...data.data.map((val) => Number(val.priceUsd)));
+        const result: TuiPoint[] = data.data.map((val, i) => [
+            i,
+            Number(val.priceUsd) * (this.maxPrice > 10 ? 1 : 100),
+        ]);
         const step = this.step(data.data.length);
-
-        for (let i = 0; i < data.data.length; i += step) {
-            if (!map.has(Number(data.data[i].priceUsd))) {
-                map.set(Number(data.data[i].priceUsd), 1);
-
-                if (i === 0) {
-                    this.minPrice = Number(data.data[i].priceUsd);
-                } else {
-                    this.minPrice = Math.min(
-                        this.minPrice,
-                        Number(data.data[i].priceUsd),
-                    );
-                }
-
-                this.maxPrice = Math.max(this.maxPrice, Number(data.data[i].priceUsd));
-            }
-        }
 
         for (let i = 0; i < data.data.length; i += step) {
             const date = new Date(data.data[i].date);
 
             this.xTargets.set(i, date.toDateString());
-            const value: TuiPoint = [
-                i,
-                Number(data.data[i].priceUsd) * (this.maxPrice > 10 ? 1 : 100),
-            ];
-
-            result.push(value);
         }
 
         return result;
@@ -128,10 +107,6 @@ export class PriceChartComponent {
         }
 
         return 'h6';
-    }
-
-    protected filterCheck(value: string): void {
-        this.filterButton.set(value);
     }
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
