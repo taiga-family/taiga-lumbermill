@@ -22,7 +22,6 @@ import type {Observable} from 'rxjs';
 
 import type {ResponseHistoryData} from '../../../../services/crypto.service';
 import {CryptoService} from '../../../../services/crypto.service';
-import {filterButtons, maxPoints} from './prices.constants';
 
 @Component({
     standalone: true,
@@ -59,13 +58,14 @@ export class PricesComponent {
     protected minPrice = 1;
     protected maxPrice = 0;
     protected clicked = false;
-    protected filterButtons = filterButtons;
-    protected filterButton = filterButtons[0];
+    protected filterButtons = ['D', 'W', 'M', 'M6', 'Y'];
+    protected filterButton = this.filterButtons[0];
     protected showTokens = 4;
     protected chosen = '';
+    protected maxPoints = 150;
 
     protected step(value: number): number {
-        return Math.ceil(value / maxPoints);
+        return Math.ceil(value / this.maxPoints);
     }
 
     protected validateData(data: ResponseHistoryData): TuiPoint[] {
