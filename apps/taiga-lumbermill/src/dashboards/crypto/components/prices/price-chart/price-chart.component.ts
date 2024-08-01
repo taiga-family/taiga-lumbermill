@@ -74,11 +74,12 @@ export class PriceChartComponent {
     protected validateData(data: ResponseHistoryData): TuiPoint[] {
         this.minPrice = Math.min(...data.data.map((val) => Number(val.priceUsd)));
         this.maxPrice = Math.max(...data.data.map((val) => Number(val.priceUsd)));
-        const result: TuiPoint[] = data.data.map((val, i) => [
+        const fullSize: TuiPoint[] = data.data.map((val, i) => [
             i,
             Number(val.priceUsd) * (this.maxPrice > 10 ? 1 : 100),
         ]);
         const step = this.step(data.data.length);
+        const result = fullSize.filter((_, i) => i % step === 0);
 
         for (let i = 0; i < data.data.length; i += step) {
             const date = new Date(data.data[i].date);
