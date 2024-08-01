@@ -1,5 +1,12 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {
     TuiAxes,
     TuiLineChart,
@@ -17,18 +24,14 @@ import {
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
-import {CryptoService} from '../../../../services/crypto.service';
-import {PriceChartComponent} from './price-chart/price-chart.component';
-import {PriceListComponent} from './price-list/price-list.component';
+import {CryptoService} from '../../../../../services/crypto.service';
 
 @Component({
     standalone: true,
-    selector: 'lmb-prices',
+    selector: 'lmb-price-list',
     imports: [
         AsyncPipe,
         CommonModule,
-        PriceChartComponent,
-        PriceListComponent,
         TuiAppearance,
         TuiAvatar,
         TuiAxes,
@@ -44,15 +47,33 @@ import {PriceListComponent} from './price-list/price-list.component';
         TuiSurface,
         TuiTitle,
     ],
-    templateUrl: './prices.component.html',
-    styleUrl: './prices.component.less',
+    templateUrl: './price-list.component.html',
+    styleUrl: './price-list.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PricesComponent {
+export class PriceListComponent {
     protected pricesService = inject(CryptoService);
-    protected chosen = '';
+    protected info$ = this.pricesService.info$;
+    protected showTokens = 4;
 
-    protected changeValue(value: string): void {
-        this.chosen = value;
+    @Input()
+    public chosen = '';
+
+    @Output()
+    public readonly chosenChange = new EventEmitter<string>();
+
+    protected addToken(): void {
+        this.showTokens += 1;
+    }
+
+    protected chooseToken(value: string): void {
+        const res = this.chosen === value ? '' : value;
+
+        this.chosen = res;
+        this.chosenChange.emit(res);
+    }
+
+    protected toNormalView(value: number | string): string {
+        return Number(value).toFixed(2);
     }
 }

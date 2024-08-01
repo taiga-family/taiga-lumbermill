@@ -1,0 +1,34 @@
+<tui-axes
+    class="axes"
+    [axisYLabels]="[toNormalView(minPrice) + '$', toNormalView(maxPrice) + '$']"
+    [horizontalLines]="4"
+    [verticalLines]="4"
+>
+    @let history = history$ | async;
+    @if (history) {
+        @let dataHistory = history.data;
+        <tui-line-chart
+            class="chart"
+            [height]="maxPrice * (maxPrice > 10 ? 1 : 100) - minPrice * (maxPrice > 10 ? 1 : 100)"
+            [value]="chart"
+            [width]="dataHistory.length"
+            [x]="0"
+            [xStringify]="xStringify"
+            [y]="minPrice * (maxPrice > 10 ? 1 : 100)"
+            [yStringify]="yStringify"
+        />
+    }
+</tui-axes>
+<div class="buttons">
+    @for (btn of filterButtons; track $index) {
+        <button
+            appearance="icon"
+            tuiButton
+            class="period"
+            [tuiAppearanceState]="btn === filterButton ? 'active' : null"
+            (click)="filterCheck(btn)"
+        >
+            {{ btn }}
+        </button>
+    }
+</div>

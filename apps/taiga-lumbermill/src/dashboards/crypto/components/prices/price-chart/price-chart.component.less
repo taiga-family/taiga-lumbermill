@@ -17,15 +17,6 @@
     }
 }
 
-.color() {
-    color: var(--tui-chart-categorical-07);
-}
-
-.chart {
-    .color();
-    .fullsize();
-}
-
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -35,12 +26,16 @@
     height: 12.5rem;
 }
 
-.button-add {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .period {
     width: 2.5rem;
     height: 1.5rem;
+}
+
+.color() {
+    color: var(--tui-chart-categorical-07);
+}
+
+.chart {
+    .color();
+    .fullsize();
 }

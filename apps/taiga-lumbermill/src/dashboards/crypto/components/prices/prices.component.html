@@ -1,94 +1,21 @@
-@let info = info$ | async;
-@if (info) {
-    <div
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
-        [style.height]="'100%'"
-    >
-        <header tuiHeader>
-            <h2
-                tuiTitle
-                [style.text-align]="'center'"
-            >
-                Cryptocurrency Prices
-            </h2>
-        </header>
-        @let data = info.data;
-        @if (clicked) {
-            <tui-axes
-                class="axes"
-                [axisYLabels]="[toNormalView(minPrice) + '$', toNormalView(maxPrice) + '$']"
-                [horizontalLines]="4"
-                [verticalLines]="4"
-            >
-                @let history = history$ | async;
-                @if (history) {
-                    @let dataHistory = history.data;
-                    <tui-line-chart
-                        class="chart"
-                        [height]="maxPrice * (maxPrice > 10 ? 1 : 100) - minPrice * (maxPrice > 10 ? 1 : 100)"
-                        [value]="chart"
-                        [width]="dataHistory.length"
-                        [x]="0"
-                        [xStringify]="xStringify"
-                        [y]="minPrice * (maxPrice > 10 ? 1 : 100)"
-                        [yStringify]="yStringify"
-                    />
-                }
-            </tui-axes>
-            <div class="buttons">
-                @for (btn of filterButtons; track $index) {
-                    <button
-                        appearance="icon"
-                        tuiButton
-                        class="period"
-                        [tuiAppearanceState]="btn === filterButton ? 'active' : null"
-                        (click)="filterCheck(btn)"
-                    >
-                        {{ btn }}
-                    </button>
-                }
-            </div>
-        }
-        <div class="list">
-            @for (token of data.slice(0, showTokens); track $index) {
-                @if (!clicked || token.id === chosen) {
-                    <div
-                        tuiCell="l"
-                        (click)="chooseToken(token.id)"
-                    >
-                        <tui-avatar
-                            [src]="'https://assets.coincap.io/assets/icons/' + token.symbol.toLowerCase() + '@2x.png'"
-                        />
-                        <div tuiTitle>
-                            {{ token.name }}
-                            <div tuiSubtitle>
-                                {{ toNormalView(token.priceUsd) }}$
-                                <span
-                                    [style.color]="
-                                        token.changePercent24Hr[0] === '-'
-                                            ? 'var(--tui-status-negative)'
-                                            : 'var(--tui-status-positive)'
-                                    "
-                                >
-                                    {{ toNormalView(token.changePercent24Hr) }}%
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
-        </div>
-        @if (!clicked && showTokens < data.length) {
-            <button
-                appearance="icon"
-                iconStart="@tui.circle-plus"
-                tuiIconButton
-                class="button-add"
-                (click)="addToken()"
-            >
-                Add Token
-            </button>
-        }
-    </div>
-}
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    [style.height]="'100%'"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Cryptocurrency Prices
+        </h2>
+    </header>
+    @if (chosen !== '') {
+        <lmb-price-chart [chosen]="chosen" />
+    }
+    <lmb-price-list
+        [chosen]="chosen"
+        (chosenChange)="changeValue($event)"
+    />
+</div>

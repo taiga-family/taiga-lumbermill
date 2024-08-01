@@ -1,0 +1,44 @@
+@let info = info$ | async;
+@if (info) {
+    @let data = info.data;
+    <div class="list">
+        @for (token of data.slice(0, showTokens); track $index) {
+            @if (chosen === '' || token.id === chosen) {
+                <div
+                    tuiCell="l"
+                    (click)="chooseToken(token.id)"
+                >
+                    <tui-avatar
+                        [src]="'https://assets.coincap.io/assets/icons/' + token.symbol.toLowerCase() + '@2x.png'"
+                    />
+                    <div tuiTitle>
+                        {{ token.name }}
+                        <div tuiSubtitle>
+                            {{ toNormalView(token.priceUsd) }}$
+                            <span
+                                [style.color]="
+                                    token.changePercent24Hr[0] === '-'
+                                        ? 'var(--tui-status-negative)'
+                                        : 'var(--tui-status-positive)'
+                                "
+                            >
+                                {{ toNormalView(token.changePercent24Hr) }}%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    @if (chosen === '' && showTokens < data.length) {
+        <button
+            appearance="icon"
+            iconStart="@tui.circle-plus"
+            tuiIconButton
+            class="button-add"
+            (click)="addToken()"
+        >
+            Add Token
+        </button>
+    }
+}
