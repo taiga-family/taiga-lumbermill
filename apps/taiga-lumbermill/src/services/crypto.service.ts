@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, InjectionToken} from '@angular/core';
 import type {Observable} from 'rxjs';
 
 export interface PricesData {
@@ -26,12 +26,16 @@ export interface ResponseHistoryData {
     readonly data: HistoryData[];
 }
 
+export const CryptoApi = new InjectionToken('', {
+    factory: () => 'https://api.coincap.io/v2/assets',
+});
 @Injectable({
     providedIn: 'root',
 })
 export class CryptoService {
     private readonly http = inject(HttpClient);
-    private readonly API = 'https://api.coincap.io/v2/assets';
+    private readonly API = inject(CryptoApi);
+
     public info$: Observable<ResponseData> = this.getTokens();
 
     public getTokens(): Observable<ResponseData> {
