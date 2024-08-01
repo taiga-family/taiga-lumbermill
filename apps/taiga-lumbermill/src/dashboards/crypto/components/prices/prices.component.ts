@@ -45,7 +45,6 @@ import {PriceListComponent} from './price-list/price-list.component';
         TuiTitle,
     ],
     templateUrl: './prices.component.html',
-    styleUrl: './prices.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PricesComponent {
