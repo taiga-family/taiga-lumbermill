@@ -75,7 +75,11 @@
                         tuiSubtitle
                         class="equal-number"
                     >
-                        ≈{{ getPrice(data, swapService[$index].chosen, swapForm.controls[$index].value) }}$
+                        ≈{{
+                            getPrice(data, swapService[$index].chosen, swapForm.controls[$index].value)
+                                | tuiAmount: 'USD'
+                                | async
+                        }}
                     </div>
                     <hr />
                 </div>

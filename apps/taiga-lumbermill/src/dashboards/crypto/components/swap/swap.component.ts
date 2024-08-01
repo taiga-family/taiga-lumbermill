@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -32,6 +33,7 @@ import {SwapService} from './swap.service';
         FormsModule,
         ReactiveFormsModule,
         TuiActiveZone,
+        TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
         TuiButton,
@@ -71,18 +73,18 @@ export class SwapComponent {
         this.swapService[index].chosen = title;
     }
 
-    protected getPrice(data: PricesData[], title: string, value: number | null): string {
+    protected getPrice(data: PricesData[], title: string, value: number | null): number {
         if (value === null) {
-            return '0';
+            return 0;
         }
 
         for (const token of data) {
             if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
-                return (Number(token.priceUsd) * value).toFixed(2);
+                return Number((Number(token.priceUsd) * value).toFixed(2));
             }
         }
 
-        return value.toFixed(2);
+        return Number(value.toFixed(2));
     }
 
     protected newSwap(data: PricesData[], current: number): void {
