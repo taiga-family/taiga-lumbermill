@@ -39,7 +39,8 @@
             <div class="buttons">
                 @for (btn of filterButtons; track $index) {
                     <button
-                        tuiAppearance="icon"
+                        appearance="icon"
+                        tuiButton
                         class="period"
                         [tuiAppearanceState]="btn === filterButton ? 'active' : null"
                         (click)="filterCheck(btn)"
