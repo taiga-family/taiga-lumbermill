@@ -5,13 +5,12 @@
     [verticalLines]="4"
 >
     @let chartData = chart() | async;
-    @let width = history() | async;
-    @if (chartData && width) {
+    @if (chartData) {
         <tui-line-chart
             class="chart"
             [height]="maxPrice * (maxPrice > 10 ? 1 : 100) - minPrice * (maxPrice > 10 ? 1 : 100)"
             [value]="chartData"
-            [width]="width.data.length"
+            [width]="chartData.length"
             [x]="0"
             [xStringify]="xStringify"
             [y]="minPrice * (maxPrice > 10 ? 1 : 100)"
