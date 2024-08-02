@@ -6,27 +6,27 @@
         class="price-list"
     >
         <div class="list">
-            @for (token of data.slice(0, showTokens); track $index) {
-                @if (chosen === '' || token.id === chosen) {
+            @for (tokens of data.slice(0, showTokens); track $index) {
+                @if (token === '' || tokens.id === token) {
                     <div
                         tuiCell="l"
-                        (click)="chooseToken(token.id)"
+                        (click)="chooseToken(tokens.id)"
                     >
                         <tui-avatar
-                            [src]="'https://assets.coincap.io/assets/icons/' + token.symbol.toLowerCase() + '@2x.png'"
+                            [src]="'https://assets.coincap.io/assets/icons/' + tokens.symbol.toLowerCase() + '@2x.png'"
                         />
                         <div tuiTitle>
-                            {{ token.name }}
+                            {{ tokens.name }}
                             <div tuiSubtitle>
-                                {{ toNormalView(token.priceUsd) }}$
+                                {{ toNormalView(tokens.priceUsd) }}$
                                 <span
                                     [style.color]="
-                                        token.changePercent24Hr[0] === '-'
+                                        tokens.changePercent24Hr[0] === '-'
                                             ? 'var(--tui-status-negative)'
                                             : 'var(--tui-status-positive)'
                                     "
                                 >
-                                    {{ toNormalView(token.changePercent24Hr) }}%
+                                    {{ toNormalView(tokens.changePercent24Hr) }}%
                                 </span>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                 }
             }
         </div>
-        @if (chosen === '' && showTokens < data.length) {
+        @if (token === '' && showTokens < data.length) {
             <button
                 appearance="icon"
                 iconStart="@tui.circle-plus"

@@ -57,20 +57,20 @@ export class PriceListComponent {
     protected showTokens = 4;
 
     @Input()
-    public chosen = '';
+    public token = '';
 
     @Output()
-    public readonly chosenChange = new EventEmitter<string>();
+    public readonly tokenChange = new EventEmitter<string>();
 
     protected addToken(): void {
         this.showTokens += 1;
     }
 
     protected chooseToken(value: string): void {
-        const res = this.chosen === value ? '' : value;
+        const res = this.token === value ? '' : value;
 
-        this.chosen = res;
-        this.chosenChange.emit(res);
+        this.token = res;
+        this.tokenChange.emit(res);
     }
 
     protected toNormalView(value: number | string): string {

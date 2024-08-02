@@ -11,11 +11,11 @@
             Cryptocurrency Prices
         </h2>
     </header>
-    @if (chosen !== '') {
-        <lmb-price-chart [chosen]="chosen" />
+    @if (token !== '') {
+        <lmb-price-chart [token]="token" />
     }
     <lmb-price-list
-        [chosen]="chosen"
-        (chosenChange)="changeValue($event)"
+        [(token)]="token"
+        (tokenChange)="changeValue($event)"
     />
 </div>

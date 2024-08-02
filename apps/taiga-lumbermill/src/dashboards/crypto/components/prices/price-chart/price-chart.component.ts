@@ -56,10 +56,10 @@ export class PriceChartComponent {
     protected filterButton = signal(this.filterButtons[0]);
     protected maxPoints = 150;
 
-    public chosen = input.required<string>();
+    public token = input.required<string>();
     public interval = computed(() => this.validateInterval(this.filterButton()));
     public history = toSignal(
-        combineLatest([toObservable(this.chosen), toObservable(this.interval)]).pipe(
+        combineLatest([toObservable(this.token), toObservable(this.interval)]).pipe(
             switchMap(([token, interval]) =>
                 this.pricesService.getHistory(token, interval),
             ),
