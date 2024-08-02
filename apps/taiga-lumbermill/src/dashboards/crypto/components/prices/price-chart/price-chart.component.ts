@@ -17,7 +17,6 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiButton, TuiHint, TuiSurface} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 import type {ResponseHistoryData} from '../../../../../services/crypto.service';
 import {CryptoService} from '../../../../../services/crypto.service';
@@ -44,14 +43,9 @@ import {CryptoService} from '../../../../../services/crypto.service';
 })
 export class PriceChartComponent {
     protected pricesService = inject(CryptoService);
-    protected history = computed(() =>
-        this.pricesService.getHistory(this.chosen(), this.interval()),
-    );
 
     protected xTargets = new Map();
-    protected chart = computed(() =>
-        this.history().pipe(map((data) => this.validateData(data))),
-    );
+    protected chart = computed(() => this.validateData(this.history()));
 
     protected minPrice = 0;
     protected maxPrice = 0;
@@ -62,6 +56,7 @@ export class PriceChartComponent {
 
     public chosen = input.required<string>();
     public interval = computed(() => this.validateInterval(this.filterButton()));
+    public history = this.pricesService.getHistory(this.chosen(), this.interval());
 
     protected toNormalView(value: number | string): string {
         return Number(value).toFixed(2);
@@ -71,7 +66,11 @@ export class PriceChartComponent {
         return Math.ceil(value / this.maxPoints);
     }
 
-    protected validateData(data: ResponseHistoryData): TuiPoint[] {
+    protected validateData(data: ResponseHistoryData | undefined): TuiPoint[] {
+        if (data === undefined) {
+            return [];
+        }
+
         this.minPrice = Math.min(...data.data.map((val) => Number(val.priceUsd)));
         this.maxPrice = Math.max(...data.data.map((val) => Number(val.priceUsd)));
         const step = this.step(data.data.length);

@@ -4,19 +4,16 @@
     [horizontalLines]="4"
     [verticalLines]="4"
 >
-    @let chartData = chart() | async;
-    @if (chartData) {
-        <tui-line-chart
-            class="chart"
-            [height]="maxPrice * (maxPrice > 10 ? 1 : 100) - minPrice * (maxPrice > 10 ? 1 : 100)"
-            [value]="chartData"
-            [width]="chartData.length"
-            [x]="0"
-            [xStringify]="xStringify"
-            [y]="minPrice * (maxPrice > 10 ? 1 : 100)"
-            [yStringify]="yStringify"
-        />
-    }
+    <tui-line-chart
+        class="chart"
+        [height]="maxPrice * (maxPrice > 10 ? 1 : 100) - minPrice * (maxPrice > 10 ? 1 : 100)"
+        [value]="chart()"
+        [width]="chart().length"
+        [x]="0"
+        [xStringify]="xStringify"
+        [y]="minPrice * (maxPrice > 10 ? 1 : 100)"
+        [yStringify]="yStringify"
+    />
 </tui-axes>
 <div class="buttons">
     @for (btn of filterButtons; track $index) {
