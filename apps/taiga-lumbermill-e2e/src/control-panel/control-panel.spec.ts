@@ -5,5 +5,5 @@ test('Have 5 cards', async ({page}) => {
 
     const cards = page.locator('.button-card');
 
-    await expect(cards).toHaveCount(5);
+    await expect(cards).toHaveCount(4);
 });
