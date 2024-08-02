@@ -1,5 +1,11 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    signal,
+} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton, TuiDialog, TuiHint, TuiTitle} from '@taiga-ui/core';
@@ -36,29 +42,29 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class StakingComponent {
     protected cryptoService = inject(CryptoService);
-    protected info$ = this.cryptoService.info$;
+    protected info = this.cryptoService.getTokens();
+    protected price = computed(() =>
+        this.getPrice(this.info()?.data, 'btc', this.amount()),
+    );
+
     protected inputStake = 0;
     protected inputUnstake = 0;
-    protected amount = 0;
+    protected amount = signal(0);
     protected available = 100;
 
     protected openStake = false;
     protected openUnstake = false;
 
-    protected showDialogStake(): void {
-        this.openStake = true;
+    protected addAmount(add: number): void {
+        this.amount.update((val) => val + add);
     }
 
-    protected showDialogUnstake(): void {
-        this.openUnstake = true;
-    }
-
-    protected getPrice(data: PricesData[], title: string, value: number | null): string {
-        if (value === null) {
-            return '0';
-        }
-
-        for (const token of data) {
+    protected getPrice(
+        data: PricesData[] | undefined,
+        title: string,
+        value: number,
+    ): string {
+        for (const token of data ?? []) {
             if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
                 return (Number(token.priceUsd) * value).toFixed(2);
             }
