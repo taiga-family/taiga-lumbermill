@@ -22,6 +22,7 @@ import {combineLatest, switchMap} from 'rxjs';
 
 import type {HistoryData} from '../../../../../services/crypto.service';
 import {CryptoService} from '../../../../../services/crypto.service';
+import {INTERVALS} from './price-chart.constant';
 
 @Component({
     standalone: true,
@@ -62,7 +63,7 @@ export class PriceChartComponent {
     protected maxPoints = 150;
 
     public token = input.required<string>();
-    public interval = computed(() => this.validateInterval(this.filterButton()));
+    public interval = computed(() => INTERVALS[this.filterButton()]);
     public history = toSignal(
         combineLatest([toObservable(this.token), toObservable(this.interval)]).pipe(
             switchMap(([token, interval]) =>
@@ -70,10 +71,6 @@ export class PriceChartComponent {
             ),
         ),
     );
-
-    protected toNormalView(value: number | string): string {
-        return Number(value).toFixed(2);
-    }
 
     protected step(value: number): number {
         return Math.ceil(value / this.maxPoints);
@@ -94,26 +91,6 @@ export class PriceChartComponent {
         }
 
         return result;
-    }
-
-    protected validateInterval(value: string): string {
-        if (value === 'M') {
-            return 'h1';
-        }
-
-        if (value === 'Y') {
-            return 'd1';
-        }
-
-        if (value === 'D') {
-            return 'm1';
-        }
-
-        if (value === 'W') {
-            return 'm15';
-        }
-
-        return 'h6';
     }
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
