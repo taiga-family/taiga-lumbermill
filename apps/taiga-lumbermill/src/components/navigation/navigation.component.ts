@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -60,6 +60,7 @@ import {ThemeService} from '../../services/theme.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
+    protected readonly router = Router;
     protected themeService = inject(ThemeService);
     protected readonly mobile$ = inject(TuiBreakpointService).pipe(
         map((key) => key === 'mobile'),

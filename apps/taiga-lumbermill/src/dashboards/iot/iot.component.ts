@@ -1,7 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiAppearance} from '@taiga-ui/core';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {RouterLink} from '@angular/router';
+import {TuiAppearance, TuiIcon} from '@taiga-ui/core';
+import {TuiCardLarge, TuiNavigation} from '@taiga-ui/layout';
 
 import {CleaningComponent} from './components/Cleaning/cleaning.component';
 import {ClimateControlComponent} from './components/climate-control/climate-control.component';
@@ -27,9 +28,12 @@ import {WeatherComponent} from './components/weather/weather.component';
         ElectricityComponent,
         LightingComponent,
         MusicComponent,
+        RouterLink,
         SafetyComponent,
         TuiAppearance,
         TuiCardLarge,
+        TuiIcon,
+        TuiNavigation,
         WeatherComponent,
     ],
     templateUrl: './iot.component.html',
