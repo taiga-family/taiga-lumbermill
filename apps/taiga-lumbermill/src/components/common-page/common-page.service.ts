@@ -15,7 +15,7 @@ const INITIAL_DATA: CommonPageData[] = [
     {
         title: 'Crypto Dashboard',
         link: '/dashboards/crypto',
-        description: 'Сrypto token dashboard',
+        description: 'Crypto token dashboard',
     },
 ];
 
