@@ -1,5 +1,5 @@
-@let info = info$ | async;
-@if (info) {
+@let info = info$();
+@if (info !== undefined) {
     @let data = info.data;
     <div
         tuiAppearance="whiteblock"
@@ -18,7 +18,7 @@
             <div>
                 <div tuiCell="l">
                     <div TuiTitle>{{ type.title }}</div>
-                    <div TuiTitle>Balance: 1000 {{ chosen[$index].toUpperCase() }}</div>
+                    <div TuiTitle>Balance: 1000 {{ chosen()[$index].toUpperCase() }}</div>
                 </div>
                 <button
                     tuiButton
@@ -31,9 +31,9 @@
                 >
                     <tui-avatar
                         size="xs"
-                        [src]="'https://assets.coincap.io/assets/icons/' + chosen[$index].toLowerCase() + '@2x.png'"
+                        [src]="'https://assets.coincap.io/assets/icons/' + chosen()[$index].toLowerCase() + '@2x.png'"
                     />
-                    {{ chosen[$index].toUpperCase() }}
+                    {{ chosen()[$index].toUpperCase() }}
                     @let current = $index;
                     <ng-template
                         #dropdownContent
@@ -48,7 +48,7 @@
                                 >
                                     {{ token.symbol.toUpperCase() }}
                                     <tui-icon
-                                        *ngIf="token.symbol.toLowerCase() === chosen[current].toLowerCase()"
+                                        *ngIf="token.symbol.toLowerCase() === chosen()[current].toLowerCase()"
                                         icon="@tui.check"
                                         [style.font-size.em]="1"
                                         [style.margin-left.rem]="0.5"
@@ -61,22 +61,30 @@
             </div>
             <div>
                 <tui-input-inline tuiTitle="l">
-                    <input
-                        max="1000"
-                        min="0"
-                        type="number"
-                        [formControl]="swapForm['controls'][$index]"
-                        (change)="newSwap(data, $index)"
-                    />
+                    @if ($index) {
+                        <input
+                            max="1000"
+                            min="0"
+                            type="number"
+                            [(ngModel)]="to"
+                            (change)="newSwap(data, $index)"
+                        />
+                    } @else {
+                        <input
+                            max="1000"
+                            min="0"
+                            type="number"
+                            [(ngModel)]="from"
+                            (change)="newSwap(data, $index)"
+                        />
+                    }
                 </tui-input-inline>
                 <div>
                     <div
                         tuiSubtitle
                         class="equal-number"
                     >
-                        ≈{{
-                            getPrice(data, chosen[$index], swapForm.controls[$index].value) | tuiAmount: 'USD' | async
-                        }}
+                        ≈{{ price() | tuiAmount: 'USD' | async }}
                     </div>
                     <hr />
                 </div>

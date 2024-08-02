@@ -1,6 +1,12 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    signal,
+} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
 import {
@@ -60,47 +66,51 @@ import {SwapService} from './swap.service';
 })
 export class SwapComponent {
     protected cryptoService = inject(CryptoService);
-    protected info$ = this.cryptoService.info$;
+    protected info$ = this.cryptoService.getTokens();
+    protected price = computed(() =>
+        this.getPrice(this.info$()?.data, this.chosen()[0], this.from()),
+    );
+
     protected swapService = inject(SwapService).swapData;
-    protected swapForm = new FormArray([new FormControl(0), new FormControl(0)]);
-    protected chosen = ['eth', 'btc'];
+
+    protected from = signal('0');
+    protected to = signal('0');
+    protected chosen = signal(['eth', 'btc']);
     protected openedDialog = [false, false];
     protected val = 0;
 
     protected newToken(index: number, title: string): void {
-        this.chosen[index] = title;
+        this.chosen()[index] = title;
         this.openedDialog[index] = false;
     }
 
-    protected getPrice(data: PricesData[], title: string, value: number | null): number {
-        if (value === null) {
+    protected getPrice(
+        data: PricesData[] | undefined,
+        title: string,
+        value: string,
+    ): number {
+        if (data === undefined) {
             return 0;
         }
 
         for (const token of data) {
             if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
-                return Number((Number(token.priceUsd) * value).toFixed(2));
+                return Number((Number(token.priceUsd) * Number(value)).toFixed(2));
             }
         }
 
-        return Number(value.toFixed(2));
+        return Number(value);
     }
 
     protected newSwap(data: PricesData[], current: number): void {
         const opposite = Number(!current);
-        const curPrice = Number(
-            this.getPrice(
-                data,
-                this.chosen[current],
-                this.swapForm.controls[current].value,
-            ),
-        );
+        const curPrice = Number(this.getPrice(data, this.chosen()[current], '1'));
         let priceOpposite = 1;
 
         for (const token of data) {
             if (
                 token &&
-                token.symbol.toLowerCase() === this.chosen[opposite].toLowerCase()
+                token.symbol.toLowerCase() === this.chosen()[opposite].toLowerCase()
             ) {
                 priceOpposite = Number(token.priceUsd);
                 break;
@@ -109,6 +119,7 @@ export class SwapComponent {
 
         const result = curPrice / priceOpposite;
 
-        this.swapForm.controls[opposite].setValue(result);
+        // this.swapForm.controls[opposite].setValue(result);
+        this.to.set(result.toString());
     }
 }

@@ -1,5 +1,7 @@
 import {HttpClient} from '@angular/common/http';
+import type {Signal} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import type {Observable} from 'rxjs';
 
 export interface PricesData {
@@ -32,10 +34,9 @@ export interface ResponseHistoryData {
 export class CryptoService {
     private readonly http = inject(HttpClient);
     private readonly API = 'https://api.coincap.io/v2/assets';
-    public info$: Observable<ResponseData> = this.getTokens();
 
-    public getTokens(): Observable<ResponseData> {
-        return this.http.get<ResponseData>(this.API);
+    public getTokens(): Signal<ResponseData | undefined> {
+        return toSignal(this.http.get<ResponseData>(this.API));
     }
 
     public getHistory(id: string, interval: string): Observable<ResponseHistoryData> {
