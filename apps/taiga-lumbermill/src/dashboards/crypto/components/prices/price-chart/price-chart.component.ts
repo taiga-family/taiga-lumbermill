@@ -14,6 +14,7 @@ import {
     TuiLineDaysChart,
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiButton, TuiHint, TuiSurface} from '@taiga-ui/core';
@@ -29,6 +30,7 @@ import {CryptoService} from '../../../../../services/crypto.service';
     imports: [
         AsyncPipe,
         CommonModule,
+        TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
         TuiAxes,

@@ -1,6 +1,6 @@
 <tui-axes
     class="axes"
-    [axisYLabels]="[toNormalView(minPrice) + '$', toNormalView(maxPrice) + '$']"
+    [axisYLabels]="[(minPrice | tuiAmount | async) || '', (maxPrice | tuiAmount | async) || '']"
     [horizontalLines]="4"
     [verticalLines]="4"
 >
