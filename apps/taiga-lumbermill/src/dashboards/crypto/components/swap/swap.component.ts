@@ -93,11 +93,7 @@ export class SwapComponent {
     }
 
     protected getPrice(data: PricesData[] | undefined, title: string): number {
-        if (data === undefined) {
-            return 0;
-        }
-
-        for (const token of data) {
+        for (const token of data ?? []) {
             if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
                 return Number(token.priceUsd);
             }
