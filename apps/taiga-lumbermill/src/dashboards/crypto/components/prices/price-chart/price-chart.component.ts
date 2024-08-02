@@ -7,6 +7,7 @@ import {
     input,
     signal,
 } from '@angular/core';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {
     TuiAxes,
     TuiLineChart,
@@ -17,6 +18,7 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiButton, TuiHint, TuiSurface} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
+import {combineLatest, switchMap} from 'rxjs';
 
 import type {ResponseHistoryData} from '../../../../../services/crypto.service';
 import {CryptoService} from '../../../../../services/crypto.service';
@@ -56,7 +58,13 @@ export class PriceChartComponent {
 
     public chosen = input.required<string>();
     public interval = computed(() => this.validateInterval(this.filterButton()));
-    public history = this.pricesService.getHistory(this.chosen(), this.interval());
+    public history = toSignal(
+        combineLatest([toObservable(this.chosen), toObservable(this.interval)]).pipe(
+            switchMap(([token, interval]) =>
+                this.pricesService.getHistory(token, interval),
+            ),
+        ),
+    );
 
     protected toNormalView(value: number | string): string {
         return Number(value).toFixed(2);

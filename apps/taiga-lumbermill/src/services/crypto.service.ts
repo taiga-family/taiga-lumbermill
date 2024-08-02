@@ -1,7 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import type {Signal} from '@angular/core';
 import {inject, Injectable, InjectionToken} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import type {Observable} from 'rxjs';
 
 export interface PricesData {
@@ -44,16 +42,11 @@ export class CryptoService {
         return this.http.get<ResponseData>(this.API);
     }
 
-    public getHistory(
-        id: string,
-        interval: string,
-    ): Signal<ResponseHistoryData | undefined> {
-        return toSignal(
-            this.http.get<ResponseHistoryData>(`${this.API}/${id}/history`, {
-                params: {
-                    interval,
-                },
-            }),
-        );
+    public getHistory(id: string, interval: string): Observable<ResponseHistoryData> {
+        return this.http.get<ResponseHistoryData>(`${this.API}/${id}/history`, {
+            params: {
+                interval,
+            },
+        });
     }
 }
