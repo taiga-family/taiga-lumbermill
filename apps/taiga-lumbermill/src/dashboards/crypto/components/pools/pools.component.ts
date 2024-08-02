@@ -4,14 +4,13 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiHighlight} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
-import type {PricesData} from '../../../../services/crypto.service';
 import {CryptoService} from '../../../../services/crypto.service';
 
 @Component({
@@ -42,15 +41,19 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
-    protected info$ = this.cryptoService.info$;
+    protected info = this.cryptoService.getTokens();
+    protected data = computed(() => this.info()?.data);
     protected search = '';
 
     protected lengthPools(value: number): number[] {
         return [...new Array(value).keys()].filter((_, index) => index % 2 === 0);
     }
 
-    protected getTVL(data: PricesData[], index: number): string {
-        const result = Number(data[index].priceUsd) + Number(data[index].priceUsd) + 1;
+    protected getTVL(index: number): string {
+        const tokens = this.data();
+
+        const result =
+            Number(tokens?.[index]?.priceUsd) + Number(tokens?.[index]?.priceUsd) + 1;
 
         if (result > 100) {
             return (result / (result / 100 + 1)).toFixed(1);
@@ -59,7 +62,7 @@ export class PoolsComponent {
         return result.toFixed(1);
     }
 
-    protected getAPR(data: PricesData[], index: number): string {
-        return (10 - Number(this.getTVL(data, index)) / 11).toFixed(1);
+    protected getAPR(index: number): string {
+        return (10 - Number(this.getTVL(index)) / 11).toFixed(1);
     }
 }

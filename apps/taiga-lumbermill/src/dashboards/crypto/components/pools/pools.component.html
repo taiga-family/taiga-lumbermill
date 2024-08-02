@@ -1,6 +1,6 @@
-@let info = info$ | async;
-@if (info) {
-    @let data = info.data;
+@let information = info();
+@if (information) {
+    @let data = information.data;
     <div
         tuiAppearance="whiteblock"
         tuiCardLarge="normal"
@@ -75,8 +75,8 @@
                                 {{ data[i].symbol.toUpperCase() }}/{{ data[i + 1].symbol.toUpperCase() }}
                             </div>
                             <div class="last-columns">
-                                <div TuiTitle>${{ getTVL(data, i) }}M</div>
-                                <div TuiTitle>{{ getAPR(data, i) }}%</div>
+                                <div TuiTitle>${{ getTVL(i) }}M</div>
+                                <div TuiTitle>{{ getAPR(i) }}%</div>
                             </div>
                         </div>
                     </div>
