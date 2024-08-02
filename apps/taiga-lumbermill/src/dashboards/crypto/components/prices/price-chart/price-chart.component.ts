@@ -51,8 +51,17 @@ export class PriceChartComponent {
     protected xTargets = new Map();
     protected chart = computed(() => this.validateData(this.history()));
 
-    protected minPrice = 0;
-    protected maxPrice = 0;
+    protected minPrice = computed(() =>
+        Math.min(
+            ...(this.history() ?? {data: []}).data.map((val) => Number(val.priceUsd)),
+        ),
+    );
+
+    protected maxPrice = computed(() =>
+        Math.max(
+            ...(this.history() ?? {data: []}).data.map((val) => Number(val.priceUsd)),
+        ),
+    );
 
     protected filterButtons = ['D', 'W', 'M', 'M6', 'Y'];
     protected filterButton = signal(this.filterButtons[0]);
@@ -81,12 +90,10 @@ export class PriceChartComponent {
             return [];
         }
 
-        this.minPrice = Math.min(...data.data.map((val) => Number(val.priceUsd)));
-        this.maxPrice = Math.max(...data.data.map((val) => Number(val.priceUsd)));
         const step = this.step(data.data.length);
         const fullSize: TuiPoint[] = data.data.map((val, i) => [
             Math.trunc(i / step),
-            Number(val.priceUsd) * (this.maxPrice > 10 ? 1 : 100),
+            Number(val.priceUsd) * (this.maxPrice() > 10 ? 1 : 100),
         ]);
         const result = fullSize.filter((_, i) => i % step === 0);
 
@@ -120,7 +127,7 @@ export class PriceChartComponent {
     }
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
-        `${(this.maxPrice > 10 ? y : y / 100).toLocaleString('en-US', {maximumFractionDigits: this.maxPrice > 10 ? 0 : 2})} $`;
+        `${(this.maxPrice() > 10 ? y : y / 100).toLocaleString('en-US', {maximumFractionDigits: this.maxPrice() > 10 ? 0 : 2})} $`;
 
     protected readonly xStringify: TuiStringHandler<number> = (x) =>
         `${this.xTargets.get(x)}`;
