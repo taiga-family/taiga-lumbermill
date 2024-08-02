@@ -1,6 +1,6 @@
-@let info = info$();
-@if (info !== undefined) {
-    @let data = info.data;
+@let information = info();
+@if (information !== undefined) {
+    @let data = information.data;
     <div
         tuiAppearance="whiteblock"
         tuiCardLarge="normal"
@@ -67,7 +67,7 @@
                             min="0"
                             type="number"
                             [(ngModel)]="to"
-                            (change)="newSwap(data, $index)"
+                            (change)="newSwapTo()"
                         />
                     } @else {
                         <input
@@ -75,7 +75,7 @@
                             min="0"
                             type="number"
                             [(ngModel)]="from"
-                            (change)="newSwap(data, $index)"
+                            (change)="newSwapFrom()"
                         />
                     }
                 </tui-input-inline>
@@ -84,7 +84,11 @@
                         tuiSubtitle
                         class="equal-number"
                     >
-                        ≈{{ price() | tuiAmount: 'USD' | async }}
+                        @if ($index) {
+                            ≈{{ priceTo() * toNum(to()) | tuiAmount: 'USD' | async }}
+                        } @else {
+                            ≈{{ priceFrom() * toNum(from()) | tuiAmount: 'USD' | async }}
+                        }
                     </div>
                     <hr />
                 </div>

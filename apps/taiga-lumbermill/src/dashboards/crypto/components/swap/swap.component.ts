@@ -66,9 +66,13 @@ import {SwapService} from './swap.service';
 })
 export class SwapComponent {
     protected cryptoService = inject(CryptoService);
-    protected info$ = this.cryptoService.getTokens();
-    protected price = computed(() =>
-        this.getPrice(this.info$()?.data, this.chosen()[0], this.from()),
+    protected info = this.cryptoService.getTokens();
+    protected priceFrom = computed(() =>
+        this.getPrice(this.info()?.data, this.chosen()[0]),
+    );
+
+    protected priceTo = computed(() =>
+        this.getPrice(this.info()?.data, this.chosen()[1]),
     );
 
     protected swapService = inject(SwapService).swapData;
@@ -84,42 +88,33 @@ export class SwapComponent {
         this.openedDialog[index] = false;
     }
 
-    protected getPrice(
-        data: PricesData[] | undefined,
-        title: string,
-        value: string,
-    ): number {
+    protected toNum(val: string): number {
+        return Number(val);
+    }
+
+    protected getPrice(data: PricesData[] | undefined, title: string): number {
         if (data === undefined) {
             return 0;
         }
 
         for (const token of data) {
             if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
-                return Number((Number(token.priceUsd) * Number(value)).toFixed(2));
+                return Number(token.priceUsd);
             }
         }
 
-        return Number(value);
+        return 0;
     }
 
-    protected newSwap(data: PricesData[], current: number): void {
-        const opposite = Number(!current);
-        const curPrice = Number(this.getPrice(data, this.chosen()[current], '1'));
-        let priceOpposite = 1;
+    protected newSwapFrom(): void {
+        this.to.set(
+            ((this.priceFrom() * Number(this.from())) / this.priceTo()).toFixed(2),
+        );
+    }
 
-        for (const token of data) {
-            if (
-                token &&
-                token.symbol.toLowerCase() === this.chosen()[opposite].toLowerCase()
-            ) {
-                priceOpposite = Number(token.priceUsd);
-                break;
-            }
-        }
-
-        const result = curPrice / priceOpposite;
-
-        // this.swapForm.controls[opposite].setValue(result);
-        this.to.set(result.toString());
+    protected newSwapTo(): void {
+        this.from.set(
+            ((this.priceTo() * Number(this.to())) / this.priceFrom()).toFixed(2),
+        );
     }
 }
