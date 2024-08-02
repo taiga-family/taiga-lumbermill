@@ -18,10 +18,9 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiButton, TuiHint, TuiSurface} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
 import {combineLatest, switchMap} from 'rxjs';
 
-import type {ResponseHistoryData} from '../../../../../services/crypto.service';
+import type {HistoryData} from '../../../../../services/crypto.service';
 import {CryptoService} from '../../../../../services/crypto.service';
 
 @Component({
@@ -32,7 +31,6 @@ import {CryptoService} from '../../../../../services/crypto.service';
         CommonModule,
         TuiAmountPipe,
         TuiAppearance,
-        TuiAvatar,
         TuiAxes,
         TuiButton,
         TuiHint,
@@ -52,15 +50,11 @@ export class PriceChartComponent {
     protected chart = computed(() => this.validateData(this.history()));
 
     protected minPrice = computed(() =>
-        Math.min(
-            ...(this.history() ?? {data: []}).data.map((val) => Number(val.priceUsd)),
-        ),
+        Math.min(...(this.history() ?? []).map((val) => Number(val.priceUsd))),
     );
 
     protected maxPrice = computed(() =>
-        Math.max(
-            ...(this.history() ?? {data: []}).data.map((val) => Number(val.priceUsd)),
-        ),
+        Math.max(...(this.history() ?? []).map((val) => Number(val.priceUsd))),
     );
 
     protected filterButtons = ['D', 'W', 'M', 'M6', 'Y'];
@@ -85,20 +79,16 @@ export class PriceChartComponent {
         return Math.ceil(value / this.maxPoints);
     }
 
-    protected validateData(data: ResponseHistoryData | undefined): TuiPoint[] {
-        if (data === undefined) {
-            return [];
-        }
-
-        const step = this.step(data.data.length);
-        const fullSize: TuiPoint[] = data.data.map((val, i) => [
+    protected validateData(data: HistoryData[] | undefined): TuiPoint[] {
+        const step = this.step((data ?? []).length);
+        const fullSize: TuiPoint[] = (data ?? []).map((val, i) => [
             Math.trunc(i / step),
             Number(val.priceUsd) * (this.maxPrice() > 10 ? 1 : 100),
         ]);
         const result = fullSize.filter((_, i) => i % step === 0);
 
-        for (let i = 0; i < data.data.length; i += step) {
-            const date = new Date(data.data[i].date);
+        for (let i = 0; i < (data ?? []).length; i += step) {
+            const date = new Date((data ?? [])[i].date);
 
             this.xTargets.set(Math.trunc(i / step), date.toDateString());
         }

@@ -7,20 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {
-    TuiAxes,
-    TuiLineChart,
-    TuiLineDaysChart,
-    TuiLineDaysChartHint,
-} from '@taiga-ui/addon-charts';
-import {
-    TuiAppearance,
-    TuiButton,
-    TuiHint,
-    TuiIcon,
-    TuiSurface,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
@@ -34,17 +21,10 @@ import {CryptoService} from '../../../../../services/crypto.service';
         CommonModule,
         TuiAppearance,
         TuiAvatar,
-        TuiAxes,
         TuiButton,
         TuiCardLarge,
         TuiCell,
         TuiHeader,
-        TuiHint,
-        TuiIcon,
-        TuiLineChart,
-        TuiLineDaysChart,
-        TuiLineDaysChartHint,
-        TuiSurface,
         TuiTitle,
     ],
     templateUrl: './price-list.component.html',

@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable, InjectionToken} from '@angular/core';
-import type {Observable} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 export interface PricesData {
     readonly id: string;
@@ -42,11 +42,13 @@ export class CryptoService {
         return this.http.get<ResponseData>(this.API);
     }
 
-    public getHistory(id: string, interval: string): Observable<ResponseHistoryData> {
-        return this.http.get<ResponseHistoryData>(`${this.API}/${id}/history`, {
-            params: {
-                interval,
-            },
-        });
+    public getHistory(id: string, interval: string): Observable<HistoryData[]> {
+        return this.http
+            .get<ResponseHistoryData>(`${this.API}/${id}/history`, {
+                params: {
+                    interval,
+                },
+            })
+            .pipe(map((history) => history.data));
     }
 }
