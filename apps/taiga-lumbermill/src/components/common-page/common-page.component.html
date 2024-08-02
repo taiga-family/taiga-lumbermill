@@ -1,0 +1,27 @@
+<nav
+    tuiNavigationNav
+    [style.position]="'sticky'"
+>
+    <a routerLink=".">
+        <tui-icon icon="@tui.chevron-left" />
+        Back
+    </a>
+    /
+    <span tuiNavigationLogo>
+        <span tuiFade>Groups</span>
+    </span>
+    <hr />
+</nav>
+@for (card of commonPageService; track $index) {
+    <a
+        tuiCardLarge
+        tuiHeader
+        tuiSurface="elevated"
+        [routerLink]="card.link"
+    >
+        <h2 tuiTitle>
+            {{ card.title }}
+            <span tuiSubtitle>{{ card.description }}</span>
+        </h2>
+    </a>
+}

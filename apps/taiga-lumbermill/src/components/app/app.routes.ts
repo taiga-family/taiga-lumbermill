@@ -13,5 +13,12 @@ export const appRoutes: Route[] = [
                 (mod) => mod.CryptoComponent,
             ),
     },
+    {
+        path: 'dashboards',
+        loadComponent: async () =>
+            import('../common-page/common-page.component').then(
+                (mod) => mod.CommonPageComponent,
+            ),
+    },
     {path: '**', redirectTo: 'dashboards'},
 ];
