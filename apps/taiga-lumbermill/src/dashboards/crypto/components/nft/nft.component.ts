@@ -6,6 +6,7 @@ import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
 import type {NFTData} from './nft.service';
 import {NftService} from './nft.service';
+import {NftItemComponent} from './nft-item/nft-item.component';
 import {NftListComponent} from './nft-list/nft-list.component';
 
 @Component({
@@ -13,7 +14,7 @@ import {NftListComponent} from './nft-list/nft-list.component';
     selector: 'lmb-nft',
     imports: [
         CommonModule,
-        NftListComponent,
+        NftItemComponent,
         NftListComponent,
         TuiAppearance,
         TuiAvatar,

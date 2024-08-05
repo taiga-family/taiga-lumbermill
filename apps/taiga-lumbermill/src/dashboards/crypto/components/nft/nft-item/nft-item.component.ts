@@ -4,6 +4,7 @@ import {
     Component,
     EventEmitter,
     inject,
+    Input,
     Output,
 } from '@angular/core';
 import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
@@ -15,7 +16,7 @@ import {NftService} from '../nft.service';
 
 @Component({
     standalone: true,
-    selector: 'lmb-nft-list',
+    selector: 'lmb-nft-item',
     imports: [
         CommonModule,
         TuiAppearance,
@@ -25,12 +26,15 @@ import {NftService} from '../nft.service';
         TuiHeader,
         TuiTitle,
     ],
-    templateUrl: './nft-list.component.html',
-    styleUrl: './nft-list.component.less',
+    templateUrl: './nft-item.component.html',
+    styleUrl: './nft-item.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NftListComponent {
+export class NftItemComponent {
     protected nftService = inject(NftService).nftData;
+
+    @Input()
+    public activeItem = '';
 
     @Output()
     public readonly activeItemChange = new EventEmitter<string>();
