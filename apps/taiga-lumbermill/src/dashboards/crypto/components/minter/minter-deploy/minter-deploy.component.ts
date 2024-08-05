@@ -22,7 +22,7 @@ import {TuiAvatar, TuiPushService} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 
-import {MinterService} from '../minter.service';
+import {MinterService} from './minter-deploy.service';
 
 @Component({
     standalone: true,
@@ -75,47 +75,55 @@ export class MinterDeployComponent {
     @Output()
     public readonly tokenChange = new EventEmitter<string>();
 
+    @Output()
+    public readonly amountChange = new EventEmitter<number>();
+
+    @Output()
+    public readonly symbolChange = new EventEmitter<string>();
+
     protected showDialog(): void {
         this.openIcon = true;
     }
 
     protected deploy(): void {
-        // let required = true;
+        let required = true;
 
-        // for (let i = 0; i < this.minterForm.length; i++) {
-        //     if (
-        //         this.minterService[i].defaultValue === this.minterForm.controls[i].value
-        //     ) {
-        //         required = false;
-        //     }
-        // }
+        for (let i = 0; i < this.minterForm.length; i++) {
+            if (
+                this.minterService[i].defaultValue === this.minterForm.controls[i].value
+            ) {
+                required = false;
+            }
+        }
 
-        // if (!required) {
-        //     this.alert
-        //         .open('Тot all required fields are filled in', {
-        //             label: 'Try again',
-        //             status: 'warning',
-        //         })
-        //         .subscribe();
+        if (!required) {
+            this.alert
+                .open('Тot all required fields are filled in', {
+                    label: 'Try again',
+                    status: 'warning',
+                })
+                .subscribe();
 
-        //     return;
-        // }
+            return;
+        }
 
-        // if (this.urlIcon === '') {
-        //     this.warningIcon = true;
+        if (this.urlIcon === '') {
+            this.warningIcon = true;
 
-        //     return;
-        // }
+            return;
+        }
 
-        // this.push
-        //     .open('Minted your token', {
-        //         heading: 'Success',
-        //         icon: 'check',
-        //     })
-        //     .subscribe();
+        this.push
+            .open('Minted your token', {
+                heading: 'Success',
+                icon: 'check',
+            })
+            .subscribe();
         this.success = true;
         this.successChange.emit(true);
         this.urlIconChange.emit(this.urlIcon);
         this.tokenChange.emit(this.minterForm.controls[0].value ?? '');
+        this.symbolChange.emit(this.minterForm.controls[1].value ?? '');
+        this.amountChange.emit(Number(this.minterForm.controls[2].value) ?? 0);
     }
 }

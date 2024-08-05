@@ -53,7 +53,10 @@ export class MinterCreatedComponent {
     public urlIcon = '';
 
     @Input()
-    public token = '';
+    public symbol = '';
+
+    @Input()
+    public amount = 0;
 
     @Output()
     public readonly successChange = new EventEmitter<boolean>();

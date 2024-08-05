@@ -48,4 +48,6 @@ export class MinterComponent {
     protected success = false;
     protected urlIcon = '';
     protected token = '';
+    protected amount = 0;
+    protected symbol = '';
 }
