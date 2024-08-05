@@ -68,6 +68,6 @@ export class WeatherComponent {
     protected getImage(value: number): string {
         const type = this.getTypeOfWeather(value);
 
-        return `url(/weather/${type}.jpg)`;
+        return `url(./weather/${type}.jpg)`;
     }
 }
