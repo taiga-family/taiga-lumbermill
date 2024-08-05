@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiAppearance, TuiIcon} from '@taiga-ui/core';
+import {TuiAppearance} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 import {CleaningComponent} from './components/Cleaning/cleaning.component';
@@ -30,7 +30,6 @@ import {WeatherComponent} from './components/weather/weather.component';
         SafetyComponent,
         TuiAppearance,
         TuiCardLarge,
-        TuiIcon,
         WeatherComponent,
     ],
     templateUrl: './iot.component.html',
