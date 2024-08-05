@@ -22,6 +22,6 @@ const INITIAL_DATA: DashboardsData[] = [
 @Injectable({
     providedIn: 'root',
 })
-export class DashboardsService {
-    public readonly dashboardsData = INITIAL_DATA;
+export class DashboardsListService {
+    public readonly dashboardsListData = INITIAL_DATA;
 }

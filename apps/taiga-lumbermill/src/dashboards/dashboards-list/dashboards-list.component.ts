@@ -1,16 +1,17 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
+import {DashboardsListService} from '../dashboards-list/dashboards-list.service';
+
 @Component({
     standalone: true,
-    selector: 'lmb-dashboards',
+    selector: 'lmb-dashboards-list',
     imports: [
         CommonModule,
         RouterLink,
-        RouterOutlet,
         TuiCardLarge,
         TuiHeader,
         TuiIcon,
@@ -19,7 +20,10 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiSurface,
         TuiTitle,
     ],
-    templateUrl: './dashboards.component.html',
+    templateUrl: './dashboards-list.component.html',
+    styleUrl: './dashboards-list.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardsComponent {}
+export class DashboardsListComponent {
+    protected dashboardsService = inject(DashboardsListService).dashboardsListData;
+}

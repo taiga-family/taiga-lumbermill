@@ -9,6 +9,13 @@ export const appRoutes: Route[] = [
             ),
         children: [
             {
+                path: '',
+                loadComponent: async () =>
+                    import(
+                        '../../dashboards/dashboards-list/dashboards-list.component'
+                    ).then((mod) => mod.DashboardsListComponent),
+            },
+            {
                 path: 'iot',
                 loadComponent: async () =>
                     import('../../dashboards/iot/iot.component').then(
