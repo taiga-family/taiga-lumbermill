@@ -1,20 +1,17 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
-import type {NFTData} from './nft.service';
-import {NftService} from './nft.service';
-import {NftListComponent} from './nft-list/nft-list.component';
+import type {NFTData} from '../nft.service';
+import {NftService} from '../nft.service';
 
 @Component({
     standalone: true,
-    selector: 'lmb-nft',
+    selector: 'lmb-nft-list',
     imports: [
         CommonModule,
-        NftListComponent,
-        NftListComponent,
         TuiAppearance,
         TuiAvatar,
         TuiCardLarge,
@@ -22,13 +19,15 @@ import {NftListComponent} from './nft-list/nft-list.component';
         TuiHeader,
         TuiTitle,
     ],
-    templateUrl: './nft.component.html',
-    styleUrl: './nft.component.less',
+    templateUrl: './nft-list.component.html',
+    styleUrl: './nft-list.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NFTComponent {
+export class NftListComponent {
     protected nftService = inject(NftService).nftData;
-    protected activeItem = '';
+
+    @Input()
+    public activeItem = '';
 
     protected getInfo(activeItem: string): NFTData {
         for (const nft of this.nftService) {
