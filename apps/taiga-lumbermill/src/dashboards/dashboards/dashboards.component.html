@@ -7,9 +7,12 @@
         Back
     </a>
     /
-    <span tuiNavigationLogo>
-        <span tuiFade>Iot dashboard</span>
-    </span>
+    @let key = key$ | async;
+    @if (key) {
+        <span tuiNavigationLogo>
+            <span tuiFade>{{ key['key'] }} dashboard</span>
+        </span>
+    }
     <hr />
 </nav>
 <router-outlet />

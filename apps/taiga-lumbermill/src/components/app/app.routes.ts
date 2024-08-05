@@ -14,6 +14,7 @@ export const appRoutes: Route[] = [
                     import(
                         '../../dashboards/dashboards-list/dashboards-list.component'
                     ).then((mod) => mod.DashboardsListComponent),
+                data: {key: ''},
             },
             {
                 path: 'iot',
@@ -21,6 +22,7 @@ export const appRoutes: Route[] = [
                     import('../../dashboards/iot/iot.component').then(
                         (mod) => mod.IotComponent,
                     ),
+                data: {key: 'Iot'},
             },
             {
                 path: 'crypto',
@@ -28,6 +30,7 @@ export const appRoutes: Route[] = [
                     import('../../dashboards/crypto/crypto.component').then(
                         (mod) => mod.CryptoComponent,
                     ),
+                data: {key: 'Crypto'},
             },
         ],
     },

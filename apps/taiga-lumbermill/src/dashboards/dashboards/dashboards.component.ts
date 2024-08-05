@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ActivatedRoute, RouterLink, RouterOutlet} from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
@@ -22,4 +22,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
     templateUrl: './dashboards.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardsComponent {}
+export class DashboardsComponent {
+    protected key$ = inject(ActivatedRoute).data;
+}
