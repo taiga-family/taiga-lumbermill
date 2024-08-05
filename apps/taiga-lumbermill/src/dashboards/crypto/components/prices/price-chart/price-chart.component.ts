@@ -48,7 +48,7 @@ export class PriceChartComponent {
     protected pricesService = inject(CryptoService);
 
     protected xTargets = new Map();
-    protected chart = computed(() => this.validateData(this.history()));
+    protected chart = computed(() => this.processData(this.history()));
 
     protected minPrice = computed(() =>
         Math.min(...(this.history() ?? []).map((val) => Number(val.priceUsd))),
@@ -76,7 +76,7 @@ export class PriceChartComponent {
         return Math.ceil(value / this.maxPoints);
     }
 
-    protected validateData(data: HistoryData[] | undefined): TuiPoint[] {
+    protected processData(data: HistoryData[] | undefined): TuiPoint[] {
         const step = this.step((data ?? []).length);
         const fullSize: TuiPoint[] = (data ?? []).map((val, i) => [
             Math.trunc(i / step),

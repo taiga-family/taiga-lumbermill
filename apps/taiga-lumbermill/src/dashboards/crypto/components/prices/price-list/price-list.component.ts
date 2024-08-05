@@ -1,4 +1,4 @@
-import {AsyncPipe, CommonModule} from '@angular/common';
+import {AsyncPipe, CommonModule, DecimalPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,6 +19,7 @@ import {CryptoService} from '../../../../../services/crypto.service';
     imports: [
         AsyncPipe,
         CommonModule,
+        DecimalPipe,
         TuiAppearance,
         TuiAvatar,
         TuiButton,
@@ -51,9 +52,5 @@ export class PriceListComponent {
 
         this.token = res;
         this.tokenChange.emit(res);
-    }
-
-    protected toNormalView(value: number | string): string {
-        return Number(value).toFixed(2);
     }
 }

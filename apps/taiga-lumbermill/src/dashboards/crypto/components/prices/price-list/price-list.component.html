@@ -18,7 +18,7 @@
                         <div tuiTitle>
                             {{ tokens.name }}
                             <div tuiSubtitle>
-                                {{ toNormalView(tokens.priceUsd) }}$
+                                {{ tokens.priceUsd | number: '1.2-2' }}$
                                 <span
                                     [style.color]="
                                         tokens.changePercent24Hr[0] === '-'
@@ -26,7 +26,7 @@
                                             : 'var(--tui-status-positive)'
                                     "
                                 >
-                                    {{ toNormalView(tokens.changePercent24Hr) }}%
+                                    {{ tokens.changePercent24Hr | number: '1.2-2' }}%
                                 </span>
                             </div>
                         </div>
