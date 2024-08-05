@@ -1,0 +1,33 @@
+[tuiCardLarge] [tuiCell][data-size='l'] {
+    margin: 0;
+
+    &:not(:last-child) {
+        border-radius: 0;
+        box-shadow: 0 1px var(--tui-border-normal);
+    }
+
+    &:hover {
+        background-color: var(--tui-background-neutral-1-hover);
+    }
+
+    &:active {
+        background-color: var(--tui-background-neutral-1-pressed);
+    }
+}
+
+.price-list {
+    padding: 0;
+}
+
+.button-add {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list {
+    max-height: 22.5rem;
+    overflow: scroll;
+    background-color: var(--tui-background-base-alt);
+    border-radius: 1rem;
+    border: 1px solid var(--tui-border-normal);
+}

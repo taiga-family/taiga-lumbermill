@@ -1,0 +1,49 @@
+@let info = info$ | async;
+@if (info) {
+    @let data = info.data;
+    <div
+        tuiCardLarge
+        class="price-list"
+    >
+        <div class="list">
+            @for (tokens of data.slice(0, showTokens); track $index) {
+                @if (token === '' || tokens.id === token) {
+                    <div
+                        tuiCell="l"
+                        (click)="chooseToken(tokens.id)"
+                    >
+                        <tui-avatar
+                            [src]="'https://assets.coincap.io/assets/icons/' + tokens.symbol.toLowerCase() + '@2x.png'"
+                        />
+                        <div tuiTitle>
+                            {{ tokens.name }}
+                            <div tuiSubtitle>
+                                {{ tokens.priceUsd | number: '1.2-2' }}$
+                                <span
+                                    [style.color]="
+                                        tokens.changePercent24Hr[0] === '-'
+                                            ? 'var(--tui-status-negative)'
+                                            : 'var(--tui-status-positive)'
+                                    "
+                                >
+                                    {{ tokens.changePercent24Hr | number: '1.2-2' }}%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        @if (token === '' && showTokens < data.length) {
+            <button
+                appearance="icon"
+                iconStart="@tui.circle-plus"
+                tuiIconButton
+                class="button-add"
+                (click)="addToken()"
+            >
+                Add Token
+            </button>
+        }
+    </div>
+}
