@@ -7,15 +7,17 @@ import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     EventEmitter,
     inject,
-    Input,
+    input,
     Output,
 } from '@angular/core';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
 import type {NFTData} from '../nft.service';
@@ -29,8 +31,10 @@ import {NftService} from '../nft.service';
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         CommonModule,
+        TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
+        TuiBadge,
         TuiCardLarge,
         TuiCardMedium,
         TuiHeader,
@@ -44,14 +48,14 @@ import {NftService} from '../nft.service';
 })
 export class NftItemComponent {
     protected nftService = inject(NftService);
+    protected information = computed(() => this.getInfo(this.activeItem()));
 
     protected readonly columns = ['type', 'priceUsd', 'from', 'to', 'time'];
 
-    @Input()
-    public activeItem = '';
-
     @Output()
     public readonly activeItemChange = new EventEmitter<string>();
+
+    public activeItem = input.required<string>();
 
     protected toDate(value: number): TuiDay {
         const date = new Date(value);

@@ -4,20 +4,25 @@
 >
     <tui-avatar
         class="logo-nft clicked"
-        [src]="getInfo(activeItem).src"
+        [src]="information().src"
     />
     <div
         tuiHeader
         class="text-clicked"
         [style.text-align]="'center'"
     >
-        <h2 class="tui-space_top-0 tui-space_bottom-2">NFT name</h2>
+        <h2 class="tui-space_top-0 tui-space_bottom-2">{{ information().name }}</h2>
         <p
             tuiSubtitle
             class="tui-space_top-0 tui-space_bottom-0"
         >
-            price
+            {{ information().price | tuiAmount: 'USD' | async }}
         </p>
+        <div class="badges">
+            @for (tag of information().tags; track $index) {
+                <tui-badge appearance="primary">{{ tag }}</tui-badge>
+            }
+        </div>
     </div>
 </div>
 <tui-scrollbar>

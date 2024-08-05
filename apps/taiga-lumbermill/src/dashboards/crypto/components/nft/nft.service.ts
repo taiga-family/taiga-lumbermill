@@ -3,14 +3,15 @@ import {Injectable} from '@angular/core';
 export interface NFTData {
     readonly name: string;
     readonly src: string;
-    readonly price: string;
+    readonly price: number;
+    readonly tags: string[];
 }
 
 export const INITIAL_DATA: NFTData[] = [
-    {name: 'Beth', src: './nft/1.webp', price: '1 BTC'},
-    {name: 'Pryor', src: './nft/2.webp', price: '1 BTC'},
-    {name: 'Olea', src: './nft/3.webp', price: '1 BTC'},
-    {name: 'Imogen', src: './nft/4.webp', price: '1 BTC'},
+    {name: 'Beth', src: './nft/1.webp', price: 1, tags: ['Premium', 'VIP']},
+    {name: 'Pryor', src: './nft/2.webp', price: 2, tags: ['Premium', 'VIP']},
+    {name: 'Olea', src: './nft/3.webp', price: 3, tags: ['Premium', 'VIP']},
+    {name: 'Imogen', src: './nft/4.webp', price: 4, tags: ['Premium', 'VIP']},
 ];
 
 export interface NFTTABLE {

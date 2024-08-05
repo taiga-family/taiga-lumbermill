@@ -6,6 +6,7 @@ import {
     inject,
     Output,
 } from '@angular/core';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
@@ -18,6 +19,7 @@ import {NftService} from '../nft.service';
     selector: 'lmb-nft-list',
     imports: [
         CommonModule,
+        TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
         TuiCardLarge,
