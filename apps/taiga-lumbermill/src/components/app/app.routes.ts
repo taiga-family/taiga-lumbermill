@@ -7,7 +7,6 @@ export const appRoutes: Route[] = [
             import('../../dashboards/dashboards/dashboards.component').then(
                 (mod) => mod.DashboardsComponent,
             ),
-        data: {key: '22'},
         children: [
             {
                 path: '',
@@ -15,7 +14,7 @@ export const appRoutes: Route[] = [
                     import(
                         '../../dashboards/dashboards-list/dashboards-list.component'
                     ).then((mod) => mod.DashboardsListComponent),
-                data: {key: ''},
+                data: {title: ''},
             },
             {
                 path: 'iot',
@@ -23,7 +22,7 @@ export const appRoutes: Route[] = [
                     import('../../dashboards/iot/iot.component').then(
                         (mod) => mod.IotComponent,
                     ),
-                data: {key: 'Iot'},
+                data: {title: 'Iot'},
             },
             {
                 path: 'crypto',
@@ -31,7 +30,7 @@ export const appRoutes: Route[] = [
                     import('../../dashboards/crypto/crypto.component').then(
                         (mod) => mod.CryptoComponent,
                     ),
-                data: {key: 'Crypto'},
+                data: {title: 'Crypto'},
             },
         ],
     },

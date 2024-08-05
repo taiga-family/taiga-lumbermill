@@ -7,12 +7,9 @@
         Back
     </a>
     /
-    @let r = key$ | async;
-    @if (r) {
-        <span tuiNavigationLogo>
-            <span tuiFade>{{ r['key'] }} dashboard</span>
-        </span>
-    }
+    <span tuiNavigationLogo>
+        <span tuiFade>{{ (data$ | async) ?? '' }} dashboard</span>
+    </span>
     <hr />
 </nav>
 <router-outlet />

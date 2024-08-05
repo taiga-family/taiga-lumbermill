@@ -25,8 +25,8 @@ import {filter, map} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardsComponent {
-    protected key$ = inject(Router).events.pipe(
+    protected data$ = inject(Router).events.pipe(
         filter((e): e is ActivationEnd => e instanceof ActivationEnd),
-        map((event) => event.snapshot.firstChild?.data),
+        map((event) => event.snapshot.firstChild?.data['title']),
     );
 }
