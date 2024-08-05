@@ -42,12 +42,8 @@ export class NftListComponent {
     }
 
     protected getInfo(activeItem: string): NFTData {
-        for (const nft of this.nftService) {
-            if (nft.name === activeItem) {
-                return nft;
-            }
-        }
-
-        return this.nftService[0];
+        return (
+            this.nftService.find((val) => val.name === activeItem) ?? this.nftService[0]
+        );
     }
 }

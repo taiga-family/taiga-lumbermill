@@ -20,7 +20,6 @@ import {TuiAppearance, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
-import type {NFTData} from '../nft.service';
 import {NftService} from '../nft.service';
 
 @Component({
@@ -48,7 +47,11 @@ import {NftService} from '../nft.service';
 })
 export class NftItemComponent {
     protected nftService = inject(NftService);
-    protected information = computed(() => this.getInfo(this.activeItem()));
+    protected information = computed(
+        () =>
+            this.nftService.nftData.find((val) => val.name === this.activeItem()) ??
+            this.nftService.nftData[0],
+    );
 
     protected readonly columns = ['type', 'priceUsd', 'from', 'to', 'time'];
 
@@ -65,15 +68,5 @@ export class NftItemComponent {
 
     protected updateItem(value: string): void {
         this.activeItemChange.emit(value);
-    }
-
-    protected getInfo(activeItem: string): NFTData {
-        for (const nft of this.nftService.nftData) {
-            if (nft.name === activeItem) {
-                return nft;
-            }
-        }
-
-        return this.nftService.nftData[0];
     }
 }
