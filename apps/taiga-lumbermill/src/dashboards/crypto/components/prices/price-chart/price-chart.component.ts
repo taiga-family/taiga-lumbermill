@@ -47,7 +47,20 @@ import {INTERVALS} from './price-chart.constant';
 export class PriceChartComponent {
     protected pricesService = inject(CryptoService);
 
-    protected xTargets = new Map();
+    protected step = computed(() =>
+        Math.ceil((this.history() ?? []).length / this.maxPoints),
+    );
+
+    protected xTargets = computed(
+        () =>
+            new Map(
+                (this.history() ?? []).map((val, i) => [
+                    Math.trunc(i / this.step()),
+                    new Date(val.date).toDateString(),
+                ]),
+            ),
+    );
+
     protected chart = computed(() => this.processData(this.history()));
 
     protected minPrice = computed(() =>
@@ -72,30 +85,18 @@ export class PriceChartComponent {
         ),
     );
 
-    protected step(value: number): number {
-        return Math.ceil(value / this.maxPoints);
-    }
-
     protected processData(data: HistoryData[] | undefined): TuiPoint[] {
-        const step = this.step((data ?? []).length);
         const fullSize: TuiPoint[] = (data ?? []).map((val, i) => [
-            Math.trunc(i / step),
+            Math.trunc(i / this.step()),
             Number(val.priceUsd) * (this.maxPrice() > 10 ? 1 : 100),
         ]);
-        const result = fullSize.filter((_, i) => i % step === 0);
 
-        for (let i = 0; i < (data ?? []).length; i += step) {
-            const date = new Date((data ?? [])[i].date);
-
-            this.xTargets.set(Math.trunc(i / step), date.toDateString());
-        }
-
-        return result;
+        return fullSize.filter((_, i) => i % this.step() === 0);
     }
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
         `${(this.maxPrice() > 10 ? y : y / 100).toLocaleString('en-US', {maximumFractionDigits: this.maxPrice() > 10 ? 0 : 2})} $`;
 
     protected readonly xStringify: TuiStringHandler<number> = (x) =>
-        `${this.xTargets.get(x)}`;
+        `${this.xTargets().get(x)}`;
 }
