@@ -8,7 +8,6 @@ export const appRoutes: Route[] = [
                 (mod) => mod.DashboardsComponent,
             ),
         data: {key: '22'},
-
         children: [
             {
                 path: '',
