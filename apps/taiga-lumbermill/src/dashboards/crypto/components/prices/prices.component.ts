@@ -25,8 +25,4 @@ import {PriceListComponent} from './price-list/price-list.component';
 export class PricesComponent {
     protected pricesService = inject(CryptoService);
     protected token = '';
-
-    protected changeValue(value: string): void {
-        this.token = value;
-    }
 }
