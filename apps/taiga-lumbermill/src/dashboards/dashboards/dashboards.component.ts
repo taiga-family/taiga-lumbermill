@@ -23,5 +23,5 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardsComponent {
-    protected key$ = inject(ActivatedRoute).data;
+    protected key = inject(ActivatedRoute).snapshot.firstChild?.data;
 }

@@ -7,6 +7,8 @@ export const appRoutes: Route[] = [
             import('../../dashboards/dashboards/dashboards.component').then(
                 (mod) => mod.DashboardsComponent,
             ),
+        data: {key: '22'},
+
         children: [
             {
                 path: '',
