@@ -1,10 +1,27 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
-import {DashboardsListService} from '../dashboards-list/dashboards-list.service';
+interface DashboardsData {
+    readonly title: string;
+    readonly link: string;
+    readonly description: string;
+}
+
+const INITIAL_DATA: DashboardsData[] = [
+    {
+        title: 'Iot Dashboard',
+        link: '/dashboards/iot',
+        description: 'Smart home dashboard',
+    },
+    {
+        title: 'Crypto Dashboard',
+        link: '/dashboards/crypto',
+        description: 'Crypto token dashboard',
+    },
+];
 
 @Component({
     standalone: true,
@@ -25,5 +42,5 @@ import {DashboardsListService} from '../dashboards-list/dashboards-list.service'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardsListComponent {
-    protected dashboardsService = inject(DashboardsListService).dashboardsListData;
+    protected dashboardsListData = INITIAL_DATA;
 }
