@@ -5,7 +5,6 @@ interface ControlPanelData {
     readonly img: string;
     readonly clickedName: string;
     readonly clickedImg: string;
-    state: boolean;
 }
 
 export const INITIAL_DATA: ControlPanelData[] = [
@@ -14,28 +13,24 @@ export const INITIAL_DATA: ControlPanelData[] = [
         img: '@tui.door-open',
         clickedName: 'Close the door',
         clickedImg: '@tui.door-closed',
-        state: false,
     },
     {
         name: 'Call security',
         img: '@tui.shield-alert',
         clickedName: 'Call off security',
         clickedImg: '@tui.octagon-x',
-        state: false,
     },
     {
         name: 'Turn up the heat',
         img: '@tui.heater',
         clickedName: 'Turn off the heat',
         clickedImg: '@tui.refrigerator',
-        state: false,
     },
     {
         name: 'Turn on the kettle',
         img: '@tui.coffee',
         clickedName: 'Turn off the kettle',
         clickedImg: '@tui.cup-soda',
-        state: false,
     },
 ];
 
