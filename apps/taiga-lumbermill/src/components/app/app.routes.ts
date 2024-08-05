@@ -16,8 +16,8 @@ export const appRoutes: Route[] = [
     {
         path: 'dashboards',
         loadComponent: async () =>
-            import('../common-page/common-page.component').then(
-                (mod) => mod.CommonPageComponent,
+            import('../../dashboards/dashboards/dashboards.component').then(
+                (mod) => mod.DashboardsComponent,
             ),
     },
     {path: '**', redirectTo: 'dashboards'},

@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 
-interface CommonPageData {
+interface DashboardsData {
     readonly title: string;
     readonly link: string;
     readonly description: string;
 }
 
-const INITIAL_DATA: CommonPageData[] = [
+const INITIAL_DATA: DashboardsData[] = [
     {
         title: 'Iot Dashboard',
         link: '/dashboards/iot',
@@ -22,6 +22,6 @@ const INITIAL_DATA: CommonPageData[] = [
 @Injectable({
     providedIn: 'root',
 })
-export class CommonPageService {
-    public readonly commonPageData = INITIAL_DATA;
+export class DashboardsService {
+    public readonly dashboardsData = INITIAL_DATA;
 }

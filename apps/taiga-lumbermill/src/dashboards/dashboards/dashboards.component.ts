@@ -4,11 +4,11 @@ import {RouterLink} from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
-import {CommonPageService} from './common-page.service';
+import {DashboardsService} from './dashboards.service';
 
 @Component({
     standalone: true,
-    selector: 'lmb-common-page',
+    selector: 'lmb-dashboards',
     imports: [
         CommonModule,
         RouterLink,
@@ -20,10 +20,10 @@ import {CommonPageService} from './common-page.service';
         TuiSurface,
         TuiTitle,
     ],
-    templateUrl: './common-page.component.html',
-    styleUrl: './common-page.component.less',
+    templateUrl: './dashboards.component.html',
+    styleUrl: './dashboards.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CommonPageComponent {
-    protected commonPageService = inject(CommonPageService).commonPageData;
+export class DashboardsComponent {
+    protected dashboardsService = inject(DashboardsService).dashboardsData;
 }
