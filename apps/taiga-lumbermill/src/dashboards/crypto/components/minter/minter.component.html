@@ -12,24 +12,16 @@
         </h2>
     </header>
     @if (!success) {
-        <lmb-minter-deploy />
-    } @else {
-        <!-- <tui-avatar
-            size="xl"
-            class="logo"
-            [src]="urlIcon"
+        <lmb-minter-deploy
+            [(success)]="success"
+            [(urlIcon)]="urlIcon"
+            (tokenChange)="(token)"
         />
-        <h3
-            tuiTitle
-            class="info"
-        >
-            {{ amount }} (${{ symbol }}) have been sent to your wallet
-        </h3>
-        <button
-            tuiButton
-            (click)="success = false"
-        >
-            Create new Token
-        </button> -->
+    } @else {
+        <lmb-minter-created
+            [token]="token"
+            [urlIcon]="urlIcon"
+            [(success)]="success"
+        />
     }
 </div>
