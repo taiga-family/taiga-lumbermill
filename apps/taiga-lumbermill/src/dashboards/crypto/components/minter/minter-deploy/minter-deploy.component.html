@@ -1,0 +1,84 @@
+@let token = minterForm.controls[0].value;
+@let symbol = minterForm.controls[1].value;
+@let amount = minterForm.controls[2].value;
+@let description = minterForm.controls[3].value;
+<div class="info">
+    <div tuiCell="l">
+        <tui-avatar
+            size="xl"
+            [src]="!openIcon && urlIcon !== '' ? urlIcon : '@tui.pencil'"
+            (click)="showDialog()"
+        />
+        <div tuiTitle>
+            {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
+            <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
+        </div>
+    </div>
+</div>
+@for (control of minterForm['controls']; track $index) {
+    <div class="block-input">
+        @if (minterService[$index].type === 'text') {
+            <tui-input [formControl]="control">
+                {{ minterService[$index].title }}
+                <input tuiTextfieldLegacy />
+            </tui-input>
+        } @else {
+            <tui-input-number [formControl]="control">
+                {{ minterService[$index].title }}
+                <input tuiTextfieldLegacy />
+            </tui-input-number>
+        }
+        <div
+            tuiSubtitle
+            [style.padding-left]="'0.4rem'"
+        >
+            {{ minterService[$index].description }}
+        </div>
+    </div>
+}
+<button
+    tuiButton
+    (click)="deploy()"
+>
+    Deploy
+</button>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{label: 'Edit logo', size: 's'}"
+    [(tuiDialog)]="openIcon"
+>
+    <p>URL of 256x256 pixel PNG image of token logo</p>
+    <tui-input
+        tuiAutoFocus
+        [(ngModel)]="urlIcon"
+    >
+        Logo token
+    </tui-input>
+    <p>
+        <button
+            tuiButton
+            type="submit"
+            (click)="observer.complete()"
+        >
+            Submit
+        </button>
+    </p>
+</ng-template>
+
+<ng-template
+    let-observer
+    [tuiDialogOptions]="{label: 'You need upload logo token', size: 's'}"
+    [(tuiDialog)]="warningIcon"
+>
+    <p>Click on the pencil next to the token name to download the picture url</p>
+    <p>
+        <button
+            tuiButton
+            type="submit"
+            (click)="observer.complete()"
+        >
+            Ok
+        </button>
+    </p>
+</ng-template>
