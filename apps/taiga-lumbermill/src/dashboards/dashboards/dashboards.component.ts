@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
@@ -12,6 +12,7 @@ import {DashboardsService} from './dashboards.service';
     imports: [
         CommonModule,
         RouterLink,
+        RouterOutlet,
         TuiCardLarge,
         TuiHeader,
         TuiIcon,
