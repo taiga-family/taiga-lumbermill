@@ -7,9 +7,12 @@
         Back
     </a>
     /
-    <span tuiNavigationLogo>
-        <span tuiFade>{{ key?.['key'] }} dashboard</span>
-    </span>
+    @let r = key$ | async;
+    @if (r) {
+        <span tuiNavigationLogo>
+            <span tuiFade>{{ r['key'] }} dashboard</span>
+        </span>
+    }
     <hr />
 </nav>
-<router-outlet (activate)="updateRoute()" />
+<router-outlet />

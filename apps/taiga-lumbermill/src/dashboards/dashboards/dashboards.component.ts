@@ -1,13 +1,15 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {ActivatedRoute, RouterLink, RouterOutlet} from '@angular/router';
+import {ActivationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {filter, map} from 'rxjs';
 
 @Component({
     standalone: true,
     selector: 'lmb-dashboards',
     imports: [
+        AsyncPipe,
         CommonModule,
         RouterLink,
         RouterOutlet,
@@ -23,10 +25,8 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardsComponent {
-    protected router = inject(ActivatedRoute);
-    protected key = this.router.snapshot.firstChild?.data;
-
-    protected updateRoute(): void {
-        this.key = this.router.snapshot.firstChild?.data;
-    }
+    protected key$ = inject(Router).events.pipe(
+        filter((e): e is ActivationEnd => e instanceof ActivationEnd),
+        map((event) => event.snapshot.firstChild?.data),
+    );
 }
