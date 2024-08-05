@@ -27,7 +27,7 @@
         class="viewport tui-zero-scrollbar"
         [itemSize]="45"
         [maxBufferPx]="500"
-        [minBufferPx]="400"
+        [minBufferPx]="200"
     >
         <table
             tuiTable
@@ -35,56 +35,31 @@
         >
             <thead>
                 <tr tuiThGroup>
-                    <th
-                        *tuiHead="'name'"
-                        tuiTh
-                        [sticky]="true"
-                        [style.top.px]="-viewport['_renderedContentOffset']"
-                    >
-                        Name
-                    </th>
-                    <th
-                        *tuiHead="'dob'"
-                        tuiTh
-                        [sticky]="true"
-                        [style.top.px]="-viewport['_renderedContentOffset']"
-                    >
-                        Date of Birth
-                    </th>
-                    <th
-                        *tuiHead="'age'"
-                        tuiTh
-                        [sorter]="ageSorter"
-                        [sticky]="true"
-                        [style.top.px]="-viewport['_renderedContentOffset']"
-                    >
-                        Age
-                    </th>
+                    @for (column of columns; track $index) {
+                        <th
+                            *tuiHead="column"
+                            tuiTh
+                            [sticky]="true"
+                            [style.top.px]="-viewport['_renderedContentOffset']"
+                        >
+                            {{ column === 'priceUsd' ? 'price, $' : column }}
+                        </th>
+                    }
                 </tr>
             </thead>
             <tbody tuiTbody>
                 <tr
-                    *cdkVirtualFor="let item of data | tuiTableSort"
+                    *cdkVirtualFor="let item of nftService.nftTable | tuiTableSort"
                     tuiTr
                 >
-                    <td
-                        *tuiCell="'name'"
-                        tuiTd
-                    >
-                        {{ item.name }}
-                    </td>
-                    <td
-                        *tuiCell="'dob'"
-                        tuiTd
-                    >
-                        {{ item.dob }}
-                    </td>
-                    <td
-                        *tuiCell="'age'"
-                        tuiTd
-                    >
-                        {{ getAge(item) }}
-                    </td>
+                    @for (column of columns; track $index) {
+                        <td
+                            *tuiCell="column"
+                            tuiTd
+                        >
+                            {{ column === 'time' ? toDate(item[column]) : item[column] }}
+                        </td>
+                    }
                 </tr>
             </tbody>
         </table>
