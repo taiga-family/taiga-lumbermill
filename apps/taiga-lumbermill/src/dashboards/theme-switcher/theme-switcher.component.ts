@@ -1,11 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    signal,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {
@@ -26,7 +20,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
-import {ThemeSwitcherService} from './theme-switcher.service';
+import {INITIAL_DATA} from './theme-switcher.constants';
 
 @Component({
     standalone: true,
@@ -58,14 +52,14 @@ import {ThemeSwitcherService} from './theme-switcher.service';
     },
 })
 export class ThemeSwitcherComponent {
-    protected themeSwitcherService = inject(ThemeSwitcherService).themeSwitcherData;
+    protected themeSwitcherData = INITIAL_DATA;
     protected readonly exampleControl = new FormControl(100);
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
-    protected colors = this.themeSwitcherService.map((val) => signal(val.base_color));
+    protected colors = this.themeSwitcherData.map((val) => signal(val.base_color));
 
     protected host = computed(() =>
         this.colors
-            .map((val, i) => `${this.themeSwitcherService[i].property}: ${val()};`)
+            .map((val, i) => `${this.themeSwitcherData[i].property}: ${val()};`)
             .join(' '),
     );
 }

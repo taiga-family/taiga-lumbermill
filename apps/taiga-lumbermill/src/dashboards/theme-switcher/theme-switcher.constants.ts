@@ -1,5 +1,3 @@
-import {Injectable} from '@angular/core';
-
 interface ThemeSwitcherData {
     readonly name: string;
     readonly base_color: string;
@@ -26,10 +24,3 @@ export const INITIAL_DATA: ThemeSwitcherData[] = [
     {name: 'Primary', base_color: '#526ed3', property: '--tui-background-accent-1'},
     {name: 'Accent', base_color: '#ff7043', property: '--tui-background-accent-2'},
 ];
-
-@Injectable({
-    providedIn: 'root',
-})
-export class ThemeSwitcherService {
-    public readonly themeSwitcherData = INITIAL_DATA;
-}
