@@ -32,6 +32,14 @@ export const appRoutes: Route[] = [
                     ),
                 data: {title: 'Crypto'},
             },
+            {
+                path: 'theme',
+                loadComponent: async () =>
+                    import(
+                        '../../dashboards/theme-switcher/theme-switcher.component'
+                    ).then((mod) => mod.ThemeSwitcherComponent),
+                data: {title: 'Create Theme'},
+            },
         ],
     },
     {path: '**', redirectTo: 'dashboards'},
