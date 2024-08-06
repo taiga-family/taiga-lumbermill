@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {
@@ -47,11 +47,15 @@ import {ThemeSwitcherService} from './theme-switcher.service';
     templateUrl: './theme-switcher.component.html',
     styleUrl: './theme-switcher.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style.--tui-background-base]': 'this.colors[0]',
+        '[style.--tui-text-primary]': 'this.colors[1]',
+        '[style.--tui-text-secondary]': 'this.colors[2]',
+        '[style.--tui-text-action]': 'this.colors[3]',
+        '[style.--tui-background-accent-2]': 'this.colors[4]',
+    },
 })
 export class ThemeSwitcherComponent {
-    @HostBinding('attr.tuiTheme')
-    protected cssClass = 'light';
-
     protected themeSwitcherService = inject(ThemeSwitcherService).themeSwitcherData;
     protected readonly exampleControl = new FormControl(100);
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
