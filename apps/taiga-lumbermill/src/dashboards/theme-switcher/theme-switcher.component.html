@@ -6,11 +6,22 @@
         <tui-input-color
             tuiTextfieldSize="m"
             [colors]="palette"
-            [(ngModel)]="InputColor.base_color"
+            [(ngModel)]="colors[$index]"
         >
             {{ InputColor.name }}
         </tui-input-color>
     }
+    <code>
+        :root {{ '{' }}
+        <br />
+        // Backgrounds
+        <br />
+        --tui-background-base: {{ colors[0] }};
+        <br />
+        --tui-background-base-alt: #f6f6f6;
+        <br />
+        {{ '}' }}
+    </code>
 </div>
 <div
     tuiAppearance="whiteblock"

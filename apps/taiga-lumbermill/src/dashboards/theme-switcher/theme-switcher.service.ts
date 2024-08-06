@@ -6,7 +6,7 @@ interface ThemeSwitcherData {
 }
 
 export const INITIAL_DATA: ThemeSwitcherData[] = [
-    {name: 'Base background', base_color: '#fff'},
+    {name: 'Base background', base_color: 'rgba(255, 255, 255)'},
     {name: 'Primary text', base_color: 'rgba(27, 31, 59, 1)'},
     {name: 'Secondary', base_color: 'rgba(27, 31, 59, 0.65)'},
     {name: 'Action', base_color: '#526ed3'},
