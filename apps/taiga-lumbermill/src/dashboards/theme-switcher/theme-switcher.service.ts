@@ -2,15 +2,15 @@ import {Injectable} from '@angular/core';
 
 interface ThemeSwitcherData {
     readonly name: string;
-    // readonly base_color: string;
+    readonly base_color: string;
 }
 
 export const INITIAL_DATA: ThemeSwitcherData[] = [
-    {name: 'Primary text'},
-    {name: 'Primary text'},
-    {name: 'Primary text'},
-    {name: 'Primary text'},
-    {name: 'Primary text'},
+    {name: 'Base background', base_color: '#fff'},
+    {name: 'Primary text', base_color: 'rgba(27, 31, 59, 1)'},
+    {name: 'Secondary', base_color: 'rgba(27, 31, 59, 0.65)'},
+    {name: 'Action', base_color: '#526ed3'},
+    {name: 'Accent', base_color: '#ff7043'},
 ];
 
 @Injectable({
