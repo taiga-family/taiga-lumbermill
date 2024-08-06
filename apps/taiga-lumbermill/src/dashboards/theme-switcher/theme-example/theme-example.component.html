@@ -16,7 +16,10 @@
     >
         Type a sum
     </tui-input-number>
-    <tui-input-year [tuiTextfieldCleaner]="true">
+    <tui-input-year
+        [formControl]="exampleYearcontrol"
+        [tuiTextfieldCleaner]="true"
+    >
         Choose a year
         <input
             placeholder="Not 2022 please"
