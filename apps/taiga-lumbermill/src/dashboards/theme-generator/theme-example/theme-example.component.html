@@ -16,83 +16,112 @@
     >
         Type a sum
     </tui-input-number>
-    <tui-input-year
-        [formControl]="exampleYearcontrol"
-        [tuiTextfieldCleaner]="true"
-    >
-        Choose a year
-        <input
-            placeholder="Not 2022 please"
-            tuiTextfieldLegacy
-        />
-    </tui-input-year>
     <div class="tui-row">
-        <div class="tui-col_md-4">
-            <tui-island>
-                <h3 class="tui-island__title">Title</h3>
-                <p class="tui-island__paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                </p>
+        <div class="tui-col_md-6">
+            <div
+                tuiCardLarge
+                tuiSurface="elevated"
+            >
+                <header tuiHeader>
+                    <h1 tuiTitle>
+                        Title
+                        <span tuiSubtitle>Subtitle</span>
+                    </h1>
+                </header>
+
                 <button
-                    appearance="flat"
-                    size="m"
-                    tuiButton
-                    type="button"
-                    class="tui-island__footer-button"
+                    *tuiRepeatTimes="let index of 3"
+                    tuiCell="l"
+                    tuiDropdownAlign="right"
+                    tuiDropdownOpen
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownSided]="true"
                 >
-                    Button
-                </button>
-            </tui-island>
-        </div>
-        <div class="tui-col_md-4">
-            <tui-island>
-                <div class="tui-island__content">
-                    <figure class="tui-island__figure">
-                        <div class="some-figure"></div>
-                    </figure>
-                    <div>
-                        <p class="tui-island__paragraph">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                        </p>
-                        <p class="tui-island__paragraph tui-island__paragraph_link">
-                            <a
-                                href="/"
-                                tuiLink
-                            >
-                                Fill some papers
-                            </a>
-                        </p>
+                    <tui-avatar
+                        appearance="primary"
+                        src="@tui.star"
+                    />
+
+                    <div tuiTitle>
+                        Title
+                        <div tuiSubtitle>Description</div>
                     </div>
+
+                    <tui-icon
+                        icon="@tui.chevron-right"
+                        tuiAppearance="icon"
+                    />
+                </button>
+
+                <button
+                    tuiLink
+                    type="button"
+                >
+                    Show all
+                </button>
+            </div>
+
+            <ng-template
+                #dropdown
+                let-close
+            >
+                <tui-data-list>
+                    <tui-opt-group>
+                        <button
+                            *ngFor="let item of ['Edit', 'Download', 'Rename', 'Delete']"
+                            tuiOption
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-opt-group>
+                    <tui-opt-group>
+                        <button
+                            tuiOption
+                            (click)="close()"
+                        >
+                            Nevermind
+                        </button>
+                    </tui-opt-group>
+                </tui-data-list>
+            </ng-template>
+        </div>
+        <div class="tui-col_md-6">
+            <div
+                tuiCardLarge
+                tuiSurface="elevated"
+            >
+                <tui-input-year
+                    [formControl]="exampleYearcontrol"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Choose a year
+                    <input
+                        placeholder="Not 2022 please"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-year>
+                <div class="list">
+                    @for (badge of badges; track $index) {
+                        <tui-badge [appearance]="badge">
+                            {{ badge.charAt(0).toUpperCase() + badge.slice(1) }}
+                        </tui-badge>
+                    }
                 </div>
-            </tui-island>
+                <input
+                    size="m"
+                    tuiCheckbox
+                    type="checkbox"
+                    [ngModel]="true"
+                />
+                <input
+                    size="m"
+                    tuiSwitch
+                    type="checkbox"
+                    [disabled]="true"
+                    [ngModel]="true"
+                />
+            </div>
         </div>
-        <div class="tui-col_md-4">
-            <tui-island>
-                <p class="tui-island__category">category</p>
-                <h3 class="tui-island__title">Some heading</h3>
-                <p class="tui-island__paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                </p>
-                <p class="tui-island__paragraph tui-island__paragraph_link">
-                    <a
-                        href="/"
-                        tuiLink
-                    >
-                        Link
-                    </a>
-                </p>
-            </tui-island>
-        </div>
-    </div>
-    <div class="list">
-        @for (badge of badges; track $index) {
-            <tui-badge [appearance]="badge">
-                {{ badge.charAt(0).toUpperCase() + badge.slice(1) }}
-            </tui-badge>
-        }
     </div>
     <div class="list">
         @for (button of buttons; track $index) {

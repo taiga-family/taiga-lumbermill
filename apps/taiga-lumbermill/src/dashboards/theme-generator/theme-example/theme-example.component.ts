@@ -2,20 +2,25 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
+    TuiDataList,
+    TuiDropdown,
     TuiHint,
+    TuiIcon,
     TuiLink,
+    TuiOptGroup,
+    TuiSurface,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiBadge, TuiCheckbox, TuiSwitch} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {
     TuiInputNumberModule,
     TuiInputYearModule,
-    TuiIslandDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
@@ -27,16 +32,25 @@ import {
         FormsModule,
         ReactiveFormsModule,
         TuiAppearance,
+        TuiAvatar,
         TuiBadge,
         TuiButton,
         TuiCardLarge,
+        TuiCell,
+        TuiCheckbox,
         TuiCurrencyPipe,
+        TuiDataList,
+        TuiDropdown,
         TuiHeader,
         TuiHint,
+        TuiIcon,
         TuiInputNumberModule,
         TuiInputYearModule,
-        TuiIslandDirective,
         TuiLink,
+        TuiOptGroup,
+        TuiRepeatTimes,
+        TuiSurface,
+        TuiSwitch,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
