@@ -10,6 +10,7 @@
             tuiTextfieldSize="m"
             [colors]="palette"
             [(ngModel)]="colors[$index]"
+            (ngModelChange)="colors[$index].set($event)"
         >
             {{ InputColor.name }}
         </tui-input-color>
@@ -18,7 +19,7 @@
         :root {{ '{' }}
         @for (InputColor of themeSwitcherService; track $index) {
             <br />
-            {{ InputColor.property }}: {{ colors[$index] }};
+            {{ InputColor.property }}: {{ colors[$index]() }};
         }
         <br />
         {{ '}' }}
