@@ -16,12 +16,10 @@
     }
     <code>
         :root {{ '{' }}
-        <br />
-        // Backgrounds
-        <br />
-        --tui-background-base: {{ colors[0] }};
-        <br />
-        --tui-background-base-alt: #f6f6f6;
+        @for (InputColor of themeSwitcherService; track $index) {
+            <br />
+            {{ InputColor.property }}: {{ colors[$index] }};
+        }
         <br />
         {{ '}' }}
     </code>
