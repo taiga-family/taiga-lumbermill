@@ -61,7 +61,7 @@ import {
 })
 export class ThemeExampleComponent {
     protected readonly exampleControl = new FormControl(100);
-    protected readonly exampleYearcontrol = new FormControl<number | null>(null);
+    protected readonly exampleYearControl = new FormControl<number | null>(null);
     protected readonly badges = [
         'primary',
         'accent',
