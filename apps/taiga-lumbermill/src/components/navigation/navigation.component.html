@@ -8,8 +8,7 @@
     </button>
     <span tuiNavigationLogo>
         <tui-icon icon="@tui.home" />
-        <span tuiFade>A very very long product name</span>
-        <tui-badge>Test</tui-badge>
+        <span tuiFade>Taiga lumbermill</span>
     </span>
     <button
         appearance="secondary"
@@ -36,12 +35,6 @@
                         />
                     </button>
                 }
-                <a
-                    routerLink="/dashboards/theme"
-                    tuiOption
-                >
-                    Create theme
-                </a>
             </tui-data-list>
         </ng-template>
     </button>
@@ -58,7 +51,7 @@
                 iconStart="@tui.home"
                 tuiAsideItem
             >
-                <span tuiFade>A very very long product name</span>
+                <span tuiFade>Taiga lumbermill</span>
             </button>
         </header>
         <button
@@ -104,12 +97,13 @@
             <span tuiFade>By default ellipsis is used but you can use fade too</span>
         </button>
         <hr />
-        <button
+        <a
             iconStart="@tui.plus"
+            routerLink="/dashboards/theme"
             tuiAsideItem
         >
-            Add
-        </button>
+            Add Theme
+        </a>
         <footer>
             <button
                 iconStart="@tui.star"
