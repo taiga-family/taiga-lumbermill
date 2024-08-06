@@ -29,7 +29,6 @@ import {
 
 import type {PricesData} from '../../../../services/crypto.service';
 import {CryptoService} from '../../../../services/crypto.service';
-import {SwapService} from './swap.service';
 
 @Component({
     standalone: true,
@@ -75,7 +74,7 @@ export class SwapComponent {
         this.getPrice(this.info()?.data, this.chosen()[1]),
     );
 
-    protected swapService = inject(SwapService).swapData;
+    protected titles = ['From', 'To'];
 
     protected from = signal('0');
     protected to = signal('0');

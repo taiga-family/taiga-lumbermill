@@ -14,10 +14,10 @@
                 Swap
             </h2>
         </header>
-        @for (type of swapService; track $index) {
+        @for (title of titles; track $index) {
             <div>
                 <div tuiCell="l">
-                    <div TuiTitle>{{ type.title }}</div>
+                    <div TuiTitle>{{ title }}</div>
                     <div TuiTitle>Balance: 1000 {{ chosen()[$index].toUpperCase() }}</div>
                 </div>
                 <button
