@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {
     TuiAppearance,
@@ -20,6 +20,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
+import {ThemeExampleComponent} from './theme-example/theme-example.component';
 import {INITIAL_DATA} from './theme-switcher.constants';
 
 @Component({
@@ -29,6 +30,7 @@ import {INITIAL_DATA} from './theme-switcher.constants';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        ThemeExampleComponent,
         TuiAppearance,
         TuiButton,
         TuiCardLarge,
@@ -53,7 +55,6 @@ import {INITIAL_DATA} from './theme-switcher.constants';
 })
 export class ThemeSwitcherComponent {
     protected themeSwitcherData = INITIAL_DATA;
-    protected readonly exampleControl = new FormControl(100);
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
     protected colors = this.themeSwitcherData.map((val) => signal(val.base_color));
 

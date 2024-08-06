@@ -12,36 +12,9 @@
     gap: 1rem;
 }
 
-.example-block {
-    position: sticky;
-    top: 7rem;
-    background: var(--tui-background-base);
-    height: max-content;
-}
-
 code {
     margin-top: 2rem;
     padding: 1rem;
     background: var(--tui-background-base-alt);
     font-family: monospace;
-}
-
-@media (max-width: 1250px) {
-    .tui-row {
-        gap: 1rem;
-    }
-
-    .tui-col_md-4 {
-        width: 100%;
-    }
-}
-
-@media (max-width: 570px) {
-    .example-block {
-        display: none;
-    }
-
-    :host {
-        grid-template-columns: 1fr;
-    }
 }
