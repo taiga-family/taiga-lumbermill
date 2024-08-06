@@ -21,7 +21,7 @@ import {
 } from '@taiga-ui/legacy';
 
 import {ThemeExampleComponent} from './theme-example/theme-example.component';
-import {INITIAL_DATA} from './theme-switcher.constants';
+import {data} from './theme-generator.constants';
 
 @Component({
     standalone: true,
@@ -46,21 +46,19 @@ import {INITIAL_DATA} from './theme-switcher.constants';
         TuiTextfieldControllerModule,
         TuiTitle,
     ],
-    templateUrl: './theme-switcher.component.html',
-    styleUrl: './theme-switcher.component.less',
+    templateUrl: './theme-generator.component.html',
+    styleUrl: './theme-generator.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style]': 'this.host()',
     },
 })
-export class ThemeSwitcherComponent {
-    protected themeSwitcherData = INITIAL_DATA;
+export class ThemeGeneratorComponent {
+    protected themeData = data;
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
-    protected colors = this.themeSwitcherData.map((val) => signal(val.base_color));
+    protected colors = this.themeData.map((val) => signal(val.base_color));
 
     protected host = computed(() =>
-        this.colors
-            .map((val, i) => `${this.themeSwitcherData[i].property}: ${val()};`)
-            .join(' '),
+        this.colors.map((val, i) => `${this.themeData[i].property}: ${val()};`).join(' '),
     );
 }

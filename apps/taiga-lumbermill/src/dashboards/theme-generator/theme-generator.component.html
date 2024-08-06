@@ -5,7 +5,7 @@
     <div tuiHeader="m">
         <h3 tuiTitle>Colors</h3>
     </div>
-    @for (InputColor of themeSwitcherData; track $index) {
+    @for (InputColor of themeData; track $index) {
         <tui-input-color
             tuiTextfieldSize="m"
             [colors]="palette"
@@ -17,7 +17,7 @@
     }
     <code>
         :root {{ '{' }}
-        @for (InputColor of themeSwitcherData; track $index) {
+        @for (InputColor of themeData; track $index) {
             <br />
             {{ InputColor.property }}: {{ colors[$index]() }};
         }

@@ -1,10 +1,10 @@
-interface ThemeSwitcherData {
+interface ThemeData {
     readonly name: string;
     readonly base_color: string;
     readonly property: string;
 }
 
-export const INITIAL_DATA: ThemeSwitcherData[] = [
+export const data: ThemeData[] = [
     {
         name: 'Base background',
         base_color: 'rgba(255, 255, 255)',

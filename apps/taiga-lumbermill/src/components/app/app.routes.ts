@@ -36,8 +36,8 @@ export const appRoutes: Route[] = [
                 path: 'theme',
                 loadComponent: async () =>
                     import(
-                        '../../dashboards/theme-switcher/theme-switcher.component'
-                    ).then((mod) => mod.ThemeSwitcherComponent),
+                        '../../dashboards/theme-generator/theme-generator.component'
+                    ).then((mod) => mod.ThemeGeneratorComponent),
                 data: {title: 'Create Theme'},
             },
         ],
