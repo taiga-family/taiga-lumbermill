@@ -1,13 +1,39 @@
 <div class="list-colors">
+    <div tuiHeader="m">
+        <h3 tuiTitle>Colors</h3>
+    </div>
     @for (InputColor of themeSwitcherService; track $index) {
         <tui-input-color
-            size="s"
-            tuiTextfieldSize="s"
-            class="b-form"
+            tuiTextfieldSize="m"
             [colors]="palette"
             [(ngModel)]="color"
         >
             {{ InputColor.name }}
         </tui-input-color>
     }
+</div>
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+>
+    <div tuiHeader="l">
+        <h3 tuiTitle>
+            Title example
+            <div tuiSubtitle>Subtitle example</div>
+        </h3>
+    </div>
+    <tui-input-number
+        tuiHintContent="Dollar sign is commonly placed BEFORE the amount. Use [prefix]."
+        [formControl]="exampleControl"
+        [tuiTextfieldPrefix]="'USD' | tuiCurrency"
+    >
+        Type a sum
+    </tui-input-number>
+    <tui-input-year [tuiTextfieldCleaner]="true">
+        Choose a year
+        <input
+            placeholder="Not 2022 please"
+            tuiTextfieldLegacy
+        />
+    </tui-input-year>
 </div>
