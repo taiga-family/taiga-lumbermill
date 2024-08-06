@@ -1,0 +1,13 @@
+<div class="list-colors">
+    @for (InputColor of themeSwitcherService; track $index) {
+        <tui-input-color
+            size="s"
+            tuiTextfieldSize="s"
+            class="b-form"
+            [colors]="palette"
+            [(ngModel)]="color"
+        >
+            {{ InputColor.name }}
+        </tui-input-color>
+    }
+</div>
