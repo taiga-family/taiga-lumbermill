@@ -84,17 +84,21 @@
             </tui-island>
         </div>
     </div>
-    <button
-        appearance="primary"
-        tuiButton
-    >
-        Primary
-    </button>
-
-    <button
-        appearance="accent"
-        tuiButton
-    >
-        Accent
-    </button>
+    <div class="list">
+        @for (badge of badges; track $index) {
+            <tui-badge [appearance]="badge">
+                {{ badge.charAt(0).toUpperCase() + badge.slice(1) }}
+            </tui-badge>
+        }
+    </div>
+    <div class="list">
+        @for (button of buttons; track $index) {
+            <button
+                tuiButton
+                [appearance]="button"
+            >
+                {{ button.charAt(0).toUpperCase() + button.slice(1) }}
+            </button>
+        }
+    </div>
 </div>

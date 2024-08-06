@@ -10,6 +10,7 @@ import {
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
+import {TuiBadge} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {
     TuiInputNumberModule,
@@ -26,6 +27,7 @@ import {
         FormsModule,
         ReactiveFormsModule,
         TuiAppearance,
+        TuiBadge,
         TuiButton,
         TuiCardLarge,
         TuiCurrencyPipe,
@@ -45,4 +47,15 @@ import {
 })
 export class ThemeExampleComponent {
     protected readonly exampleControl = new FormControl(100);
+    protected readonly badges = [
+        'primary',
+        'accent',
+        'success',
+        'error',
+        'warning',
+        'neutral',
+        'info',
+    ];
+
+    protected readonly buttons = ['primary', 'accent', 'destructive', 'flat', 'outline'];
 }

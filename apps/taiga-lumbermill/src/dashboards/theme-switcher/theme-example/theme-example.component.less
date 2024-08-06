@@ -8,19 +8,19 @@
     }
 }
 
-@media (max-width: 570px) {
-    .example-block {
-        display: none;
-    }
-
-    :host {
-        grid-template-columns: 1fr;
-    }
-}
-
 .example-block {
     position: sticky;
     top: 7rem;
     background: var(--tui-background-base);
     height: max-content;
+
+    @media (max-width: 570px) {
+        display: none;
+    }
+}
+
+.list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
