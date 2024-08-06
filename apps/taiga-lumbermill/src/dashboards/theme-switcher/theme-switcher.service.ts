@@ -23,6 +23,7 @@ export const INITIAL_DATA: ThemeSwitcherData[] = [
         property: '--tui-text-secondary',
     },
     {name: 'Action', base_color: '#526ed3', property: '--tui-text-action'},
+    {name: 'Primary', base_color: '#526ed3', property: '--tui-background-accent-1'},
     {name: 'Accent', base_color: '#ff7043', property: '--tui-background-accent-2'},
 ];
 
