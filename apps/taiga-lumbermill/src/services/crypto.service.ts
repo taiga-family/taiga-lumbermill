@@ -1,8 +1,6 @@
 import {HttpClient} from '@angular/common/http';
-import type {Signal} from '@angular/core';
-import {inject, Injectable} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import type {Observable} from 'rxjs';
+import {inject, Injectable, InjectionToken} from '@angular/core';
+import {map, type Observable} from 'rxjs';
 
 export interface PricesData {
     readonly id: string;
@@ -28,22 +26,28 @@ export interface ResponseHistoryData {
     readonly data: HistoryData[];
 }
 
+export const CryptoApi = new InjectionToken('', {
+    factory: () => 'https://api.coincap.io/v2/assets',
+});
 @Injectable({
     providedIn: 'root',
 })
 export class CryptoService {
     private readonly http = inject(HttpClient);
-    private readonly API = 'https://api.coincap.io/v2/assets';
 
-    public getTokens(): Signal<ResponseData | undefined> {
-        return toSignal(this.http.get<ResponseData>(this.API));
+    private readonly API = inject(CryptoApi);
+
+    public getTokens(): Observable<PricesData[]> {
+        return this.http.get<ResponseData>(this.API).pipe(map((info) => info.data));
     }
 
-    public getHistory(id: string, interval: string): Observable<ResponseHistoryData> {
-        return this.http.get<ResponseHistoryData>(`${this.API}/${id}/history`, {
-            params: {
-                interval,
-            },
-        });
+    public getHistory(id: string, interval: string): Observable<HistoryData[]> {
+        return this.http
+            .get<ResponseHistoryData>(`${this.API}/${id}/history`, {
+                params: {
+                    interval,
+                },
+            })
+            .pipe(map((history) => history.data));
     }
 }
