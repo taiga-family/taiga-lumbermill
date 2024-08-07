@@ -44,7 +44,7 @@
                                 <button
                                     tuiOption
                                     [value]="token.symbol"
-                                    (click)="[$index ? newTokenFrom(token.symbol) : newTokenTo(token.symbol), close()]"
+                                    (click)="[current ? newTokenTo(token.symbol) : newTokenFrom(token.symbol), close()]"
                                 >
                                     {{ token.symbol.toUpperCase() }}
                                     <tui-icon
