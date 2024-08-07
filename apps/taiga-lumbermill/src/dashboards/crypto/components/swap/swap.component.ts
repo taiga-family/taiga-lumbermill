@@ -64,7 +64,6 @@ export class SwapComponent {
     protected readonly to = signal(0);
     protected readonly chosenFrom = signal('eth');
     protected readonly chosenTo = signal('btc');
-    protected readonly openedDialog = [false, false];
 
     protected newTokenFrom(title: string): void {
         this.chosenFrom.set(title);
