@@ -4,7 +4,7 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
@@ -43,7 +43,6 @@ import {CryptoService} from '../../../../services/crypto.service';
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
     protected info = toSignal(this.cryptoService.getTokens());
-    protected data = computed(() => this.info());
     protected search = '';
 
     protected lengthPools(value: number): number[] {
@@ -51,7 +50,7 @@ export class PoolsComponent {
     }
 
     protected getTVL(index: number): string {
-        const tokens = this.data();
+        const tokens = this.info();
 
         const result =
             Number(tokens?.[index]?.priceUsd) + Number(tokens?.[index]?.priceUsd) + 1;
