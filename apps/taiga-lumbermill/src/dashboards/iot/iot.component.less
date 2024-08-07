@@ -5,6 +5,27 @@
     padding-top: 1.25rem;
 }
 
+.top {
+    display: grid;
+    padding-top: 1.25rem;
+    grid-template-columns: 20fr 11fr 9fr;
+    gap: 1rem;
+}
+
+.middle {
+    display: grid;
+    padding-top: 1.25rem;
+    grid-template-columns: 9fr 15fr;
+    gap: 1rem;
+}
+
+.bottom {
+    display: grid;
+    padding-top: 1.25rem;
+    grid-template-columns: 8fr 15fr 8fr;
+    gap: 1rem;
+}
+
 .grow {
     width: 100%;
 }
@@ -15,6 +36,13 @@
     flex: 0 0 auto;
     grid-template-columns: 4fr 6fr 4fr;
     gap: 1rem;
+}
+
+.column {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 @media (max-width: 56.25rem) {
@@ -33,11 +61,4 @@
     .grow {
         width: 100%;
     }
-}
-
-.column {
-    display: flex;
-    gap: 0.625rem;
-    padding-top: 1.25rem;
-    flex-direction: column;
 }

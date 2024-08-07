@@ -1,6 +1,7 @@
 <div
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
+    [style.height]="'100%'"
 >
     <tui-tabs [activeItemIndex]="activeTab">
         @for (tab of tabs; track $index) {
@@ -9,12 +10,12 @@
                 (click)="activeTab = $index"
             >
                 <header tuiHeader>
-                    <h2
+                    <h3
                         tuiTitle
                         [style.text-align]="'center'"
                     >
                         {{ tab }}
-                    </h2>
+                    </h3>
                 </header>
             </button>
         }
