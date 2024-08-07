@@ -42,6 +42,36 @@ export const data: ThemeData[] = [
         property: '--tui-background-neutral-2-pressed',
     },
     {
+        name: 'background-primary',
+        base_color: '#526ed3',
+        property: '--tui-background-accent-1',
+    },
+    {
+        name: 'background-primary-hover',
+        base_color: '#6c86e2',
+        property: '--tui-background-accent-1-hover',
+    },
+    {
+        name: 'background-primary-pressed',
+        base_color: '#314692',
+        property: '--tui-background-accent-1-pressed',
+    },
+    {
+        name: 'background-accent',
+        base_color: '#ff7043',
+        property: '--tui-background-accent-2',
+    },
+    {
+        name: 'background-accent-hover',
+        base_color: '#ff9a94',
+        property: '--tui-background-accent-2-hover',
+    },
+    {
+        name: 'background-accent-pressed',
+        base_color: '#e7716a',
+        property: '--tui-background-accent-2-pressed',
+    },
+    {
         name: 'background-accent-opposite',
         base_color: '#000',
         property: '--tui-background-accent-opposite',
