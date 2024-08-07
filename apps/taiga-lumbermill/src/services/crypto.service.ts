@@ -34,12 +34,11 @@ export const CryptoApi = new InjectionToken('', {
 })
 export class CryptoService {
     private readonly http = inject(HttpClient);
+
     private readonly API = inject(CryptoApi);
 
-    public info$: Observable<ResponseData> = this.getTokens();
-
-    public getTokens(): Observable<ResponseData> {
-        return this.http.get<ResponseData>(this.API);
+    public getTokens(): Observable<PricesData[]> {
+        return this.http.get<ResponseData>(this.API).pipe(map((info) => info.data));
     }
 
     public getHistory(id: string, interval: string): Observable<HistoryData[]> {

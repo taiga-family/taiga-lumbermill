@@ -1,12 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
+import {NFTComponent} from './components/nft/nft.component';
 import {PricesComponent} from './components/prices/prices.component';
 
 @Component({
     standalone: true,
     selector: 'lmb-crypto',
-    imports: [CommonModule, PricesComponent],
+    imports: [CommonModule, NFTComponent, PricesComponent],
     templateUrl: './crypto.component.html',
     styleUrl: './crypto.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
