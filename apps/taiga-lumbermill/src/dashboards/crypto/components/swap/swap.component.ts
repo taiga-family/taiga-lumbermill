@@ -48,20 +48,22 @@ import {CryptoService} from '../../../../services/crypto.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwapComponent {
-    protected cryptoService = inject(CryptoService);
-    protected info = toSignal(this.cryptoService.getTokens());
-    protected priceFrom = computed(() => this.getPrice(this.info(), this.chosen[0]()));
+    protected readonly cryptoService = inject(CryptoService);
+    protected readonly info = toSignal(this.cryptoService.getTokens());
+    protected readonly priceFrom = computed(() =>
+        this.getPrice(this.info(), this.chosen[0]()),
+    );
 
-    protected priceTo = computed(() => this.getPrice(this.info(), this.chosen[1]()));
+    protected readonly priceTo = computed(() =>
+        this.getPrice(this.info(), this.chosen[1]()),
+    );
 
-    protected titles = ['From', 'To'];
+    protected readonly titles = ['From', 'To'];
 
-    protected from = signal('0');
-    protected to = signal('0');
-    protected gg = signal('eth');
-    protected chosen = [signal('eth'), signal('btc')];
-    protected openedDialog = [false, false];
-    protected val = 0;
+    protected readonly from = signal('0');
+    protected readonly to = signal('0');
+    protected readonly chosen = [signal('eth'), signal('btc')];
+    protected readonly openedDialog = [false, false];
 
     protected newToken(index: number, title: string): void {
         this.chosen[index].set(title);
@@ -79,13 +81,13 @@ export class SwapComponent {
     }
 
     protected getPrice(data: PricesData[] | undefined, title: string): number {
-        for (const token of data ?? []) {
-            if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
-                return Number(token.priceUsd);
-            }
-        }
-
-        return 0;
+        return (
+            Number(
+                (data ?? []).find(
+                    (token) => token.symbol.toLowerCase() === title.toLowerCase(),
+                )?.priceUsd,
+            ) || 0
+        );
     }
 
     protected newSwapFrom(): void {
