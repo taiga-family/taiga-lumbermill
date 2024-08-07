@@ -60,8 +60,8 @@ export class SwapComponent {
 
     protected readonly titles = ['From', 'To'];
 
-    protected readonly from = signal('0');
-    protected readonly to = signal('0');
+    protected readonly from = signal(0);
+    protected readonly to = signal(0);
     protected readonly chosenFrom = signal('eth');
     protected readonly chosenTo = signal('btc');
     protected readonly openedDialog = [false, false];
@@ -76,10 +76,6 @@ export class SwapComponent {
         this.newSwapTo();
     }
 
-    protected toNum(val: string): number {
-        return Number(val);
-    }
-
     protected getPrice(data: PricesData[] | undefined, title: string): number {
         return (
             Number(
@@ -92,13 +88,15 @@ export class SwapComponent {
 
     protected newSwapFrom(): void {
         this.to.set(
-            ((this.priceFrom() * Number(this.from())) / this.priceTo()).toFixed(2),
+            Number(
+                ((this.priceFrom() * Number(this.from())) / this.priceTo()).toFixed(2),
+            ),
         );
     }
 
     protected newSwapTo(): void {
         this.from.set(
-            ((this.priceTo() * Number(this.to())) / this.priceFrom()).toFixed(2),
+            Number(((this.priceTo() * Number(this.to())) / this.priceFrom()).toFixed(2)),
         );
     }
 }

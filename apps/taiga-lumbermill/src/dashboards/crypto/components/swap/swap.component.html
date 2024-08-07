@@ -27,7 +27,6 @@
                     class="choose-crypto"
                     [tuiDropdown]="dropdownContent"
                     [(tuiDropdownOpen)]="openedDialog[$index]"
-                    (click)="openedDialog[$index] = !openedDialog[$index]"
                 >
                     <tui-avatar
                         size="xs"
@@ -85,9 +84,9 @@
                         class="equal-number"
                     >
                         @if ($index) {
-                            ≈{{ priceTo() * toNum(to()) | tuiAmount: 'USD' | async }}
+                            ≈{{ priceTo() * to() | tuiAmount: 'USD' | async }}
                         } @else {
-                            ≈{{ priceFrom() * toNum(from()) | tuiAmount: 'USD' | async }}
+                            ≈{{ priceFrom() * from() | tuiAmount: 'USD' | async }}
                         }
                     </div>
                     <hr />
