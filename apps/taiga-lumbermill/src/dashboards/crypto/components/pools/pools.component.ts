@@ -5,6 +5,7 @@ import {
 } from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiHighlight} from '@taiga-ui/kit';
@@ -41,8 +42,8 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
-    protected info = this.cryptoService.getTokens();
-    protected data = computed(() => this.info()?.data);
+    protected info = toSignal(this.cryptoService.getTokens());
+    protected data = computed(() => this.info());
     protected search = '';
 
     protected lengthPools(value: number): number[] {

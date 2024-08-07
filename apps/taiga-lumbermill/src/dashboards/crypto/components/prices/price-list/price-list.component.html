@@ -1,6 +1,5 @@
-@let info = info$ | async;
-@if (info) {
-    @let data = info.data;
+@let data = info$ | async;
+@if (data) {
     <div
         tuiCardLarge
         class="price-list"
