@@ -32,15 +32,14 @@ export const appRoutes: Route[] = [
                     ),
                 data: {title: 'Crypto'},
             },
-            {
-                path: 'theme',
-                loadComponent: async () =>
-                    import(
-                        '../../dashboards/theme-generator/theme-generator.component'
-                    ).then((mod) => mod.ThemeGeneratorComponent),
-                data: {title: 'Create Theme'},
-            },
         ],
+    },
+    {
+        path: 'theme',
+        loadComponent: async () =>
+            import('../../dashboards/theme-generator/theme-generator.component').then(
+                (mod) => mod.ThemeGeneratorComponent,
+            ),
     },
     {path: '**', redirectTo: 'dashboards'},
 ];
