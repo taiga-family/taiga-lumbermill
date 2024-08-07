@@ -6,7 +6,7 @@ import {StakingComponent} from './components/staking/staking.component';
 @Component({
     standalone: true,
     selector: 'lmb-crypto',
-    imports: [CommonModule, StakingComponent],
+    imports: [CommonModule, PricesComponent, StakingComponent],
     templateUrl: './crypto.component.html',
     styleUrl: './crypto.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

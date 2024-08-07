@@ -6,13 +6,12 @@
         tuiAppearance="whiteblock"
         tuiCardLarge="normal"
         class="card"
-        [class.card_light]="getTypeOfWeather(current.condition.code) != 'clouds'"
         [style.background-image]="getImage(current.condition.code)"
     >
         <header tuiHeader>
             <h2
                 tuiTitle
-                [class.card_light]="getTypeOfWeather(current.condition.code) != 'clouds'"
+                [style.color]="'var(--tui-text-primary-on-accent-1)'"
                 [style.text-align]="'center'"
             >
                 Weather

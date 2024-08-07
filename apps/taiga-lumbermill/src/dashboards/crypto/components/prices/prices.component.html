@@ -1,0 +1,18 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    [style.height]="'100%'"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Cryptocurrency Prices
+        </h2>
+    </header>
+    @if (token !== '') {
+        <lmb-price-chart [token]="token" />
+    }
+    <lmb-price-list [(token)]="token" />
+</div>

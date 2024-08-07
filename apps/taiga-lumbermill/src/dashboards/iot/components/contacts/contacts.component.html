@@ -1,0 +1,86 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+>
+    <tui-tabs [activeItemIndex]="activeTab">
+        @for (tab of tabs; track $index) {
+            <button
+                tuiTab
+                (click)="activeTab = $index"
+            >
+                <header tuiHeader>
+                    <h2
+                        tuiTitle
+                        [style.text-align]="'center'"
+                    >
+                        {{ tab }}
+                    </h2>
+                </header>
+            </button>
+        }
+    </tui-tabs>
+
+    @if (activeTab === 0) {
+        <tui-scrollbar>
+            <cdk-virtual-scroll-viewport
+                itemSize="57"
+                tuiScrollable
+                class="contacts-list viewport tui-zero-scrollbar"
+            >
+                <div
+                    *cdkVirtualFor="let person of contactsService.contacts"
+                    tuiCell="l"
+                >
+                    <tui-avatar
+                        [src]="person.img"
+                        [style.background]="person.img | tuiAutoColor"
+                    />
+                    <div tuiTitle>
+                        {{ person.name }}
+                        <div tuiSubtitle>{{ person.status }}</div>
+                    </div>
+                    <button
+                        appearance="icon"
+                        iconStart="@tui.phone"
+                        tuiIconButton
+                    >
+                        Call
+                    </button>
+                </div>
+            </cdk-virtual-scroll-viewport>
+        </tui-scrollbar>
+    } @else {
+        <tui-scrollbar>
+            <cdk-virtual-scroll-viewport
+                itemSize="57"
+                tuiScrollable
+                class="contacts-list viewport tui-zero-scrollbar"
+            >
+                <div
+                    *cdkVirtualFor="let person of contactsService.recent"
+                    tuiCell="l"
+                >
+                    <tui-badged-content>
+                        <tui-avatar
+                            class="avatar"
+                            [src]="person.img"
+                            [style.background]="person.img | tuiAutoColor"
+                        />
+                        <tui-icon
+                            size="s"
+                            tuiBadge
+                            tuiSlot="top"
+                            [appearance]="person.took ? 'error' : 'success'"
+                            [icon]="person.took ? '@tui.arrow-down-left' : '@tui.arrow-up-right'"
+                        />
+                    </tui-badged-content>
+                    <div tuiTitle>
+                        {{ person.name }}
+                        <div tuiSubtitle>{{ person.status }}</div>
+                    </div>
+                    <div tuiSubtitle>{{ person.last }}</div>
+                </div>
+            </cdk-virtual-scroll-viewport>
+        </tui-scrollbar>
+    }
+</div>
