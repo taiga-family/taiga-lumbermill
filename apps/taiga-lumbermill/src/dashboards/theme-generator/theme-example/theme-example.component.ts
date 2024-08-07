@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import type {Signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
@@ -58,6 +59,9 @@ import {
     templateUrl: './theme-example.component.html',
     styleUrl: './theme-example.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style]': 'this.host()',
+    },
 })
 export class ThemeExampleComponent {
     protected readonly exampleControl = new FormControl(100);
@@ -73,4 +77,7 @@ export class ThemeExampleComponent {
     ];
 
     protected readonly buttons = ['primary', 'accent', 'destructive', 'flat', 'outline'];
+
+    @Input()
+    public host: Signal<string> = signal('');
 }

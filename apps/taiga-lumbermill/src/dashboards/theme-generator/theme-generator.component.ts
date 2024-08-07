@@ -49,9 +49,6 @@ import {data} from './theme-generator.constants';
     templateUrl: './theme-generator.component.html',
     styleUrl: './theme-generator.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[style]': 'this.host()',
-    },
 })
 export class ThemeGeneratorComponent {
     protected themeData = data;
