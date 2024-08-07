@@ -6,6 +6,7 @@ import {
     inject,
     signal,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
@@ -65,14 +66,10 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class SwapComponent {
     protected cryptoService = inject(CryptoService);
-    protected info = this.cryptoService.getTokens();
-    protected priceFrom = computed(() =>
-        this.getPrice(this.info()?.data, this.chosen()[0]),
-    );
+    protected info = toSignal(this.cryptoService.getTokens());
+    protected priceFrom = computed(() => this.getPrice(this.info(), this.chosen()[0]));
 
-    protected priceTo = computed(() =>
-        this.getPrice(this.info()?.data, this.chosen()[1]),
-    );
+    protected priceTo = computed(() => this.getPrice(this.info(), this.chosen()[1]));
 
     protected titles = ['From', 'To'];
 
