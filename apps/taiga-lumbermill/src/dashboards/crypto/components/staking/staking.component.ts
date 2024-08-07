@@ -6,6 +6,7 @@ import {
     inject,
     signal,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton, TuiDialog, TuiHint, TuiTitle} from '@taiga-ui/core';
@@ -42,10 +43,8 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class StakingComponent {
     protected cryptoService = inject(CryptoService);
-    protected info = this.cryptoService.getTokens();
-    protected price = computed(() =>
-        this.getPrice(this.info()?.data, 'btc', this.amount()),
-    );
+    protected info = toSignal(this.cryptoService.getTokens());
+    protected price = computed(() => this.getPrice(this.info(), 'btc', this.amount()));
 
     protected inputStake = 0;
     protected inputUnstake = 0;

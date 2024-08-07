@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
+import {PricesComponent} from './components/prices/prices.component';
 import {StakingComponent} from './components/staking/staking.component';
 
 @Component({
