@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
-import {SwapComponent} from './components/swap/swap.component';
 import {PricesComponent} from './components/prices/prices.component';
+import {SwapComponent} from './components/swap/swap.component';
 
 @Component({
     standalone: true,
