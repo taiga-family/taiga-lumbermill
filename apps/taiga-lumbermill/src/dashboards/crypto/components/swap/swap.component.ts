@@ -51,29 +51,29 @@ export class SwapComponent {
     protected readonly cryptoService = inject(CryptoService);
     protected readonly info = toSignal(this.cryptoService.getTokens());
     protected readonly priceFrom = computed(() =>
-        this.getPrice(this.info(), this.chosen[0]()),
+        this.getPrice(this.info(), this.chosenFrom()),
     );
 
     protected readonly priceTo = computed(() =>
-        this.getPrice(this.info(), this.chosen[1]()),
+        this.getPrice(this.info(), this.chosenTo()),
     );
 
     protected readonly titles = ['From', 'To'];
 
     protected readonly from = signal('0');
     protected readonly to = signal('0');
-    protected readonly chosen = [signal('eth'), signal('btc')];
+    protected readonly chosenFrom = signal('eth');
+    protected readonly chosenTo = signal('btc');
     protected readonly openedDialog = [false, false];
 
-    protected newToken(index: number, title: string): void {
-        this.chosen[index].set(title);
-        this.openedDialog[index] = false;
+    protected newTokenFrom(title: string): void {
+        this.chosenFrom.set(title);
+        this.newSwapFrom();
+    }
 
-        if (index) {
-            this.newSwapTo();
-        } else {
-            this.newSwapFrom();
-        }
+    protected newTokenTo(title: string): void {
+        this.chosenTo.set(title);
+        this.newSwapTo();
     }
 
     protected toNum(val: string): number {
