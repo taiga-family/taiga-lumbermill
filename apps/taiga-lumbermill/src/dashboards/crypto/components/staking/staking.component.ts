@@ -28,7 +28,6 @@ import {CryptoService} from '../../../../services/crypto.service';
         TuiAutoFocus,
         TuiAvatar,
         TuiButton,
-        TuiButton,
         TuiCardLarge,
         TuiDialog,
         TuiHeader,
@@ -43,8 +42,8 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class StakingComponent {
     protected cryptoService = inject(CryptoService);
-    protected info = toSignal(this.cryptoService.getTokens());
-    protected price = computed(() => this.getPrice(this.info(), 'btc', this.amount()));
+    protected tokens = toSignal(this.cryptoService.getTokens());
+    protected price = computed(() => this.getPrice(this.tokens(), 'btc', this.amount()));
 
     protected inputStake = 0;
     protected inputUnstake = 0;
