@@ -20,8 +20,24 @@
     height: 10rem;
     margin: 2rem 1rem;
 
-    &_active {
+    &:hover {
         box-shadow: var(--tui-shadow-medium);
-        transform: scale(1.2);
+        transform: scale(1.1);
+    }
+
+    &_active {
+        position: relative;
+        outline: 0.5rem solid var(--tui-background-accent-opposite-hover);
+    }
+
+    &_active::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        bottom: -2.3rem;
+        transform: translateX(-50%);
+        border: 1rem solid transparent;
+        border-top: 1rem solid var(--tui-background-accent-opposite-hover);
     }
 }

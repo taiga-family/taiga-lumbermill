@@ -20,7 +20,7 @@
                 *tuiItem
                 draggable="false"
                 class="item"
-                [class.item_active]="$index === index + 1"
+                [class.item_active]="$index === open + 1"
                 [ngStyle]="{'background-image': 'url(' + item + ')'}"
                 (click)="openFilm($index)"
             ></div>

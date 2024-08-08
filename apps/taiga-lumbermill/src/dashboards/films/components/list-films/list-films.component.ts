@@ -14,6 +14,7 @@ import {TuiHeader} from '@taiga-ui/layout';
 })
 export class ListFilmsComponent {
     protected index = 0;
+    protected open = -1;
     protected readonly items = [
         './music/against.jpg',
         './music/howling.avif',
@@ -31,5 +32,6 @@ export class ListFilmsComponent {
 
     protected openFilm(value: number): void {
         this.index = value - 1;
+        this.open = value - 1;
     }
 }
