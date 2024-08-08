@@ -4,24 +4,16 @@ import {
     Component,
     EventEmitter,
     inject,
-    Input,
     Output,
 } from '@angular/core';
 import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {
-    TuiAlertService,
-    TuiAppearance,
-    TuiButton,
-    TuiDialog,
-    TuiHint,
-    TuiIcon,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton, TuiDialog} from '@taiga-ui/core';
 import {TuiAvatar, TuiPushService} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 
+import type {TokenMinter} from '../minter.component';
 import {MinterService} from './minter-deploy.service';
 
 @Component({
@@ -31,19 +23,13 @@ import {MinterService} from './minter-deploy.service';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiAppearance,
         TuiAutoFocus,
         TuiAvatar,
         TuiButton,
-        TuiCardLarge,
         TuiCell,
         TuiDialog,
-        TuiHeader,
-        TuiHint,
-        TuiIcon,
         TuiInputModule,
         TuiInputNumberModule,
-        TuiTitle,
     ],
     templateUrl: './minter-deploy.component.html',
     styleUrl: './minter-deploy.component.less',
@@ -59,27 +45,11 @@ export class MinterDeployComponent {
 
     protected openIcon = false;
     protected warningIcon = false;
-
-    @Input()
-    public success = false;
-
-    @Input()
-    public urlIcon = '';
+    protected success = false;
+    protected urlIcon = '';
 
     @Output()
-    public readonly successChange = new EventEmitter<boolean>();
-
-    @Output()
-    public readonly urlIconChange = new EventEmitter<string>();
-
-    @Output()
-    public readonly tokenChange = new EventEmitter<string>();
-
-    @Output()
-    public readonly amountChange = new EventEmitter<number>();
-
-    @Output()
-    public readonly symbolChange = new EventEmitter<string>();
+    public readonly tokenMinterChange = new EventEmitter<TokenMinter>();
 
     protected showDialog(): void {
         this.openIcon = true;
@@ -120,10 +90,12 @@ export class MinterDeployComponent {
             })
             .subscribe();
         this.success = true;
-        this.successChange.emit(true);
-        this.urlIconChange.emit(this.urlIcon);
-        this.tokenChange.emit(this.minterForm.controls[0].value ?? '');
-        this.symbolChange.emit(this.minterForm.controls[1].value ?? '');
-        this.amountChange.emit(Number(this.minterForm.controls[2].value) ?? 0);
+        this.tokenMinterChange.emit({
+            success: true,
+            urlIcon: this.urlIcon,
+            token: this.minterForm.controls[0].value ?? '',
+            symbol: this.minterForm.controls[1].value ?? '',
+            amount: Number(this.minterForm.controls[2].value) ?? 0,
+        });
     }
 }
