@@ -1,4 +1,4 @@
-@let data = info();
+@let data = tokens();
 @if (data) {
     <div
         tuiAppearance="whiteblock"
@@ -14,7 +14,7 @@
             </h2>
         </header>
         @for (title of titles; track $index) {
-            @let chosen = $index ? chosenTo().toUpperCase() : chosenFrom().toUpperCase();
+            @let chosen = $index ? tokenTo().toUpperCase() : tokenFrom().toUpperCase();
             <div>
                 <div tuiCell="l">
                     <div TuiTitle>{{ title }}</div>

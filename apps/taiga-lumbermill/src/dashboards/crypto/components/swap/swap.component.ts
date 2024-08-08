@@ -20,7 +20,6 @@ import {
 import {TuiAvatar, TuiChevron, TuiInputInline} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
-import type {PricesData} from '../../../../services/crypto.service';
 import {CryptoService} from '../../../../services/crypto.service';
 
 @Component({
@@ -49,36 +48,32 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class SwapComponent {
     protected readonly cryptoService = inject(CryptoService);
-    protected readonly info = toSignal(this.cryptoService.getTokens());
-    protected readonly priceFrom = computed(() =>
-        this.getPrice(this.info(), this.chosenFrom()),
-    );
+    protected readonly tokens = toSignal(this.cryptoService.getTokens());
+    protected readonly priceFrom = computed(() => this.getPrice(this.tokenFrom()));
 
-    protected readonly priceTo = computed(() =>
-        this.getPrice(this.info(), this.chosenTo()),
-    );
+    protected readonly priceTo = computed(() => this.getPrice(this.tokenTo()));
 
     protected readonly titles = ['From', 'To'];
 
     protected readonly from = signal(0);
     protected readonly to = signal(0);
-    protected readonly chosenFrom = signal('eth');
-    protected readonly chosenTo = signal('btc');
+    protected readonly tokenFrom = signal('eth');
+    protected readonly tokenTo = signal('btc');
 
     protected newTokenFrom(title: string): void {
-        this.chosenFrom.set(title);
+        this.tokenFrom.set(title);
         this.newSwapFrom();
     }
 
     protected newTokenTo(title: string): void {
-        this.chosenTo.set(title);
+        this.tokenTo.set(title);
         this.newSwapTo();
     }
 
-    protected getPrice(data: PricesData[] | undefined, title: string): number {
+    protected getPrice(title: string): number {
         return (
             Number(
-                (data ?? []).find(
+                (this.tokens() ?? []).find(
                     (token) => token.symbol.toLowerCase() === title.toLowerCase(),
                 )?.priceUsd,
             ) || 0
