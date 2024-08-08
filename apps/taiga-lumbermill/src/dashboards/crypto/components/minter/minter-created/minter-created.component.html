@@ -1,0 +1,17 @@
+<tui-avatar
+    size="xl"
+    class="logo"
+    [src]="tokenMinter.urlIcon"
+/>
+<h3
+    tuiTitle
+    class="info"
+>
+    {{ tokenMinter.amount }} (${{ tokenMinter.symbol }}) have been sent to your wallet
+</h3>
+<button
+    tuiButton
+    (click)="createNew()"
+>
+    Create new Token
+</button>
