@@ -2,16 +2,37 @@ import type {Route} from '@angular/router';
 
 export const appRoutes: Route[] = [
     {
-        path: 'dashboards/iot',
+        path: 'dashboards',
         loadComponent: async () =>
-            import('../../dashboards/iot/iot.component').then((mod) => mod.IotComponent),
-    },
-    {
-        path: 'dashboards/crypto',
-        loadComponent: async () =>
-            import('../../dashboards/crypto/crypto.component').then(
-                (mod) => mod.CryptoComponent,
+            import('../../dashboards/dashboards/dashboards.component').then(
+                (mod) => mod.DashboardsComponent,
             ),
+        children: [
+            {
+                path: '',
+                loadComponent: async () =>
+                    import(
+                        '../../dashboards/dashboards-list/dashboards-list.component'
+                    ).then((mod) => mod.DashboardsListComponent),
+                data: {title: ''},
+            },
+            {
+                path: 'iot',
+                loadComponent: async () =>
+                    import('../../dashboards/iot/iot.component').then(
+                        (mod) => mod.IotComponent,
+                    ),
+                data: {title: 'Iot'},
+            },
+            {
+                path: 'crypto',
+                loadComponent: async () =>
+                    import('../../dashboards/crypto/crypto.component').then(
+                        (mod) => mod.CryptoComponent,
+                    ),
+                data: {title: 'Crypto'},
+            },
+        ],
     },
     {path: '**', redirectTo: 'dashboards'},
 ];

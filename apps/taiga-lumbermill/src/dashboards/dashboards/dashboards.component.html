@@ -1,0 +1,15 @@
+<nav
+    tuiNavigationNav
+    [style.position]="'sticky'"
+>
+    <a routerLink="/dashboards">
+        <tui-icon icon="@tui.chevron-left" />
+        Back
+    </a>
+    /
+    <span tuiNavigationLogo>
+        <span tuiFade>{{ (data$ | async) ?? '' }} dashboard</span>
+    </span>
+    <hr />
+</nav>
+<router-outlet />
