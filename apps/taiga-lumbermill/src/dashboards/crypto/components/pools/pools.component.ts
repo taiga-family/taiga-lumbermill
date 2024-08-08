@@ -8,9 +8,9 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStack, TuiHighlight} from '@taiga-ui/kit';
+import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {CryptoService} from '../../../../services/crypto.service';
 
@@ -29,11 +29,9 @@ import {CryptoService} from '../../../../services/crypto.service';
         TuiCardLarge,
         TuiCell,
         TuiHeader,
-        TuiHighlight,
         TuiInputModule,
         TuiScrollable,
         TuiScrollbar,
-        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './pools.component.html',
@@ -42,7 +40,7 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
-    protected info = toSignal(this.cryptoService.getTokens());
+    protected tokens = toSignal(this.cryptoService.getTokens());
     protected search = '';
 
     protected lengthPools(value: number): number[] {
@@ -50,10 +48,10 @@ export class PoolsComponent {
     }
 
     protected getTVL(index: number): string {
-        const tokens = this.info();
-
         const result =
-            Number(tokens?.[index]?.priceUsd) + Number(tokens?.[index]?.priceUsd) + 1;
+            Number(this.tokens()?.[index]?.priceUsd) +
+            Number(this.tokens()?.[index]?.priceUsd) +
+            1;
 
         if (result > 100) {
             return (result / (result / 100 + 1)).toFixed(1);
