@@ -8,8 +8,19 @@
 .top {
     display: grid;
     padding-top: 1.25rem;
-    grid-template-columns: 20fr 11fr 9fr;
+    grid-template-columns: 19fr 20fr;
     gap: 1rem;
+
+    @media (max-width: 1100px) {
+        grid-template-columns: 20fr;
+    }
+}
+
+.under-top {
+    display: grid;
+    grid-template-columns: 11fr 9fr;
+    gap: 1rem;
+    min-height: 400px;
 }
 
 .middle {
