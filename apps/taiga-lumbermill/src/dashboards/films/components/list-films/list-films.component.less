@@ -1,0 +1,15 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.item {
+    .transition(~'box-shadow, transform');
+
+    display: block;
+    padding: 1rem;
+    border: 1px solid var(--tui-border-normal);
+    border-radius: 1rem;
+
+    &_active {
+        box-shadow: var(--tui-shadow-medium);
+        transform: scale(1.2);
+    }
+}
