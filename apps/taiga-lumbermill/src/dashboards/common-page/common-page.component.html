@@ -6,10 +6,7 @@
         Taiga Lumbermill
     </h2>
 </header>
-<p
-    tuiTitle="s"
-    class="description"
->
+<p class="description">
     This project contains a comprehensive set of ready-made templates, dashboards, and pages built using the Taiga UI
     component library. Our goal is to provide developers with a robust foundation for quickly creating beautiful and
     functional web applications.
@@ -21,7 +18,10 @@
         tuiCardLarge="normal"
         class="card"
     >
-        <header tuiHeader>
+        <header
+            tuiHeader
+            [style.margin-top]="'0rem'"
+        >
             <h2
                 tuiTitle
                 [style.text-align]="'center'"
@@ -29,19 +29,6 @@
                 Dashboards
             </h2>
         </header>
-        @for (card of dashboardsListData; track $index) {
-            <a
-                tuiCardLarge
-                tuiHeader
-                tuiSurface="elevated"
-                [routerLink]="card.link"
-            >
-                <h2 tuiTitle>
-                    {{ card.title }}
-                    <span tuiSubtitle>{{ card.description }}</span>
-                </h2>
-            </a>
-        }
     </div>
     <div
         routerLink="/theme"
@@ -61,13 +48,6 @@
                     Theme generator
                 </h2>
             </header>
-            <h3
-                tuiTitle
-                [style.margin-top]="'1.25rem'"
-                [style.text-align]="'center'"
-            >
-                Сreate your own themes with a handy tool
-            </h3>
         </div>
     </div>
 </div>
