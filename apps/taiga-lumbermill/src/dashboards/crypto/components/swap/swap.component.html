@@ -66,7 +66,7 @@
                             min="0"
                             type="number"
                             [(ngModel)]="to"
-                            (change)="newSwapTo()"
+                            (input)="newSwapTo()"
                         />
                     } @else {
                         <input
@@ -74,7 +74,7 @@
                             min="0"
                             type="number"
                             [(ngModel)]="from"
-                            (change)="newSwapFrom()"
+                            (input)="newSwapFrom()"
                         />
                     }
                 </tui-input-inline>
