@@ -32,6 +32,14 @@ export const appRoutes: Route[] = [
                     ),
                 data: {title: 'Crypto'},
             },
+            {
+                path: 'films',
+                loadComponent: async () =>
+                    import('../../dashboards/films/films.component').then(
+                        (mod) => mod.FilmComponent,
+                    ),
+                data: {title: 'Films'},
+            },
         ],
     },
     {path: '**', redirectTo: 'dashboards'},

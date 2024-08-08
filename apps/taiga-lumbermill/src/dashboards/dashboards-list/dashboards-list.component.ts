@@ -21,6 +21,11 @@ const INITIAL_DATA: DashboardsData[] = [
         link: '/dashboards/crypto',
         description: 'Crypto token dashboard',
     },
+    {
+        title: 'Films Dashboard',
+        link: '/dashboards/films',
+        description: 'Streaming service for films and TV series',
+    },
 ];
 
 @Component({
