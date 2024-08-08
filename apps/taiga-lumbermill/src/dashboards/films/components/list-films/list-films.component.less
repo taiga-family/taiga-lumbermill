@@ -1,12 +1,24 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    width: 1rem;
+    height: 1rem;
+}
+
 .item {
     .transition(~'box-shadow, transform');
 
     display: block;
     padding: 1rem;
-    border: 1px solid var(--tui-border-normal);
     border-radius: 1rem;
+    background-position: center;
+    height: 10rem;
+    margin: 2rem 1rem;
 
     &_active {
         box-shadow: var(--tui-shadow-medium);

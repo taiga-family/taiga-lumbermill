@@ -1,17 +1,37 @@
-<tui-carousel
-    [draggable]="true"
-    [itemsCount]="3"
-    [(index)]="index"
+<div
+    tuiCarouselButtons
+    class="wrapper"
 >
-    @for (item of items; track $index) {
-        <div
-            *tuiItem
-            draggable="false"
-            class="item"
-            [class.item_active]="$index === $index + 1"
-            [style.background-image]="'./example.png'"
-        >
-            <h1>22</h1>
-        </div>
-    }
-</tui-carousel>
+    <button
+        iconStart="@tui.chevron-left"
+        tuiIconButton
+        type="button"
+        (click)="carousel.prev()"
+    ></button>
+
+    <tui-carousel
+        #carousel
+        [draggable]="false"
+        [itemsCount]="3"
+        [(index)]="index"
+    >
+        @for (item of items; track $index) {
+            <div
+                *tuiItem
+                draggable="false"
+                class="item"
+                [class.item_active]="$index === index + 1"
+                [ngStyle]="{'background-image': 'url(' + item + ')'}"
+                (click)="openFilm($index)"
+            ></div>
+        }
+    </tui-carousel>
+    <button
+        iconStart="@tui.chevron-right"
+        tuiIconButton
+        type="button"
+        (click)="carousel.next()"
+    >
+        Next
+    </button>
+</div>

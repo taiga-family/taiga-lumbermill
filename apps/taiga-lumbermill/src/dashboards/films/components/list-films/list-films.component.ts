@@ -1,11 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     selector: 'lmb-list-films',
-    imports: [CommonModule, TuiCarousel],
+    imports: [CommonModule, TuiButton, TuiCarousel, TuiHeader, TuiTitle],
     templateUrl: './list-films.component.html',
     styleUrl: './list-films.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,9 +15,21 @@ import {TuiCarousel} from '@taiga-ui/kit';
 export class ListFilmsComponent {
     protected index = 0;
     protected readonly items = [
-        './example.png',
-        './example.png',
-        './example.png',
-        './example.png',
+        './music/against.jpg',
+        './music/howling.avif',
+        './music/against.jpg',
+        './music/howling.avif',
+        './music/against.jpg',
+        './music/howling.avif',
+        './music/against.jpg',
+        './music/howling.avif',
+        './music/against.jpg',
+        './music/howling.avif',
+        './music/against.jpg',
+        './music/howling.avif',
     ];
+
+    protected openFilm(value: number): void {
+        this.index = value - 1;
+    }
 }
