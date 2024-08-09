@@ -34,5 +34,12 @@ export const appRoutes: Route[] = [
             },
         ],
     },
+    {
+        path: '',
+        loadComponent: async () =>
+            import('../../dashboards/common-page/common-page.component').then(
+                (mod) => mod.CommonPageComponent,
+            ),
+    },
     {path: '**', redirectTo: 'dashboards'},
 ];

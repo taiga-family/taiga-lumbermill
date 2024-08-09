@@ -1,0 +1,103 @@
+@let data = tokens();
+@if (data) {
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        [style.height]="'100%'"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Swap
+            </h2>
+        </header>
+        @for (title of titles; track $index) {
+            @let chosen = $index ? tokenTo().toUpperCase() : tokenFrom().toUpperCase();
+            <div>
+                <div tuiCell="l">
+                    <div TuiTitle>{{ title }}</div>
+                    <div TuiTitle>Balance: 1000 {{ chosen.toUpperCase() }}</div>
+                </div>
+                <button
+                    tuiButton
+                    tuiChevron
+                    tuiDropdownOpen
+                    type="button"
+                    class="choose-crypto"
+                    [tuiDropdown]="dropdownContent"
+                >
+                    <tui-avatar
+                        size="xs"
+                        [src]="'https://assets.coincap.io/assets/icons/' + chosen.toLowerCase() + '@2x.png'"
+                    />
+
+                    @let current = $index;
+                    <ng-template
+                        #dropdownContent
+                        let-close
+                    >
+                        <tui-data-list size="s">
+                            @for (token of data; track token.symbol) {
+                                <button
+                                    tuiOption
+                                    [value]="token.symbol"
+                                    (click)="[current ? newTokenTo(token.symbol) : newTokenFrom(token.symbol), close()]"
+                                >
+                                    {{ token.symbol.toUpperCase() }}
+                                    <tui-icon
+                                        *ngIf="token.symbol.toLowerCase() === chosen.toLowerCase()"
+                                        icon="@tui.check"
+                                        [style.font-size.em]="1"
+                                        [style.margin-left.rem]="0.5"
+                                    />
+                                </button>
+                            }
+                        </tui-data-list>
+                    </ng-template>
+                </button>
+            </div>
+            <div>
+                <tui-input-inline tuiTitle="l">
+                    @if ($index) {
+                        <input
+                            max="1000"
+                            min="0"
+                            type="number"
+                            [(ngModel)]="to"
+                            (input)="newSwapTo()"
+                        />
+                    } @else {
+                        <input
+                            max="1000"
+                            min="0"
+                            type="number"
+                            [(ngModel)]="from"
+                            (input)="newSwapFrom()"
+                        />
+                    }
+                </tui-input-inline>
+                <div>
+                    <div
+                        tuiSubtitle
+                        class="equal-number"
+                    >
+                        @if ($index) {
+                            ≈{{ priceTo() * to() | tuiAmount: 'USD' | async }}
+                        } @else {
+                            ≈{{ priceFrom() * from() | tuiAmount: 'USD' | async }}
+                        }
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        }
+        <button
+            appearance="primary"
+            tuiButton
+        >
+            Swap
+        </button>
+    </div>
+}
