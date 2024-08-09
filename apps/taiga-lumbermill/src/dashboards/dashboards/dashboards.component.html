@@ -2,13 +2,14 @@
     tuiNavigationNav
     [style.position]="'sticky'"
 >
-    <a routerLink="/dashboards">
+    @let title = (data$ | async) ?? '';
+    <a [routerLink]="title ? '/dashboards' : '/'">
         <tui-icon icon="@tui.chevron-left" />
         Back
     </a>
     /
     <span tuiNavigationLogo>
-        <span tuiFade>{{ (data$ | async) ?? '' }} dashboard</span>
+        <span tuiFade>{{ title }} dashboard</span>
     </span>
     <hr />
 </nav>
