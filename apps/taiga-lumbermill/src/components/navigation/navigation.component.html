@@ -8,8 +8,7 @@
     </button>
     <span tuiNavigationLogo>
         <tui-icon icon="@tui.home" />
-        <span tuiFade>A very very long product name</span>
-        <tui-badge>Test</tui-badge>
+        <span tuiFade>Taiga lumbermill</span>
     </span>
     <button
         appearance="secondary"
@@ -48,69 +47,22 @@
         [tuiNavigationAside]="expanded"
     >
         <header>
-            <button
+            <a
                 iconStart="@tui.home"
+                routerLink="/"
                 tuiAsideItem
             >
-                <span tuiFade>A very very long product name</span>
-            </button>
+                <span tuiFade>Taiga lumbermill</span>
+            </a>
         </header>
-        <button
-            iconStart="@tui.search"
-            tuiAsideItem
-        >
-            Search
-        </button>
         <a
-            iconStart="@tui.users"
+            iconStart="@tui.palette"
+            routerLink="/theme"
             tuiAsideItem
         >
-            Groups
+            Theme Generator
         </a>
-        <button
-            iconStart="@tui.settings"
-            tuiAsideItem
-            [tuiAppearanceState]="open ? 'hover' : null"
-            [tuiChevron]="expanded && submenu"
-            [tuiDropdown]="dropdown"
-            [tuiDropdownEnabled]="!expanded"
-            [(tuiDropdownOpen)]="open"
-            (click)="submenu = expanded && !submenu"
-        >
-            Settings
-            <ng-template #dropdown>
-                <tui-data-list size="s">
-                    <button tuiOption>Account</button>
-                    <button tuiOption>Notifications</button>
-                    <button tuiOption>Privacy</button>
-                </tui-data-list>
-            </ng-template>
-        </button>
-        <tui-expand [expanded]="expanded && submenu">
-            <button tuiButton>Account</button>
-            <button tuiButton>Notifications</button>
-            <button tuiButton>Privacy</button>
-        </tui-expand>
-        <button
-            iconStart="@tui.heart"
-            tuiAsideItem
-        >
-            <span tuiFade>By default ellipsis is used but you can use fade too</span>
-        </button>
-        <hr />
-        <button
-            iconStart="@tui.plus"
-            tuiAsideItem
-        >
-            Add
-        </button>
         <footer>
-            <button
-                iconStart="@tui.star"
-                tuiAsideItem
-            >
-                Favorites
-            </button>
             <button
                 tuiAsideItem
                 [iconStart]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"

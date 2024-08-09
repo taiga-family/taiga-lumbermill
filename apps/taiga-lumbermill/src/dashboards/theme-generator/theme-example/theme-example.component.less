@@ -1,0 +1,31 @@
+@media (max-width: 1250px) {
+    .tui-row {
+        gap: 1rem;
+    }
+
+    .tui-col_md-6 {
+        width: 100%;
+    }
+}
+
+.example-block {
+    position: sticky;
+    top: 7rem;
+    height: max-content;
+    background-color: var(--tui-background-base);
+
+    @media (max-width: 570px) {
+        display: none;
+    }
+}
+
+.list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+}

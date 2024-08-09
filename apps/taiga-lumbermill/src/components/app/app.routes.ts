@@ -34,5 +34,12 @@ export const appRoutes: Route[] = [
             },
         ],
     },
+    {
+        path: 'theme',
+        loadComponent: async () =>
+            import('../../dashboards/theme-generator/theme-generator.component').then(
+                (mod) => mod.ThemeGeneratorComponent,
+            ),
+    },
     {path: '**', redirectTo: 'dashboards'},
 ];
