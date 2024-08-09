@@ -3,5 +3,12 @@
     tuiCardLarge="normal"
     class="card"
 >
-    <lmb-list-films class="grow" />
+    @if (onPlay === -1) {
+        <lmb-list-films
+            class="grow"
+            (playChange)="onPlay = $event"
+        />
+    } @else {
+        <lmb-film-view class="grow" />
+    }
 </div>

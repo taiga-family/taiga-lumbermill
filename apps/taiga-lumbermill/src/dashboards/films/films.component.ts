@@ -20,4 +20,6 @@ import {ListFilmsComponent} from './components/list-films/list-films.component';
     styleUrl: './films.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilmComponent {}
+export class FilmComponent {
+    public onPlay = -1;
+}

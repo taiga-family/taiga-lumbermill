@@ -1,8 +1,10 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {SECONDS_IN_MINUTE, TuiMedia} from '@taiga-ui/cdk';
+import {TuiMedia} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
+
+import {FilmsService} from '../../films.service';
 
 @Component({
     standalone: true,
@@ -13,28 +15,11 @@ import {TuiSlider} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class FilmViewComponent {
+    protected filmsService = inject(FilmsService).filmsData;
     protected currentTime = 0;
     protected paused = true;
+    protected volume = 1;
 
-    protected get icon(): string {
-        return this.paused ? '@tui.play' : '@tui.pause';
-    }
-
-    protected getTime(time: number): string {
-        const integer = Math.round(time || 0);
-        const seconds = integer % SECONDS_IN_MINUTE;
-        const minutes = (integer - seconds) / SECONDS_IN_MINUTE;
-        const secondsString = String(seconds);
-        const minutesString = String(minutes);
-        const paddedSeconds =
-            secondsString.length === 1 ? `0${secondsString}` : secondsString;
-        const paddedMinutes =
-            minutesString.length === 1 ? `0${minutesString}` : minutesString;
-
-        return `${paddedMinutes}:${paddedSeconds}`;
-    }
-
-    protected toggleState(): void {
-        this.paused = !this.paused;
-    }
+    @Input()
+    public play = 0;
 }
