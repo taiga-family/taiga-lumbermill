@@ -54,7 +54,7 @@
                                     <td
                                         *tuiCell="column"
                                         tuiTd
-                                        [style.padding-left]="'1rem'"
+                                        [style.padding-left]="'0.5rem'"
                                     >
                                         @if (column === 'Pair') {
                                             <div class="stack">
@@ -79,16 +79,29 @@
                                                         "
                                                     />
                                                 </tui-avatar-stack>
-                                                <div TuiTitle>
+                                                <div
+                                                    TuiTitle
+                                                    [style.font-weight]="'500'"
+                                                >
                                                     {{ item.Pair }}
                                                 </div>
                                             </div>
                                         }
                                         @if (column === 'TVL') {
-                                            <div TuiTitle>${{ item.TVL }}M</div>
+                                            <div
+                                                TuiTitle
+                                                [style.font-weight]="'500'"
+                                            >
+                                                ${{ item.TVL }}M
+                                            </div>
                                         }
                                         @if (column === 'APR') {
-                                            <div TuiTitle>{{ item.APR }}%</div>
+                                            <div
+                                                TuiTitle
+                                                [style.font-weight]="'500'"
+                                            >
+                                                {{ item.APR }}%
+                                            </div>
                                         }
                                     </td>
                                 }
