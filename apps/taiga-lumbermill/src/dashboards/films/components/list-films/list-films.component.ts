@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
@@ -9,7 +9,15 @@ import {FilmsService} from './list-films.service';
 @Component({
     standalone: true,
     selector: 'lmb-list-films',
-    imports: [CommonModule, TuiButton, TuiCarousel, TuiHeader, TuiTitle],
+    imports: [
+        CommonModule,
+        DatePipe,
+        TuiButton,
+        TuiButton,
+        TuiCarousel,
+        TuiHeader,
+        TuiTitle,
+    ],
     templateUrl: './list-films.component.html',
     styleUrl: './list-films.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

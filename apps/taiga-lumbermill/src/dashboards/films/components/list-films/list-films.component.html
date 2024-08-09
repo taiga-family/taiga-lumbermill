@@ -36,7 +36,66 @@
     </button>
 </div>
 @if (open !== -2) {
-    <div>
-        <h1>22</h1>
+    @let item = listFilmsService[open];
+    <hr />
+    <div class="info">
+        <header tuiHeader="l">
+            <h2 tuiTitle>
+                {{ item.title }}
+            </h2>
+        </header>
+        <div class="info-small">
+            <p
+                class="tui-space_top-0 tui-space_bottom-0"
+                [style.color]="'var(--tui-status-positive)'"
+                [style.font-weight]="'800'"
+            >
+                {{ item.rating }}
+            </p>
+            <p
+                class="tui-space_top-0 tui-space_bottom-0"
+                [style.font-weight]="'300'"
+            >
+                {{ item.year }}, {{ item.genre }}
+            </p>
+            <p
+                class="tui-space_top-0 tui-space_bottom-0"
+                [style.font-weight]="'300'"
+            >
+                {{ item.country }}
+            </p>
+            <p
+                class="tui-space_top-0 tui-space_bottom-0"
+                [style.font-weight]="'300'"
+            >
+                {{ item.durationMinutes * 1000 * 60 | date: 'H:mm' : 'UTC' }}
+            </p>
+            <p
+                class="tui-space_top-0 tui-space_bottom-0"
+                [style.font-weight]="'300'"
+            >
+                {{ item.restrictionsYears }}+
+            </p>
+        </div>
+        <header
+            tuiHeader="m"
+            class="tui-space_top-4"
+        >
+            <h3
+                tuiTitle
+                [style.font-size]="'1.6rem'"
+                [style.font-weight]="'300'"
+                [style.max-width]="'35rem'"
+            >
+                {{ item.description }}
+            </h3>
+        </header>
+        <button
+            appearance="primary"
+            tuiButton
+            class="button-watch"
+        >
+            Watch
+        </button>
     </div>
 }

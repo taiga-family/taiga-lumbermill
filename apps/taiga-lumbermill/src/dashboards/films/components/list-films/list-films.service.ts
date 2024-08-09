@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 
 interface Films {
-    readonly name: string;
+    readonly title: string;
     readonly durationMinutes: number;
     readonly img: string;
+    readonly description: string;
     readonly link: string;
     readonly country: string;
     readonly rating: number;
@@ -14,9 +15,11 @@ interface Films {
 
 export const INITIAL_DATA: Films[] = [
     {
-        name: 'Deadpool & Wolverine',
+        title: 'Deadpool & Wolverine',
         durationMinutes: 127,
         img: './movies/2.jpg',
+        description:
+            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
         link: '',
         country: 'Russia',
         rating: 7.8,
@@ -25,9 +28,11 @@ export const INITIAL_DATA: Films[] = [
         restrictionsYears: 18,
     },
     {
-        name: 'Deadpool & Wolverine',
+        title: 'Deadpool & Wolverine',
         durationMinutes: 127,
         img: './movies/2.jpg',
+        description:
+            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
         link: '',
         country: 'Russia',
         rating: 7.8,
@@ -36,9 +41,11 @@ export const INITIAL_DATA: Films[] = [
         restrictionsYears: 18,
     },
     {
-        name: 'Deadpool & Wolverine',
+        title: 'Deadpool & Wolverine',
         durationMinutes: 127,
         img: './movies/2.jpg',
+        description:
+            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
         link: '',
         country: 'Russia',
         rating: 7.8,
@@ -47,9 +54,11 @@ export const INITIAL_DATA: Films[] = [
         restrictionsYears: 18,
     },
     {
-        name: 'Deadpool & Wolverine',
+        title: 'Deadpool & Wolverine',
         durationMinutes: 127,
         img: './movies/2.jpg',
+        description:
+            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
         link: '',
         country: 'Russia',
         rating: 7.8,
