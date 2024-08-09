@@ -25,7 +25,7 @@ import {FilmsService} from './list-films.service';
 export class ListFilmsComponent {
     protected listFilmsService = inject(FilmsService).filmsData;
     protected index = 0;
-    protected open = -1;
+    protected open = 0;
     protected openFilm(value: number): void {
         this.open = value;
     }
