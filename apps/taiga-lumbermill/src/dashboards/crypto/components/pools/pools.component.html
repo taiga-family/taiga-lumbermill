@@ -59,16 +59,14 @@
                         </thead>
                         <tbody tuiTbody>
                             <tr
-                                *cdkVirtualFor="let i of lengthPools(data.length)"
+                                *cdkVirtualFor="let item of tableData() | tuiTableSort; let ind = index"
                                 tuiTr
                             >
                                 @for (column of columns; track $index) {
                                     @if (
-                                        (
-                                            data[i].symbol.toUpperCase() +
-                                            '/' +
-                                            data[i + 1].symbol.toUpperCase()
-                                        ).includes(search.toUpperCase())
+                                        (item[0].symbol.toUpperCase() + '/' + item[1].symbol.toUpperCase()).includes(
+                                            search.toUpperCase()
+                                        )
                                     ) {
                                         <td
                                             *tuiCell="column"
@@ -85,7 +83,7 @@
                                                             size="m"
                                                             [src]="
                                                                 'https://assets.coincap.io/assets/icons/' +
-                                                                data[i].symbol.toLowerCase() +
+                                                                item[0].symbol.toLowerCase() +
                                                                 '@2x.png'
                                                             "
                                                         />
@@ -93,23 +91,23 @@
                                                             size="m"
                                                             [src]="
                                                                 'https://assets.coincap.io/assets/icons/' +
-                                                                data[i + 1].symbol.toLowerCase() +
+                                                                item[1].symbol.toLowerCase() +
                                                                 '@2x.png'
                                                             "
                                                         />
                                                     </tui-avatar-stack>
                                                     <div TuiTitle>
-                                                        {{ data[i].symbol.toUpperCase() }}/{{
-                                                            data[i + 1].symbol.toUpperCase()
+                                                        {{ item[0].symbol.toUpperCase() }}/{{
+                                                            item[1].symbol.toUpperCase()
                                                         }}
                                                     </div>
                                                 </div>
                                             }
                                             @if (column === 'TVL') {
-                                                <div TuiTitle>${{ getTVL(i) }}M</div>
+                                                <div TuiTitle>${{ getTVL(ind) }}M</div>
                                             }
                                             @if (column === 'APR') {
-                                                <div TuiTitle>{{ getAPR(i) }}%</div>
+                                                <div TuiTitle>{{ getAPR(ind) }}%</div>
                                             }
                                         </td>
                                     }
