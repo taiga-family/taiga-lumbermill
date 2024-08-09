@@ -7,6 +7,8 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
+import type {TuiComparator} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
@@ -32,6 +34,7 @@ import {CryptoService} from '../../../../services/crypto.service';
         TuiInputModule,
         TuiScrollable,
         TuiScrollbar,
+        TuiTable,
         TuiTitle,
     ],
     templateUrl: './pools.component.html',
@@ -41,6 +44,7 @@ import {CryptoService} from '../../../../services/crypto.service';
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
     protected tokens = toSignal(this.cryptoService.getTokens());
+    protected columns = ['Pair', 'TVL', 'APR'];
     protected search = '';
 
     protected lengthPools(value: number): number[] {
@@ -63,4 +67,7 @@ export class PoolsComponent {
     protected getAPR(index: number): string {
         return (10 - Number(this.getTVL(index)) / 11).toFixed(1);
     }
+
+    protected readonly aprSorter: TuiComparator<string> = (a: string, b: string) =>
+        Number(a) - Number(b);
 }

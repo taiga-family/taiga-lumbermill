@@ -20,65 +20,103 @@
             Search
         </tui-input>
         <div class="list-pools">
-            <div
-                tuiCell="l"
-                [style.padding-left]="'1rem'"
-                [style.padding-right]="'1rem'"
-            >
-                <div tuiTitle>Pair</div>
-                <div class="last-columns">
-                    <div tuiTitle>TVL</div>
-                    <div tuiTitle>APR</div>
-                </div>
-            </div>
-            <hr />
             <tui-scrollbar>
                 <cdk-virtual-scroll-viewport
-                    itemSize="66"
+                    #viewport
+                    itemSize="64"
                     tuiScrollable
                     class="viewport tui-zero-scrollbar"
                 >
-                    <div *cdkVirtualFor="let i of lengthPools(data.length)">
-                        <div
-                            *ngIf="
-                                (data[i].symbol.toUpperCase() + '/' + data[i + 1].symbol.toUpperCase()).includes(
-                                    search.toUpperCase()
-                                )
-                            "
-                            tuiCell="m"
-                            [style.padding-left]="'1rem'"
-                            [style.padding-right]="'1rem'"
-                        >
-                            <tui-avatar-stack
-                                class="tui-space_vertical-4"
-                                [direction]="'right'"
+                    <table
+                        tuiTable
+                        [columns]="columns"
+                    >
+                        <thead>
+                            <tr tuiThGroup>
+                                @for (column of columns; track $index) {
+                                    @if (column == 'APR') {
+                                        <th
+                                            *tuiHead="column"
+                                            tuiTh
+                                            [sorter]="aprSorter"
+                                            [sticky]="true"
+                                            [style.top.px]="-viewport['_renderedContentOffset']"
+                                        >
+                                            {{ column }}
+                                        </th>
+                                    } @else {
+                                        <th
+                                            *tuiHead="column"
+                                            tuiTh
+                                            [sticky]="true"
+                                            [style.top.px]="-viewport['_renderedContentOffset']"
+                                        >
+                                            {{ column }}
+                                        </th>
+                                    }
+                                }
+                            </tr>
+                        </thead>
+                        <tbody tuiTbody>
+                            <tr
+                                *cdkVirtualFor="let i of lengthPools(data.length)"
+                                tuiTr
                             >
-                                <tui-avatar
-                                    size="m"
-                                    [src]="
-                                        'https://assets.coincap.io/assets/icons/' +
-                                        data[i].symbol.toLowerCase() +
-                                        '@2x.png'
-                                    "
-                                />
-                                <tui-avatar
-                                    size="m"
-                                    [src]="
-                                        'https://assets.coincap.io/assets/icons/' +
-                                        data[i + 1].symbol.toLowerCase() +
-                                        '@2x.png'
-                                    "
-                                />
-                            </tui-avatar-stack>
-                            <div TuiTitle>
-                                {{ data[i].symbol.toUpperCase() }}/{{ data[i + 1].symbol.toUpperCase() }}
-                            </div>
-                            <div class="last-columns">
-                                <div TuiTitle>${{ getTVL(i) }}M</div>
-                                <div TuiTitle>{{ getAPR(i) }}%</div>
-                            </div>
-                        </div>
-                    </div>
+                                @for (column of columns; track $index) {
+                                    @if (
+                                        (
+                                            data[i].symbol.toUpperCase() +
+                                            '/' +
+                                            data[i + 1].symbol.toUpperCase()
+                                        ).includes(search.toUpperCase())
+                                    ) {
+                                        <td
+                                            *tuiCell="column"
+                                            tuiTd
+                                            [style.padding-left]="'1rem'"
+                                        >
+                                            @if (column === 'Pair') {
+                                                <div class="stack">
+                                                    <tui-avatar-stack
+                                                        class="tui-space_top-3 tui-space_bottom-3"
+                                                        [direction]="'right'"
+                                                    >
+                                                        <tui-avatar
+                                                            size="m"
+                                                            [src]="
+                                                                'https://assets.coincap.io/assets/icons/' +
+                                                                data[i].symbol.toLowerCase() +
+                                                                '@2x.png'
+                                                            "
+                                                        />
+                                                        <tui-avatar
+                                                            size="m"
+                                                            [src]="
+                                                                'https://assets.coincap.io/assets/icons/' +
+                                                                data[i + 1].symbol.toLowerCase() +
+                                                                '@2x.png'
+                                                            "
+                                                        />
+                                                    </tui-avatar-stack>
+                                                    <div TuiTitle>
+                                                        {{ data[i].symbol.toUpperCase() }}/{{
+                                                            data[i + 1].symbol.toUpperCase()
+                                                        }}
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (column === 'TVL') {
+                                                <div TuiTitle>${{ getTVL(i) }}M</div>
+                                            }
+                                            @if (column === 'APR') {
+                                                <div TuiTitle>{{ getAPR(i) }}%</div>
+                                            }
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
                 </cdk-virtual-scroll-viewport>
             </tui-scrollbar>
         </div>
