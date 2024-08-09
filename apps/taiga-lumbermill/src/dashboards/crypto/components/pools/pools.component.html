@@ -34,32 +34,20 @@
                         <thead>
                             <tr tuiThGroup>
                                 @for (column of columns; track $index) {
-                                    @if (column == 'APR') {
-                                        <th
-                                            *tuiHead="column"
-                                            tuiTh
-                                            [sorter]="aprSorter"
-                                            [sticky]="true"
-                                            [style.top.px]="-viewport['_renderedContentOffset']"
-                                        >
-                                            {{ column }}
-                                        </th>
-                                    } @else {
-                                        <th
-                                            *tuiHead="column"
-                                            tuiTh
-                                            [sticky]="true"
-                                            [style.top.px]="-viewport['_renderedContentOffset']"
-                                        >
-                                            {{ column }}
-                                        </th>
-                                    }
+                                    <th
+                                        *tuiHead="column"
+                                        tuiTh
+                                        [sticky]="true"
+                                        [style.top.px]="-viewport['_renderedContentOffset']"
+                                    >
+                                        {{ column }}
+                                    </th>
                                 }
                             </tr>
                         </thead>
                         <tbody tuiTbody>
                             <tr
-                                *cdkVirtualFor="let item of tableData() | tuiTableSort; let ind = index"
+                                *cdkVirtualFor="let item of tableData() | tuiTableSort"
                                 tuiTr
                             >
                                 @for (column of columns; track $index) {
@@ -78,7 +66,7 @@
                                                         size="m"
                                                         [src]="
                                                             'https://assets.coincap.io/assets/icons/' +
-                                                            item[0].symbol.toLowerCase() +
+                                                            item.symbolFirst +
                                                             '@2x.png'
                                                         "
                                                     />
@@ -86,23 +74,21 @@
                                                         size="m"
                                                         [src]="
                                                             'https://assets.coincap.io/assets/icons/' +
-                                                            item[1].symbol.toLowerCase() +
+                                                            item.symbolSecond +
                                                             '@2x.png'
                                                         "
                                                     />
                                                 </tui-avatar-stack>
                                                 <div TuiTitle>
-                                                    {{ item[0].symbol.toUpperCase() }}/{{
-                                                        item[1].symbol.toUpperCase()
-                                                    }}
+                                                    {{ item.Pair }}
                                                 </div>
                                             </div>
                                         }
                                         @if (column === 'TVL') {
-                                            <div TuiTitle>${{ getTVL(ind) }}M</div>
+                                            <div TuiTitle>${{ item.TVL }}M</div>
                                         }
                                         @if (column === 'APR') {
-                                            <div TuiTitle>{{ getAPR(ind) }}%</div>
+                                            <div TuiTitle>{{ item.APR }}%</div>
                                         }
                                     </td>
                                 }

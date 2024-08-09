@@ -4,6 +4,7 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
+import type {Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -21,6 +22,14 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {CryptoService} from '../../../../services/crypto.service';
+
+export interface TableData {
+    readonly Pair: string;
+    readonly TVL: string;
+    readonly APR: string;
+    readonly symbolFirst: string;
+    readonly symbolSecond: string;
+}
 
 @Component({
     standalone: true,
@@ -50,15 +59,17 @@ import {CryptoService} from '../../../../services/crypto.service';
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
     protected tokens = toSignal(this.cryptoService.getTokens());
-    protected tableData = computed(() =>
+    protected tableData: Signal<TableData[]> = computed(() =>
         (this.tokens() ?? [])
-            .map((item, index) => [item, (this.tokens() ?? [])[index + 1]])
+            .map((_, index) => ({
+                Pair: `${(this.tokens() ?? [])?.[index]?.symbol.toUpperCase()}/${(this.tokens() ?? [])?.[index + 1]?.symbol.toUpperCase()}`,
+                TVL: this.getTVL(index),
+                APR: this.getAPR(index),
+                symbolFirst: (this.tokens() ?? [])?.[index]?.symbol.toLowerCase(),
+                symbolSecond: (this.tokens() ?? [])?.[index + 1]?.symbol.toLowerCase(),
+            }))
             .filter((_, index) => index % 2 === 0)
-            .filter((item) =>
-                `${item[0].symbol.toUpperCase()}/${item[1].symbol.toUpperCase()}`.includes(
-                    this.search().toUpperCase(),
-                ),
-            ),
+            .filter((item) => item.Pair.includes(this.search().toUpperCase())),
     );
 
     protected columns = ['Pair', 'TVL', 'APR'];
@@ -70,8 +81,8 @@ export class PoolsComponent {
 
     protected getTVL(index: number): string {
         const result =
-            Number(this.tableData()[index][0].priceUsd) +
-            Number(this.tableData()[index][1].priceUsd) +
+            Number(this.tokens()?.[index].priceUsd) +
+            Number(this.tokens()?.[index].priceUsd) +
             1;
 
         if (result > 100) {
