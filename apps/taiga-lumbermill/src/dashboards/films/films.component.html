@@ -9,6 +9,9 @@
             (playChange)="onPlay = $event"
         />
     } @else {
-        <lmb-film-view class="grow" />
+        <lmb-film-view
+            class="grow"
+            [(play)]="onPlay"
+        />
     }
 </div>

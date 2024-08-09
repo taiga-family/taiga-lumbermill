@@ -1,3 +1,4 @@
+@let item = filmsService[play];
 <div class="player">
     <video
         #video
@@ -13,4 +14,19 @@
             type="video/mp4"
         />
     </video>
+    <header
+        tuiHeader="l"
+        class="title"
+    >
+        <h2 tuiTitle>
+            {{ item.title }}
+        </h2>
+    </header>
+    <button
+        appearance="icon"
+        iconStart="@tui.circle-x"
+        tuiIconButton
+        class="close"
+        (click)="close()"
+    ></button>
 </div>

@@ -106,6 +106,14 @@
         <div
             class="background-img"
             [ngStyle]="{'background-image': 'url(' + item.img + ')'}"
-        ></div>
+        >
+            <button
+                appearance="icon"
+                iconStart="@tui.circle-x"
+                tuiIconButton
+                class="close"
+                (click)="open = -1"
+            ></button>
+        </div>
     </div>
 }
