@@ -1,0 +1,95 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.button {
+    width: 1rem;
+    height: 1rem;
+}
+
+.item {
+    .transition(~'box-shadow, transform');
+
+    display: block;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-position: center;
+    background-size: cover;
+    height: 10rem;
+    margin: 2rem 1rem;
+
+    &:hover {
+        box-shadow: var(--tui-shadow-medium);
+        transform: scale(1.1);
+    }
+
+    &_active {
+        position: relative;
+        outline: 0.5rem solid var(--tui-background-accent-opposite-hover);
+    }
+
+    &_active::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        bottom: -2.3rem;
+        transform: translateX(-50%);
+        border: 1rem solid transparent;
+        border-top: 1rem solid var(--tui-background-accent-opposite-hover);
+    }
+}
+
+.info {
+    display: flex;
+    padding: 1.5rem;
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+    flex-direction: column;
+
+    &-small {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
+
+.button-watch {
+    max-width: max-content;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-top: 7rem;
+}
+
+.block-info {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.background-img {
+    position: relative;
+    width: 100%;
+    background-color: red;
+    background-position: center;
+    background-size: cover;
+    border-bottom-right-radius: 1.5rem;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    box-shadow: inset 10rem 0 100rem 0 var(--tui-background-base-alt);
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--tui-status-negative);
+}
