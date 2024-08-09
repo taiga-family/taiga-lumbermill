@@ -14,7 +14,6 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
-import type {TuiComparator} from '@taiga-ui/addon-table';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
@@ -81,8 +80,8 @@ export class PoolsComponent {
 
     protected getTVL(index: number): string {
         const result =
-            Number(this.tokens()?.[index].priceUsd) +
-            Number(this.tokens()?.[index].priceUsd) +
+            Number(this.tokens()?.[index]?.priceUsd) +
+            Number(this.tokens()?.[index + 1]?.priceUsd) +
             1;
 
         if (result > 100) {
@@ -95,7 +94,4 @@ export class PoolsComponent {
     protected getAPR(index: number): string {
         return (10 - Number(this.getTVL(index)) / 11).toFixed(1);
     }
-
-    protected readonly aprSorter: TuiComparator<string> = (a: string, b: string) =>
-        Number(a.replace('%', '')) - Number(b.replace('%', ''));
 }
