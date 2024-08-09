@@ -63,54 +63,48 @@
                                 tuiTr
                             >
                                 @for (column of columns; track $index) {
-                                    @if (
-                                        (item[0].symbol.toUpperCase() + '/' + item[1].symbol.toUpperCase()).includes(
-                                            search.toUpperCase()
-                                        )
-                                    ) {
-                                        <td
-                                            *tuiCell="column"
-                                            tuiTd
-                                            [style.padding-left]="'1rem'"
-                                        >
-                                            @if (column === 'Pair') {
-                                                <div class="stack">
-                                                    <tui-avatar-stack
-                                                        class="tui-space_top-3 tui-space_bottom-3"
-                                                        [direction]="'right'"
-                                                    >
-                                                        <tui-avatar
-                                                            size="m"
-                                                            [src]="
-                                                                'https://assets.coincap.io/assets/icons/' +
-                                                                item[0].symbol.toLowerCase() +
-                                                                '@2x.png'
-                                                            "
-                                                        />
-                                                        <tui-avatar
-                                                            size="m"
-                                                            [src]="
-                                                                'https://assets.coincap.io/assets/icons/' +
-                                                                item[1].symbol.toLowerCase() +
-                                                                '@2x.png'
-                                                            "
-                                                        />
-                                                    </tui-avatar-stack>
-                                                    <div TuiTitle>
-                                                        {{ item[0].symbol.toUpperCase() }}/{{
-                                                            item[1].symbol.toUpperCase()
-                                                        }}
-                                                    </div>
+                                    <td
+                                        *tuiCell="column"
+                                        tuiTd
+                                        [style.padding-left]="'1rem'"
+                                    >
+                                        @if (column === 'Pair') {
+                                            <div class="stack">
+                                                <tui-avatar-stack
+                                                    class="tui-space_top-3 tui-space_bottom-3"
+                                                    [direction]="'right'"
+                                                >
+                                                    <tui-avatar
+                                                        size="m"
+                                                        [src]="
+                                                            'https://assets.coincap.io/assets/icons/' +
+                                                            item[0].symbol.toLowerCase() +
+                                                            '@2x.png'
+                                                        "
+                                                    />
+                                                    <tui-avatar
+                                                        size="m"
+                                                        [src]="
+                                                            'https://assets.coincap.io/assets/icons/' +
+                                                            item[1].symbol.toLowerCase() +
+                                                            '@2x.png'
+                                                        "
+                                                    />
+                                                </tui-avatar-stack>
+                                                <div TuiTitle>
+                                                    {{ item[0].symbol.toUpperCase() }}/{{
+                                                        item[1].symbol.toUpperCase()
+                                                    }}
                                                 </div>
-                                            }
-                                            @if (column === 'TVL') {
-                                                <div TuiTitle>${{ getTVL(ind) }}M</div>
-                                            }
-                                            @if (column === 'APR') {
-                                                <div TuiTitle>{{ getAPR(ind) }}%</div>
-                                            }
-                                        </td>
-                                    }
+                                            </div>
+                                        }
+                                        @if (column === 'TVL') {
+                                            <div TuiTitle>${{ getTVL(ind) }}M</div>
+                                        }
+                                        @if (column === 'APR') {
+                                            <div TuiTitle>{{ getAPR(ind) }}%</div>
+                                        }
+                                    </td>
                                 }
                             </tr>
                         </tbody>

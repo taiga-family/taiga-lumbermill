@@ -4,7 +4,13 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    signal,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import type {TuiComparator} from '@taiga-ui/addon-table';
@@ -47,11 +53,16 @@ export class PoolsComponent {
     protected tableData = computed(() =>
         (this.tokens() ?? [])
             .map((item, index) => [item, (this.tokens() ?? [])[index + 1]])
-            .filter((_, index) => index % 2 === 0),
+            .filter((_, index) => index % 2 === 0)
+            .filter((item) =>
+                `${item[0].symbol.toUpperCase()}/${item[1].symbol.toUpperCase()}`.includes(
+                    this.search().toUpperCase(),
+                ),
+            ),
     );
 
     protected columns = ['Pair', 'TVL', 'APR'];
-    protected search = '';
+    protected search = signal('');
 
     protected lengthPools(value: number): number[] {
         return [...new Array(value).keys()].filter((_, index) => index % 2 === 0);
