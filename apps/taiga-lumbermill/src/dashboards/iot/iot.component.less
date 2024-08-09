@@ -55,23 +55,8 @@
     }
 }
 
-.control {
-    @media (max-width: 950px) {
-        grid-column-end: 3;
-        grid-column-start: 1;
-    }
-}
-
 .grow {
     width: 100%;
-}
-
-.row {
-    position: relative;
-    display: grid;
-    flex: 0 0 auto;
-    grid-template-columns: 4fr 6fr 4fr;
-    gap: 1rem;
 }
 
 .column {
@@ -86,23 +71,5 @@
 
     @media (max-width: 750px) {
         flex-direction: column;
-    }
-}
-
-@media (max-width: 56.25rem) {
-    .row {
-        display: flex;
-        flex: 1;
-        flex-wrap: wrap;
-    }
-
-    .grow {
-        height: max-content;
-    }
-}
-
-@media (max-width: 35.625rem) {
-    .grow {
-        width: 100%;
     }
 }
