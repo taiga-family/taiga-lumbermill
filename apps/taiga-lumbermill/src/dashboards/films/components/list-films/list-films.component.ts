@@ -1,8 +1,10 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
+
+import {FilmsService} from './list-films.service';
 
 @Component({
     standalone: true,
@@ -13,25 +15,10 @@ import {TuiHeader} from '@taiga-ui/layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListFilmsComponent {
+    protected listFilmsService = inject(FilmsService).filmsData;
     protected index = 0;
     protected open = -2;
-    protected readonly items = [
-        './music/against.jpg',
-        './music/howling.avif',
-        './music/against.jpg',
-        './music/howling.avif',
-        './music/against.jpg',
-        './music/howling.avif',
-        './music/against.jpg',
-        './music/howling.avif',
-        './music/against.jpg',
-        './music/howling.avif',
-        './music/against.jpg',
-        './music/howling.avif',
-    ];
-
     protected openFilm(value: number): void {
-        this.index = value - 1;
         this.open = value - 1;
     }
 }

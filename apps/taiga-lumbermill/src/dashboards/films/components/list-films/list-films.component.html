@@ -15,13 +15,13 @@
         [itemsCount]="3"
         [(index)]="index"
     >
-        @for (item of items; track $index) {
+        @for (item of listFilmsService; track $index) {
             <div
                 *tuiItem
                 draggable="false"
                 class="item"
                 [class.item_active]="$index === open + 1"
-                [ngStyle]="{'background-image': 'url(' + item + ')'}"
+                [ngStyle]="{'background-image': 'url(' + item.img + ')'}"
                 (click)="openFilm($index)"
             ></div>
         }
