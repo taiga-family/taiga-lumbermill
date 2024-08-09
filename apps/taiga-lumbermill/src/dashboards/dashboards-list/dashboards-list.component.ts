@@ -10,7 +10,7 @@ interface DashboardsData {
     readonly description: string;
 }
 
-const INITIAL_DATA: DashboardsData[] = [
+export const INITIAL_DATA: DashboardsData[] = [
     {
         title: 'Iot Dashboard',
         link: '/dashboards/iot',
