@@ -1,0 +1,135 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="example-block"
+>
+    <div tuiHeader="l">
+        <h3 tuiTitle>
+            Title example
+            <div tuiSubtitle>Subtitle example</div>
+        </h3>
+    </div>
+    <tui-input-number
+        [formControl]="exampleControl"
+        [tuiTextfieldPrefix]="'USD' | tuiCurrency"
+    >
+        Type a sum
+    </tui-input-number>
+    <div class="tui-row">
+        <div class="tui-col_md-6">
+            <div
+                tuiCardLarge
+                tuiSurface="elevated"
+            >
+                <header tuiHeader>
+                    <h1 tuiTitle>
+                        Title
+                        <span tuiSubtitle>Subtitle</span>
+                    </h1>
+                </header>
+
+                <button
+                    *tuiRepeatTimes="let index of 3"
+                    tuiCell="l"
+                    tuiDropdownAlign="right"
+                    tuiDropdownOpen
+                    [tuiDropdown]="dropdown"
+                    [tuiDropdownSided]="true"
+                >
+                    <tui-avatar
+                        appearance="primary"
+                        src="@tui.star"
+                    />
+
+                    <div tuiTitle>
+                        Title
+                        <div tuiSubtitle>Description</div>
+                    </div>
+
+                    <tui-icon
+                        icon="@tui.chevron-right"
+                        tuiAppearance="icon"
+                    />
+                </button>
+
+                <button
+                    tuiLink
+                    type="button"
+                >
+                    Show all
+                </button>
+            </div>
+
+            <ng-template
+                #dropdown
+                let-close
+            >
+                <tui-data-list>
+                    <tui-opt-group>
+                        <button
+                            *ngFor="let item of ['Edit', 'Download', 'Rename', 'Delete']"
+                            tuiOption
+                        >
+                            {{ item }}
+                        </button>
+                    </tui-opt-group>
+                    <tui-opt-group>
+                        <button
+                            tuiOption
+                            (click)="close()"
+                        >
+                            Nevermind
+                        </button>
+                    </tui-opt-group>
+                </tui-data-list>
+            </ng-template>
+        </div>
+        <div class="tui-col_md-6">
+            <div
+                tuiCardLarge
+                tuiSurface="elevated"
+            >
+                <tui-input-year
+                    [formControl]="exampleYearControl"
+                    [tuiTextfieldCleaner]="true"
+                >
+                    Choose a year
+                    <input
+                        placeholder="Not 2022 please"
+                        tuiTextfieldLegacy
+                    />
+                </tui-input-year>
+                <div class="list">
+                    @for (badge of badges; track $index) {
+                        <tui-badge [appearance]="badge">
+                            {{ badge.charAt(0).toUpperCase() + badge.slice(1) }}
+                        </tui-badge>
+                    }
+                </div>
+                <input
+                    size="m"
+                    tuiCheckbox
+                    type="checkbox"
+                    [ngModel]="true"
+                />
+                <input
+                    size="m"
+                    tuiSwitch
+                    type="checkbox"
+                    [disabled]="true"
+                    [ngModel]="true"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="list">
+        @for (button of buttons; track $index) {
+            <button
+                tuiButton
+                [appearance]="button"
+            >
+                {{ button.charAt(0).toUpperCase() + button.slice(1) }}
+            </button>
+        }
+    </div>
+</div>
