@@ -48,61 +48,63 @@
                             *cdkVirtualFor="let item of tableData() | tuiTableSort"
                             tuiTr
                         >
-                            @for (column of columns; track $index) {
-                                <td
-                                    *tuiCell="column"
-                                    tuiTd
-                                    [style.padding-left]="'0.5rem'"
+                            <td
+                                *tuiCell="'Pair'"
+                                tuiTd
+                                [style.padding-left]="'0.5rem'"
+                            >
+                                <div class="stack">
+                                    <tui-avatar-stack
+                                        class="tui-space_top-3 tui-space_bottom-3"
+                                        [direction]="'right'"
+                                    >
+                                        <tui-avatar
+                                            size="m"
+                                            [src]="
+                                                'https://assets.coincap.io/assets/icons/' + item.symbolFirst + '@2x.png'
+                                            "
+                                        />
+                                        <tui-avatar
+                                            size="m"
+                                            [src]="
+                                                'https://assets.coincap.io/assets/icons/' +
+                                                item.symbolSecond +
+                                                '@2x.png'
+                                            "
+                                        />
+                                    </tui-avatar-stack>
+                                    <div
+                                        TuiTitle
+                                        [style.font-weight]="'500'"
+                                    >
+                                        {{ item.Pair }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td
+                                *tuiCell="'TVL'"
+                                tuiTd
+                                [style.padding-left]="'0.5rem'"
+                            >
+                                <div
+                                    TuiTitle
+                                    [style.font-weight]="'500'"
                                 >
-                                    @if (column === 'Pair') {
-                                        <div class="stack">
-                                            <tui-avatar-stack
-                                                class="tui-space_top-3 tui-space_bottom-3"
-                                                [direction]="'right'"
-                                            >
-                                                <tui-avatar
-                                                    size="m"
-                                                    [src]="
-                                                        'https://assets.coincap.io/assets/icons/' +
-                                                        item.symbolFirst +
-                                                        '@2x.png'
-                                                    "
-                                                />
-                                                <tui-avatar
-                                                    size="m"
-                                                    [src]="
-                                                        'https://assets.coincap.io/assets/icons/' +
-                                                        item.symbolSecond +
-                                                        '@2x.png'
-                                                    "
-                                                />
-                                            </tui-avatar-stack>
-                                            <div
-                                                TuiTitle
-                                                [style.font-weight]="'500'"
-                                            >
-                                                {{ item.Pair }}
-                                            </div>
-                                        </div>
-                                    }
-                                    @if (column === 'TVL') {
-                                        <div
-                                            TuiTitle
-                                            [style.font-weight]="'500'"
-                                        >
-                                            ${{ item.TVL }}M
-                                        </div>
-                                    }
-                                    @if (column === 'APR') {
-                                        <div
-                                            TuiTitle
-                                            [style.font-weight]="'500'"
-                                        >
-                                            {{ item.APR }}%
-                                        </div>
-                                    }
-                                </td>
-                            }
+                                    ${{ item.TVL }}M
+                                </div>
+                            </td>
+                            <td
+                                *tuiCell="'APR'"
+                                tuiTd
+                                [style.padding-left]="'0.5rem'"
+                            >
+                                <div
+                                    TuiTitle
+                                    [style.font-weight]="'500'"
+                                >
+                                    {{ item.APR }}%
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
