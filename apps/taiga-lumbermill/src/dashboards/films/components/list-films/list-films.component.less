@@ -9,16 +9,36 @@
     display: flex;
     align-items: center;
     padding: 1.5rem;
+
+    @media (max-width: 570px) {
+        padding: 1.5rem 0;
+    }
+}
+
+.top-select {
+    position: relative;
+    display: flex;
+    align-items: center;
     max-width: 100%;
 }
 
 .button {
-    width: 1rem;
-    height: 1rem;
-}
+    top: 50%;
+    bottom: 50%;
+    z-index: 2;
 
-tui-carousel {
-    max-width: 100%;
+    @media (max-width: 570px) {
+        position: absolute;
+        transform: translateY(-50%);
+    }
+
+    &_left {
+        left: 1rem;
+    }
+
+    &_right {
+        right: 1rem;
+    }
 }
 
 .item {
@@ -30,7 +50,11 @@ tui-carousel {
     background-position: center;
     background-size: cover;
     min-height: 10rem;
-    margin: 1rem 0.5rem;
+    margin: 2rem 1rem;
+
+    @media (max-width: 570px) {
+        padding: 0;
+    }
 
     &:hover {
         box-shadow: var(--tui-shadow-medium);
