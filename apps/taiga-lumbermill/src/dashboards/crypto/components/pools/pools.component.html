@@ -60,17 +60,11 @@
                                     >
                                         <tui-avatar
                                             size="m"
-                                            [src]="
-                                                'https://assets.coincap.io/assets/icons/' + item.symbolFirst + '@2x.png'
-                                            "
+                                            [src]="item.symbolFirst | coinIcon"
                                         />
                                         <tui-avatar
                                             size="m"
-                                            [src]="
-                                                'https://assets.coincap.io/assets/icons/' +
-                                                item.symbolSecond +
-                                                '@2x.png'
-                                            "
+                                            [src]="item.symbolSecond | coinIcon"
                                         />
                                     </tui-avatar-stack>
                                     <div
