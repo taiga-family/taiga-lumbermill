@@ -1,115 +1,112 @@
-@let data = tokens();
-@if (data) {
-    <div
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
-        [style.height]="'100%'"
-    >
-        <header tuiHeader>
-            <h2
-                tuiTitle
-                [style.text-align]="'center'"
-            >
-                Pools
-            </h2>
-        </header>
-        <tui-input
-            tuiTextfieldIconLeft="@tui.search"
-            [(ngModel)]="search"
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    [style.height]="'100%'"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
         >
-            Search
-        </tui-input>
-        <div class="list-pools">
-            <tui-scrollbar>
-                <cdk-virtual-scroll-viewport
-                    #viewport
-                    itemSize="64"
-                    tuiScrollable
-                    class="viewport tui-zero-scrollbar"
+            Pools
+        </h2>
+    </header>
+    <tui-input
+        tuiTextfieldIconLeft="@tui.search"
+        [(ngModel)]="search"
+    >
+        Search
+    </tui-input>
+    <div class="list-pools">
+        <tui-scrollbar>
+            <cdk-virtual-scroll-viewport
+                #viewport
+                itemSize="64"
+                tuiScrollable
+                class="viewport tui-zero-scrollbar"
+            >
+                <table
+                    tuiTable
+                    [columns]="columns"
                 >
-                    <table
-                        tuiTable
-                        [columns]="columns"
-                    >
-                        <thead>
-                            <tr tuiThGroup>
-                                @for (column of columns; track $index) {
-                                    <th
-                                        *tuiHead="column"
-                                        tuiTh
-                                        [sticky]="true"
-                                        [style.top.px]="-viewport['_renderedContentOffset']"
-                                    >
-                                        {{ column }}
-                                    </th>
-                                }
-                            </tr>
-                        </thead>
-                        <tbody tuiTbody>
-                            <tr
-                                *cdkVirtualFor="let item of tableData() | tuiTableSort"
-                                tuiTr
-                            >
-                                @for (column of columns; track $index) {
-                                    <td
-                                        *tuiCell="column"
-                                        tuiTd
-                                        [style.padding-left]="'0.5rem'"
-                                    >
-                                        @if (column === 'Pair') {
-                                            <div class="stack">
-                                                <tui-avatar-stack
-                                                    class="tui-space_top-3 tui-space_bottom-3"
-                                                    [direction]="'right'"
-                                                >
-                                                    <tui-avatar
-                                                        size="m"
-                                                        [src]="
-                                                            'https://assets.coincap.io/assets/icons/' +
-                                                            item.symbolFirst +
-                                                            '@2x.png'
-                                                        "
-                                                    />
-                                                    <tui-avatar
-                                                        size="m"
-                                                        [src]="
-                                                            'https://assets.coincap.io/assets/icons/' +
-                                                            item.symbolSecond +
-                                                            '@2x.png'
-                                                        "
-                                                    />
-                                                </tui-avatar-stack>
-                                                <div
-                                                    TuiTitle
-                                                    [style.font-weight]="'500'"
-                                                >
-                                                    {{ item.Pair }}
-                                                </div>
-                                            </div>
-                                        }
-                                        @if (column === 'TVL') {
+                    <thead>
+                        <tr tuiThGroup>
+                            @for (column of columns; track $index) {
+                                <th
+                                    *tuiHead="column"
+                                    tuiTh
+                                    [sticky]="true"
+                                    [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                                >
+                                    {{ column }}
+                                </th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody tuiTbody>
+                        <tr
+                            *cdkVirtualFor="let item of tableData() | tuiTableSort"
+                            tuiTr
+                        >
+                            @for (column of columns; track $index) {
+                                <td
+                                    *tuiCell="column"
+                                    tuiTd
+                                    [style.padding-left]="'0.5rem'"
+                                >
+                                    @if (column === 'Pair') {
+                                        <div class="stack">
+                                            <tui-avatar-stack
+                                                class="tui-space_top-3 tui-space_bottom-3"
+                                                [direction]="'right'"
+                                            >
+                                                <tui-avatar
+                                                    size="m"
+                                                    [src]="
+                                                        'https://assets.coincap.io/assets/icons/' +
+                                                        item.symbolFirst +
+                                                        '@2x.png'
+                                                    "
+                                                />
+                                                <tui-avatar
+                                                    size="m"
+                                                    [src]="
+                                                        'https://assets.coincap.io/assets/icons/' +
+                                                        item.symbolSecond +
+                                                        '@2x.png'
+                                                    "
+                                                />
+                                            </tui-avatar-stack>
                                             <div
                                                 TuiTitle
                                                 [style.font-weight]="'500'"
                                             >
-                                                ${{ item.TVL }}M
+                                                {{ item.Pair }}
                                             </div>
-                                        }
-                                        @if (column === 'APR') {
-                                            <div
-                                                TuiTitle
-                                                [style.font-weight]="'500'"
-                                            >
-                                                {{ item.APR }}%
-                                            </div>
-                                        }
-                                    </td>
-                                }
-                            </tr>
-                        </tbody>
-                    </table>
-                </cdk-virtual-scroll-viewport>
-            </tui-scrollbar>
-        </div>
+                                        </div>
+                                    }
+                                    @if (column === 'TVL') {
+                                        <div
+                                            TuiTitle
+                                            [style.font-weight]="'500'"
+                                        >
+                                            ${{ item.TVL }}M
+                                        </div>
+                                    }
+                                    @if (column === 'APR') {
+                                        <div
+                                            TuiTitle
+                                            [style.font-weight]="'500'"
+                                        >
+                                            {{ item.APR }}%
+                                        </div>
+                                    }
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </cdk-virtual-scroll-viewport>
+        </tui-scrollbar>
     </div>
-}
+</div>
