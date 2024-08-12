@@ -1,21 +1,28 @@
 .video {
     display: block;
     width: 100%;
-    box-shadow: inset 0 10rem 7rem -5rem #000;
     margin-bottom: 1.5rem;
+}
+
+.blackout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset 0 10rem 7rem -5rem var(--tui-background-accent-opposite);
 }
 
 .player {
     position: relative;
-    margin: 1.5rem;
-    margin-bottom: 0;
+    margin: 0 1.5rem;
 }
 
 .close {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    color: var(--tui-status-negative);
+    color: var(--tui-background-base-alt);
 }
 
 .title {
@@ -25,5 +32,5 @@
     left: 50%;
     width: max-content;
     transform: translateX(-50%);
-    color: var(--tui-text-negative);
+    color: var(--tui-background-base-alt);
 }
