@@ -12,7 +12,7 @@
     <tui-carousel
         #carousel
         [draggable]="false"
-        [itemsCount]="3"
+        [itemsCount]="width > 950 ? 3 : 1"
         [(index)]="index"
     >
         @for (item of listFilmsService; track $index) {

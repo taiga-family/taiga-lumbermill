@@ -9,11 +9,16 @@
     display: flex;
     align-items: center;
     padding: 1.5rem;
+    max-width: 100%;
 }
 
 .button {
     width: 1rem;
     height: 1rem;
+}
+
+tui-carousel {
+    max-width: 100%;
 }
 
 .item {
@@ -24,8 +29,8 @@
     border-radius: 1rem;
     background-position: center;
     background-size: cover;
-    height: 10rem;
-    margin: 2rem 1rem;
+    min-height: 10rem;
+    margin: 1rem 0.5rem;
 
     &:hover {
         box-shadow: var(--tui-shadow-medium);
