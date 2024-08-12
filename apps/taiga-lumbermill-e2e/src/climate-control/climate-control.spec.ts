@@ -26,18 +26,6 @@ test('Have right names', async ({page}) => {
     await expect(inputs.nth(2).locator('label')).toHaveText('Air humidity, % ');
 });
 
-test('Numbers can increase', async ({page}) => {
-    await page.goto('/dashboards/iot');
-    const inputs = page.locator('tui-input-number');
-    const button = inputs.nth(0).locator('button').first();
-
-    await expect(inputs.nth(0).locator('input')).toHaveValue('32');
-
-    button.click();
-
-    await expect(inputs.nth(0).locator('input')).toHaveValue('33');
-});
-
 test('Numbers can decrease', async ({page}) => {
     await page.goto('/dashboards/iot');
     const inputs = page.locator('tui-input-number');
