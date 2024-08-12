@@ -59,20 +59,21 @@ export interface TableData {
 })
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
-    protected tokensSignal = toSignal(this.cryptoService.getTokens());
-    protected tokens = computed(() => this.tokensSignal() || []);
-    protected tableData: Signal<TableData[]> = computed(() =>
-        this.tokens()
+    protected tokens = toSignal(this.cryptoService.getTokens());
+    protected tableData: Signal<TableData[]> = computed(() => {
+        const tokens = this.tokens() || [];
+
+        return tokens
             .map((_, index) => ({
-                Pair: `${this.tokens()?.[index]?.symbol.toUpperCase()}/${this.tokens()?.[index + 1]?.symbol.toUpperCase()}`,
+                Pair: `${tokens?.[index]?.symbol.toUpperCase()}/${tokens?.[index + 1]?.symbol.toUpperCase()}`,
                 TVL: this.getTVL(index),
                 APR: this.getAPR(index),
-                symbolFirst: this.tokens()?.[index]?.symbol.toLowerCase(),
-                symbolSecond: this.tokens()?.[index + 1]?.symbol.toLowerCase(),
+                symbolFirst: tokens?.[index]?.symbol.toLowerCase(),
+                symbolSecond: tokens?.[index + 1]?.symbol.toLowerCase(),
             }))
             .filter((_, index) => index % 2 === 0)
-            .filter((item) => item.Pair.includes(this.search().toUpperCase())),
-    );
+            .filter((item) => item.Pair.includes(this.search().toUpperCase()));
+    });
 
     protected columns = ['Pair', 'TVL', 'APR'];
     protected search = signal('');
