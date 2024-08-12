@@ -59,15 +59,16 @@ export interface TableData {
 })
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
-    protected tokens = toSignal(this.cryptoService.getTokens());
+    protected tokensSignal = toSignal(this.cryptoService.getTokens());
+    protected tokens = this.tokensSignal() || [];
     protected tableData: Signal<TableData[]> = computed(() =>
-        (this.tokens() ?? [])
+        this.tokens
             .map((_, index) => ({
-                Pair: `${(this.tokens() ?? [])?.[index]?.symbol.toUpperCase()}/${(this.tokens() ?? [])?.[index + 1]?.symbol.toUpperCase()}`,
+                Pair: `${this.tokens?.[index]?.symbol.toUpperCase()}/${this.tokens?.[index + 1]?.symbol.toUpperCase()}`,
                 TVL: this.getTVL(index),
                 APR: this.getAPR(index),
-                symbolFirst: (this.tokens() ?? [])?.[index]?.symbol.toLowerCase(),
-                symbolSecond: (this.tokens() ?? [])?.[index + 1]?.symbol.toLowerCase(),
+                symbolFirst: this.tokens?.[index]?.symbol.toLowerCase(),
+                symbolSecond: this.tokens?.[index + 1]?.symbol.toLowerCase(),
             }))
             .filter((_, index) => index % 2 === 0)
             .filter((item) => item.Pair.includes(this.search().toUpperCase())),
@@ -82,8 +83,8 @@ export class PoolsComponent {
 
     protected getTVL(index: number): string {
         const result =
-            Number(this.tokens()?.[index]?.priceUsd) +
-            Number(this.tokens()?.[index + 1]?.priceUsd) +
+            Number(this.tokens?.[index]?.priceUsd) +
+            Number(this.tokens?.[index + 1]?.priceUsd) +
             1;
 
         if (result > 100) {
