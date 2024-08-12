@@ -1,20 +1,22 @@
-<button
-    *ngFor="let i of controlPanelService; let ind = index"
-    tuiCardLarge
-    tuiHeader
-    tuiSurface="elevated"
-    class="button-card"
->
-    <aside tuiAccessories>
-        <tui-avatar
-            appearance=""
-            size="l"
-            [src]="i.img"
-            [style.color]="'var(--tui-background-accent-opposite)'"
-        />
-    </aside>
+@for (i of controlPanelService; track $index) {
+    <button
+        tuiCardLarge
+        tuiHeader
+        tuiSurface="elevated"
+        class="button-card"
+        (click)="states[$index] = !states[$index]"
+    >
+        <aside tuiAccessories>
+            <tui-avatar
+                appearance=""
+                size="l"
+                [src]="!states[$index] ? i.img : i.clickedImg"
+                [style.color]="'var(--tui-background-accent-opposite)'"
+            />
+        </aside>
 
-    <h3 class="text">
-        {{ i.name }}
-    </h3>
-</button>
+        <h2 class="text">
+            {{ !states[$index] ? i.name : i.clickedName }}
+        </h2>
+    </button>
+}

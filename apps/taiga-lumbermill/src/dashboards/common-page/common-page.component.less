@@ -1,0 +1,27 @@
+.description {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40rem;
+}
+
+.row {
+    display: flex;
+    margin-top: 1.25rem;
+    gap: 1.25rem;
+    justify-content: space-between;
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+}
+
+.card {
+    flex-grow: 1;
+
+    @media (max-width: 800px) {
+        width: 100%;
+    }
+}

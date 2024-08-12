@@ -11,14 +11,14 @@ interface Track {
 export const INITIAL_DATA: Track[] = [
     {
         name: 'Against All Odds',
-        logo: '/music/against.jpg',
+        logo: './music/against.jpg',
         performer: 'Tiko Tiko',
         src: './music/AgainstAllOdds.mp3',
         length: 208,
     },
     {
         name: 'Howling at the Moon',
-        logo: '/music/howling.avif',
+        logo: './music/howling.avif',
         performer: 'D Fine Us',
         src: './music/HowlingAtTheMoon.mp3',
         length: 195,

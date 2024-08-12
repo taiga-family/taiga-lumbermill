@@ -3,16 +3,16 @@
     tuiCardLarge="normal"
     class="card"
 >
+    <p class="controls">
+        <tui-input-date-range
+            [maxLength]="maxLength"
+            [(ngModel)]="show"
+            (ngModelChange)="onDataChange($event)"
+        >
+            Data
+        </tui-input-date-range>
+    </p>
     <div>
-        <p class="controls">
-            <tui-input-date-range
-                [maxLength]="maxLength"
-                [(ngModel)]="show"
-                (ngModelChange)="onDataChange($event)"
-            >
-                Data
-            </tui-input-date-range>
-        </p>
         <p class="legend tui-space_top-0">
             <span
                 *ngFor="let chart of days; let index = index"
