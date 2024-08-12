@@ -23,9 +23,19 @@
     top: 1rem;
     right: 1rem;
     color: var(--tui-background-base-alt);
+
+    @media (max-width: 700px) {
+        top: 0.4rem;
+        right: 0.4rem;
+    }
+
+    @media (max-width: 420px) {
+        top: 0.1rem;
+        right: 0.1rem;
+    }
 }
 
-.title {
+.title[tuiHeader][data-size='l'] {
     position: absolute;
     top: 1rem;
     right: 50%;
@@ -33,4 +43,16 @@
     width: max-content;
     transform: translateX(-50%);
     color: var(--tui-background-base-alt);
+
+    @media (max-width: 700px) {
+        & h2 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 420px) {
+        & h2 {
+            font-size: 1rem;
+        }
+    }
 }
