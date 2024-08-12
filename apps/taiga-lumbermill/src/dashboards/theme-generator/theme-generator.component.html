@@ -14,9 +14,9 @@
     }
     <code>
         :root {{ '{' }}
-        @for (InputColor of themeData; track $index) {
+        @for (inputColor of themeData; track $index) {
             <br />
-            {{ InputColor.variable }}: {{ colors[$index]() }};
+            {{ inputColor.variable }}: {{ colors[$index]() }};
         }
         <br />
         {{ '}' }}
