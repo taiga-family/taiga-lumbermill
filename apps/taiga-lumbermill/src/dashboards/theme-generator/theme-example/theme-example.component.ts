@@ -60,7 +60,7 @@ import {
     styleUrl: './theme-example.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style]': 'this.host()',
+        '[style]': 'this.theme()',
     },
 })
 export class ThemeExampleComponent {
@@ -79,5 +79,5 @@ export class ThemeExampleComponent {
     protected readonly buttons = ['primary', 'accent', 'destructive', 'flat', 'outline'];
 
     @Input()
-    public host: Signal<string> = signal('');
+    public theme: Signal<string> = signal('');
 }

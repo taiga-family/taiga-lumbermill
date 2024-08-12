@@ -1,7 +1,4 @@
-<div
-    class="list-colors"
-    [attr.tuiTheme]
->
+<div class="list-colors">
     <div tuiHeader="m">
         <h3 tuiTitle>Colors</h3>
     </div>
@@ -19,10 +16,10 @@
         :root {{ '{' }}
         @for (InputColor of themeData; track $index) {
             <br />
-            {{ InputColor.property }}: {{ colors[$index]() }};
+            {{ InputColor.variable }}: {{ colors[$index]() }};
         }
         <br />
         {{ '}' }}
     </code>
 </div>
-<lmb-theme-example [host]="host" />
+<lmb-theme-example [theme]="theme" />
