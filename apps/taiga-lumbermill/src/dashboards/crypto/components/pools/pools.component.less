@@ -1,0 +1,47 @@
+.list-pools {
+    border: solid 1px var(--tui-border-normal);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.viewport {
+    height: 20rem;
+}
+
+table {
+    width: 100%;
+
+    tr {
+        height: 1px;
+    }
+
+    th {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    td {
+        padding: 0;
+        text-align: center;
+
+        &:first-child {
+            border-left: 0;
+        }
+
+        &:nth-child(2) {
+            width: 3.5rem;
+        }
+
+        &:last-child {
+            width: 2rem;
+            border-right: 0;
+        }
+    }
+}
+
+.stack {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
