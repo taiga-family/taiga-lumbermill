@@ -1,4 +1,4 @@
-@let item = filmsService[play];
+@let item = filmsService[id];
 <div class="player">
     <video
         #video
@@ -27,6 +27,6 @@
         iconStart="@tui.circle-x"
         tuiIconButton
         class="close"
-        (click)="close()"
+        [routerLink]="'/dashboards/films/'"
     ></button>
 </div>

@@ -98,7 +98,7 @@
                 appearance="primary"
                 tuiButton
                 class="button-watch"
-                (click)="watch(open)"
+                [routerLink]="'/dashboards/films/' + open"
             >
                 Watch
             </button>

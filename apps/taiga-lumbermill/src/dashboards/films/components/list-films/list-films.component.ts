@@ -1,11 +1,6 @@
 import {CommonModule, DatePipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
@@ -18,6 +13,7 @@ import {FilmsService} from '../../films.service';
     imports: [
         CommonModule,
         DatePipe,
+        RouterLink,
         TuiButton,
         TuiButton,
         TuiCarousel,
@@ -33,14 +29,7 @@ export class ListFilmsComponent {
     protected index = 0;
     protected open = -1;
 
-    @Output()
-    public readonly playChange = new EventEmitter<number>();
-
     protected openFilm(value: number): void {
         this.open = value;
-    }
-
-    protected watch(value: number): void {
-        this.playChange.emit(value);
     }
 }

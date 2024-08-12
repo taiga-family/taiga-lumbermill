@@ -39,6 +39,24 @@ export const appRoutes: Route[] = [
                         (mod) => mod.FilmComponent,
                     ),
                 data: {title: 'Films'},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/films/components/list-films/list-films.component'
+                            ).then((mod) => mod.ListFilmsComponent),
+                        data: {title: 'Films'},
+                    },
+                    {
+                        path: ':id',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/films/components/film-view/film-view.component'
+                            ).then((mod) => mod.default),
+                        data: {title: 'Films'},
+                    },
+                ],
             },
         ],
     },

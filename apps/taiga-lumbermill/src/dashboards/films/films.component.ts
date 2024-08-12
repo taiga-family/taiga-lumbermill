@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {TuiAppearance} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
@@ -13,6 +14,7 @@ import {ListFilmsComponent} from './components/list-films/list-films.component';
         CommonModule,
         FilmViewComponent,
         ListFilmsComponent,
+        RouterOutlet,
         TuiAppearance,
         TuiCardLarge,
     ],
@@ -20,6 +22,4 @@ import {ListFilmsComponent} from './components/list-films/list-films.component';
     styleUrl: './films.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilmComponent {
-    public onPlay = -1;
-}
+export class FilmComponent {}
