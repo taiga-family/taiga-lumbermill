@@ -79,15 +79,17 @@ export class TableComponent {
                 chip: 'ExecuteSasScriptOnAllContours',
             },
             cell: {
-                name: 'Alex Drozdov',
+                name: 'Misha Zhem',
                 email: 'silly@walk.uk',
             },
             status: {
                 value: 'Success',
                 color: 'var(--tui-status-positive)',
             },
-            items: ['Some', 'items', 'displayed', 'here', 'and', 'can', 'overflow'],
-            progress: 78,
+            labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
+            tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
+            duration: '30 days',
+            progress: 43.7,
             selected: false,
         },
     ];

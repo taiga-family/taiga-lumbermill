@@ -103,12 +103,27 @@
                 </div>
             </td>
             <td tuiTd>
+                <div [tuiCell]="size">
+                    <tui-avatar
+                        [src]="item.cell.name | tuiInitials"
+                        [style.background]="item.cell.name | tuiAutoColor"
+                    />
+                    <span tuiTitle>
+                        {{ item.cell.name }}
+                    </span>
+                    <span tuiSubtitle>{{ item.cell.email }}</span>
+                </div>
+            </td>
+            <td tuiTd>
                 <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
             </td>
             <td tuiTd>
                 <tui-items-with-more [style.gap.rem]="0.25">
-                    <ng-container *ngFor="let chip of item.items">
-                        <tui-badge *tuiItem>{{ chip }}</tui-badge>
+                    <ng-container *ngFor="let chip of item.labels">
+                        <tui-badge *tuiItem>
+                            <tui-icon icon="./lock.svg" />
+                            {{ chip }}
+                        </tui-badge>
                     </ng-container>
                     <ng-template
                         let-number
@@ -122,20 +137,66 @@
                             [pseudo]="true"
                             [tuiDropdown]="dropdown"
                         >
-                            + {{ item.items.length - number - 1 }}
+                            + {{ item.labels.length - number - 1 }}
                         </button>
                         <ng-template #dropdown>
                             <div
                                 tuiStatus
                                 [style.padding.rem]="1"
                             >
-                                <ng-container *ngFor="let chip of item.items; let index = index">
-                                    <tui-badge *ngIf="index > number">{{ chip }}</tui-badge>
+                                <ng-container *ngFor="let chip of item.labels; let index = index">
+                                    <tui-badge *ngIf="index > number">
+                                        <tui-icon icon="./lock.svg" />
+                                        {{ chip }}
+                                    </tui-badge>
                                 </ng-container>
                             </div>
                         </ng-template>
                     </ng-template>
                 </tui-items-with-more>
+            </td>
+            <td tuiTd>
+                <tui-items-with-more [style.gap.rem]="0.25">
+                    <ng-container *ngFor="let chip of item.tags">
+                        <tui-badge *tuiItem>
+                            {{ chip }}
+                        </tui-badge>
+                    </ng-container>
+                    <ng-template
+                        let-number
+                        tuiMore
+                    >
+                        <button
+                            appearance="icon"
+                            tuiDropdownAlign="right"
+                            tuiDropdownOpen
+                            tuiLink
+                            [pseudo]="true"
+                            [tuiDropdown]="dropdown"
+                        >
+                            + {{ item.tags.length - number - 1 }}
+                        </button>
+                        <ng-template #dropdown>
+                            <div
+                                tuiStatus
+                                [style.padding.rem]="1"
+                            >
+                                <ng-container *ngFor="let chip of item.tags; let index = index">
+                                    <tui-badge *ngIf="index > number">
+                                        {{ chip }}
+                                    </tui-badge>
+                                </ng-container>
+                            </div>
+                        </ng-template>
+                    </ng-template>
+                </tui-items-with-more>
+            </td>
+            <td tuiTd>
+                <div [tuiCell]="size">
+                    <span tuiTitle>
+                        {{ item.duration }}
+                    </span>
+                </div>
             </td>
             <td tuiTd>
                 <span tuiStatus>
