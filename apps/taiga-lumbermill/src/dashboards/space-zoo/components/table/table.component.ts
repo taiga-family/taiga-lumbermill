@@ -54,19 +54,25 @@ import {TuiCell} from '@taiga-ui/layout';
 export class TableComponent {
     protected readonly sizes = ['l', 'm', 's'] as const;
 
-    protected size = this.sizes[0];
+    protected size = this.sizes[1];
+
+    protected columns = ['1', '2', '3', '4', '5', '6', '7'];
 
     protected readonly data = [
         {
             checkbox: {
-                title: 'Data point 1',
-                subtitle: 'The first element',
+                title: 'INN Checking in database_part_2',
+                subtitle: 'Connection throttled because max number',
             },
-            title: {
+            analytic: {
+                title: 'WO_analytic',
+                subtitle: 'Greenplum Table',
+            },
+            file: {
                 icon: '@tui.file',
-                title: 'This is title',
-                chip: 'Chip',
-                subtitle: 'More information ・ Data',
+                title: 'Stability hamcejdc #195',
+                chip: 'label',
+                subtitle: 'k6-tenant-manager ・ master',
             },
             cell: {
                 name: 'John Cleese',
@@ -78,49 +84,6 @@ export class TableComponent {
             },
             items: ['Some', 'items', 'displayed', 'here', 'and', 'can', 'overflow'],
             progress: 78,
-            selected: false,
-        },
-        {
-            checkbox: {
-                title: 'Some title',
-                subtitle: 'Some more text',
-            },
-            title: {
-                icon: '@tui.heart',
-                title: 'More info',
-                chip: 'Chips can be here',
-            },
-            cell: {
-                name: 'Eric Idle',
-                email: 'cool@dude.com',
-            },
-            status: {
-                value: 'Failure',
-                color: 'var(--tui-status-negative)',
-            },
-            items: ['One', 'Item'],
-            progress: 91,
-            selected: false,
-        },
-        {
-            checkbox: {
-                title: 'And now',
-                subtitle: 'Completely different',
-            },
-            title: {
-                icon: '@tui.star',
-                title: 'Wow',
-            },
-            cell: {
-                name: 'Michael Palin',
-                email: 'its@man.com',
-            },
-            status: {
-                value: 'Pending',
-                color: 'var(--tui-status-warning)',
-            },
-            items: [],
-            progress: 32,
             selected: false,
         },
     ];
