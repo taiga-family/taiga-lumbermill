@@ -32,6 +32,8 @@
         "mintemp",
         "maxtemp",
         "Tiko",
-        "Create"
+        "Create",
+        "Greenplum",
+        "hamcejdc"
     ]
 }
