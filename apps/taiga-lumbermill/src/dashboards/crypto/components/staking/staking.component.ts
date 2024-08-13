@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {CommonModule, DecimalPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -22,7 +22,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import type {PricesData} from '../../../../services/crypto.service';
 import {CryptoService} from '../../../../services/crypto.service';
 import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
 
@@ -32,6 +31,7 @@ import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
     imports: [
         CoinIconPipe,
         CommonModule,
+        DecimalPipe,
         FormsModule,
         TuiAppearance,
         TuiAutoFocus,
@@ -49,9 +49,15 @@ import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
 })
 export class StakingComponent {
     private readonly dialogs = inject(TuiDialogService);
-    protected cryptoService = inject(CryptoService);
+    private readonly cryptoService = inject(CryptoService);
     protected tokens = toSignal(this.cryptoService.getTokens());
-    protected price = computed(() => this.getPrice(this.tokens(), 'btc', this.amount()));
+    protected price = computed(
+        () =>
+            this.amount() *
+            (Number(
+                (this.tokens() ?? []).find((token) => token.symbol === 'BTC')?.priceUsd,
+            ) ?? 0),
+    );
 
     protected inputStake = 0;
     protected inputUnstake = 0;
@@ -66,19 +72,5 @@ export class StakingComponent {
 
     protected showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
         this.dialogs.open(content).subscribe();
-    }
-
-    protected getPrice(
-        data: PricesData[] | undefined,
-        title: string,
-        value: number,
-    ): string {
-        for (const token of data ?? []) {
-            if (token && token.symbol.toLowerCase() === title.toLowerCase()) {
-                return (Number(token.priceUsd) * value).toFixed(2);
-            }
-        }
-
-        return value.toFixed(2);
     }
 }

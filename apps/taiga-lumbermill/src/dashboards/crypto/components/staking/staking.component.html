@@ -59,7 +59,7 @@
                 >
                     {{ amount() }} BTC
                 </div>
-                <div tuiTitle>${{ price() }}</div>
+                <div tuiTitle>${{ price() | number: '1.2-2' }}</div>
             </div>
             <hr />
             <div class="block-position">
