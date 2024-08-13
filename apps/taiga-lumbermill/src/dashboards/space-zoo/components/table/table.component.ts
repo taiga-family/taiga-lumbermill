@@ -67,7 +67,7 @@ export class TableComponent {
         '8',
         '9',
         '10',
-        '11',
+        'duration',
         '12',
         '13',
     ];
@@ -75,7 +75,7 @@ export class TableComponent {
     protected readonly data = [
         {
             checkbox: {
-                title: 'INN Checking in database_part_2',
+                title: 'INN Checking in database_part_1',
                 subtitle: 'Connection throttled because max number',
             },
             analytic: {
@@ -141,7 +141,7 @@ export class TableComponent {
         },
         {
             checkbox: {
-                title: 'INN Checking in database_part_2',
+                title: 'INN Checking in database_part_3',
                 subtitle: 'Connection throttled because max number',
             },
             analytic: {
@@ -168,7 +168,7 @@ export class TableComponent {
             },
             labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
             tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
-            duration: '30 days',
+            duration: '29 days',
             progress: 43.7,
             selected: false,
         },

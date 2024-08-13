@@ -1,11 +1,16 @@
 <table
     tuiTable
+    [columns]="columns"
     [size]="size"
 >
     <thead>
-        <tr>
+        <tr tuiThGroup>
             @for (column of columns; track $index) {
-                <th tuiTh>
+                <th
+                    *tuiHead="column"
+                    tuiTh
+                    [sticky]="true"
+                >
                     @if (column === '1') {
                         <div [tuiCell]="size">
                             <input
@@ -25,8 +30,14 @@
         </tr>
     </thead>
     <tbody tuiTbody>
-        <tr *ngFor="let item of data">
-            <td tuiTd>
+        <tr
+            *ngFor="let item of data | tuiTableSort"
+            tuiTr
+        >
+            <td
+                *tuiCell="'1'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <input
                         tuiCheckbox
@@ -40,7 +51,10 @@
                     </span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'2'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <span tuiTitle>
                         {{ item.analytic.title }}
@@ -48,7 +62,10 @@
                     </span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'3'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <span tuiTitle>
                         <span tuiStatus>
@@ -67,7 +84,10 @@
                     </span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'4'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <span tuiTitle>
                         <span tuiStatus>
@@ -84,7 +104,10 @@
                     </span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'5'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <span tuiTitle>
                         {{ item.date.time }}
@@ -92,7 +115,10 @@
                     </span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'6'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <tui-avatar
                         [src]="item.cell.name | tuiInitials"
@@ -104,7 +130,10 @@
                     </span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'7'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <tui-avatar
                         src="./table/person.svg"
@@ -116,10 +145,16 @@
                     <span tuiSubtitle>{{ item.cell.email }}</span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'8'"
+                tuiTd
+            >
                 <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'9'"
+                tuiTd
+            >
                 <tui-items-with-more [style.gap.rem]="0.25">
                     <ng-container *ngFor="let chip of item.labels">
                         <tui-badge *tuiItem>
@@ -157,7 +192,10 @@
                     </ng-template>
                 </tui-items-with-more>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'10'"
+                tuiTd
+            >
                 <tui-items-with-more [style.gap.rem]="0.25">
                     <ng-container *ngFor="let chip of item.tags">
                         <tui-badge *tuiItem>
@@ -193,14 +231,20 @@
                     </ng-template>
                 </tui-items-with-more>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'duration'"
+                tuiTd
+            >
                 <div [tuiCell]="size">
                     <span tuiTitle>
                         {{ item.duration }}
                     </span>
                 </div>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'12'"
+                tuiTd
+            >
                 <span tuiStatus>
                     <progress
                         tuiProgressBar
@@ -210,7 +254,10 @@
                     {{ item.progress }}ms
                 </span>
             </td>
-            <td tuiTd>
+            <td
+                *tuiCell="'13'"
+                tuiTd
+            >
                 <span tuiStatus>
                     <button
                         appearance="link"
