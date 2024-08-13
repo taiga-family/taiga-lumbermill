@@ -7,7 +7,7 @@ import {
     signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {
@@ -15,12 +15,11 @@ import {
     TuiButton,
     TuiDialog,
     TuiDialogService,
-    TuiHint,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
-import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {PricesData} from '../../../../services/crypto.service';
@@ -34,7 +33,6 @@ import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
         CoinIconPipe,
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
         TuiAppearance,
         TuiAutoFocus,
         TuiAvatar,
@@ -42,8 +40,6 @@ import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
         TuiCardLarge,
         TuiDialog,
         TuiHeader,
-        TuiHint,
-        TuiInputModule,
         TuiInputNumberModule,
         TuiTitle,
     ],
