@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {
@@ -22,6 +22,7 @@ import {
     TuiStatus,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -39,12 +40,14 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiDropdown,
         TuiIcon,
         TuiInitialsPipe,
+        TuiInputModule,
         TuiItemsWithMore,
         TuiLink,
         TuiProgressBar,
         TuiRadioList,
         TuiStatus,
         TuiTable,
+        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './table.component.html',
@@ -52,6 +55,7 @@ import {TuiCell} from '@taiga-ui/layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
+    protected search = signal('');
     protected readonly sizes = ['l', 'm', 's'] as const;
 
     protected size = this.sizes[1];
@@ -173,6 +177,10 @@ export class TableComponent {
             selected: false,
         },
     ];
+
+    protected searchedData = computed(() =>
+        this.data.filter((val) => val.checkbox.title.includes(this.search())),
+    );
 
     protected get checked(): boolean | null {
         const every = this.data.every(({selected}) => selected);

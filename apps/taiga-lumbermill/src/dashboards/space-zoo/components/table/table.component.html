@@ -1,3 +1,11 @@
+<tui-input
+    tuiTextfieldIconLeft="@tui.search"
+    tuiTextfieldSize="m"
+    class="search"
+    [(ngModel)]="search"
+>
+    Search by name
+</tui-input>
 <table
     tuiTable
     [columns]="columns"
@@ -31,7 +39,7 @@
     </thead>
     <tbody tuiTbody>
         <tr
-            *ngFor="let item of data | tuiTableSort"
+            *ngFor="let item of searchedData() | tuiTableSort"
             tuiTr
         >
             <td
