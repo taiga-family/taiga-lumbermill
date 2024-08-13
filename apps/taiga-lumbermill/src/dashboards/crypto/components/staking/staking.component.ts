@@ -16,11 +16,13 @@ import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 
 import type {PricesData} from '../../../../services/crypto.service';
 import {CryptoService} from '../../../../services/crypto.service';
+import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
 
 @Component({
     standalone: true,
     selector: 'lmb-staking',
     imports: [
+        CoinIconPipe,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,

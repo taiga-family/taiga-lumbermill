@@ -11,7 +11,7 @@
         >
             <tui-avatar
                 size="l"
-                src="https://assets.coincap.io/assets/icons/btc@2x.png"
+                [src]="'btc' | coinIcon"
             />
             <h2
                 tuiTitle
@@ -47,8 +47,7 @@
         <div class="position">
             <div
                 tuiTitle
-                [style.padding-left]="'1rem'"
-                [style.padding-right]="'1rem'"
+                class="position-title"
             >
                 My position
             </div>
@@ -77,8 +76,7 @@
         <div class="position">
             <div
                 tuiTitle
-                [style.padding-left]="'1rem'"
-                [style.padding-right]="'1rem'"
+                class="position-title"
             >
                 Overview
             </div>
