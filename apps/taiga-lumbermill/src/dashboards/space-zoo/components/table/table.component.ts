@@ -24,6 +24,8 @@ import {
 import {TuiCell} from '@taiga-ui/layout';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
+import type {DataTable} from './table.interface';
+
 @Component({
     standalone: true,
     selector: 'lmb-table',
@@ -63,35 +65,43 @@ export class TableComponent {
     protected columns = [
         {
             title: 'Name',
-            sorter: (a: any, b: any) => a.checkbox.title.localeCompare(b.checkbox.title),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.checkbox.title.localeCompare(b.checkbox.title),
         },
         {
             title: '2',
-            sorter: (a: any, b: any) => a.analytic.title.localeCompare(b.analytic.title),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.analytic.title.localeCompare(b.analytic.title),
         },
         {
             title: '3',
-            sorter: (a: any, b: any) => a.file.title.localeCompare(b.file.title),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.file.title.localeCompare(b.file.title),
         },
         {
             title: '4',
-            sorter: (a: any, b: any) => a.file.title.localeCompare(b.file.title),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.file.title.localeCompare(b.file.title),
         },
         {
             title: '5',
-            sorter: (a: any, b: any) => a.date.time.localeCompare(b.date.time),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.date.time.localeCompare(b.date.time),
         },
         {
             title: '6',
-            sorter: (a: any, b: any) => a.cell.name.localeCompare(b.cell.name),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.cell.name.localeCompare(b.cell.name),
         },
         {
             title: '7',
-            sorter: (a: any, b: any) => a.cell.name.localeCompare(b.cell.name),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.cell.name.localeCompare(b.cell.name),
         },
         {
             title: '8',
-            sorter: (a: any, b: any) => a.status.value.localeCompare(b.status.value),
+            sorter: (a: DataTable, b: DataTable) =>
+                a.status.value.localeCompare(b.status.value),
         },
         {
             title: '9',
@@ -117,7 +127,7 @@ export class TableComponent {
 
     protected columnsTitles = this.columns.map((val) => val.title);
 
-    protected readonly data = [
+    protected readonly data: DataTable[] = [
         {
             checkbox: {
                 title: 'INN Checking in database_part_1',
