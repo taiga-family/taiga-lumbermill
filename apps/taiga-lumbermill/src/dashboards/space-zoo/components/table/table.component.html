@@ -76,7 +76,10 @@
                             <span tuiSubtitle>
                                 {{ item.file.subtitle }}
                             </span>
-                            <tui-icon icon="./question.svg" />
+                            <tui-icon
+                                icon="./table/question.svg"
+                                [style.cursor]="'pointer'"
+                            />
                         </span>
                     </span>
                 </div>
@@ -104,7 +107,7 @@
             <td tuiTd>
                 <div [tuiCell]="size">
                     <tui-avatar
-                        [src]="item.cell.name | tuiInitials"
+                        src="./table/person.svg"
                         [style.background]="item.cell.name | tuiAutoColor"
                     />
                     <span tuiTitle>
@@ -120,7 +123,7 @@
                 <tui-items-with-more [style.gap.rem]="0.25">
                     <ng-container *ngFor="let chip of item.labels">
                         <tui-badge *tuiItem>
-                            <tui-icon icon="./lock.svg" />
+                            <tui-icon icon="./table/lock.svg" />
                             {{ chip }}
                         </tui-badge>
                     </ng-container>
@@ -145,7 +148,7 @@
                             >
                                 <ng-container *ngFor="let chip of item.labels; let index = index">
                                     <tui-badge *ngIf="index > number">
-                                        <tui-icon icon="./lock.svg" />
+                                        <tui-icon icon="./table/lock.svg" />
                                         {{ chip }}
                                     </tui-badge>
                                 </ng-container>

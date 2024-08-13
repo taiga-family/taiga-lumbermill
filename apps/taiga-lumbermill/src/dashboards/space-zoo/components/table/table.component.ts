@@ -83,7 +83,7 @@ export class TableComponent {
                 subtitle: 'Greenplum Table',
             },
             file: {
-                icon: './file.svg',
+                icon: './table/file.svg',
                 title: 'Stability hamcejdc #195',
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
@@ -116,7 +116,7 @@ export class TableComponent {
                 subtitle: 'Greenplum Table',
             },
             file: {
-                icon: './file.svg',
+                icon: './table/file.svg',
                 title: 'Stability hamcejdc #195',
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
@@ -149,7 +149,7 @@ export class TableComponent {
                 subtitle: 'Greenplum Table',
             },
             file: {
-                icon: './file.svg',
+                icon: './table/file.svg',
                 title: 'Stability hamcejdc #195',
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
