@@ -8,35 +8,32 @@
 </tui-input>
 <table
     tuiTable
-    [columns]="columns"
+    [columns]="columnsTitles"
     [size]="size"
 >
     <thead>
         <tr tuiThGroup>
-            <th
-                *tuiHead="'Name'"
-                tuiTh
-                [sorter]="nameSorter"
-                [sticky]="true"
-            >
-                <div [tuiCell]="size">
-                    <input
-                        tuiCheckbox
-                        type="checkbox"
-                        [ngModel]="checked"
-                        [size]="'s'"
-                        (ngModelChange)="onCheck($event)"
-                    />
-                    <span tuiTitle>Name</span>
-                </div>
-            </th>
-            @for (column of columns.slice(1); track $index) {
+            @for (column of columns; track $index) {
                 <th
-                    *tuiHead="column"
+                    *tuiHead="column.title"
                     tuiTh
+                    [sorter]="column.sorter"
                     [sticky]="true"
                 >
-                    {{ column }}
+                    @if (column.title === 'Name') {
+                        <div [tuiCell]="size">
+                            <input
+                                tuiCheckbox
+                                type="checkbox"
+                                [ngModel]="checked"
+                                [size]="'s'"
+                                (ngModelChange)="onCheck($event)"
+                            />
+                            <span tuiTitle>{{ column.title }}</span>
+                        </div>
+                    } @else {
+                        {{ column.title }}
+                    }
                 </th>
             }
         </tr>
@@ -267,7 +264,7 @@
                 </span>
             </td>
             <td
-                *tuiCell="'13'"
+                *tuiCell="''"
                 tuiTd
             >
                 <span tuiStatus>

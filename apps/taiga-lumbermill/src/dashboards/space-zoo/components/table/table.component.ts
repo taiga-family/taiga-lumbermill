@@ -61,20 +61,61 @@ export class TableComponent {
     protected size = this.sizes[1];
 
     protected columns = [
-        'Name',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        '10',
-        'duration',
-        'progress',
-        '13',
+        {
+            title: 'Name',
+            sorter: (a: any, b: any) => a.checkbox.title.localeCompare(b.checkbox.title),
+        },
+        {
+            title: '2',
+            sorter: (a: any, b: any) => a.analytic.title.localeCompare(b.analytic.title),
+        },
+        {
+            title: '3',
+            sorter: (a: any, b: any) => a.file.title.localeCompare(b.file.title),
+        },
+        {
+            title: '4',
+            sorter: (a: any, b: any) => a.file.title.localeCompare(b.file.title),
+        },
+        {
+            title: '5',
+            sorter: (a: any, b: any) => a.date.time.localeCompare(b.date.time),
+        },
+        {
+            title: '6',
+            sorter: (a: any, b: any) => a.cell.name.localeCompare(b.cell.name),
+        },
+        {
+            title: '7',
+            sorter: (a: any, b: any) => a.cell.name.localeCompare(b.cell.name),
+        },
+        {
+            title: '8',
+            sorter: (a: any, b: any) => a.status.value.localeCompare(b.status.value),
+        },
+        {
+            title: '9',
+            sorter: null,
+        },
+        {
+            title: '10',
+            sorter: null,
+        },
+        {
+            title: 'duration',
+            sorter: (a: any, b: any) => a.duration.localeCompare(b.duration),
+        },
+        {
+            title: 'progress',
+            sorter: (a: any, b: any) => a.progress - b.progress,
+        },
+        {
+            title: '',
+            sorter: null,
+        },
     ];
+
+    protected columnsTitles = this.columns.map((val) => val.title);
 
     protected readonly data = [
         {
@@ -149,26 +190,26 @@ export class TableComponent {
                 subtitle: 'Connection throttled because max number',
             },
             analytic: {
-                title: 'WO_analytic',
+                title: 'WO_analytic33',
                 subtitle: 'Greenplum Table',
             },
             file: {
                 icon: './table/file.svg',
-                title: 'Stability hamcejdc #195',
+                title: 'Stability hamcejdc #195212',
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
             },
             date: {
-                time: '13.03.2022 13:45:48',
+                time: '13.03.2022 15:45:48',
                 chip: 'ExecuteSasScriptOnAllContours',
             },
             cell: {
-                name: 'Misha Zhem',
+                name: 'Misha Zhem32',
                 email: 'silly@walk.uk',
             },
             status: {
-                value: 'Success',
-                color: 'var(--tui-status-positive)',
+                value: 'Warning',
+                color: 'var(--tui-status-negative)',
             },
             labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
             tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
