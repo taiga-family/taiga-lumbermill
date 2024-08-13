@@ -61,7 +61,7 @@ export class TableComponent {
     protected size = this.sizes[1];
 
     protected columns = [
-        '1',
+        'Name',
         '2',
         '3',
         '4',
@@ -72,7 +72,7 @@ export class TableComponent {
         '9',
         '10',
         'duration',
-        '12',
+        'progress',
         '13',
     ];
 
@@ -173,7 +173,7 @@ export class TableComponent {
             labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
             tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
             duration: '29 days',
-            progress: 43.7,
+            progress: 45.7,
             selected: false,
         },
     ];
@@ -187,6 +187,10 @@ export class TableComponent {
         const some = this.data.some(({selected}) => selected);
 
         return every || (some && null);
+    }
+
+    protected nameSorter(a: any, b: any): number {
+        return a.checkbox.title.localeCompare(b.checkbox.title);
     }
 
     protected onCheck(checked: boolean): void {
