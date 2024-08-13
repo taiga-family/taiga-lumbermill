@@ -56,7 +56,21 @@ export class TableComponent {
 
     protected size = this.sizes[1];
 
-    protected columns = ['1', '2', '3', '4', '5', '6', '7'];
+    protected columns = [
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+        '12',
+        '13',
+    ];
 
     protected readonly data = [
         {
@@ -69,7 +83,7 @@ export class TableComponent {
                 subtitle: 'Greenplum Table',
             },
             file: {
-                icon: '@tui.file',
+                icon: './file.svg',
                 title: 'Stability hamcejdc #195',
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
@@ -102,7 +116,7 @@ export class TableComponent {
                 subtitle: 'Greenplum Table',
             },
             file: {
-                icon: '@tui.file',
+                icon: './file.svg',
                 title: 'Stability hamcejdc #195',
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
@@ -135,7 +149,7 @@ export class TableComponent {
                 subtitle: 'Greenplum Table',
             },
             file: {
-                icon: '@tui.file',
+                icon: './file.svg',
                 title: 'Stability hamcejdc #195',
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
