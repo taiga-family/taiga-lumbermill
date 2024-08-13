@@ -70,6 +70,28 @@
             </td>
             <td tuiTd>
                 <div [tuiCell]="size">
+                    <span tuiTitle>
+                        <span tuiStatus>
+                            <tui-icon [icon]="item.file.icon" />
+                            {{ item.file.title }}
+                            <span tuiSubtitle>
+                                {{ item.file.subtitle }}
+                            </span>
+                            <tui-icon icon="./question.svg" />
+                        </span>
+                    </span>
+                </div>
+            </td>
+            <td tuiTd>
+                <div [tuiCell]="size">
+                    <span tuiTitle>
+                        {{ item.date.time }}
+                        <tui-chip>{{ item.date.chip }}</tui-chip>
+                    </span>
+                </div>
+            </td>
+            <td tuiTd>
+                <div [tuiCell]="size">
                     <tui-avatar
                         [src]="item.cell.name | tuiInitials"
                         [style.background]="item.cell.name | tuiAutoColor"

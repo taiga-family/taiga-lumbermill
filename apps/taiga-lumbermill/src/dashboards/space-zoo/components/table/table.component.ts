@@ -74,8 +74,12 @@ export class TableComponent {
                 chip: 'label',
                 subtitle: 'k6-tenant-manager ・ master',
             },
+            date: {
+                time: '13.03.2022 13:45:48',
+                chip: 'ExecuteSasScriptOnAllContours',
+            },
             cell: {
-                name: 'John Cleese',
+                name: 'Alex Drozdov',
                 email: 'silly@walk.uk',
             },
             status: {
