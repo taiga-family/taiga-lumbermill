@@ -2,42 +2,44 @@
     tuiCarouselButtons
     class="wrapper"
 >
-    <div class="top-select">
-        <button
-            iconStart="@tui.chevron-left"
-            tuiIconButton
-            type="button"
-            class="button button_left"
-            (click)="carousel.prev()"
-        ></button>
-
-        <tui-carousel
-            #carousel
-            [draggable]="false"
-            [itemsCount]="width > 950 ? 3 : 1"
-            [(index)]="index"
-        >
-            @for (item of listFilmsService; track $index) {
-                <div
-                    *tuiItem
-                    draggable="false"
-                    class="item"
-                    [class.item_active]="$index === open"
-                    [ngStyle]="{'background-image': 'url(' + item.img + ')'}"
-                    (click)="openFilm($index)"
-                ></div>
-            }
-        </tui-carousel>
-        <button
-            iconStart="@tui.chevron-right"
-            tuiIconButton
-            type="button"
-            class="button button_right"
-            (click)="carousel.next()"
-        >
-            Next
-        </button>
-    </div>
+    @let breakpoint = breakpoint$ | async;
+    @if (breakpoint) {
+        <div class="top-select">
+            <button
+                iconStart="@tui.chevron-left"
+                tuiIconButton
+                type="button"
+                class="button button_left"
+                (click)="carousel.prev()"
+            ></button>
+            <tui-carousel
+                #carousel
+                [draggable]="false"
+                [itemsCount]="breakpoint === 'mobile' ? 1 : breakpoint === 'desktopSmall' ? 2 : 3"
+                [(index)]="index"
+            >
+                @for (item of listFilmsService; track $index) {
+                    <div
+                        *tuiItem
+                        draggable="false"
+                        class="item"
+                        [class.item_active]="$index === open"
+                        [ngStyle]="{'background-image': 'url(' + item.img + ')'}"
+                        (click)="openFilm($index)"
+                    ></div>
+                }
+            </tui-carousel>
+            <button
+                iconStart="@tui.chevron-right"
+                tuiIconButton
+                type="button"
+                class="button button_right"
+                (click)="carousel.next()"
+            >
+                Next
+            </button>
+        </div>
+    }
 </div>
 <tui-expand [expanded]="open !== -1">
     <ng-template tuiExpandContent>

@@ -1,7 +1,7 @@
-import {CommonModule, DatePipe, DOCUMENT} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {TuiButton, TuiExpand, TuiTitle} from '@taiga-ui/core';
+import {TuiBreakpointService, TuiButton, TuiExpand, TuiTitle} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
@@ -26,7 +26,7 @@ import {FilmsService} from '../../films.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListFilmsComponent {
-    protected width = inject(DOCUMENT).body.clientWidth;
+    protected readonly breakpoint$ = inject(TuiBreakpointService);
     protected listFilmsService = inject(FilmsService).filmsData;
     protected index = 0;
     protected open = -1;
