@@ -32,14 +32,14 @@
             <button
                 appearance="accent"
                 tuiButton
-                (click)="openStake = true"
+                (click)="[(stake = true), showDialog(template)]"
             >
                 Stake
             </button>
             <button
                 appearance="whiteblock"
                 tuiButton
-                (click)="openUnstake = true"
+                (click)="[(stake = false), showDialog(template)]"
             >
                 Unstake
             </button>
@@ -104,51 +104,39 @@
     </div>
 
     <ng-template
+        #template
         let-observer
-        [tuiDialogOptions]="{label: 'Staking Bitcoin', size: 's'}"
-        [(tuiDialog)]="openStake"
     >
-        <p>Available for stake: {{ available - amount() }} BTC</p>
-        <tui-input-number
-            tuiAutoFocus
-            [max]="available - amount()"
-            [min]="0"
-            [(ngModel)]="inputStake"
-        >
-            Amount BTC
-        </tui-input-number>
+        <header tuiHeader>
+            <h2 tuiTitle>{{ stake ? 'Staking' : 'Unstaking' }} Bitcoin</h2>
+        </header>
+        <p>Available for {{ stake ? 'stake' : 'unstake' }}: {{ stake ? available - amount() : amount() }} BTC</p>
+        @if (stake) {
+            <tui-input-number
+                tuiAutoFocus
+                [max]="available - amount()"
+                [min]="0"
+                [(ngModel)]="inputStake"
+            >
+                Amount BTC
+            </tui-input-number>
+        } @else {
+            <tui-input-number
+                tuiAutoFocus
+                [max]="amount()"
+                [min]="0"
+                [(ngModel)]="inputUnstake"
+            >
+                Amount BTC
+            </tui-input-number>
+        }
         <p>
             <button
                 tuiButton
                 type="submit"
-                (click)="[observer.complete(), addAmount(inputStake), (inputStake = 0)]"
+                (click)="[observer.complete(), addAmount(stake ? inputStake : -inputUnstake), (inputStake = 0)]"
             >
-                Stake
-            </button>
-        </p>
-    </ng-template>
-
-    <ng-template
-        let-observer
-        [tuiDialogOptions]="{label: 'Unstaking Bitcoin', size: 's'}"
-        [(tuiDialog)]="openUnstake"
-    >
-        <p>Available for unstake: {{ amount() }} BTC</p>
-        <tui-input-number
-            tuiAutoFocus
-            [max]="amount()"
-            [min]="0"
-            [(ngModel)]="inputUnstake"
-        >
-            Amount BTC
-        </tui-input-number>
-        <p>
-            <button
-                tuiButton
-                type="submit"
-                (click)="[observer.complete(), addAmount(-inputUnstake), (inputUnstake = 0)]"
-            >
-                Unstake
+                {{ stake ? 'Stake' : 'Unstake' }}
             </button>
         </p>
     </ng-template>

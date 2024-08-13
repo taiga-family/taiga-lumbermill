@@ -9,10 +9,19 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiDialog, TuiHint, TuiTitle} from '@taiga-ui/core';
+import type {TuiDialogContext} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiButton,
+    TuiDialog,
+    TuiDialogService,
+    TuiHint,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {PricesData} from '../../../../services/crypto.service';
 import {CryptoService} from '../../../../services/crypto.service';
@@ -43,6 +52,7 @@ import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StakingComponent {
+    private readonly dialogs = inject(TuiDialogService);
     protected cryptoService = inject(CryptoService);
     protected tokens = toSignal(this.cryptoService.getTokens());
     protected price = computed(() => this.getPrice(this.tokens(), 'btc', this.amount()));
@@ -52,11 +62,14 @@ export class StakingComponent {
     protected amount = signal(0);
     protected available = 100;
 
-    protected openStake = false;
-    protected openUnstake = false;
+    protected stake = false;
 
     protected addAmount(add: number): void {
         this.amount.update((val) => val + add);
+    }
+
+    protected showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
+        this.dialogs.open(content).subscribe();
     }
 
     protected getPrice(
