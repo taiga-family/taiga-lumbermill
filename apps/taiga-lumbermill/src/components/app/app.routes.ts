@@ -32,6 +32,14 @@ export const appRoutes: Route[] = [
                     ),
                 data: {title: 'Crypto'},
             },
+            {
+                path: 'space-zoo',
+                loadComponent: async () =>
+                    import('../../dashboards/space-zoo/space-zoo.component').then(
+                        (mod) => mod.SpaceZooComponent,
+                    ),
+                data: {title: 'Space zoo'},
+            },
         ],
     },
     {

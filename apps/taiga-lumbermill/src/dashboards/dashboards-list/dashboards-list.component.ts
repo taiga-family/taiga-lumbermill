@@ -21,6 +21,11 @@ export const INITIAL_DATA: DashboardsData[] = [
         link: '/dashboards/crypto',
         description: 'Crypto token dashboard',
     },
+    {
+        title: 'Space zoo Dashboard',
+        link: '/dashboards/space-zoo',
+        description: 'Space zoo dashboard',
+    },
 ];
 
 @Component({
