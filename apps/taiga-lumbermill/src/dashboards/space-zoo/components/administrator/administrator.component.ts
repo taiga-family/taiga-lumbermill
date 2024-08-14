@@ -33,22 +33,28 @@ export class AdministratorComponent {
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
     protected animals = [
         {
-            src: './example.png',
-            title: 'Rabbit',
+            src: './nft/1.jpg',
+            title: 'Cyberpunk Dog',
             health: 'seek',
-            tags: [],
+            tags: ['Needs a doctor'],
         },
         {
-            src: './example.png',
-            title: 'Rabbit2',
+            src: './nft/2.jpg',
+            title: 'Robo Hamster',
             health: 'good',
             tags: ['Play'],
         },
         {
-            src: './example.png',
-            title: 'Rabbit3',
+            src: './nft/3.jpg',
+            title: 'Cyberpunk Cat',
             health: 'good',
-            tags: ['Needs a doctor'],
+            tags: ['Needs to be cleaned'],
+        },
+        {
+            src: './nft/4.jpg',
+            title: 'Robo frog Pepe',
+            health: 'hungry',
+            tags: ['need food', 'play'],
         },
     ];
 
