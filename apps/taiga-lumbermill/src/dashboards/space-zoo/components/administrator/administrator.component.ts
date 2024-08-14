@@ -2,7 +2,8 @@ import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAppearance, TuiButton, TuiHint, TuiTitle} from '@taiga-ui/core';
+import type {TuiDay} from '@taiga-ui/cdk';
+import {TuiAppearance, TuiButton, TuiCalendar, TuiHint, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiStatus} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
@@ -17,6 +18,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiAvatar,
         TuiBadge,
         TuiButton,
+        TuiCalendar,
         TuiCardLarge,
         TuiHeader,
         TuiHint,
@@ -31,6 +33,8 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 export class AdministratorComponent {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
+    protected calendarValue: TuiDay | null = null;
+
     protected animals = [
         {
             src: './nft/1.jpg',
@@ -63,5 +67,9 @@ export class AdministratorComponent {
 
     protected openTable(): void {
         this.openTableChange.emit(true);
+    }
+
+    protected onDayClick(day: TuiDay): void {
+        this.calendarValue = day;
     }
 }

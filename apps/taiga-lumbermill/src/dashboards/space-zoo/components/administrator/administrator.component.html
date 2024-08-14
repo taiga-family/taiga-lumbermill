@@ -96,3 +96,11 @@
         </div>
     }
 </div>
+<tui-calendar
+    class="calendar"
+    [value]="calendarValue"
+    (dayClick)="onDayClick($event)"
+/>
+@if (calendarValue) {
+    <div>Chosen date: {{ calendarValue }}</div>
+}
