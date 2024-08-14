@@ -1,49 +1,97 @@
-<div class="info">
-    <tui-avatar
-        src="@tui.user"
-        [size]="'xxl'"
-        [style.border-radius]="'9rem'"
-        [style.height]="'9rem'"
-        [style.width]="'9rem'"
+<div class="column">
+    <div class="info">
+        <tui-avatar
+            src="@tui.user"
+            [size]="'xxl'"
+            [style.border-radius]="'9rem'"
+            [style.height]="'9rem'"
+            [style.width]="'9rem'"
+        />
+        <header tuiHeader>
+            <h3 tuiTitle>
+                Administrator
+                <div
+                    [style.align-items]="'center'"
+                    [style.display]="'flex'"
+                    [style.gap]="'0.5rem'"
+                >
+                    <span tuiSubtitle>Status:</span>
+                    <tui-badge
+                        appearance="success"
+                        tuiStatus
+                    >
+                        Online
+                    </tui-badge>
+                </div>
+                <span tuiSubtitle>Number of animals: 120</span>
+            </h3>
+        </header>
+    </div>
+    <tui-pie-chart
+        size="xl"
+        [tuiHintContent]="content"
+        [value]="value"
     />
-    <header tuiHeader>
-        <h3 tuiTitle>
-            Administrator
+
+    <ng-template
+        #content
+        let-index
+    >
+        <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
+        <div>{{ labels[index] }}</div>
+    </ng-template>
+
+    <button
+        appearance="primary"
+        tuiButton
+        (click)="openTable()"
+    >
+        Open Table
+    </button>
+</div>
+
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card-animals"
+    [style.width]="'100%'"
+>
+    @for (animal of animals; track $index) {
+        <div
+            tuiAppearance="whiteblock"
+            tuiCardLarge="normal"
+            [style.width]="'min-content'"
+        >
+            <tui-avatar
+                [size]="'m'"
+                [src]="animal.src"
+                [style.border-radius]="'9rem'"
+                [style.height]="'9rem'"
+                [style.width]="'9rem'"
+            />
+            <header tuiHeader>
+                <h2
+                    tuiTitle
+                    [style.text-align]="'center'"
+                >
+                    {{ animal.title }}
+                </h2>
+            </header>
             <div
-                [style.align-items]="'center'"
                 [style.display]="'flex'"
+                [style.flex-direction]="'column'"
                 [style.gap]="'0.5rem'"
             >
-                <span tuiSubtitle>Status:</span>
                 <tui-badge
-                    appearance="success"
                     tuiStatus
+                    [appearance]="animal.health === 'good' ? 'success' : 'warning'"
                 >
-                    Success
+                    {{ animal.health }}
                 </tui-badge>
+                @for (tag of animal.tags; track $index) {
+                    <tui-badge appearance="primary">{{ tag }}</tui-badge>
+                }
             </div>
-            <span tuiSubtitle>Number of animals: 120</span>
-        </h3>
-    </header>
+        </div>
+    }
 </div>
-<tui-pie-chart
-    size="xl"
-    [tuiHintContent]="content"
-    [value]="value"
-/>
-
-<ng-template
-    #content
-    let-index
->
-    <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
-    <div>{{ labels[index] }}</div>
-</ng-template>
-
-<button
-    appearance="primary"
-    tuiButton
-    (click)="openTable()"
->
-    Open Table
-</button>

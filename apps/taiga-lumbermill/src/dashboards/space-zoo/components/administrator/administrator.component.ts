@@ -4,7 +4,7 @@ import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAppearance, TuiButton, TuiHint, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiStatus} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -17,6 +17,7 @@ import {TuiHeader} from '@taiga-ui/layout';
         TuiAvatar,
         TuiBadge,
         TuiButton,
+        TuiCardLarge,
         TuiHeader,
         TuiHint,
         TuiPieChart,
@@ -30,6 +31,26 @@ import {TuiHeader} from '@taiga-ui/layout';
 export class AdministratorComponent {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
+    protected animals = [
+        {
+            src: './example.png',
+            title: 'Rabbit',
+            health: 'seek',
+            tags: [],
+        },
+        {
+            src: './example.png',
+            title: 'Rabbit2',
+            health: 'good',
+            tags: ['Play'],
+        },
+        {
+            src: './example.png',
+            title: 'Rabbit3',
+            health: 'good',
+            tags: ['Needs a doctor'],
+        },
+    ];
 
     @Output()
     public readonly openTableChange = new EventEmitter<boolean>();
