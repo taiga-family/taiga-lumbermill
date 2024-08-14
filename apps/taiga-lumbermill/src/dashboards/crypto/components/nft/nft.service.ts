@@ -8,10 +8,10 @@ export interface NFTData {
 }
 
 export const INITIAL_DATA: NFTData[] = [
-    {name: 'Beth', src: './nft/1.webp', price: 1, tags: ['Premium', 'VIP']},
-    {name: 'Pryor', src: './nft/2.webp', price: 2, tags: ['Premium', 'VIP']},
-    {name: 'Olea', src: './nft/3.webp', price: 3, tags: ['Premium', 'VIP']},
-    {name: 'Imogen', src: './nft/4.webp', price: 4, tags: ['Premium', 'VIP']},
+    {name: 'Beth', src: './nft/1.jpg', price: 1, tags: ['Premium', 'VIP']},
+    {name: 'Pryor', src: './nft/2.jpg', price: 2, tags: ['Premium', 'VIP']},
+    {name: 'Olea', src: './nft/3.jpg', price: 3, tags: ['Premium', 'VIP']},
+    {name: 'Imogen', src: './nft/4.jpg', price: 4, tags: ['Premium', 'VIP']},
 ];
 
 export interface NFTTABLE {
