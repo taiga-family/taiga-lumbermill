@@ -1,3 +1,7 @@
 <div class="table">
-    <lmb-table />
+    @if (openTable) {
+        <lmb-table />
+    } @else {
+        <lmb-administrator (openTableChange)="openTable = $event" />
+    }
 </div>
