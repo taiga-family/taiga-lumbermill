@@ -315,6 +315,7 @@
 <tui-action-bar
     *tuiActionBar="open"
     [expanded]="!!isMobile() && expanded"
+    [style.left]="isMobile() ? '1rem' : '4rem'"
 >
     <div>
         Selected: {{ selected }} of {{ searchedData().length }}
