@@ -1,9 +1,18 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
+import type {Signal} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    signal,
+} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {
     TuiAutoColorPipe,
+    TuiBreakpointService,
     TuiButton,
     TuiDropdown,
     TuiIcon,
@@ -12,6 +21,7 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {
+    TuiActionBar,
     TuiAvatar,
     TuiBadge,
     TuiCheckbox,
@@ -23,6 +33,7 @@ import {
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {map} from 'rxjs';
 
 import type {DataTable} from './table.interface';
 
@@ -32,6 +43,7 @@ import type {DataTable} from './table.interface';
     imports: [
         CommonModule,
         FormsModule,
+        TuiActionBar,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiBadge,
@@ -58,9 +70,14 @@ import type {DataTable} from './table.interface';
 })
 export class TableComponent {
     protected search = signal('');
+    protected expanded = false;
     protected readonly sizes = ['l', 'm', 's'] as const;
 
     protected size = this.sizes[1];
+
+    protected readonly isMobile = toSignal(
+        inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
+    );
 
     protected columns = [
         {
@@ -127,7 +144,7 @@ export class TableComponent {
 
     protected columnsTitles = this.columns.map((val) => val.title);
 
-    protected readonly data: DataTable[] = [
+    protected readonly data: Signal<DataTable[]> = signal([
         {
             checkbox: {
                 title: 'INN Checking in database_part_1',
@@ -227,17 +244,45 @@ export class TableComponent {
             progress: 45.7,
             selected: false,
         },
-    ];
+    ]);
 
     protected searchedData = computed(() =>
-        this.data.filter((val) => val.checkbox.title.includes(this.search())),
+        this.data().filter((val) => val.checkbox.title.includes(this.search())),
     );
 
+    protected get open(): boolean {
+        return this.selected > 0;
+    }
+
+    protected get selected(): number {
+        let result = 0;
+
+        this.searchedData().forEach((item) => {
+            if (item.selected) {
+                result++;
+            }
+        });
+
+        return result;
+    }
+
     protected get checked(): boolean | null {
-        const every = this.data.every(({selected}) => selected);
-        const some = this.data.some(({selected}) => selected);
+        const every = this.searchedData().every(({selected}) => selected);
+        const some = this.searchedData().some(({selected}) => selected);
 
         return every || (some && null);
+    }
+
+    protected toggleSelect(): void {
+        const all = this.selected < this.searchedData().length;
+
+        this.searchedData().forEach((item) => {
+            if (all) {
+                item.selected = true;
+            } else {
+                item.selected = false;
+            }
+        });
     }
 
     protected nameSorter(a: any, b: any): number {
@@ -245,7 +290,7 @@ export class TableComponent {
     }
 
     protected onCheck(checked: boolean): void {
-        this.data.forEach((item) => {
+        this.searchedData().forEach((item) => {
             item.selected = checked;
         });
     }

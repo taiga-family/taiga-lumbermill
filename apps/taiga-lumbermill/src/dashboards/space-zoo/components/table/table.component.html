@@ -312,3 +312,22 @@
         </tr>
     </tbody>
 </table>
+<tui-action-bar
+    *tuiActionBar="open"
+    [expanded]="!!isMobile() && expanded"
+>
+    <div>
+        Selected: {{ selected }} of {{ searchedData().length }}
+
+        <button
+            *ngIf="!isMobile()"
+            appearance="icon"
+            tuiLink
+            class="tui-space_left-3"
+            [pseudo]="true"
+            (click)="toggleSelect()"
+        >
+            {{ selected < searchedData().length ? 'Select all' : 'Select none' }}
+        </button>
+    </div>
+</tui-action-bar>
