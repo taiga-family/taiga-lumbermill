@@ -45,60 +45,30 @@
             </button>
         </div>
         <div class="position">
-            <div
-                tuiTitle
-                class="position-title"
-            >
-                My position
+            <div class="position-title">My position</div>
+            <hr />
+            <div class="block-position">
+                <div class="tui-space_top-0 tui-space_bottom-0 bold">{{ amount() }} BTC</div>
+                <div>${{ price() | number: '1.2-2' }}</div>
             </div>
             <hr />
             <div class="block-position">
-                <div
-                    tuiTitle="m"
-                    class="tui-space_top-0 tui-space_bottom-0"
-                >
-                    {{ amount() }} BTC
-                </div>
-                <div tuiTitle>${{ price() | number: '1.2-2' }}</div>
-            </div>
-            <hr />
-            <div class="block-position">
-                <div tuiTitle>Rewards</div>
-                <div
-                    tuiTitle="m"
-                    class="tui-space_top-0 tui-space_bottom-0"
-                >
-                    0 BTC
-                </div>
-                <div tuiTitle>$0</div>
+                <div>Rewards</div>
+                <div class="tui-space_top-0 tui-space_bottom-0 bold">0 BTC</div>
+                <div>$0</div>
             </div>
         </div>
         <div class="position">
-            <div
-                tuiTitle
-                class="position-title"
-            >
-                Overview
+            <div class="position-title">Overview</div>
+            <hr />
+            <div class="block-position">
+                <div class="tui-space_top-0 tui-space_bottom-0">Total stacked</div>
+                <div class="bold">1.5M BTC</div>
             </div>
             <hr />
             <div class="block-position">
-                <div
-                    tuiTitle="m"
-                    class="tui-space_top-0 tui-space_bottom-0"
-                >
-                    Total stacked
-                </div>
-                <div tuiTitle>1.5M BTC</div>
-            </div>
-            <hr />
-            <div class="block-position">
-                <div
-                    tuiTitle="m"
-                    class="tui-space_top-0 tui-space_bottom-0"
-                >
-                    APR
-                </div>
-                <div tuiTitle>5%</div>
+                <div class="tui-space_top-0 tui-space_bottom-0">APR</div>
+                <div class="bold">5%</div>
             </div>
         </div>
     </div>
