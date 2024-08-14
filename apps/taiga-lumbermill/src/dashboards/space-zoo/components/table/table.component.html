@@ -280,9 +280,32 @@
                         appearance="link"
                         iconStart="@tui.ellipsis"
                         size="xs"
-                        tuiIconButton
+                        tuiButton
+                        tuiDropdownOpen
+                        type="button"
+                        [tuiDropdown]="dropdownContent"
                     >
-                        More
+                        <ng-template #dropdownContent>
+                            <div class="dropdown">
+                                <button
+                                    appearance="link"
+                                    iconStart="@tui.move"
+                                    size="xs"
+                                    tuiButton
+                                >
+                                    Move
+                                </button>
+                                <button
+                                    appearance="link"
+                                    iconStart="@tui.trash-2"
+                                    size="xs"
+                                    tuiButton
+                                    [style.color]="'var(--tui-text-negative)'"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </ng-template>
                     </button>
                 </span>
             </td>
