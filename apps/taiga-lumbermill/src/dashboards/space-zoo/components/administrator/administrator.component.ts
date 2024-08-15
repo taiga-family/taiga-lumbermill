@@ -3,7 +3,15 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiDay} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiCalendar, TuiHint, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiButton,
+    TuiCalendar,
+    TuiExpand,
+    TuiHint,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiStatus} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
@@ -20,8 +28,10 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiButton,
         TuiCalendar,
         TuiCardLarge,
+        TuiExpand,
         TuiHeader,
         TuiHint,
+        TuiLink,
         TuiPieChart,
         TuiStatus,
         TuiTitle,
@@ -34,6 +44,7 @@ export class AdministratorComponent {
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
     protected calendarValue: TuiDay | null = null;
+    protected expanded = false;
 
     protected animals = [
         {
