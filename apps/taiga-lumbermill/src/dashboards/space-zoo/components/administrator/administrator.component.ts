@@ -2,17 +2,22 @@ import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import type {TuiDay} from '@taiga-ui/cdk';
+import type {TuiDayRange} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
-    TuiCalendar,
     TuiExpand,
     TuiHint,
     TuiLink,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiStatus} from '@taiga-ui/kit';
+import {
+    TuiAvatar,
+    TuiBadge,
+    TuiCalendarRange,
+    tuiCreateDefaultDayRangePeriods,
+    TuiStatus,
+} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -26,7 +31,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiAvatar,
         TuiBadge,
         TuiButton,
-        TuiCalendar,
+        TuiCalendarRange,
         TuiCardLarge,
         TuiExpand,
         TuiHeader,
@@ -41,9 +46,10 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdministratorComponent {
+    protected items = tuiCreateDefaultDayRangePeriods();
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
-    protected calendarValue: TuiDay | null = null;
+    protected calendarValue: TuiDayRange | null = null;
     protected expanded = false;
 
     protected animals = [
@@ -80,7 +86,7 @@ export class AdministratorComponent {
         this.openTableChange.emit(true);
     }
 
-    protected onDayClick(day: TuiDay): void {
+    protected onDayClick(day: TuiDayRange | null): void {
         this.calendarValue = day;
     }
 }

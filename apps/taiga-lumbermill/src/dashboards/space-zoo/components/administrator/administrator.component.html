@@ -1,119 +1,126 @@
-<div class="column">
-    <div class="info">
-        <tui-avatar
-            src="@tui.user"
-            [size]="'xxl'"
-            [style.border-radius]="'9rem'"
-            [style.height]="'9rem'"
-            [style.width]="'9rem'"
-        />
-        <header tuiHeader>
-            <h3 tuiTitle>
-                Administrator
-                <div
-                    [style.align-items]="'center'"
-                    [style.display]="'flex'"
-                    [style.gap]="'0.5rem'"
-                >
-                    <span tuiSubtitle>Status:</span>
-                    <tui-badge
-                        appearance="success"
-                        tuiStatus
-                    >
-                        Online
-                    </tui-badge>
-                </div>
-                <span tuiSubtitle>Number of animals: {{ animals.length }}</span>
-            </h3>
-        </header>
-    </div>
-    <tui-pie-chart
-        size="xl"
-        [style.margin-left]="'auto'"
-        [style.margin-right]="'auto'"
-        [tuiHintContent]="content"
-        [value]="value"
-    />
-
-    <ng-template
-        #content
-        let-index
-    >
-        <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
-        <div>{{ labels[index] }}</div>
-    </ng-template>
-
-    <button
-        appearance="primary"
-        tuiButton
-        (click)="openTable()"
-    >
-        Open Table
-    </button>
-    <button
-        iconEnd="@tui.panel-top-open"
-        tuiLink
-        (click)="expanded = !expanded"
-    >
-        Open Calendar
-    </button>
-    <tui-expand [expanded]="expanded">
-        <ng-template tuiExpandContent>
-            <tui-calendar
-                class="calendar"
-                [value]="calendarValue"
-                (dayClick)="onDayClick($event)"
+<div class="top">
+    <div class="column">
+        <div class="info">
+            <tui-avatar
+                src="@tui.user"
+                [size]="'xxl'"
+                [style.border-radius]="'9rem'"
+                [style.height]="'9rem'"
+                [style.width]="'9rem'"
             />
-            @if (calendarValue) {
-                <div>Chosen date: {{ calendarValue }}</div>
-            }
-        </ng-template>
-    </tui-expand>
-</div>
+            <header tuiHeader>
+                <h3 tuiTitle>
+                    Administrator
+                    <div
+                        [style.align-items]="'center'"
+                        [style.display]="'flex'"
+                        [style.gap]="'0.5rem'"
+                    >
+                        <span tuiSubtitle>Status:</span>
+                        <tui-badge
+                            appearance="success"
+                            tuiStatus
+                        >
+                            Online
+                        </tui-badge>
+                    </div>
+                    <span tuiSubtitle>Number of animals: {{ animals.length }}</span>
+                </h3>
+            </header>
+        </div>
+        <tui-pie-chart
+            size="xl"
+            [style.margin-left]="'auto'"
+            [style.margin-right]="'auto'"
+            [tuiHintContent]="content"
+            [value]="value"
+        />
 
-<div>
-    <div
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
-        class="card-animals"
-    >
-        @for (animal of animals; track $index) {
-            <div
-                tuiAppearance="whiteblock"
-                tuiCardLarge="normal"
-                [style.width]="'min-content'"
-            >
-                <tui-avatar
-                    [size]="'m'"
-                    [src]="animal.src"
-                    [style.border-radius]="'9rem'"
-                    [style.height]="'9rem'"
-                    [style.width]="'9rem'"
-                />
-                <header tuiHeader>
-                    <h2
-                        tuiTitle
-                        [style.text-align]="'center'"
-                    >
-                        {{ animal.title }}
-                    </h2>
-                </header>
-                <div
-                    [style.display]="'flex'"
-                    [style.flex-direction]="'column'"
-                    [style.gap]="'0.5rem'"
-                >
-                    <tui-badge
-                        tuiStatus
-                        [appearance]="animal.health === 'good' ? 'success' : 'warning'"
-                    >
-                        {{ animal.health }}
-                    </tui-badge>
-                    @for (tag of animal.tags; track $index) {
-                        <tui-badge appearance="primary">{{ tag }}</tui-badge>
-                    }
-                </div>
-            </div>
-        }
+        <ng-template
+            #content
+            let-index
+        >
+            <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
+            <div>{{ labels[index] }}</div>
+        </ng-template>
+
+        <button
+            appearance="primary"
+            tuiButton
+            (click)="openTable()"
+        >
+            Open Table
+        </button>
     </div>
+
+    <div>
+        <div
+            tuiAppearance="whiteblock"
+            tuiCardLarge="normal"
+            class="card-animals"
+        >
+            @for (animal of animals; track $index) {
+                <div
+                    tuiAppearance="whiteblock"
+                    tuiCardLarge="normal"
+                    [style.width]="'min-content'"
+                >
+                    <tui-avatar
+                        [size]="'m'"
+                        [src]="animal.src"
+                        [style.border-radius]="'9rem'"
+                        [style.height]="'9rem'"
+                        [style.width]="'9rem'"
+                    />
+                    <header tuiHeader>
+                        <h2
+                            tuiTitle
+                            [style.text-align]="'center'"
+                        >
+                            {{ animal.title }}
+                        </h2>
+                    </header>
+                    <div
+                        [style.display]="'flex'"
+                        [style.flex-direction]="'column'"
+                        [style.gap]="'0.5rem'"
+                    >
+                        <tui-badge
+                            tuiStatus
+                            [appearance]="animal.health === 'good' ? 'success' : 'warning'"
+                        >
+                            {{ animal.health }}
+                        </tui-badge>
+                        @for (tag of animal.tags; track $index) {
+                            <tui-badge appearance="primary">{{ tag }}</tui-badge>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="events">
+    <div>
+        <button
+            iconEnd="@tui.panel-top-open"
+            tuiLink
+            (click)="expanded = !expanded"
+        >
+            Open Calendar
+        </button>
+        <tui-expand [expanded]="expanded">
+            <ng-template tuiExpandContent>
+                <tui-calendar-range
+                    class="calendar"
+                    [items]="items"
+                    [value]="calendarValue"
+                    (valueChange)="onDayClick($event)"
+                />
+            </ng-template>
+        </tui-expand>
+    </div>
+    @if (calendarValue) {
+        <div>Chosen date: {{ calendarValue }}</div>
+    }
 </div>
