@@ -33,6 +33,8 @@
         "maxtemp",
         "Tiko",
         "Create",
-        "NFTTABLE"
+        "NFTTABLE",
+        "Unstake",
+        "Unstaking"
     ]
 }

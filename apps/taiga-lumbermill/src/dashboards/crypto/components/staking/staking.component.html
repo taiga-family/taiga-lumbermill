@@ -1,0 +1,113 @@
+@let data = tokens();
+@if (data) {
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        [style.height]="'100%'"
+    >
+        <header
+            tuiHeader
+            class="info"
+        >
+            <tui-avatar
+                size="l"
+                [src]="'btc' | coinIcon"
+            />
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Staking Bitcoin
+            </h2>
+            <div
+                tuiSubtitle
+                [style.text-align]="'center'"
+            >
+                Earn a share of the protocol`s fees
+                <br />
+                while staking BITCOIN
+            </div>
+        </header>
+        <div class="group-buttons">
+            <button
+                appearance="accent"
+                tuiButton
+                (click)="[(stake = true), showDialog(template)]"
+            >
+                Stake
+            </button>
+            <button
+                appearance="whiteblock"
+                tuiButton
+                (click)="[(stake = false), showDialog(template)]"
+            >
+                Unstake
+            </button>
+        </div>
+        <div class="position">
+            <div class="position-title">My position</div>
+            <hr />
+            <div class="block-position">
+                <div class="tui-space_top-0 tui-space_bottom-0 bold">{{ amount() }} BTC</div>
+                <div>${{ price() | number: '1.2-2' }}</div>
+            </div>
+            <hr />
+            <div class="block-position">
+                <div>Rewards</div>
+                <div class="tui-space_top-0 tui-space_bottom-0 bold">0 BTC</div>
+                <div>$0</div>
+            </div>
+        </div>
+        <div class="position">
+            <div class="position-title">Overview</div>
+            <hr />
+            <div class="block-position">
+                <div class="tui-space_top-0 tui-space_bottom-0">Total stacked</div>
+                <div class="bold">1.5M BTC</div>
+            </div>
+            <hr />
+            <div class="block-position">
+                <div class="tui-space_top-0 tui-space_bottom-0">APR</div>
+                <div class="bold">5%</div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template
+        #template
+        let-observer
+    >
+        <header tuiHeader>
+            <h2 tuiTitle>{{ stake ? 'Staking' : 'Unstaking' }} Bitcoin</h2>
+        </header>
+        <p>Available for {{ stake ? 'stake' : 'unstake' }}: {{ stake ? available - amount() : amount() }} BTC</p>
+        @if (stake) {
+            <tui-input-number
+                tuiAutoFocus
+                [max]="available - amount()"
+                [min]="0"
+                [(ngModel)]="inputStake"
+            >
+                Amount BTC
+            </tui-input-number>
+        } @else {
+            <tui-input-number
+                tuiAutoFocus
+                [max]="amount()"
+                [min]="0"
+                [(ngModel)]="inputUnstake"
+            >
+                Amount BTC
+            </tui-input-number>
+        }
+        <p>
+            <button
+                tuiButton
+                type="submit"
+                (click)="[observer.complete(), addAmount(stake ? inputStake : -inputUnstake), (inputStake = 0)]"
+            >
+                {{ stake ? 'Stake' : 'Unstake' }}
+            </button>
+        </p>
+    </ng-template>
+}
