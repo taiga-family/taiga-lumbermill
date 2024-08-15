@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton, TuiDialog} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton, TuiDialog, TuiHint} from '@taiga-ui/core';
 import {TuiAvatar, TuiPushService} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
@@ -28,6 +28,7 @@ import {MinterService} from './minter-deploy.service';
         TuiButton,
         TuiCell,
         TuiDialog,
+        TuiHint,
         TuiInputModule,
         TuiInputNumberModule,
     ],
