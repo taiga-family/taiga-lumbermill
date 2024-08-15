@@ -22,7 +22,6 @@ import {NftListComponent} from './nft-list/nft-list.component';
         TuiTitle,
     ],
     templateUrl: './nft.component.html',
-    styleUrl: './nft.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NFTComponent {

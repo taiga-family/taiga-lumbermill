@@ -46,7 +46,7 @@ import {NftService} from '../nft.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NftItemComponent {
-    protected nftService = inject(NftService);
+    protected readonly nftService = inject(NftService);
     protected information = computed(
         () =>
             this.nftService.nftData.find((val) => val.name === this.activeItem()) ??
