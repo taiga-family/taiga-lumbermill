@@ -31,11 +31,5 @@ export interface TokenMinter {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinterComponent {
-    protected tokenMinter: TokenMinter = {
-        success: false,
-        urlIcon: '',
-        token: '',
-        amount: 0,
-        symbol: '',
-    };
+    protected token: TokenMinter | null = null;
 }

@@ -16,20 +16,20 @@
 </div>
 @for (control of minterForm['controls']; track $index) {
     <div class="block-input">
-        @if (minterService[$index].type === 'text') {
+        @if (minterData[$index].type === 'text') {
             <tui-input
                 [formControl]="control"
-                [tuiHintContent]="minterService[$index].description"
+                [tuiHintContent]="minterData[$index].description"
             >
-                {{ minterService[$index].title }}
+                {{ minterData[$index].title }}
                 <input tuiTextfieldLegacy />
             </tui-input>
         } @else {
             <tui-input-number
                 [formControl]="control"
-                [tuiHintContent]="minterService[$index].description"
+                [tuiHintContent]="minterData[$index].description"
             >
-                {{ minterService[$index].title }}
+                {{ minterData[$index].title }}
                 <input tuiTextfieldLegacy />
             </tui-input-number>
         }

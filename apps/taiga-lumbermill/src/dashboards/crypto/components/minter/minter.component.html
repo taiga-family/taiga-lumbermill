@@ -8,12 +8,12 @@
             tuiTitle
             [style.text-align]="'center'"
         >
-            {{ !tokenMinter.success ? 'Mint your token' : tokenMinter.token + ' successfully created' }}
+            {{ !token?.success ? 'Mint your token' : token?.token + ' successfully created' }}
         </h2>
     </header>
-    @if (!tokenMinter.success) {
-        <lmb-minter-deploy (tokenMinterChange)="tokenMinter = $event" />
+    @if (!token) {
+        <lmb-minter-deploy (tokenChange)="token = $event" />
     } @else {
-        <lmb-minter-created [(tokenMinter)]="tokenMinter" />
+        <lmb-minter-created [(token)]="token" />
     }
 </div>

@@ -14,7 +14,13 @@ import {TuiCell} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 
 import type {TokenMinter} from '../minter.component';
-import {MinterService} from './minter-deploy.service';
+
+interface MinterData {
+    readonly title: string;
+    readonly defaultValue: string;
+    readonly type: string;
+    readonly description: string;
+}
 
 @Component({
     standalone: true,
@@ -37,11 +43,39 @@ import {MinterService} from './minter-deploy.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinterDeployComponent {
-    protected readonly minterService = inject(MinterService).minterData;
+    protected readonly minterData: MinterData[] = [
+        {
+            title: 'Jetton Name',
+            defaultValue: '',
+            type: 'text',
+            description: 'Your project name with spaces',
+        },
+        {
+            title: 'Jetton Symbol',
+            defaultValue: '',
+            type: 'text',
+            description:
+                'Currency symbol appearing in balance (usually 3-5 uppercase chars)',
+        },
+        {
+            title: 'Number of tokens',
+            defaultValue: '0',
+            type: 'number',
+            description:
+                'Number of initial tokens to mint and send to your waller address',
+        },
+        {
+            title: 'Description',
+            defaultValue: '',
+            type: 'text',
+            description: 'Optional sentence explaining about yor project',
+        },
+    ];
+
     protected readonly push = inject(TuiPushService);
     protected readonly alert = inject(TuiAlertService);
     protected minterForm = new FormArray(
-        this.minterService.map((item) => new FormControl(item.defaultValue)),
+        this.minterData.map((item) => new FormControl(item.defaultValue)),
     );
 
     protected openIcon = false;
@@ -50,7 +84,7 @@ export class MinterDeployComponent {
     protected urlIcon = '';
 
     @Output()
-    public readonly tokenMinterChange = new EventEmitter<TokenMinter>();
+    public readonly tokenChange = new EventEmitter<TokenMinter>();
 
     protected showDialog(): void {
         this.openIcon = true;
@@ -60,9 +94,7 @@ export class MinterDeployComponent {
         let required = true;
 
         for (let i = 0; i < this.minterForm.length; i++) {
-            if (
-                this.minterService[i].defaultValue === this.minterForm.controls[i].value
-            ) {
+            if (this.minterData[i].defaultValue === this.minterForm.controls[i].value) {
                 required = false;
             }
         }
@@ -91,7 +123,7 @@ export class MinterDeployComponent {
             })
             .subscribe();
         this.success = true;
-        this.tokenMinterChange.emit({
+        this.tokenChange.emit({
             success: true,
             urlIcon: this.urlIcon,
             token: this.minterForm.controls[0].value ?? '',

@@ -21,7 +21,7 @@ import type {TokenMinter} from '../minter.component';
 })
 export class MinterCreatedComponent {
     @Input()
-    public tokenMinter: TokenMinter = {
+    public token: TokenMinter = {
         success: true,
         urlIcon: '',
         token: '',
@@ -30,10 +30,9 @@ export class MinterCreatedComponent {
     };
 
     @Output()
-    public readonly tokenMinterChange = new EventEmitter<TokenMinter>();
+    public readonly tokenChange = new EventEmitter<null>();
 
     protected createNew(): void {
-        this.tokenMinter.success = false;
-        this.tokenMinterChange.emit(this.tokenMinter);
+        this.tokenChange.emit(null);
     }
 }
