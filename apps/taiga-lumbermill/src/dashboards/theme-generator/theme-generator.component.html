@@ -1,0 +1,25 @@
+<div class="list-colors">
+    <div tuiHeader="m">
+        <h3 tuiTitle>Colors</h3>
+    </div>
+    @for (inputColor of themeData; track $index) {
+        <tui-input-color
+            tuiTextfieldSize="m"
+            [colors]="palette"
+            [(ngModel)]="colors[$index]"
+            (ngModelChange)="colors[$index].set($event)"
+        >
+            {{ inputColor.name }}
+        </tui-input-color>
+    }
+    <code>
+        :root {{ '{' }}
+        @for (inputColor of themeData; track $index) {
+            <br />
+            {{ inputColor.variable }}: {{ colors[$index]() }};
+        }
+        <br />
+        {{ '}' }}
+    </code>
+</div>
+<lmb-theme-example [theme]="theme" />

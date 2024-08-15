@@ -31,6 +31,9 @@
         "forecastday",
         "mintemp",
         "maxtemp",
+        "Unstake",
+        "Unstaking",
+        "Create",
         "Tiko"
     ]
 }
