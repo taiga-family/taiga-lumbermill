@@ -6,10 +6,17 @@ import {
     inject,
     Output,
 } from '@angular/core';
-import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {
+    FormArray,
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton, TuiDialog, TuiHint} from '@taiga-ui/core';
-import {TuiAvatar, TuiPushService} from '@taiga-ui/kit';
+import {TuiAlertService, TuiButton, TuiDialog, TuiError, TuiHint} from '@taiga-ui/core';
+import {TuiAvatar, TuiFieldErrorPipe, TuiPushService} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 
@@ -34,6 +41,8 @@ interface MinterData {
         TuiButton,
         TuiCell,
         TuiDialog,
+        TuiError,
+        TuiFieldErrorPipe,
         TuiHint,
         TuiInputModule,
         TuiInputNumberModule,
@@ -43,6 +52,13 @@ interface MinterData {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinterDeployComponent {
+    protected readonly form = new FormGroup({
+        name: new FormControl('', [Validators.required, Validators.minLength(4)]),
+        symbol: new FormControl(''),
+        amount: new FormControl(0),
+        description: new FormControl(''),
+    });
+
     protected readonly minterData: MinterData[] = [
         {
             title: 'Jetton Name',

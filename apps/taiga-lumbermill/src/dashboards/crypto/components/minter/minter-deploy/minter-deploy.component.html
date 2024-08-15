@@ -14,6 +14,21 @@
         </div>
     </div>
 </div>
+
+<form [formGroup]="form">
+    <tui-input
+        formControlName="name"
+        tuiHintContent="Your project name with spaces"
+    >
+        Jetton Name
+        <input tuiTextfieldLegacy />
+    </tui-input>
+    <tui-error
+        formControlName="name"
+        [error]="[] | tuiFieldError | async"
+    />
+</form>
+
 @for (control of minterForm['controls']; track $index) {
     <div class="block-input">
         @if (minterData[$index].type === 'text') {
