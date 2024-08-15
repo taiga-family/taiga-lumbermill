@@ -26,4 +26,5 @@ import {ControlPanelService} from './control-panel.service';
 })
 export class ControlPanelComponent {
     protected controlPanelService = inject(ControlPanelService).controlPanelData;
+    protected states = new Array(this.controlPanelService.length).fill(false);
 }

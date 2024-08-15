@@ -35,6 +35,7 @@ import {CryptoService} from '../../../../../services/crypto.service';
 export class PriceListComponent {
     protected pricesService = inject(CryptoService);
     protected tokens$ = this.pricesService.getTokens();
+
     protected showTokens = 4;
 
     @Input()

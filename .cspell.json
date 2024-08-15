@@ -31,8 +31,11 @@
         "forecastday",
         "mintemp",
         "maxtemp",
-        "Tiko",
         "Deadpool",
-        "Create"
+        "Create",
+        "Unstake",
+        "Unstaking",
+        "Create",
+        "Tiko"
     ]
 }

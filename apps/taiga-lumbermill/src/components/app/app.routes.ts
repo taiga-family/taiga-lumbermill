@@ -61,6 +61,13 @@ export const appRoutes: Route[] = [
         ],
     },
     {
+        path: 'theme',
+        loadComponent: async () =>
+            import('../../dashboards/theme-generator/theme-generator.component').then(
+                (mod) => mod.ThemeGeneratorComponent,
+            ),
+    },
+    {
         path: '',
         loadComponent: async () =>
             import('../../dashboards/common-page/common-page.component').then(
