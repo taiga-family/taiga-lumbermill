@@ -12,7 +12,7 @@ import {SwapComponent} from './components/swap/swap.component';
     selector: 'lmb-crypto',
     imports: [
         CommonModule,
-        MinterComponent
+        MinterComponent,
         PoolsComponent,
         PricesComponent,
         StakingComponent,
