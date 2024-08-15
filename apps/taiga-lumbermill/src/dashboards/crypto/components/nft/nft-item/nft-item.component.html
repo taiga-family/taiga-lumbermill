@@ -20,7 +20,12 @@
         </p>
         <div class="badges">
             @for (tag of information().tags; track $index) {
-                <tui-badge appearance="primary">{{ tag }}</tui-badge>
+                <tui-badge
+                    appearance="primary"
+                    [style.background]="'var(--tui-chart-categorical-' + $index.toString().padStart(2, '0') + ')'"
+                >
+                    {{ tag }}
+                </tui-badge>
             }
         </div>
     </div>
@@ -41,14 +46,26 @@
             <thead>
                 <tr tuiThGroup>
                     @for (column of columns; track $index) {
-                        <th
-                            *tuiHead="column"
-                            tuiTh
-                            [sticky]="true"
-                            [style.top.px]="-viewport['_renderedContentOffset']"
-                        >
-                            {{ column === 'priceUsd' ? 'price, $' : column }}
-                        </th>
+                        @if (column === 'from' || column === 'to') {
+                            <th
+                                *tuiHead="column"
+                                tuiTh
+                                [sorter]="null"
+                                [sticky]="true"
+                                [style.top.px]="-viewport['_renderedContentOffset']"
+                            >
+                                {{ column }}
+                            </th>
+                        } @else {
+                            <th
+                                *tuiHead="column"
+                                tuiTh
+                                [sticky]="true"
+                                [style.top.px]="-viewport['_renderedContentOffset']"
+                            >
+                                {{ column === 'priceUsd' ? 'price, $' : column }}
+                            </th>
+                        }
                     }
                 </tr>
             </thead>
