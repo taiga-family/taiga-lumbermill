@@ -7,7 +7,6 @@ import {MinterCreatedComponent} from './minter-created/minter-created.component'
 import {MinterDeployComponent} from './minter-deploy/minter-deploy.component';
 
 export interface TokenMinter {
-    success: boolean;
     urlIcon: string;
     token: string;
     amount: number;

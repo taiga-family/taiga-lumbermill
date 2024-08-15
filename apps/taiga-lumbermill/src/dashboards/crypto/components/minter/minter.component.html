@@ -8,7 +8,7 @@
             tuiTitle
             [style.text-align]="'center'"
         >
-            {{ !token?.success ? 'Mint your token' : token?.token + ' successfully created' }}
+            {{ !token ? 'Mint your token' : token.token + ' successfully created' }}
         </h2>
     </header>
     @if (!token) {

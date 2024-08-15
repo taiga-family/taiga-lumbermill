@@ -124,7 +124,6 @@ export class MinterDeployComponent {
             .subscribe();
         this.success = true;
         this.tokenChange.emit({
-            success: true,
             urlIcon: this.urlIcon,
             token: this.minterForm.controls[0].value ?? '',
             symbol: this.minterForm.controls[1].value ?? '',

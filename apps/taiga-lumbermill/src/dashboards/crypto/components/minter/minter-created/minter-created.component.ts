@@ -22,7 +22,6 @@ import type {TokenMinter} from '../minter.component';
 export class MinterCreatedComponent {
     @Input()
     public token: TokenMinter = {
-        success: true,
         urlIcon: '',
         token: '',
         amount: 0,
