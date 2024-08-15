@@ -1,21 +1,31 @@
-@let token = minterForm.controls[0].value;
-@let symbol = minterForm.controls[1].value;
-@let description = minterForm.controls[3].value;
-<div class="info">
-    <div tuiCell="l">
-        <tui-avatar
-            size="xl"
-            [src]="!openIcon && urlIcon !== '' ? urlIcon : '@tui.pencil'"
-            (click)="showDialog()"
-        />
-        <div tuiTitle>
-            {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
-            <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
+@let token = form.controls.name.value;
+@let symbol = form.controls.symbol.value;
+@let icon = form.controls.urlIcon.value;
+@let description = form.controls.description.value;
+<form
+    [formGroup]="form"
+    (submit)="onSubmit()"
+>
+    <div class="info">
+        <div tuiCell="l">
+            <tui-avatar
+                size="xl"
+                [src]="!openIcon && icon !== '' ? icon : '@tui.pencil'"
+                (click)="showDialog()"
+            />
+            <div tuiTitle>
+                {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
+                <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
+            </div>
         </div>
     </div>
-</div>
+    <tui-error
+        formControlName="urlIcon"
+        class="block-input"
+        [error]="[] | tuiFieldError | async"
+        [style.text-align]="'center'"
+    />
 
-<form [formGroup]="form">
     <tui-input
         formControlName="name"
         tuiHintContent="Your project name with spaces"
@@ -23,76 +33,77 @@
         Jetton Name
         <input tuiTextfieldLegacy />
     </tui-input>
+
     <tui-error
         formControlName="name"
+        class="block-input"
         [error]="[] | tuiFieldError | async"
     />
-</form>
 
-@for (control of minterForm['controls']; track $index) {
-    <div class="block-input">
-        @if (minterData[$index].type === 'text') {
-            <tui-input
-                [formControl]="control"
-                [tuiHintContent]="minterData[$index].description"
-            >
-                {{ minterData[$index].title }}
-                <input tuiTextfieldLegacy />
-            </tui-input>
-        } @else {
-            <tui-input-number
-                [formControl]="control"
-                [tuiHintContent]="minterData[$index].description"
-            >
-                {{ minterData[$index].title }}
-                <input tuiTextfieldLegacy />
-            </tui-input-number>
-        }
-    </div>
-}
-<button
-    tuiButton
-    (click)="deploy()"
->
-    Deploy
-</button>
-
-<ng-template
-    let-observer
-    [tuiDialogOptions]="{label: 'Edit logo', size: 's'}"
-    [(tuiDialog)]="openIcon"
->
-    <p>URL of 256x256 pixel PNG image of token logo</p>
     <tui-input
-        tuiAutoFocus
-        [(ngModel)]="urlIcon"
+        formControlName="symbol"
+        tuiHintContent="Currency symbol appearing in balance (usually 3-5 uppercase chars)"
     >
-        Logo token
+        Jetton Symbol
+        <input tuiTextfieldLegacy />
     </tui-input>
-    <p>
-        <button
-            tuiButton
-            type="submit"
-            (click)="observer.complete()"
-        >
-            Submit
-        </button>
-    </p>
-</ng-template>
+    <tui-error
+        formControlName="symbol"
+        class="block-input"
+        [error]="[] | tuiFieldError | async"
+    />
 
-<ng-template
-    let-observer
-    [tuiDialogOptions]="{label: 'You need upload logo token', size: 's'}"
-    [(tuiDialog)]="warningIcon"
->
-    <p>Click on the pencil next to the token name to download the picture url</p>
-    <p>
-        <button
-            tuiButton
-            type="submit"
-            (click)="observer.complete()"
+    <tui-input-number
+        formControlName="amount"
+        tuiHintContent="Number of initial tokens to mint and send to your waller address"
+    >
+        Number of tokens
+        <input tuiTextfieldLegacy />
+    </tui-input-number>
+    <tui-error
+        formControlName="amount"
+        class="block-input"
+        [error]="[] | tuiFieldError | async"
+    />
+
+    <tui-input
+        formControlName="description"
+        tuiHintContent="Optional sentence explaining about yor project"
+    >
+        Description
+        <input tuiTextfieldLegacy />
+    </tui-input>
+    <tui-error
+        formControlName="description"
+        class="block-input"
+        [error]="[] | tuiFieldError | async"
+    />
+
+    <button
+        tuiButton
+        type="submit"
+    >
+        Deploy
+    </button>
+    <ng-template
+        let-observer
+        [tuiDialogOptions]="{label: 'Edit logo', size: 's'}"
+        [(tuiDialog)]="openIcon"
+    >
+        <p>URL of 256x256 pixel PNG image of token logo</p>
+        <tui-input
+            formControlName="urlIcon"
+            tuiAutoFocus
         >
-            Ok
-        </button>
-    </p>
-</ng-template>
+            Logo token
+        </tui-input>
+        <p>
+            <button
+                tuiButton
+                (click)="observer.complete()"
+            >
+                Submit
+            </button>
+        </p>
+    </ng-template>
+</form>
