@@ -10,9 +10,9 @@
             NFT Market
         </h2>
     </header>
-    @if (activeItem) {
-        <lmb-nft-item [(activeItem)]="activeItem" />
+    @if (nft) {
+        <lmb-nft-item [(nft)]="nft" />
     } @else {
-        <lmb-nft-list (activeItemChange)="activeItem = $event" />
+        <lmb-nft-list (nftChange)="nft = $event" />
     }
 </div>

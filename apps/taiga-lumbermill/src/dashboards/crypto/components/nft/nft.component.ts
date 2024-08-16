@@ -4,6 +4,7 @@ import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
+import type {NFTData} from './nft.service';
 import {NftItemComponent} from './nft-item/nft-item.component';
 import {NftListComponent} from './nft-list/nft-list.component';
 
@@ -25,5 +26,5 @@ import {NftListComponent} from './nft-list/nft-list.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NFTComponent {
-    protected activeItem = '';
+    protected nft: NFTData | null = null;
 }

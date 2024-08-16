@@ -3,11 +3,10 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    computed,
     EventEmitter,
     inject,
     input,
@@ -20,6 +19,7 @@ import {TuiAppearance, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
+import type {NFTData} from '../nft.service';
 import {NftService} from '../nft.service';
 
 @Component({
@@ -30,6 +30,7 @@ import {NftService} from '../nft.service';
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         CommonModule,
+        DatePipe,
         TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
@@ -47,18 +48,13 @@ import {NftService} from '../nft.service';
 })
 export class NftItemComponent {
     protected readonly nftService = inject(NftService);
-    protected information = computed(
-        () =>
-            this.nftService.nftData.find((val) => val.name === this.activeItem()) ??
-            this.nftService.nftData[0],
-    );
 
     protected readonly columns = ['type', 'priceUsd', 'from', 'to', 'time'];
 
     @Output()
-    public readonly activeItemChange = new EventEmitter<string>();
+    public readonly nftChange = new EventEmitter<NFTData | null>();
 
-    public activeItem = input.required<string>();
+    public nft = input.required<NFTData | null>();
 
     protected toDate(value: number): TuiDay {
         const date = new Date(value);
@@ -66,7 +62,7 @@ export class NftItemComponent {
         return TuiDay.fromLocalNativeDate(date);
     }
 
-    protected updateItem(value: string): void {
-        this.activeItemChange.emit(value);
+    protected goBack(): void {
+        this.nftChange.emit(null);
     }
 }

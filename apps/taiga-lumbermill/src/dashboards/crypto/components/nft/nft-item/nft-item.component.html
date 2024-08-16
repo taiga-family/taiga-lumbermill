@@ -1,89 +1,92 @@
-<div
-    class="info-open"
-    (click)="updateItem('')"
->
-    <tui-avatar
-        class="logo-nft clicked"
-        [src]="information().src"
-    />
+@let nftData = nft();
+@if (nftData) {
     <div
-        tuiHeader
-        class="text-clicked"
-        [style.text-align]="'center'"
+        class="info-open"
+        (click)="goBack()"
     >
-        <h2 class="tui-space_top-0 tui-space_bottom-2">{{ information().name }}</h2>
-        <p
-            tuiSubtitle
-            class="tui-space_top-0 tui-space_bottom-0"
+        <tui-avatar
+            class="logo-nft clicked"
+            [src]="nftData.src"
+        />
+        <div
+            tuiHeader
+            class="text-clicked"
+            [style.text-align]="'center'"
         >
-            {{ information().price | tuiAmount: 'USD' | async }}
-        </p>
-        <div class="badges">
-            @for (tag of information().tags; track $index) {
-                <tui-badge
-                    appearance="primary"
-                    [style.background]="'var(--tui-chart-categorical-' + $index.toString().padStart(2, '0') + ')'"
-                >
-                    {{ tag }}
-                </tui-badge>
-            }
+            <h2 class="tui-space_top-0 tui-space_bottom-2">{{ nftData.name }}</h2>
+            <p
+                tuiSubtitle
+                class="tui-space_top-0 tui-space_bottom-0"
+            >
+                {{ nftData.price | tuiAmount: 'USD' | async }}
+            </p>
+            <div class="badges">
+                @for (tag of nftData.tags; track $index) {
+                    <tui-badge
+                        appearance="primary"
+                        [style.background]="'var(--tui-chart-categorical-' + $index.toString().padStart(2, '0') + ')'"
+                    >
+                        {{ tag }}
+                    </tui-badge>
+                }
+            </div>
         </div>
     </div>
-</div>
-<tui-scrollbar>
-    <cdk-virtual-scroll-viewport
-        #viewport
-        tuiScrollable
-        class="viewport tui-zero-scrollbar"
-        [itemSize]="46"
-        [maxBufferPx]="500"
-        [minBufferPx]="200"
-    >
-        <table
-            tuiTable
-            [columns]="columns"
+    <tui-scrollbar>
+        <cdk-virtual-scroll-viewport
+            #viewport
+            tuiScrollable
+            class="viewport tui-zero-scrollbar"
+            [itemSize]="46"
+            [maxBufferPx]="500"
+            [minBufferPx]="200"
         >
-            <thead>
-                <tr tuiThGroup>
-                    @for (column of columns; track $index) {
-                        @if (column === 'from' || column === 'to') {
-                            <th
-                                *tuiHead="column"
-                                tuiTh
-                                [sorter]="null"
-                                [sticky]="true"
-                                [style.top.px]="-viewport['_renderedContentOffset']"
-                            >
-                                {{ column }}
-                            </th>
-                        } @else {
-                            <th
-                                *tuiHead="column"
-                                tuiTh
-                                [sticky]="true"
-                                [style.top.px]="-viewport['_renderedContentOffset']"
-                            >
-                                {{ column === 'priceUsd' ? 'price, $' : column }}
-                            </th>
+            <table
+                tuiTable
+                [columns]="columns"
+            >
+                <thead>
+                    <tr tuiThGroup>
+                        @for (column of columns; track $index) {
+                            @if (column === 'from' || column === 'to') {
+                                <th
+                                    *tuiHead="column"
+                                    tuiTh
+                                    [sorter]="null"
+                                    [sticky]="true"
+                                    [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                                >
+                                    {{ column }}
+                                </th>
+                            } @else {
+                                <th
+                                    *tuiHead="column"
+                                    tuiTh
+                                    [sticky]="true"
+                                    [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                                >
+                                    {{ column === 'priceUsd' ? 'price, $' : column }}
+                                </th>
+                            }
                         }
-                    }
-                </tr>
-            </thead>
-            <tbody tuiTbody>
-                <tr
-                    *cdkVirtualFor="let item of nftService.nftTable | tuiTableSort"
-                    tuiTr
-                >
-                    @for (column of columns; track $index) {
-                        <td
-                            *tuiCell="column"
-                            tuiTd
-                        >
-                            {{ column === 'time' ? toDate(item[column]) : item[column] }}
-                        </td>
-                    }
-                </tr>
-            </tbody>
-        </table>
-    </cdk-virtual-scroll-viewport>
-</tui-scrollbar>
+                    </tr>
+                </thead>
+                <tbody tuiTbody>
+                    <tr
+                        *cdkVirtualFor="let item of nftService.nftTable | tuiTableSort"
+                        tuiTr
+                    >
+                        @for (column of columns; track $index) {
+                            <td
+                                *tuiCell="column"
+                                tuiTd
+                            >
+                                {{ column === 'time' ? (item[column] | date: 'dd.MM.yyyy') : item[column] }}
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </cdk-virtual-scroll-viewport>
+    </tui-scrollbar>
+}
