@@ -3,6 +3,7 @@
     [style.position]="'sticky'"
 >
     @let title = (data$ | async) ?? '';
+    @let links = (links$ | async) ?? [];
     <a [routerLink]="title ? '/dashboards' : '/'">
         <tui-icon icon="@tui.chevron-left" />
         Back
@@ -11,6 +12,19 @@
     <span tuiNavigationLogo>
         <span tuiFade>{{ title }} dashboard</span>
     </span>
-    <hr />
+    <tui-tabs
+        tuiFade
+        [activeItemIndex]="0"
+        [style.margin-left]="'auto'"
+    >
+        @for (link of links; track $index) {
+            <button
+                tuiTab
+                [routerLink]="link.to"
+            >
+                {{ link.name }}
+            </button>
+        }
+    </tui-tabs>
 </nav>
 <router-outlet />

@@ -38,7 +38,19 @@ export const appRoutes: Route[] = [
                     import('../../dashboards/space-zoo/space-zoo.component').then(
                         (mod) => mod.SpaceZooComponent,
                     ),
-                data: {title: 'Space zoo'},
+                data: {
+                    title: 'Space zoo',
+                    links: [
+                        {
+                            name: 'Main',
+                            to: 'space-zoo',
+                        },
+                        {
+                            name: 'Table',
+                            to: 'space-zoo/table',
+                        },
+                    ],
+                },
                 children: [
                     {
                         path: '',
@@ -46,39 +58,13 @@ export const appRoutes: Route[] = [
                             import(
                                 '../../dashboards/space-zoo/components/administrator/administrator.component'
                             ).then((mod) => mod.AdministratorComponent),
-                        data: {
-                            title: 'Space zoo',
-                            links: [
-                                {
-                                    name: 'Main',
-                                    to: 'dashboards/space-zoo/',
-                                },
-                                {
-                                    name: 'Table',
-                                    to: 'dashboards/table/',
-                                },
-                            ],
-                        },
                     },
                     {
-                        path: '/table',
+                        path: 'table',
                         loadComponent: async () =>
                             import(
                                 '../../dashboards/space-zoo/components/table/table.component'
                             ).then((mod) => mod.TableComponent),
-                        data: {
-                            title: 'Space zoo',
-                            links: [
-                                {
-                                    name: 'Main',
-                                    to: 'dashboards/space-zoo/',
-                                },
-                                {
-                                    name: 'Table',
-                                    to: 'dashboards/table/',
-                                },
-                            ],
-                        },
                     },
                 ],
             },

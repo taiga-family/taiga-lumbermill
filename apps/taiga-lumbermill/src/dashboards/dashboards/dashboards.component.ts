@@ -8,6 +8,7 @@ import {
     RouterOutlet,
 } from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiFade, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 import {filter, map, startWith} from 'rxjs';
 
@@ -20,11 +21,13 @@ import {filter, map, startWith} from 'rxjs';
         RouterLink,
         RouterOutlet,
         TuiCardLarge,
+        TuiFade,
         TuiHeader,
         TuiIcon,
         TuiIcon,
         TuiNavigation,
         TuiSurface,
+        TuiTabs,
         TuiTitle,
     ],
     templateUrl: './dashboards.component.html',
@@ -36,5 +39,11 @@ export class DashboardsComponent {
         filter((e): e is ActivationEnd => e instanceof ActivationEnd),
         map((event) => event.snapshot.firstChild?.data['title']),
         startWith(this.activatedRoute.snapshot.firstChild?.data['title']),
+    );
+
+    protected links$ = inject(Router).events.pipe(
+        filter((e): e is ActivationEnd => e instanceof ActivationEnd),
+        map((event) => event.snapshot.firstChild?.data['links']),
+        startWith(this.activatedRoute.snapshot.firstChild?.data['links']),
     );
 }
