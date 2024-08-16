@@ -1,14 +1,16 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import type {WritableSignal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import type {TuiDayRange} from '@taiga-ui/cdk';
+import {TuiDay, type TuiDayRange} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
     TuiExpand,
     TuiHint,
     TuiLink,
+    TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
@@ -18,7 +20,7 @@ import {
     tuiCreateDefaultDayRangePeriods,
     TuiStatus,
 } from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -33,12 +35,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiButton,
         TuiCalendarRange,
         TuiCardLarge,
+        TuiCardLarge,
+        TuiCell,
         TuiExpand,
         TuiHeader,
         TuiHint,
         TuiLink,
         TuiPieChart,
         TuiStatus,
+        TuiSurface,
         TuiTitle,
     ],
     templateUrl: './administrator.component.html',
@@ -49,8 +54,33 @@ export class AdministratorComponent {
     protected items = tuiCreateDefaultDayRangePeriods();
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
-    protected calendarValue: TuiDayRange | null = null;
+    protected calendarValue: WritableSignal<TuiDayRange | null> = signal(null);
     protected expanded = false;
+
+    protected events = [
+        {
+            icon: './nft/1.jpg',
+            title: 'feed',
+            subtitle: 'Cyberpunk Dog',
+            time: TuiDay.currentLocal(),
+        },
+        {
+            icon: './nft/2.jpg',
+            title: 'play',
+            subtitle: 'Robo Hamster',
+            time: TuiDay.currentLocal(),
+        },
+    ];
+
+    protected eventsCalendar = computed(() => {
+        const calendar = this.calendarValue();
+
+        return calendar
+            ? this.events.filter(
+                  (val) => calendar.from <= val.time && val.time <= calendar.to,
+              )
+            : [];
+    });
 
     protected animals = [
         {
@@ -80,6 +110,6 @@ export class AdministratorComponent {
     ];
 
     protected onDayClick(day: TuiDayRange | null): void {
-        this.calendarValue = day;
+        this.calendarValue.set(day);
     }
 }

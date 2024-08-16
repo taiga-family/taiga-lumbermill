@@ -97,7 +97,7 @@
         <button
             iconEnd="@tui.panel-top-open"
             tuiLink
-            (click)="expanded = !expanded"
+            (click)="[(expanded = !expanded), onDayClick(null)]"
         >
             Open Calendar
         </button>
@@ -106,13 +106,33 @@
                 <tui-calendar-range
                     class="calendar"
                     [items]="items"
-                    [value]="calendarValue"
+                    [value]="calendarValue()"
                     (valueChange)="onDayClick($event)"
                 />
             </ng-template>
         </tui-expand>
     </div>
-    @if (calendarValue) {
-        <div>Chosen date: {{ calendarValue }}</div>
+    @if (calendarValue()) {
+        <div
+            tuiCardLarge
+            tuiSurface="elevated"
+            [style.margin-left]="'auto'"
+            [style.margin-right]="'auto'"
+        >
+            <h3 tuiTitle="m">Events</h3>
+            <button
+                *ngFor="let item of eventsCalendar()"
+                tuiCell
+            >
+                <tui-avatar
+                    appearance="accent"
+                    [src]="item.icon"
+                />
+                <span tuiTitle>
+                    {{ item.title }}
+                    <span tuiSubtitle>{{ item.subtitle }} {{ item.time }}</span>
+                </span>
+            </button>
+        </div>
     }
 </div>
