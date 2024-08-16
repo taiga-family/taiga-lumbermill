@@ -69,7 +69,7 @@ export class MinterDeployComponent {
             Validators.maxLength(5),
         ]),
         amount: new FormControl(0, [Validators.required, Validators.min(1)]),
-        urlIcon: new FormControl('', [Validators.required]),
+        urlIcon: new FormControl(''),
         description: new FormControl(''),
     });
 

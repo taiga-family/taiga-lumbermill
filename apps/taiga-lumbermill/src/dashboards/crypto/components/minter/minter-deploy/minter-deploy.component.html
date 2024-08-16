@@ -6,7 +6,7 @@
     [formGroup]="form"
     (submit)="onSubmit()"
 >
-    <div class="info">
+    <div class="info block-input">
         <div tuiCell="l">
             <tui-avatar
                 size="xl"
@@ -19,13 +19,6 @@
             </div>
         </div>
     </div>
-    <tui-error
-        formControlName="urlIcon"
-        class="block-input"
-        [error]="[] | tuiFieldError | async"
-        [style.text-align]="'center'"
-    />
-
     <tui-input
         formControlName="name"
         tuiHintContent="Your project name with spaces"
@@ -87,7 +80,7 @@
     </button>
     <ng-template
         let-observer
-        [tuiDialogOptions]="{label: 'Edit logo', size: 's'}"
+        [tuiDialogOptions]="{label: 'Edit logo', size: 's', closeable: false, dismissible: false}"
         [(tuiDialog)]="openIcon"
     >
         <p>URL of 256x256 pixel PNG image of token logo</p>
@@ -97,10 +90,17 @@
         >
             Logo token
         </tui-input>
+        <tui-error
+            formControlName="urlIcon"
+            class="block-input"
+            [error]="[] | tuiFieldError | async"
+            [style.text-align]="'center'"
+        />
+
         <p>
             <button
                 tuiButton
-                (click)="observer.complete()"
+                (click)="icon !== '' ? observer.complete() : ''"
             >
                 Submit
             </button>
