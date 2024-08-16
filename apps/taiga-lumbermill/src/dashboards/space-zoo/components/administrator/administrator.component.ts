@@ -73,6 +73,8 @@ export class AdministratorComponent {
         },
     ];
 
+    protected eventsDays = this.events.map((val) => val.time.day);
+
     protected eventsCalendar = computed(() => {
         const calendar = this.calendarValue();
 
@@ -114,5 +116,7 @@ export class AdministratorComponent {
         this.calendarValue.set(day);
     }
 
-    protected marker: TuiMarkerHandler = (e) => [e.day % 2 === 0 ? 'A' : 'H'];
+    protected marker: TuiMarkerHandler = (e) => [
+        this.eventsDays.includes(e.day) ? 'green' : '',
+    ];
 }
