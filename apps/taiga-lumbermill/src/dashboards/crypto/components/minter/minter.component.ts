@@ -6,7 +6,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {MinterCreatedComponent} from './minter-created/minter-created.component';
 import {MinterDeployComponent} from './minter-deploy/minter-deploy.component';
 
-export interface TokenMinter {
+export interface Token {
     urlIcon: string;
     token: string;
     amount: number;
@@ -30,5 +30,5 @@ export interface TokenMinter {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MinterComponent {
-    protected token: TokenMinter | null = null;
+    protected token: Token | null = null;
 }

@@ -10,7 +10,7 @@
         <div tuiCell="l">
             <tui-avatar
                 size="xl"
-                [src]="!openIcon && icon !== '' ? icon : '@tui.pencil'"
+                [src]="!openDialog && icon !== '' ? icon : '@tui.pencil'"
                 (click)="showDialog()"
             />
             <div tuiTitle>
@@ -81,7 +81,7 @@
     <ng-template
         let-observer
         [tuiDialogOptions]="{label: 'Edit logo', size: 's', closeable: false, dismissible: false}"
-        [(tuiDialog)]="openIcon"
+        [(tuiDialog)]="openDialog"
     >
         <p>URL of 256x256 pixel PNG image of token logo</p>
         <tui-input

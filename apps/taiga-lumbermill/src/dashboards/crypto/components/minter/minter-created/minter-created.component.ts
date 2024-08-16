@@ -9,7 +9,7 @@ import {
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
-import type {TokenMinter} from '../minter.component';
+import type {Token} from '../minter.component';
 
 @Component({
     standalone: true,
@@ -21,7 +21,7 @@ import type {TokenMinter} from '../minter.component';
 })
 export class MinterCreatedComponent {
     @Input()
-    public token: TokenMinter = {
+    public token: Token = {
         urlIcon: '',
         token: '',
         amount: 0,

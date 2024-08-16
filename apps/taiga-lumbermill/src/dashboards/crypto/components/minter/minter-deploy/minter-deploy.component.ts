@@ -25,7 +25,7 @@ import {TuiCell} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 import {of} from 'rxjs';
 
-import type {TokenMinter} from '../minter.component';
+import type {Token} from '../minter.component';
 
 @Component({
     standalone: true,
@@ -75,13 +75,13 @@ export class MinterDeployComponent {
 
     protected readonly push = inject(TuiPushService);
 
-    protected openIcon = false;
+    protected openDialog = false;
 
     @Output()
-    public readonly tokenChange = new EventEmitter<TokenMinter>();
+    public readonly tokenChange = new EventEmitter<Token>();
 
     protected showDialog(): void {
-        this.openIcon = true;
+        this.openDialog = true;
     }
 
     protected onSubmit(): void {
