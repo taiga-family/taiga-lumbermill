@@ -39,6 +39,48 @@ export const appRoutes: Route[] = [
                         (mod) => mod.SpaceZooComponent,
                     ),
                 data: {title: 'Space zoo'},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/space-zoo/components/administrator/administrator.component'
+                            ).then((mod) => mod.AdministratorComponent),
+                        data: {
+                            title: 'Space zoo',
+                            links: [
+                                {
+                                    name: 'Main',
+                                    to: 'dashboards/space-zoo/',
+                                },
+                                {
+                                    name: 'Table',
+                                    to: 'dashboards/table/',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        path: '/table',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/space-zoo/components/table/table.component'
+                            ).then((mod) => mod.TableComponent),
+                        data: {
+                            title: 'Space zoo',
+                            links: [
+                                {
+                                    name: 'Main',
+                                    to: 'dashboards/space-zoo/',
+                                },
+                                {
+                                    name: 'Table',
+                                    to: 'dashboards/table/',
+                                },
+                            ],
+                        },
+                    },
+                ],
             },
         ],
     },

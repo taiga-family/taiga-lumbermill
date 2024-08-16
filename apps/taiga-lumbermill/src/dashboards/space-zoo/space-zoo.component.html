@@ -1,7 +1,3 @@
 <div class="table">
-    @if (openTable) {
-        <lmb-table />
-    } @else {
-        <lmb-administrator (openTableChange)="openTable = $event" />
-    }
+    <router-outlet />
 </div>

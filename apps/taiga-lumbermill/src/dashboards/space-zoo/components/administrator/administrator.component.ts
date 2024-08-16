@@ -1,5 +1,5 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiDayRange} from '@taiga-ui/cdk';
@@ -78,13 +78,6 @@ export class AdministratorComponent {
             tags: ['need food', 'play'],
         },
     ];
-
-    @Output()
-    public readonly openTableChange = new EventEmitter<boolean>();
-
-    protected openTable(): void {
-        this.openTableChange.emit(true);
-    }
 
     protected onDayClick(day: TuiDayRange | null): void {
         this.calendarValue = day;
