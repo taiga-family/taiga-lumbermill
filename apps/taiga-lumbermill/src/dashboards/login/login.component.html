@@ -1,0 +1,58 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Cleaning schedule
+        </h2>
+    </header>
+    <form
+        [formGroup]="form"
+        (submit)="onSubmit()"
+    >
+        <tui-input
+            formControlName="email"
+            tuiHintContent="Email"
+            type="email"
+            class="block-input"
+        >
+            email
+            <input tuiTextfieldLegacy />
+        </tui-input>
+
+        <tui-error
+            formControlName="email"
+            [error]="[] | tuiFieldError | async"
+            [style.margin-bottom]="'1rem'"
+        />
+
+        <tui-input
+            formControlName="password"
+            tuiHintContent="Password"
+            type="password"
+            class="block-input"
+        >
+            password
+            <input tuiTextfieldLegacy />
+        </tui-input>
+
+        <tui-error
+            formControlName="password"
+            [error]="[] | tuiFieldError | async"
+            [style.margin-bottom]="'1rem'"
+        />
+
+        <button
+            size="m"
+            tuiButton
+            [style.width]="'100%'"
+        >
+            Login
+        </button>
+    </form>
+</div>
