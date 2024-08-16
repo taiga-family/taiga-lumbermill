@@ -106,6 +106,7 @@
                 <tui-calendar-range
                     class="calendar"
                     [items]="items"
+                    [markerHandler]="marker"
                     [value]="calendarValue()"
                     (valueChange)="onDayClick($event)"
                 />

@@ -4,6 +4,7 @@ import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/cor
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, type TuiDayRange} from '@taiga-ui/cdk';
+import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TuiAppearance,
     TuiButton,
@@ -112,4 +113,6 @@ export class AdministratorComponent {
     protected onDayClick(day: TuiDayRange | null): void {
         this.calendarValue.set(day);
     }
+
+    protected marker: TuiMarkerHandler = (e) => [e.day % 2 === 0 ? 'A' : 'H'];
 }
