@@ -1,6 +1,16 @@
 <div class="list-colors">
     <div tuiHeader="m">
-        <h3 tuiTitle>Colors</h3>
+        <h3
+            tuiTitle
+            [style.flex-grow]="0"
+        >
+            Colors
+        </h3>
+        <tui-icon
+            class="share"
+            [icon]="shared() ? '@tui.check' : '@tui.external-link'"
+            (click)="share()"
+        />
     </div>
     @for (inputColor of themeData; track $index) {
         <tui-input-color

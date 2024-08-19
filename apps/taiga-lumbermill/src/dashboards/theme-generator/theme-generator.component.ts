@@ -7,7 +7,9 @@ import {
     inject,
     signal,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
@@ -35,10 +37,19 @@ import {data} from './theme-generator.constants';
 })
 export class ThemeGeneratorComponent {
     private readonly clipboard = inject(Clipboard);
+    private readonly activatedRoute = inject(ActivatedRoute);
+    protected readonly url = toSignal(this.activatedRoute.url);
+    protected params = toSignal(this.activatedRoute.queryParams)();
     protected themeData = data;
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
-    protected colors = this.themeData.map((val) => signal(val.initialValue));
+    protected colors = this.themeData.map((val) => {
+        const result = this.params?.[val.variable] ?? val.initialValue;
+
+        return signal((result[0] !== 'r' && result[0] !== '#' ? '#' : '') + result);
+    });
+
     protected copied = signal(false);
+    protected shared = signal(false);
 
     protected theme = computed(() =>
         this.colors.map((val, i) => `${this.themeData[i].variable}: ${val()};`).join(' '),
@@ -57,5 +68,21 @@ export class ThemeGeneratorComponent {
 
         text += '\n}';
         this.clipboard.copy(text);
+    }
+
+    protected share(): void {
+        const url = `http://localhost:4200/${this.url()?.toString()}`;
+
+        this.shared.set(true);
+        setTimeout(() => {
+            this.shared.set(false);
+        }, 800);
+        let text = '?';
+
+        for (let i = 0; i < this.themeData.length; i++) {
+            text += `${this.themeData[i].variable}=${this.colors[i]().replace('#', '')}&`;
+        }
+
+        this.clipboard.copy(url + text);
     }
 }
