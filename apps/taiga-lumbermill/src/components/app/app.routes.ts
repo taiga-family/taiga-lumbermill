@@ -66,6 +66,13 @@ export const appRoutes: Route[] = [
                                 '../../dashboards/space-zoo/components/table/table.component'
                             ).then((mod) => mod.TableComponent),
                     },
+                    {
+                        path: 'animal/:id',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/space-zoo/components/animal/animal.component'
+                            ).then((mod) => mod.AnimalComponent),
+                    },
                 ],
             },
         ],

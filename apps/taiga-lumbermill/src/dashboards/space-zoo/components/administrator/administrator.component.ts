@@ -1,6 +1,7 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
 import type {WritableSignal} from '@angular/core';
 import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, type TuiDayRange, tuiSum} from '@taiga-ui/cdk';
@@ -23,12 +24,40 @@ import {
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
+export const animals = [
+    {
+        src: './nft/1.jpg',
+        title: 'Cyberpunk Dog',
+        health: 'seek',
+        tags: ['Needs a doctor'],
+    },
+    {
+        src: './nft/2.jpg',
+        title: 'Robo Hamster',
+        health: 'good',
+        tags: ['Play'],
+    },
+    {
+        src: './nft/3.jpg',
+        title: 'Cyberpunk Cat',
+        health: 'good',
+        tags: ['Needs to be cleaned'],
+    },
+    {
+        src: './nft/4.jpg',
+        title: 'Robo frog Pepe',
+        health: 'hungry',
+        tags: ['need food', 'play'],
+    },
+];
+
 @Component({
     standalone: true,
     selector: 'lmb-administrator',
     imports: [
         AsyncPipe,
         CommonModule,
+        RouterLink,
         TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,
@@ -57,6 +86,7 @@ export class AdministratorComponent {
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
     protected readonly total = tuiSum(...this.value);
     protected indexRingChart = NaN;
+    protected animals = animals;
 
     protected calendarValue: WritableSignal<TuiDayRange | null> = signal(null);
     protected expanded = false;
@@ -95,33 +125,6 @@ export class AdministratorComponent {
               )
             : [];
     });
-
-    protected animals = [
-        {
-            src: './nft/1.jpg',
-            title: 'Cyberpunk Dog',
-            health: 'seek',
-            tags: ['Needs a doctor'],
-        },
-        {
-            src: './nft/2.jpg',
-            title: 'Robo Hamster',
-            health: 'good',
-            tags: ['Play'],
-        },
-        {
-            src: './nft/3.jpg',
-            title: 'Cyberpunk Cat',
-            health: 'good',
-            tags: ['Needs to be cleaned'],
-        },
-        {
-            src: './nft/4.jpg',
-            title: 'Robo frog Pepe',
-            health: 'hungry',
-            tags: ['need food', 'play'],
-        },
-    ];
 
     protected get sum(): number {
         return Number.isNaN(this.indexRingChart)
