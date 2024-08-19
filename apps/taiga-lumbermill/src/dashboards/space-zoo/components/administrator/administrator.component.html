@@ -28,13 +28,23 @@
                 </h3>
             </header>
         </div>
-        <tui-pie-chart
+        <!-- <tui-pie-chart
             size="xl"
             [style.margin-left]="'auto'"
             [style.margin-right]="'auto'"
             [tuiHintContent]="content"
             [value]="value"
-        />
+        /> -->
+        <tui-ring-chart
+            size="xl"
+            [style.margin-left]="'auto'"
+            [style.margin-right]="'auto'"
+            [value]="value"
+            [(activeItemIndex)]="indexRingChart"
+        >
+            <span>{{ sum | tuiAmount: 'RUB' | async }}</span>
+            <div>{{ label }}</div>
+        </tui-ring-chart>
 
         <ng-template
             #content

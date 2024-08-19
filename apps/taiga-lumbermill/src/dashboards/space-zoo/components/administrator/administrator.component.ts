@@ -1,9 +1,9 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
 import type {WritableSignal} from '@angular/core';
 import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
-import {TuiPieChart} from '@taiga-ui/addon-charts';
+import {TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDay, type TuiDayRange} from '@taiga-ui/cdk';
+import {TuiDay, type TuiDayRange, tuiSum} from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TuiAppearance,
@@ -42,7 +42,7 @@ import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
         TuiHeader,
         TuiHint,
         TuiLink,
-        TuiPieChart,
+        TuiRingChart,
         TuiStatus,
         TuiSurface,
         TuiTitle,
@@ -55,6 +55,9 @@ export class AdministratorComponent {
     protected items = tuiCreateDefaultDayRangePeriods();
     protected readonly value = [13769, 12367, 10172, 3018, 2592];
     protected readonly labels = ['Food', 'Сleaning', 'Electricity', 'Water', 'Other'];
+    protected readonly total = tuiSum(...this.value);
+    protected indexRingChart = NaN;
+
     protected calendarValue: WritableSignal<TuiDayRange | null> = signal(null);
     protected expanded = false;
 
@@ -117,6 +120,18 @@ export class AdministratorComponent {
             tags: ['need food', 'play'],
         },
     ];
+
+    protected get sum(): number {
+        return Number.isNaN(this.indexRingChart)
+            ? this.total
+            : this.value[this.indexRingChart];
+    }
+
+    protected get label(): string {
+        return Number.isNaN(this.indexRingChart)
+            ? 'Total'
+            : this.labels[this.indexRingChart];
+    }
 
     protected onDayClick(day: TuiDayRange | null): void {
         this.calendarValue.set(day);
