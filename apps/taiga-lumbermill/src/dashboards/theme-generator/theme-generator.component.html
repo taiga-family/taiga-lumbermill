@@ -13,6 +13,11 @@
         </tui-input-color>
     }
     <code>
+        <tui-icon
+            class="copy"
+            [icon]="copied() ? '@tui.check' : '@tui.copy'"
+            (click)="copy()"
+        />
         :root {{ '{' }}
         @for (inputColor of themeData; track $index) {
             <br />
