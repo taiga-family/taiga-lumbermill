@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 import {NFTComponent} from './components/nft/nft.component';
+import {MinterComponent} from './components/minter/minter.component';
 import {PoolsComponent} from './components/pools/pools.component';
 import {PricesComponent} from './components/prices/prices.component';
 import {StakingComponent} from './components/staking/staking.component';
@@ -13,6 +14,7 @@ import {SwapComponent} from './components/swap/swap.component';
     imports: [
         CommonModule,
         NFTComponent,
+        MinterComponent,
         PoolsComponent,
         PricesComponent,
         StakingComponent,
