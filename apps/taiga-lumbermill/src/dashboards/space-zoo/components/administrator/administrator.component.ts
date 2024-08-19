@@ -69,7 +69,13 @@ export class AdministratorComponent {
             icon: './nft/2.jpg',
             title: 'play',
             subtitle: 'Robo Hamster',
-            time: TuiDay.currentLocal(),
+            time: TuiDay.currentLocal().append({day: 1}),
+        },
+        {
+            icon: './nft/3.jpg',
+            title: 'clean',
+            subtitle: 'Cyberpunk cat',
+            time: TuiDay.currentLocal().append({day: -1}),
         },
     ];
 
