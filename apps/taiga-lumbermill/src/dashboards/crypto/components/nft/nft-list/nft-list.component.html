@@ -2,7 +2,7 @@
     <h3 tuiTitle="m">Top NFTs</h3>
     <div class="list">
         @for (nft of nftService; track $index) {
-            <div
+            <button
                 tuiCardLarge
                 tuiSurface="elevated"
                 class="card-nft"
@@ -24,7 +24,7 @@
                         {{ nft.price | tuiAmount: 'USD' | async }}
                     </h5>
                 </div>
-            </div>
+            </button>
         }
     </div>
 </div>
@@ -32,7 +32,7 @@
     <h2 tuiTitle="m">Recent bought NFTs</h2>
     <div class="list">
         @for (nft of nftService; track $index) {
-            <div
+            <button
                 tuiCardLarge
                 tuiSurface="elevated"
                 class="card-nft"
@@ -49,7 +49,7 @@
                     <h3 class="tui-space_top-1 tui-space_bottom-0">{{ nft.name }}</h3>
                     <h5 class="tui-space_top-0 tui-space_bottom-0">{{ nft.price | tuiAmount: 'USD' | async }}</h5>
                 </div>
-            </div>
+            </button>
         }
     </div>
 </div>
