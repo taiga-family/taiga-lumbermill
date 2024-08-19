@@ -63,20 +63,45 @@
                 Proccess
             </h2>
         </header>
-        <div>
-            <label
-                *ngIf="value$ | async as value"
-                tuiProgressLabel
-            >
-                <span class="text">COMPLETED</span>
-                <span class="percent">{{ value }}%</span>
+        <div class="list">
+            @for (act of animal.action; track $index) {
+                <div
+                    [style.display]="'flex'"
+                    [style.gap]="'1rem'"
+                >
+                    <div
+                        tuiAppearance="whiteblock"
+                        tuiCardLarge="normal"
+                        class="card"
+                        [style.margin-bottom]="'auto'"
+                        [style.margin-top]="'auto'"
+                        (click)="states[$index] = !states[$index]"
+                    >
+                        <h3
+                            tuiTitle="m"
+                            class="tui-space_top-0 tui-space_bottom-0"
+                        >
+                            {{ act }}
+                        </h3>
+                    </div>
+                    @if (states[$index]) {
+                        <label
+                            *ngIf="value$ | async as value"
+                            tuiProgressLabel
+                            [style.width]="'max-content'"
+                        >
+                            <span class="text">COMPLETED</span>
+                            <span class="percent">{{ value }}%</span>
 
-                <tui-progress-circle
-                    size="xl"
-                    [max]="max"
-                    [value]="value"
-                />
-            </label>
+                            <tui-progress-circle
+                                size="l"
+                                [max]="max"
+                                [value]="value"
+                            />
+                        </label>
+                    }
+                </div>
+            }
         </div>
     </div>
 </div>

@@ -36,4 +36,6 @@ export class AnimalComponent {
         startWith(30),
         takeWhile((value) => value <= this.max),
     );
+
+    protected states = animals[this.id].action.map((_) => false);
 }
