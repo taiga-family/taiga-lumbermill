@@ -1,8 +1,9 @@
 import {CommonModule, DatePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {TuiBreakpointService, TuiButton, TuiExpand, TuiTitle} from '@taiga-ui/core';
-import {TuiCarousel} from '@taiga-ui/kit';
+import {TuiCarousel, TuiRating} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 import {FilmsService} from '../../films.service';
@@ -13,12 +14,14 @@ import {FilmsService} from '../../films.service';
     imports: [
         CommonModule,
         DatePipe,
+        FormsModule,
         RouterLink,
         TuiButton,
         TuiButton,
         TuiCarousel,
         TuiExpand,
         TuiHeader,
+        TuiRating,
         TuiTitle,
     ],
     templateUrl: './list-films.component.html',

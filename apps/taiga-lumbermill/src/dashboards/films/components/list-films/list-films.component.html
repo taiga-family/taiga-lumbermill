@@ -88,6 +88,12 @@
                         {{ item.restrictionsYears }}+
                     </p>
                 </div>
+                <tui-rating
+                    class="rating"
+                    [max]="10"
+                    [ngModel]="item.rating"
+                    [readOnly]="true"
+                />
                 <header
                     tuiHeader="m"
                     class="tui-space_top-4"
