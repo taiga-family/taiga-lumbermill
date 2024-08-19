@@ -48,5 +48,12 @@ export const appRoutes: Route[] = [
                 (mod) => mod.CommonPageComponent,
             ),
     },
+    {
+        path: 'register',
+        loadComponent: async () =>
+            import('../../dashboards/register/register.component').then(
+                (mod) => mod.RegisterComponent,
+            ),
+    },
     {path: '**', redirectTo: 'dashboards'},
 ];
