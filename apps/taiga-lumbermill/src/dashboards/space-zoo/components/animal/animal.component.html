@@ -1,4 +1,5 @@
 @let animal = animals[id];
+@let value = value$ | async;
 <div class="info">
     <tui-avatar
         [size]="'xxl'"
@@ -18,9 +19,9 @@
                 <span tuiSubtitle>Health:</span>
                 <tui-badge
                     tuiStatus
-                    [appearance]="animal.health === 'good' ? 'success' : 'warning'"
+                    [appearance]="animal.health === 'good' || value === max ? 'success' : 'warning'"
                 >
-                    {{ animal.health }}
+                    {{ value === max ? 'good' : animal.health }}
                 </tui-badge>
             </div>
             <div class="tags">
@@ -69,9 +70,9 @@
                     [style.display]="'flex'"
                     [style.gap]="'1rem'"
                 >
-                    <div
-                        tuiAppearance="whiteblock"
+                    <button
                         tuiCardLarge="normal"
+                        tuiSurface="elevated"
                         class="card"
                         [style.margin-bottom]="'auto'"
                         [style.margin-top]="'auto'"
@@ -83,10 +84,10 @@
                         >
                             {{ act }}
                         </h3>
-                    </div>
+                    </button>
                     @if (states[$index]) {
                         <label
-                            *ngIf="value$ | async as value"
+                            *ngIf="value"
                             tuiProgressLabel
                             [style.width]="'max-content'"
                         >
@@ -99,6 +100,11 @@
                                 [value]="value"
                             />
                         </label>
+                    } @else {
+                        <div
+                            [style.height]="'5rem'"
+                            [style.width]="'5rem'"
+                        ></div>
                     }
                 </div>
             }
