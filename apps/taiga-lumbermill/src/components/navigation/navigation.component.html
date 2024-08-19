@@ -72,10 +72,7 @@
             </button>
         </footer>
     </aside>
-    <main
-        tuiNavigationMain
-        class="main"
-    >
-        <router-outlet />
+    <main class="main" tuiNavigationMain>
+        <router-outlet [style.display]="'none'" />
     </main>
 </div>
