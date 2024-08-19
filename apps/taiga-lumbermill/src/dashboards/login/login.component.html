@@ -28,7 +28,7 @@
         <tui-error
             formControlName="email"
             [error]="[] | tuiFieldError | async"
-            [style.margin-bottom]="'1rem'"
+            [style.margin-bottom]="'0.8rem'"
         />
 
         <tui-input
@@ -40,12 +40,31 @@
             password
             <input tuiTextfieldLegacy />
         </tui-input>
-
         <tui-error
             formControlName="password"
             [error]="[] | tuiFieldError | async"
-            [style.margin-bottom]="'1rem'"
+            [style.margin-bottom]="'0.8rem'"
         />
+        <div class="under-password">
+            <div
+                [style.display]="'flex'"
+                [style.gap]="'0.5rem'"
+            >
+                <input
+                    checked
+                    tuiCheckbox
+                    type="checkbox"
+                    [ngModel]="true"
+                />
+                <p
+                    class="tui-space_top-0 tui-space_bottom-0"
+                    [style.color]="'var(--tui-text-secondary)'"
+                >
+                    Remember me
+                </p>
+            </div>
+            <a tuiLink>Forgot password?</a>
+        </div>
 
         <button
             size="m"
@@ -54,5 +73,37 @@
         >
             Login
         </button>
+        <div class="or">
+            <hr class="line" />
+            <p
+                tuiSubtitle
+                class="tui-space_top-0 tui-space_bottom-0"
+            >
+                or
+            </p>
+            <hr class="line" />
+        </div>
+        <button
+            appearance="whiteblock"
+            size="m"
+            tuiButton
+            [style.margin-top]="'0.5rem'"
+            [style.width]="'100%'"
+        >
+            <img
+                alt=""
+                src="./google.svg"
+                class="google"
+            />
+            Sign in with google
+        </button>
+        <a
+            tuiLink
+            class="center"
+            [style.margin-top]="'0.5rem'"
+        >
+            Don't have an account?
+            <span [style.font-weight]="'500'">Register</span>
+        </a>
     </form>
 </div>

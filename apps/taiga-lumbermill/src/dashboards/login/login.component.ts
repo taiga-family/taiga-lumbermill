@@ -1,8 +1,14 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TuiAppearance, TuiButton, TuiError, TuiTitle} from '@taiga-ui/core';
-import {TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
+import {TuiAppearance, TuiButton, TuiError, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -11,14 +17,17 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     selector: 'lmb-login',
     imports: [
         CommonModule,
+        FormsModule,
         ReactiveFormsModule,
         TuiAppearance,
         TuiButton,
         TuiCardLarge,
+        TuiCheckbox,
         TuiError,
         TuiFieldErrorPipe,
         TuiHeader,
         TuiInputModule,
+        TuiLink,
         TuiTitle,
     ],
     templateUrl: './login.component.html',
