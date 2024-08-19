@@ -31,3 +31,52 @@
         </h3>
     </header>
 </div>
+<div class="main">
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        class="card"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                About animal
+            </h2>
+        </header>
+        <div>
+            <h3 class="about">From: {{ animal.from }}</h3>
+            <h4 class="about">Description: {{ animal.about }}</h4>
+        </div>
+    </div>
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        class="card"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Proccess
+            </h2>
+        </header>
+        <div>
+            <label
+                *ngIf="value$ | async as value"
+                tuiProgressLabel
+            >
+                <span class="text">COMPLETED</span>
+                <span class="percent">{{ value }}%</span>
+
+                <tui-progress-circle
+                    size="xl"
+                    [max]="max"
+                    [value]="value"
+                />
+            </label>
+        </div>
+    </div>
+</div>
