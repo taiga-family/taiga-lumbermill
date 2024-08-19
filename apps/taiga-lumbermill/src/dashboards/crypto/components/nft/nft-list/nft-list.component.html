@@ -3,8 +3,8 @@
     <div class="list">
         @for (nft of nftService; track $index) {
             <div
-                tuiAppearance="whiteblock"
-                tuiCardMedium="normal"
+                tuiCardLarge
+                tuiSurface="elevated"
                 class="card-nft"
                 (click)="updateItem($index)"
             >
@@ -12,9 +12,17 @@
                     class="logo-nft"
                     [src]="nft.src"
                 />
-                <div class="text">
+                <div
+                    class="text"
+                    [style.margin-top]="0"
+                >
                     <h3 class="tui-space_top-1 tui-space_bottom-0">{{ nft.name }}</h3>
-                    <h5 class="tui-space_top-0 tui-space_bottom-0">{{ nft.price | tuiAmount: 'USD' | async }}</h5>
+                    <h5
+                        tuiSubtitle
+                        class="tui-space_top-0 tui-space_bottom-0"
+                    >
+                        {{ nft.price | tuiAmount: 'USD' | async }}
+                    </h5>
                 </div>
             </div>
         }
@@ -25,8 +33,8 @@
     <div class="list">
         @for (nft of nftService; track $index) {
             <div
-                tuiAppearance="whiteblock"
-                tuiCardMedium="normal"
+                tuiCardLarge
+                tuiSurface="elevated"
                 class="card-nft"
                 (click)="updateItem($index)"
             >
@@ -34,7 +42,10 @@
                     class="logo-nft"
                     [src]="nft.src"
                 />
-                <div class="text">
+                <div
+                    class="text"
+                    [style.margin-top]="0"
+                >
                     <h3 class="tui-space_top-1 tui-space_bottom-0">{{ nft.name }}</h3>
                     <h5 class="tui-space_top-0 tui-space_bottom-0">{{ nft.price | tuiAmount: 'USD' | async }}</h5>
                 </div>
