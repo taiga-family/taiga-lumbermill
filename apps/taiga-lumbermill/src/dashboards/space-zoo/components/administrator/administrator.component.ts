@@ -89,7 +89,9 @@ export class AdministratorComponent {
 
         return calendar
             ? this.events.filter(
-                  (val) => calendar.from <= val.time && val.time <= calendar.to,
+                  (val) =>
+                      calendar.from.day <= val.time.day &&
+                      val.time.day <= calendar.to.day,
               )
             : [];
     });

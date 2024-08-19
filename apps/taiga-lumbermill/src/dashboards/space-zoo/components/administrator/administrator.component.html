@@ -28,13 +28,6 @@
                 </h3>
             </header>
         </div>
-        <!-- <tui-pie-chart
-            size="xl"
-            [style.margin-left]="'auto'"
-            [style.margin-right]="'auto'"
-            [tuiHintContent]="content"
-            [value]="value"
-        /> -->
         <tui-ring-chart
             size="xl"
             [style.margin-left]="'auto'"
@@ -62,9 +55,10 @@
             class="card-animals"
         >
             @for (animal of animals; track $index) {
-                <div
+                <button
                     tuiAppearance="whiteblock"
                     tuiCardLarge="normal"
+                    tuiSurface="elevated"
                     [style.width]="'min-content'"
                 >
                     <tui-avatar
@@ -97,7 +91,7 @@
                             <tui-badge appearance="primary">{{ tag }}</tui-badge>
                         }
                     </div>
-                </div>
+                </button>
             }
         </div>
     </div>
