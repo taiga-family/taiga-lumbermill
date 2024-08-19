@@ -1,0 +1,17 @@
+<tui-avatar
+    size="xl"
+    class="logo"
+    [src]="token.urlIcon"
+/>
+<h3
+    tuiTitle
+    class="info"
+>
+    {{ token.amount }} (${{ token.symbol }}) have been sent to your wallet
+</h3>
+<button
+    tuiButton
+    (click)="createNew()"
+>
+    Create new Token
+</button>

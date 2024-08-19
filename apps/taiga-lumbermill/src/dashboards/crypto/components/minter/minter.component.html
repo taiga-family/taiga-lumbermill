@@ -1,0 +1,19 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            {{ !token ? 'Mint your token' : token.token + ' successfully created' }}
+        </h2>
+    </header>
+    @if (!token) {
+        <lmb-minter-deploy (tokenChange)="token = $event" />
+    } @else {
+        <lmb-minter-created [(token)]="token" />
+    }
+</div>
