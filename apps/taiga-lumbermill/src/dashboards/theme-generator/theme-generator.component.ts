@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import {Clipboard} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {
@@ -38,7 +39,7 @@ import {data} from './theme-generator.constants';
 export class ThemeGeneratorComponent {
     private readonly clipboard = inject(Clipboard);
     private readonly activatedRoute = inject(ActivatedRoute);
-    protected readonly url = toSignal(this.activatedRoute.url);
+    protected readonly url = location.href;
     protected params = toSignal(this.activatedRoute.queryParams)();
     protected themeData = data;
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
@@ -71,8 +72,6 @@ export class ThemeGeneratorComponent {
     }
 
     protected share(): void {
-        const url = `http://localhost:4200/${this.url()?.toString()}`;
-
         this.shared.set(true);
         setTimeout(() => {
             this.shared.set(false);
@@ -83,6 +82,6 @@ export class ThemeGeneratorComponent {
             text += `${this.themeData[i].variable}=${this.colors[i]().replace('#', '')}&`;
         }
 
-        this.clipboard.copy(url + text);
+        this.clipboard.copy(this.url + text);
     }
 }
