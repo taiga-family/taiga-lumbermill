@@ -5,16 +5,10 @@ export interface NFT {
     readonly src: string;
     readonly price: number;
     readonly tags: string[];
+    readonly transactions: Transaction[];
 }
 
-export const INITIAL_DATA: NFT[] = [
-    {name: 'Beth', src: './nft/1.jpg', price: 1, tags: ['Premium', 'VIP']},
-    {name: 'Pryor', src: './nft/2.jpg', price: 2, tags: ['Premium', 'VIP']},
-    {name: 'Olea', src: './nft/3.jpg', price: 3, tags: ['Premium', 'VIP']},
-    {name: 'Imogen', src: './nft/4.jpg', price: 4, tags: ['Premium', 'VIP']},
-];
-
-export interface Transactions {
+export interface Transaction {
     readonly type: string;
     readonly priceUsd: number;
     readonly from: string;
@@ -22,7 +16,7 @@ export interface Transactions {
     readonly time: number;
 }
 
-export const INITIAL_DATA_TABLE: Transactions[] = [
+export const INITIAL_DATA_TABLE: Transaction[] = [
     {
         type: 'Putting up for sale',
         priceUsd: 2,
@@ -53,10 +47,40 @@ export const INITIAL_DATA_TABLE: Transactions[] = [
     },
 ];
 
+export const INITIAL_DATA: NFT[] = [
+    {
+        name: 'Beth',
+        src: './nft/1.jpg',
+        price: 1,
+        tags: ['Premium', 'VIP'],
+        transactions: INITIAL_DATA_TABLE,
+    },
+    {
+        name: 'Pryor',
+        src: './nft/2.jpg',
+        price: 2,
+        tags: ['Premium', 'VIP'],
+        transactions: INITIAL_DATA_TABLE,
+    },
+    {
+        name: 'Olea',
+        src: './nft/3.jpg',
+        price: 3,
+        tags: ['Premium', 'VIP'],
+        transactions: INITIAL_DATA_TABLE,
+    },
+    {
+        name: 'Imogen',
+        src: './nft/4.jpg',
+        price: 4,
+        tags: ['Premium', 'VIP'],
+        transactions: INITIAL_DATA_TABLE,
+    },
+];
+
 @Injectable({
     providedIn: 'root',
 })
 export class NftService {
     public readonly nfts = INITIAL_DATA;
-    public readonly transactions = INITIAL_DATA_TABLE;
 }

@@ -1,13 +1,6 @@
 @let nftData = nft();
 @if (nftData) {
     <div class="info-open">
-        <button
-            appearance="icon"
-            iconStart="@tui.circle-x"
-            tuiIconButton
-            class="close"
-            (click)="goBack()"
-        ></button>
         <tui-avatar
             class="logo-nft nft-icon"
             [src]="nftData.src"
@@ -35,6 +28,13 @@
                 }
             </div>
         </div>
+        <button
+            appearance="icon"
+            iconStart="@tui.circle-x"
+            size="s"
+            tuiIconButton
+            (click)="goBack()"
+        ></button>
     </div>
     <tui-scrollbar>
         <cdk-virtual-scroll-viewport
@@ -77,7 +77,7 @@
                 </thead>
                 <tbody tuiTbody>
                     <tr
-                        *cdkVirtualFor="let item of nftService.transactions | tuiTableSort"
+                        *cdkVirtualFor="let item of nftData.transactions | tuiTableSort"
                         tuiTr
                     >
                         @for (column of columns; track $index) {

@@ -8,7 +8,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    inject,
     input,
     Output,
 } from '@angular/core';
@@ -25,7 +24,6 @@ import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 import type {NFT} from '../nft.service';
-import {NftService} from '../nft.service';
 
 @Component({
     standalone: true,
@@ -52,8 +50,6 @@ import {NftService} from '../nft.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NftItemComponent {
-    protected readonly nftService = inject(NftService);
-
     protected readonly columns = ['type', 'priceUsd', 'from', 'to', 'time'];
 
     @Output()
