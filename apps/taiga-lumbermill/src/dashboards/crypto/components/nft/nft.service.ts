@@ -16,7 +16,7 @@ export interface Transaction {
     readonly time: number;
 }
 
-export const INITIAL_DATA_TABLE: Transaction[] = [
+export const TRANSACTIONS: Transaction[] = [
     {
         type: 'Putting up for sale',
         priceUsd: 2,
@@ -53,28 +53,28 @@ export const INITIAL_DATA: NFT[] = [
         src: './nft/1.jpg',
         price: 1,
         tags: ['Premium', 'VIP'],
-        transactions: INITIAL_DATA_TABLE,
+        transactions: TRANSACTIONS,
     },
     {
         name: 'Pryor',
         src: './nft/2.jpg',
         price: 2,
         tags: ['Premium', 'VIP'],
-        transactions: INITIAL_DATA_TABLE,
+        transactions: TRANSACTIONS,
     },
     {
         name: 'Olea',
         src: './nft/3.jpg',
         price: 3,
         tags: ['Premium', 'VIP'],
-        transactions: INITIAL_DATA_TABLE,
+        transactions: TRANSACTIONS,
     },
     {
         name: 'Imogen',
         src: './nft/4.jpg',
         price: 4,
         tags: ['Premium', 'VIP'],
-        transactions: INITIAL_DATA_TABLE,
+        transactions: TRANSACTIONS,
     },
 ];
 
