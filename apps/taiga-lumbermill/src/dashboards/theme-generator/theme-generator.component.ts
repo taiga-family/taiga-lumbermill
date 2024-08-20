@@ -14,6 +14,7 @@ import {ActivatedRoute} from '@angular/router';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
+import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 import {ThemeExampleComponent} from './theme-example/theme-example.component';
 import {data} from './theme-generator.constants';
@@ -49,18 +50,38 @@ export class ThemeGeneratorComponent {
         return signal((result[0] !== 'r' && result[0] !== '#' ? '#' : '') + result);
     });
 
-    protected copied = signal(false);
-    protected shared = signal(false);
+    protected readonly copy$ = new Subject<void>();
+    protected readonly iconCopy = toSignal(
+        this.copy$.pipe(
+            switchMap(() =>
+                timer(2000).pipe(
+                    map(() => '@tui.copy'),
+                    startWith('@tui.check'),
+                ),
+            ),
+        ),
+        {initialValue: '@tui.copy'},
+    );
+
+    protected readonly share$ = new Subject<void>();
+    protected readonly iconShare = toSignal(
+        this.share$.pipe(
+            switchMap(() =>
+                timer(2000).pipe(
+                    map(() => '@tui.external-link'),
+                    startWith('@tui.check'),
+                ),
+            ),
+        ),
+        {initialValue: '@tui.external-link'},
+    );
 
     protected theme = computed(() =>
         this.colors.map((val, i) => `${this.themeData[i].variable}: ${val()};`).join(' '),
     );
 
     protected copy(): void {
-        this.copied.set(true);
-        setTimeout(() => {
-            this.copied.set(false);
-        }, 800);
+        this.copy$.next();
         let text = ':root {';
 
         for (let i = 0; i < this.themeData.length; i++) {
@@ -72,10 +93,7 @@ export class ThemeGeneratorComponent {
     }
 
     protected share(): void {
-        this.shared.set(true);
-        setTimeout(() => {
-            this.shared.set(false);
-        }, 800);
+        this.share$.next();
         let text = '?';
 
         for (let i = 0; i < this.themeData.length; i++) {

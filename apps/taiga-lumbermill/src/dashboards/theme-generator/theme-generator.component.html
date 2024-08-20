@@ -8,7 +8,7 @@
         </h3>
         <tui-icon
             class="share"
-            [icon]="shared() ? '@tui.check' : '@tui.external-link'"
+            [icon]="iconShare()"
             (click)="share()"
         />
     </div>
@@ -25,7 +25,7 @@
     <code>
         <tui-icon
             class="copy"
-            [icon]="copied() ? '@tui.check' : '@tui.copy'"
+            [icon]="iconCopy()"
             (click)="copy()"
         />
         :root {{ '{' }}
