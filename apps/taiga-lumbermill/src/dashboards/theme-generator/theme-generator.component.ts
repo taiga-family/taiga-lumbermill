@@ -82,24 +82,23 @@ export class ThemeGeneratorComponent {
 
     protected copy(): void {
         this.copy$.next();
-        let text = ':root {';
+        const text = `:root {${this.themeData.reduce(
+            (result, value, ind) => `${result}\n${value.variable}:${this.colors[ind]()};`,
+            '',
+        )}\n}`;
 
-        for (let i = 0; i < this.themeData.length; i++) {
-            text += `\n${this.themeData[i].variable}: ${this.colors[i]()};`;
-        }
-
-        text += '\n}';
         this.clipboard.copy(text);
     }
 
     protected share(): void {
         this.share$.next();
-        let text = '?';
 
-        for (let i = 0; i < this.themeData.length; i++) {
-            text += `${this.themeData[i].variable}=${this.colors[i]().replace('#', '')}&`;
-        }
+        const text = `${this.url}?${this.themeData.reduce(
+            (result, value, ind) =>
+                `${result}${value.variable}=${this.colors[ind]().replace('#', '')}&`,
+            '',
+        )}`;
 
-        this.clipboard.copy(this.url + text);
+        this.clipboard.copy(text);
     }
 }
