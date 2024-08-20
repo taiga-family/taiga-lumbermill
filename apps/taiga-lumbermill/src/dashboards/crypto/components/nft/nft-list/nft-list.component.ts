@@ -9,7 +9,7 @@ import {
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAppearance, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 import type {NFTData} from '../nft.service';
 import {NftService} from '../nft.service';
@@ -23,7 +23,6 @@ import {NftService} from '../nft.service';
         TuiAppearance,
         TuiAvatar,
         TuiCardLarge,
-        TuiCardMedium,
         TuiHeader,
         TuiHeader,
         TuiSurface,

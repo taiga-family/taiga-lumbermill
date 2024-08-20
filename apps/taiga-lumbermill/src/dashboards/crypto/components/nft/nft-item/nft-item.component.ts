@@ -14,10 +14,9 @@ import {
 } from '@angular/core';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiDay} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/layout';
 
 import type {NFTData} from '../nft.service';
 import {NftService} from '../nft.service';
@@ -35,8 +34,6 @@ import {NftService} from '../nft.service';
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
-        TuiCardLarge,
-        TuiCardMedium,
         TuiHeader,
         TuiScrollbar,
         TuiTable,
@@ -55,12 +52,6 @@ export class NftItemComponent {
     public readonly nftChange = new EventEmitter<NFTData | null>();
 
     public nft = input.required<NFTData | null>();
-
-    protected toDate(value: number): TuiDay {
-        const date = new Date(value);
-
-        return TuiDay.fromLocalNativeDate(date);
-    }
 
     protected goBack(): void {
         this.nftChange.emit(null);
