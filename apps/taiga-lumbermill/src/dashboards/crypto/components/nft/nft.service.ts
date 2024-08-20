@@ -1,20 +1,20 @@
 import {Injectable} from '@angular/core';
 
-export interface NFTData {
+export interface NFT {
     readonly name: string;
     readonly src: string;
     readonly price: number;
     readonly tags: string[];
 }
 
-export const INITIAL_DATA: NFTData[] = [
+export const INITIAL_DATA: NFT[] = [
     {name: 'Beth', src: './nft/1.jpg', price: 1, tags: ['Premium', 'VIP']},
     {name: 'Pryor', src: './nft/2.jpg', price: 2, tags: ['Premium', 'VIP']},
     {name: 'Olea', src: './nft/3.jpg', price: 3, tags: ['Premium', 'VIP']},
     {name: 'Imogen', src: './nft/4.jpg', price: 4, tags: ['Premium', 'VIP']},
 ];
 
-export interface NFTTABLE {
+export interface Transactions {
     readonly type: string;
     readonly priceUsd: number;
     readonly from: string;
@@ -22,7 +22,7 @@ export interface NFTTABLE {
     readonly time: number;
 }
 
-export const INITIAL_DATA_TABLE: NFTTABLE[] = [
+export const INITIAL_DATA_TABLE: Transactions[] = [
     {
         type: 'Putting up for sale',
         priceUsd: 2,
@@ -57,6 +57,6 @@ export const INITIAL_DATA_TABLE: NFTTABLE[] = [
     providedIn: 'root',
 })
 export class NftService {
-    public readonly nftData = INITIAL_DATA;
-    public readonly nftTable = INITIAL_DATA_TABLE;
+    public readonly nfts = INITIAL_DATA;
+    public readonly transactions = INITIAL_DATA_TABLE;
 }

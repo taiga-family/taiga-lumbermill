@@ -1,16 +1,20 @@
 @let nftData = nft();
 @if (nftData) {
-    <div
-        class="info-open"
-        (click)="goBack()"
-    >
+    <div class="info-open">
+        <button
+            appearance="icon"
+            iconStart="@tui.circle-x"
+            tuiIconButton
+            class="close"
+            (click)="goBack()"
+        ></button>
         <tui-avatar
-            class="logo-nft clicked"
+            class="logo-nft nft-icon"
             [src]="nftData.src"
         />
         <div
             tuiHeader
-            class="text-clicked"
+            class="text"
             [style.text-align]="'center'"
         >
             <h2 class="tui-space_top-0 tui-space_bottom-2">{{ nftData.name }}</h2>
@@ -24,7 +28,7 @@
                 @for (tag of nftData.tags; track $index) {
                     <tui-badge
                         appearance="primary"
-                        [style.background]="'var(--tui-chart-categorical-' + $index.toString().padStart(2, '0') + ')'"
+                        [style.background]="tag | tuiAutoColor"
                     >
                         {{ tag }}
                     </tui-badge>
@@ -73,7 +77,7 @@
                 </thead>
                 <tbody tuiTbody>
                     <tr
-                        *cdkVirtualFor="let item of nftService.nftTable | tuiTableSort"
+                        *cdkVirtualFor="let item of nftService.transactions | tuiTableSort"
                         tuiTr
                     >
                         @for (column of columns; track $index) {

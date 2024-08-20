@@ -1,7 +1,7 @@
 <div class="info">
     <h3 class="row-title tui-space_top-0 tui-space_bottom-0">Top NFTs</h3>
     <div class="list">
-        @for (nft of nftService; track $index) {
+        @for (nft of nfts; track $index) {
             <button
                 tuiCardLarge
                 tuiSurface="elevated"
@@ -31,7 +31,7 @@
 <div class="info">
     <h3 class="row-title tui-space_top-0 tui-space_bottom-0">Recent bought NFTs</h3>
     <div class="list">
-        @for (nft of nftService; track $index) {
+        @for (nft of nfts; track $index) {
             <button
                 tuiCardLarge
                 tuiSurface="elevated"

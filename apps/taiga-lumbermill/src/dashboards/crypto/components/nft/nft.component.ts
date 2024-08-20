@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
-import type {NFTData} from './nft.service';
+import type {NFT} from './nft.service';
 import {NftItemComponent} from './nft-item/nft-item.component';
 import {NftListComponent} from './nft-list/nft-list.component';
 
@@ -23,5 +23,5 @@ import {NftListComponent} from './nft-list/nft-list.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NFTComponent {
-    protected nft: NFTData | null = null;
+    protected nft: NFT | null = null;
 }

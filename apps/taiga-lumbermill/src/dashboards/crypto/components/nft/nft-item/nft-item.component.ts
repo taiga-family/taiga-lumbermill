@@ -14,11 +14,17 @@ import {
 } from '@angular/core';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiAppearance, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiAutoColorPipe,
+    TuiButton,
+    TuiScrollbar,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
-import type {NFTData} from '../nft.service';
+import type {NFT} from '../nft.service';
 import {NftService} from '../nft.service';
 
 @Component({
@@ -32,8 +38,10 @@ import {NftService} from '../nft.service';
         DatePipe,
         TuiAmountPipe,
         TuiAppearance,
+        TuiAutoColorPipe,
         TuiAvatar,
         TuiBadge,
+        TuiButton,
         TuiHeader,
         TuiScrollbar,
         TuiTable,
@@ -49,9 +57,9 @@ export class NftItemComponent {
     protected readonly columns = ['type', 'priceUsd', 'from', 'to', 'time'];
 
     @Output()
-    public readonly nftChange = new EventEmitter<NFTData | null>();
+    public readonly nftChange = new EventEmitter<NFT | null>();
 
-    public nft = input.required<NFTData | null>();
+    public nft = input.required<NFT | null>();
 
     protected goBack(): void {
         this.nftChange.emit(null);

@@ -11,7 +11,7 @@ import {TuiAppearance, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
-import type {NFTData} from '../nft.service';
+import type {NFT} from '../nft.service';
 import {NftService} from '../nft.service';
 
 @Component({
@@ -24,7 +24,6 @@ import {NftService} from '../nft.service';
         TuiAvatar,
         TuiCardLarge,
         TuiHeader,
-        TuiHeader,
         TuiSurface,
         TuiTitle,
     ],
@@ -33,12 +32,12 @@ import {NftService} from '../nft.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NftListComponent {
-    protected readonly nftService = inject(NftService).nftData;
+    protected readonly nfts = inject(NftService).nfts;
 
     @Output()
-    public readonly nftChange = new EventEmitter<NFTData | null>();
+    public readonly nftChange = new EventEmitter<NFT | null>();
 
     protected updateItem(value: number): void {
-        this.nftChange.emit(this.nftService[value]);
+        this.nftChange.emit(this.nfts[value]);
     }
 }
