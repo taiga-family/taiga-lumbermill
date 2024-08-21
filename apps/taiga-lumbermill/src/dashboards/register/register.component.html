@@ -62,6 +62,15 @@
             [style.margin-bottom]="'0.8rem'"
             [style.margin-right]="'auto'"
         />
+        @if (!form.hasError('unambiguousRole') && (form.touched || form.dirty)) {
+            <p
+                class="error"
+                [style.margin-bottom]="'0.8rem'"
+                [style.margin-top]="'0'"
+            >
+                Passwords should be the same
+            </p>
+        }
         <div class="under-password">
             <div
                 [style.display]="'flex'"
@@ -69,9 +78,9 @@
             >
                 <input
                     checked
+                    formControlName="rememberMe"
                     tuiCheckbox
                     type="checkbox"
-                    [ngModel]="true"
                 />
                 <p
                     class="tui-space_top-0 tui-space_bottom-0"
@@ -82,9 +91,6 @@
             </div>
             <div></div>
         </div>
-        @if (form.hasError('unambiguousRole') && (form.touched || form.dirty)) {
-            <p>Passwords should be the same</p>
-        }
 
         <button
             size="m"

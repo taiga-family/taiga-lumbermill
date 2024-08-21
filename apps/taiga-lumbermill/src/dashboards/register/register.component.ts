@@ -59,6 +59,7 @@ export class RegisterComponent {
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', [Validators.required]),
             passwordAgain: new FormControl('', [Validators.required]),
+            rememberMe: new FormControl(false),
         },
         {validators: checkPasswords},
     );
