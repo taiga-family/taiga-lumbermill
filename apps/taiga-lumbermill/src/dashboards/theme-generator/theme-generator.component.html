@@ -17,7 +17,7 @@
             tuiTextfieldSize="m"
             [colors]="palette"
             [(ngModel)]="colors[$index]"
-            (ngModelChange)="colors[$index].set($event)"
+            (ngModelChange)="[colors[$index].set($event), queryParams()]"
         >
             {{ inputColor.name }}
         </tui-input-color>

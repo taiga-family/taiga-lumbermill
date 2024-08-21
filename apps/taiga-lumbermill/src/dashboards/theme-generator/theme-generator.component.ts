@@ -9,7 +9,8 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import type {Params} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
@@ -38,10 +39,10 @@ import {data} from './theme-generator.constants';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeGeneratorComponent {
+    private readonly router = inject(Router);
     private readonly clipboard = inject(Clipboard);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly window = inject(WA_WINDOW);
-    protected readonly url = this.window.location.href;
     protected params = toSignal(this.activatedRoute.queryParams)();
     protected themeData = data;
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
@@ -94,12 +95,22 @@ export class ThemeGeneratorComponent {
     protected share(): void {
         this.share$.next();
 
-        const text = `${this.url}?${this.themeData.reduce(
-            (result, value, ind) =>
-                `${result}${value.variable}=${this.colors[ind]().replace('#', '')}&`,
-            '',
-        )}`;
+        this.clipboard.copy(this.window.location.href);
+    }
 
-        this.clipboard.copy(text);
+    protected queryParams(): void {
+        const params: Params = this.themeData.reduce(
+            (result, value, ind) => ({
+                ...result,
+                [value.variable]: this.colors[ind]().replace('#', ''),
+            }),
+            {},
+        );
+
+        this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParams: params,
+            queryParamsHandling: 'merge',
+        });
     }
 }
