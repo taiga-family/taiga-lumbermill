@@ -1,0 +1,18 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            NFT Market
+        </h2>
+    </header>
+    @if (nft) {
+        <lmb-nft-item [(nft)]="nft" />
+    } @else {
+        <lmb-nft-list (nftChange)="nft = $event" />
+    }
+</div>
