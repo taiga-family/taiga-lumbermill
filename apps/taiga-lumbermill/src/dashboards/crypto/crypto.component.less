@@ -1,47 +1,15 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-.grow {
-    width: 100%;
-}
-
-.row {
-    position: relative;
-    display: grid;
-    flex: 0 0 auto;
-    grid-template-columns: 4fr 6fr 4fr;
-    gap: 1rem;
-}
-
-@media (max-width: 56.25rem) {
-    .row {
-        display: flex;
-        flex: 1;
-        flex-wrap: wrap;
-    }
-
-    .grow {
-        height: max-content;
-    }
-}
-
-@media (max-width: 35.625rem) {
-    .grow {
-        width: 100%;
-    }
-}
-
-.column {
-    display: flex;
-    gap: 0.625rem;
-    padding-top: 1.25rem;
-    flex-direction: column;
-}
-
 .layout {
     display: flex;
     width: 100%;
     gap: 1rem;
     margin-top: 1rem;
+
+    @media (max-width: 68rem) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .minter {
@@ -55,6 +23,10 @@
     flex-grow: 1;
     width: 350px;
     flex-shrink: 0;
+
+    @media (max-width: 68rem) {
+        width: 100%;
+    }
 }
 
 .right {
@@ -70,10 +42,20 @@
     height: 100%;
     grid-template-columns: 2fr 4fr;
     flex-grow: 1;
+
+    @media (max-width: 68rem) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .right-bottom {
     display: grid;
     gap: 1rem;
     grid-template-columns: 4fr 3fr;
+
+    @media (max-width: 80rem) {
+        display: flex;
+        flex-direction: column;
+    }
 }
