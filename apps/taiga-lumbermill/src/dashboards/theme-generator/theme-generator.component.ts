@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import {Clipboard} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {
@@ -11,6 +10,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
@@ -40,7 +40,8 @@ import {data} from './theme-generator.constants';
 export class ThemeGeneratorComponent {
     private readonly clipboard = inject(Clipboard);
     private readonly activatedRoute = inject(ActivatedRoute);
-    protected readonly url = location.href;
+    private readonly window = inject(WA_WINDOW);
+    protected readonly url = this.window.location.href;
     protected params = toSignal(this.activatedRoute.queryParams)();
     protected themeData = data;
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
