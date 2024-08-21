@@ -8,7 +8,7 @@
             tuiTitle
             [style.text-align]="'center'"
         >
-            Sign in
+            Sign up
         </h2>
     </header>
     <form
@@ -29,6 +29,7 @@
             formControlName="email"
             [error]="[] | tuiFieldError | async"
             [style.margin-bottom]="'0.8rem'"
+            [style.margin-right]="'auto'"
         />
 
         <tui-input
@@ -44,6 +45,7 @@
             formControlName="password"
             [error]="[] | tuiFieldError | async"
             [style.margin-bottom]="'0.8rem'"
+            [style.margin-right]="'auto'"
         />
         <tui-input
             formControlName="passwordAgain"
@@ -58,6 +60,7 @@
             formControlName="passwordAgain"
             [error]="[] | tuiFieldError | async"
             [style.margin-bottom]="'0.8rem'"
+            [style.margin-right]="'auto'"
         />
         <div class="under-password">
             <div
@@ -85,7 +88,7 @@
             tuiButton
             [style.width]="'100%'"
         >
-            Login
+            Sign up
         </button>
         <div class="or">
             <hr class="line" />
@@ -109,7 +112,21 @@
                 src="./google.svg"
                 class="google"
             />
-            Sign in with google
+            Sign up with google
+        </button>
+        <button
+            appearance="whiteblock"
+            size="m"
+            tuiButton
+            [style.margin-top]="'0.5rem'"
+            [style.width]="'100%'"
+        >
+            <img
+                alt=""
+                src="./github-mark.svg"
+                class="google"
+            />
+            Sign up with github
         </button>
         <a
             tuiLink

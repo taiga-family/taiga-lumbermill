@@ -8,7 +8,7 @@ import {
     Validators,
 } from '@angular/forms';
 import {TuiAppearance, TuiButton, TuiError, TuiLink, TuiTitle} from '@taiga-ui/core';
-import {TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TUI_VALIDATION_ERRORS, TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -33,6 +33,15 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     templateUrl: './register.component.html',
     styleUrl: './register.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: TUI_VALIDATION_ERRORS,
+            useValue: {
+                required: "Value can't be empty",
+                email: 'Value should be email',
+            },
+        },
+    ],
 })
 export class RegisterComponent {
     protected readonly form = new FormGroup({
