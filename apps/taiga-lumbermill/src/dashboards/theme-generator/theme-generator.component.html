@@ -3,14 +3,19 @@
         <h3
             tuiTitle
             [style.flex-grow]="0"
+            [style.margin-bottom]="'auto'"
+            [style.margin-top]="'auto'"
         >
             Colors
         </h3>
-        <tui-icon
+        <button
+            appearance="icon"
+            size="m"
+            tuiButton
             class="share"
-            [icon]="iconShare()"
+            [iconStart]="iconShare()"
             (click)="share()"
-        />
+        ></button>
     </div>
     @for (inputColor of themeData; track $index) {
         <tui-input-color
@@ -23,11 +28,14 @@
         </tui-input-color>
     }
     <code>
-        <tui-icon
+        <button
+            appearance="icon"
+            size="m"
+            tuiButton
             class="copy"
-            [icon]="iconCopy()"
+            [iconStart]="iconCopy()"
             (click)="copy()"
-        />
+        ></button>
         :root {{ '{' }}
         @for (inputColor of themeData; track $index) {
             <br />

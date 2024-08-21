@@ -12,7 +12,7 @@ import {FormsModule} from '@angular/forms';
 import type {Params} from '@angular/router';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
@@ -28,6 +28,7 @@ import {data} from './theme-generator.constants';
         FormsModule,
         ThemeExampleComponent,
         TuiAppearance,
+        TuiButton,
         TuiCardLarge,
         TuiHeader,
         TuiIcon,
