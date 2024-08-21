@@ -32,7 +32,7 @@
             [style.margin-right]="'auto'"
         />
 
-        <tui-input
+        <tui-input-password
             formControlName="password"
             tuiHintContent="Password"
             type="password"
@@ -40,7 +40,7 @@
         >
             password
             <input tuiTextfieldLegacy />
-        </tui-input>
+        </tui-input-password>
         <tui-error
             formControlName="password"
             [error]="[] | tuiFieldError | async"
@@ -48,23 +48,20 @@
             [style.margin-right]="'auto'"
         />
         <div class="under-password">
-            <div
-                [style.display]="'flex'"
-                [style.gap]="'0.5rem'"
-            >
+            <label tuiLabel>
                 <input
                     checked
                     formControlName="rememberMe"
                     tuiCheckbox
                     type="checkbox"
                 />
-                <p
-                    class="tui-space_top-0 tui-space_bottom-0"
+                <span
+                    tuiTitle
                     [style.color]="'var(--tui-text-secondary)'"
                 >
                     Remember me
-                </p>
-            </div>
+                </span>
+            </label>
             <a tuiLink>Forgot password?</a>
         </div>
 

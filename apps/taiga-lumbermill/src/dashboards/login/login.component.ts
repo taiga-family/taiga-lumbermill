@@ -7,10 +7,17 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
-import {TuiAppearance, TuiButton, TuiError, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiButton,
+    TuiError,
+    TuiLabel,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -27,6 +34,8 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiFieldErrorPipe,
         TuiHeader,
         TuiInputModule,
+        TuiInputPasswordModule,
+        TuiLabel,
         TuiLink,
         TuiTitle,
     ],
