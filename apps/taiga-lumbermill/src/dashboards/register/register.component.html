@@ -82,6 +82,9 @@
             </div>
             <div></div>
         </div>
+        @if (form.hasError('unambiguousRole') && (form.touched || form.dirty)) {
+            <p>Passwords should be the same</p>
+        }
 
         <button
             size="m"

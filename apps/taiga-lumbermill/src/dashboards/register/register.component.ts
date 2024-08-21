@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {
     FormControl,
     FormGroup,
@@ -11,6 +12,15 @@ import {TuiAppearance, TuiButton, TuiError, TuiLink, TuiTitle} from '@taiga-ui/c
 import {TUI_VALIDATION_ERRORS, TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
+
+export const checkPasswords: ValidatorFn = (
+    control: AbstractControl,
+): ValidationErrors | null => {
+    const name = control.get('password');
+    const role = control.get('passwordAgain');
+
+    return name && role && name.value === role.value ? {unambiguousRole: true} : null;
+};
 
 @Component({
     standalone: true,
@@ -44,11 +54,14 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     ],
 })
 export class RegisterComponent {
-    protected readonly form = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required]),
-        passwordAgain: new FormControl('', [Validators.required]),
-    });
+    protected readonly form = new FormGroup(
+        {
+            email: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', [Validators.required]),
+            passwordAgain: new FormControl('', [Validators.required]),
+        },
+        {validators: checkPasswords},
+    );
 
     protected onSubmit(): void {}
 }
