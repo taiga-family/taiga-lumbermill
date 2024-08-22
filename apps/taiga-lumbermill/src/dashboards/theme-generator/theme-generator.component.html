@@ -17,13 +17,15 @@
             (click)="share()"
         ></button>
     </div>
-    <div class="colors">
+    <div
+        class="colors"
+        (focusout)="queryParams()"
+    >
         @for (inputColor of themeData; track $index) {
             <tui-input-color
                 tuiTextfieldSize="m"
                 [colors]="palette"
                 [(ngModel)]="colors[$index]"
-                (focusout)="queryParams()"
             >
                 {{ inputColor.name }}
             </tui-input-color>
