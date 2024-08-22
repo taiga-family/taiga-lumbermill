@@ -1,0 +1,96 @@
+@let nftData = nft();
+@if (nftData) {
+    <div class="info">
+        <tui-avatar
+            class="logo-nft nft-icon"
+            [src]="nftData.src"
+        />
+        <div
+            tuiHeader
+            class="text"
+            [style.text-align]="'center'"
+        >
+            <h2 class="tui-space_top-0 tui-space_bottom-2">{{ nftData.name }}</h2>
+            <p
+                tuiSubtitle
+                class="tui-space_top-0 tui-space_bottom-0"
+            >
+                {{ nftData.price | tuiAmount: 'USD' | async }}
+            </p>
+            <div class="badges">
+                @for (tag of nftData.tags; track $index) {
+                    <tui-badge
+                        appearance="primary"
+                        [style.background]="tag | tuiAutoColor"
+                    >
+                        {{ tag }}
+                    </tui-badge>
+                }
+            </div>
+        </div>
+        <button
+            appearance="icon"
+            iconStart="@tui.circle-x"
+            size="s"
+            tuiIconButton
+            (click)="goBack()"
+        ></button>
+    </div>
+    <tui-scrollbar>
+        <cdk-virtual-scroll-viewport
+            #viewport
+            tuiScrollable
+            class="viewport tui-zero-scrollbar"
+            [itemSize]="46"
+            [maxBufferPx]="500"
+            [minBufferPx]="200"
+        >
+            <table
+                tuiTable
+                [columns]="columns"
+            >
+                <thead>
+                    <tr tuiThGroup>
+                        @for (column of columns; track $index) {
+                            @if (column === 'from' || column === 'to') {
+                                <th
+                                    *tuiHead="column"
+                                    tuiTh
+                                    [sorter]="null"
+                                    [sticky]="true"
+                                    [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                                >
+                                    {{ column }}
+                                </th>
+                            } @else {
+                                <th
+                                    *tuiHead="column"
+                                    tuiTh
+                                    [sticky]="true"
+                                    [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                                >
+                                    {{ column === 'priceUsd' ? 'price, $' : column }}
+                                </th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody tuiTbody>
+                    <tr
+                        *cdkVirtualFor="let item of nftData.transactions | tuiTableSort"
+                        tuiTr
+                    >
+                        @for (column of columns; track $index) {
+                            <td
+                                *tuiCell="column"
+                                tuiTd
+                            >
+                                {{ column === 'time' ? (item[column] | date: 'dd.MM.yyyy') : item[column] }}
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </cdk-virtual-scroll-viewport>
+    </tui-scrollbar>
+}
