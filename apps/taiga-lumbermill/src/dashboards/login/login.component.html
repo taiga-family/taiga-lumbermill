@@ -17,9 +17,9 @@
     >
         <tui-input
             formControlName="email"
-            tuiHintContent="Email"
             type="email"
             class="block-input"
+            [readOnly]="submitLoader()"
         >
             email
             <input tuiTextfieldLegacy />
@@ -34,9 +34,9 @@
 
         <tui-input-password
             formControlName="password"
-            tuiHintContent="Password"
             type="password"
             class="block-input"
+            [readOnly]="submitLoader()"
         >
             password
             <input tuiTextfieldLegacy />
@@ -65,13 +65,20 @@
             <a tuiLink>Forgot password?</a>
         </div>
 
-        <button
-            size="m"
-            tuiButton
+        <tui-loader
+            [inheritColor]="true"
+            [overlay]="true"
+            [showLoader]="submitLoader()"
             [style.width]="'100%'"
         >
-            Login
-        </button>
+            <button
+                size="m"
+                tuiButton
+                [style.width]="'100%'"
+            >
+                Login
+            </button>
+        </tui-loader>
         <div class="or">
             <hr class="line" />
             <p
