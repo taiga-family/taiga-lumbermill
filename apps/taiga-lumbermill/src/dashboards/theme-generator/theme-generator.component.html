@@ -17,16 +17,18 @@
             (click)="share()"
         ></button>
     </div>
-    @for (inputColor of themeData; track $index) {
-        <tui-input-color
-            tuiTextfieldSize="m"
-            [colors]="palette"
-            [(ngModel)]="colors[$index]"
-            (ngModelChange)="[colors[$index].set($event), queryParams()]"
-        >
-            {{ inputColor.name }}
-        </tui-input-color>
-    }
+    <div class="colors">
+        @for (inputColor of themeData; track $index) {
+            <tui-input-color
+                tuiTextfieldSize="m"
+                [colors]="palette"
+                [(ngModel)]="colors[$index]"
+                (focusout)="queryParams()"
+            >
+                {{ inputColor.name }}
+            </tui-input-color>
+        }
+    </div>
     <code>
         <button
             appearance="icon"
