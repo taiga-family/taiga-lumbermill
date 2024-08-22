@@ -57,7 +57,7 @@ export const checkPasswords: ValidatorFn = (
             provide: TUI_VALIDATION_ERRORS,
             useValue: {
                 required: "Value can't be empty",
-                email: 'Value should be email',
+                email: 'Invalid email',
             },
         },
     ],
