@@ -36,12 +36,13 @@ export class CryptoService {
     private readonly http = inject(HttpClient);
 
     private readonly API = inject(CryptoApi);
+    public readonly tokens = this.getTokens();
 
     public getTokens(): Observable<PricesData[]> {
         return this.http
             .get<ResponseData>(this.API)
-            .pipe(shareReplay({bufferSize: 1, refCount: false}))
-            .pipe(map((info) => info.data));
+            .pipe(map((info) => info.data))
+            .pipe(shareReplay({bufferSize: 10, refCount: true}));
     }
 
     public getHistory(id: string, interval: string): Observable<HistoryData[]> {
