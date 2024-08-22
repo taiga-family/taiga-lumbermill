@@ -7,18 +7,36 @@
     >
         Search by name
     </tui-input>
+    <tui-badged-content>
+        <tui-avatar
+            tuiSlot="top"
+            class="point"
+            [style.background-color]="'#FFCD33'"
+        />
+        <button
+            appearance="secondary"
+            size="m"
+            tuiButton
+        >
+            <img
+                alt=""
+                src="./filter.svg"
+            />
+        </button>
+    </tui-badged-content>
     <button
-        appearance="secondary"
+        appearance="whiteblock"
         size="m"
         tuiButton
+        [style.background-color]="'#FFCD33'"
     >
-        <img
-            alt=""
-            src="./filter.svg"
-        />
+        Search
     </button>
 </div>
-<div class="row-search">
+<div
+    class="row-search"
+    [style.margin-top]="0"
+>
     <tui-segmented
         [size]="'s'"
         [style.width]="'max-content'"
