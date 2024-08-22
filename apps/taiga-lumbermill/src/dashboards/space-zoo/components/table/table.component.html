@@ -6,6 +6,52 @@
 >
     Search by name
 </tui-input>
+<div class="under-search">
+    <tui-segmented
+        [size]="'s'"
+        [style.width]="'max-content'"
+    >
+        <button>
+            <tui-icon icon="@tui.sun" />
+            All
+        </button>
+        <button>Incoming</button>
+        <button>Outgoing</button>
+    </tui-segmented>
+    <section>
+        <tui-chip
+            *tuiRepeatTimes="let i of 3"
+            appearance=""
+        >
+            Radio {{ i + 1 }}
+            <input
+                appearance="whiteblock"
+                name="radio"
+                size="m"
+                tuiChip
+                type="radio"
+                [value]="i"
+            />
+        </tui-chip>
+    </section>
+    <label tuiLabel>
+        <input
+            size="s"
+            tuiSwitch
+            type="checkbox"
+            [style.margin-bottom]="'auto'"
+            [style.margin-top]="'auto'"
+        />
+        Toggle
+    </label>
+    <div class="vericalLine"></div>
+    <div class="result">Result: 999</div>
+    <div class="vericalLine"></div>
+    <div tuiLink>
+        <img src="./clean.svg" />
+        <p>Clean (12)</p>
+    </div>
+</div>
 <table
     tuiTable
     [columns]="columnsTitles"
