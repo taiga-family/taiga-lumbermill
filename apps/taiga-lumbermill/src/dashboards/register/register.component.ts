@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {
     FormControl,
@@ -8,17 +9,20 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
     TuiError,
     TuiLabel,
     TuiLink,
+    TuiLoader,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/legacy';
+import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 export const checkPasswords: ValidatorFn = (
     control: AbstractControl,
@@ -47,6 +51,7 @@ export const checkPasswords: ValidatorFn = (
         TuiInputPasswordModule,
         TuiLabel,
         TuiLink,
+        TuiLoader,
         TuiTitle,
     ],
     templateUrl: './register.component.html',
@@ -73,5 +78,16 @@ export class RegisterComponent {
         {validators: checkPasswords},
     );
 
-    protected onSubmit(): void {}
+    protected readonly submit$ = new Subject<void>();
+
+    protected readonly submitLoader = toSignal(
+        this.submit$.pipe(
+            switchMap(() => timer(4000).pipe(map(TUI_FALSE_HANDLER), startWith(true))),
+        ),
+        {initialValue: false},
+    );
+
+    protected onSubmit(): void {
+        this.submit$.next();
+    }
 }

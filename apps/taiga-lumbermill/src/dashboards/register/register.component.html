@@ -19,6 +19,7 @@
             formControlName="email"
             type="email"
             class="block-input"
+            [readOnly]="submitLoader()"
         >
             email
             <input tuiTextfieldLegacy />
@@ -35,6 +36,7 @@
             formControlName="password"
             type="password"
             class="block-input"
+            [readOnly]="submitLoader()"
         >
             password
             <input tuiTextfieldLegacy />
@@ -49,6 +51,7 @@
             formControlName="passwordAgain"
             type="password"
             class="block-input"
+            [readOnly]="submitLoader()"
         >
             confirm password
             <input tuiTextfieldLegacy />
@@ -75,6 +78,7 @@
                     formControlName="rememberMe"
                     tuiCheckbox
                     type="checkbox"
+                    [disabled]="submitLoader()"
                 />
                 <span
                     tuiTitle
@@ -84,14 +88,20 @@
                 </span>
             </label>
         </div>
-
-        <button
-            size="m"
-            tuiButton
+        <tui-loader
+            [inheritColor]="true"
+            [overlay]="true"
+            [showLoader]="submitLoader()"
             [style.width]="'100%'"
         >
-            Sign up
-        </button>
+            <button
+                size="m"
+                tuiButton
+                [style.width]="'100%'"
+            >
+                Sign up
+            </button>
+        </tui-loader>
         <div class="or">
             <hr class="line" />
             <p
