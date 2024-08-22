@@ -398,6 +398,68 @@
         </tr>
     </tbody>
 </table>
+<div class="footer">
+    <button
+        appearance="icon"
+        tuiButton
+        [style.color]="'var(--tui-text-action)'"
+    >
+        <tui-icon icon="@tui.chevron-left" />
+    </button>
+    <button
+        appearance="whiteblock"
+        size="s"
+        tuiButton
+        [style.background-color]="'#FFCD33'"
+        [style.height]="'2rem'"
+        [style.width]="'2rem'"
+    >
+        1
+    </button>
+    <a
+        tuiLink
+        [style.font-weight]="500"
+    >
+        2
+    </a>
+    <a
+        tuiLink
+        [style.font-weight]="500"
+    >
+        3
+    </a>
+    <a
+        tuiLink
+        [style.font-weight]="500"
+    >
+        4
+    </a>
+    <a
+        tuiLink
+        [style.font-weight]="500"
+    >
+        ...
+    </a>
+    <a
+        tuiLink
+        [style.font-weight]="500"
+    >
+        13
+    </a>
+    <button
+        appearance="icon"
+        tuiButton
+        [style.color]="'var(--tui-text-action)'"
+    >
+        <tui-icon icon="@tui.chevron-right" />
+    </button>
+    <a
+        tuiLink
+        [style.font-weight]="500"
+    >
+        1-7 on page
+    </a>
+</div>
 <tui-action-bar
     *tuiActionBar="open"
     [expanded]="!!isMobile() && expanded"

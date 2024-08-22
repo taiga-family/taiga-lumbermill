@@ -61,6 +61,7 @@ import type {DataTable} from './table.interface';
         TuiChip,
         TuiDropdown,
         TuiIcon,
+        TuiIcon,
         TuiInitialsPipe,
         TuiInputModule,
         TuiItemsWithMore,
