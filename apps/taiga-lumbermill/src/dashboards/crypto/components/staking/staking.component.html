@@ -1,10 +1,12 @@
 @let data = tokens();
-@if (data) {
-    <div
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
-        [style.height]="'100%'"
-    >
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    [style.height]="'100%'"
+    [style.min-height]="'41.625rem'"
+    [tuiSkeleton]="!data"
+>
+    @if (data) {
         <header
             tuiHeader
             class="info"
@@ -71,43 +73,43 @@
                 <div class="bold">5%</div>
             </div>
         </div>
-    </div>
+    }
+</div>
 
-    <ng-template
-        #template
-        let-observer
-    >
-        <header tuiHeader>
-            <h2 tuiTitle>{{ stake ? 'Staking' : 'Unstaking' }} Bitcoin</h2>
-        </header>
-        <p>Available for {{ stake ? 'stake' : 'unstake' }}: {{ stake ? available - amount() : amount() }} BTC</p>
-        @if (stake) {
-            <tui-input-number
-                tuiAutoFocus
-                [max]="available - amount()"
-                [min]="0"
-                [(ngModel)]="inputStake"
-            >
-                Amount BTC
-            </tui-input-number>
-        } @else {
-            <tui-input-number
-                tuiAutoFocus
-                [max]="amount()"
-                [min]="0"
-                [(ngModel)]="inputUnstake"
-            >
-                Amount BTC
-            </tui-input-number>
-        }
-        <p>
-            <button
-                tuiButton
-                type="submit"
-                (click)="[observer.complete(), addAmount(stake ? inputStake : -inputUnstake), (inputStake = 0)]"
-            >
-                {{ stake ? 'Stake' : 'Unstake' }}
-            </button>
-        </p>
-    </ng-template>
-}
+<ng-template
+    #template
+    let-observer
+>
+    <header tuiHeader>
+        <h2 tuiTitle>{{ stake ? 'Staking' : 'Unstaking' }} Bitcoin</h2>
+    </header>
+    <p>Available for {{ stake ? 'stake' : 'unstake' }}: {{ stake ? available - amount() : amount() }} BTC</p>
+    @if (stake) {
+        <tui-input-number
+            tuiAutoFocus
+            [max]="available - amount()"
+            [min]="0"
+            [(ngModel)]="inputStake"
+        >
+            Amount BTC
+        </tui-input-number>
+    } @else {
+        <tui-input-number
+            tuiAutoFocus
+            [max]="amount()"
+            [min]="0"
+            [(ngModel)]="inputUnstake"
+        >
+            Amount BTC
+        </tui-input-number>
+    }
+    <p>
+        <button
+            tuiButton
+            type="submit"
+            (click)="[observer.complete(), addAmount(stake ? inputStake : -inputUnstake), (inputStake = 0)]"
+        >
+            {{ stake ? 'Stake' : 'Unstake' }}
+        </button>
+    </p>
+</ng-template>

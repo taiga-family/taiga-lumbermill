@@ -17,7 +17,7 @@ import {
     TuiIcon,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiChevron, TuiInputInline} from '@taiga-ui/kit';
+import {TuiAvatar, TuiChevron, TuiInputInline, TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 import {CryptoService} from '../../../../services/crypto.service';
@@ -40,6 +40,7 @@ import {CryptoService} from '../../../../services/crypto.service';
         TuiHeader,
         TuiIcon,
         TuiInputInline,
+        TuiSkeleton,
         TuiTitle,
     ],
     templateUrl: './swap.component.html',

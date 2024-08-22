@@ -17,7 +17,7 @@ import {
     TuiDialogService,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -41,6 +41,7 @@ import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
         TuiDialog,
         TuiHeader,
         TuiInputNumberModule,
+        TuiSkeleton,
         TuiTitle,
     ],
     templateUrl: './staking.component.html',

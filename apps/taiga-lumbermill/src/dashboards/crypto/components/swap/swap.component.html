@@ -1,10 +1,12 @@
 @let data = tokens();
-@if (data) {
-    <div
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
-        [style.height]="'100%'"
-    >
+
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    [style.height]="'100%'"
+    [tuiSkeleton]="!data"
+>
+    @if (data) {
         <header tuiHeader>
             <h2
                 tuiTitle
@@ -99,5 +101,5 @@
         >
             Swap
         </button>
-    </div>
-}
+    }
+</div>

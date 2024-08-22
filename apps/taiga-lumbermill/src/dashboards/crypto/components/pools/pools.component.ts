@@ -16,7 +16,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
+import {TuiAvatar, TuiAvatarStack, TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -50,6 +50,7 @@ export interface TableData {
         TuiInputModule,
         TuiScrollable,
         TuiScrollbar,
+        TuiSkeleton,
         TuiTable,
         TuiTitle,
     ],

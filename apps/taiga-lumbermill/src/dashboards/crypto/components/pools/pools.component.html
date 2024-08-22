@@ -17,7 +17,10 @@
     >
         Search
     </tui-input>
-    <div class="list-pools">
+    <div
+        class="list-pools"
+        [tuiSkeleton]="!tokens()"
+    >
         <tui-scrollbar>
             <cdk-virtual-scroll-viewport
                 #viewport
