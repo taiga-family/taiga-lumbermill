@@ -8,7 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import {TuiAppearance, TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 import {CryptoService} from '../../../../../services/crypto.service';
@@ -26,6 +26,7 @@ import {CryptoService} from '../../../../../services/crypto.service';
         TuiCardLarge,
         TuiCell,
         TuiHeader,
+        TuiSkeleton,
         TuiTitle,
     ],
     templateUrl: './price-list.component.html',

@@ -1,9 +1,11 @@
 @let data = tokens$ | async;
-@if (data) {
-    <div
-        tuiCardLarge
-        class="price-list"
-    >
+
+<div
+    tuiCardLarge
+    class="price-list"
+    [tuiSkeleton]="!data"
+>
+    @if (data) {
         <div class="list">
             @for (tokens of data.slice(0, showTokens); track $index) {
                 @if (token === '' || tokens.id === token) {
@@ -44,5 +46,5 @@
                 Add Token
             </button>
         }
-    </div>
-}
+    }
+</div>
