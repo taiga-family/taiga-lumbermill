@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {
@@ -9,7 +9,8 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {Router} from '@angular/router';
+// import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
@@ -68,6 +69,7 @@ export const checkPasswords: ValidatorFn = (
     ],
 })
 export class RegisterComponent {
+    private readonly router = inject(Router);
     protected readonly form = new FormGroup(
         {
             email: new FormControl('', [Validators.required, Validators.email]),
@@ -82,10 +84,21 @@ export class RegisterComponent {
 
     protected readonly submitLoader = toSignal(
         this.submit$.pipe(
-            switchMap(() => timer(4000).pipe(map(TUI_FALSE_HANDLER), startWith(true))),
+            switchMap(() =>
+                timer(4000).pipe(
+                    map(() => this.goMain()),
+                    startWith(true),
+                ),
+            ),
         ),
         {initialValue: false},
     );
+
+    protected goMain(): boolean {
+        this.router.navigate(['']);
+
+        return false;
+    }
 
     protected onSubmit(): void {
         this.submit$.next();
