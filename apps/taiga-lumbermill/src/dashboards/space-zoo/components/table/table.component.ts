@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
+    TuiAppearance,
     TuiAutoColorPipe,
     TuiBreakpointService,
     TuiButton,
@@ -48,6 +49,7 @@ import type {DataTable} from './table.interface';
         CommonModule,
         FormsModule,
         TuiActionBar,
+        TuiAppearance,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiBadge,

@@ -1,12 +1,24 @@
-<tui-input
-    tuiTextfieldIconLeft="@tui.search"
-    tuiTextfieldSize="m"
-    class="search"
-    [(ngModel)]="search"
->
-    Search by name
-</tui-input>
-<div class="under-search">
+<div class="row-search">
+    <tui-input
+        tuiTextfieldIconLeft="@tui.search"
+        tuiTextfieldSize="m"
+        [style.flex-grow]="1"
+        [(ngModel)]="search"
+    >
+        Search by name
+    </tui-input>
+    <button
+        appearance="secondary"
+        size="m"
+        tuiButton
+    >
+        <img
+            alt=""
+            src="./filter.svg"
+        />
+    </button>
+</div>
+<div class="row-search">
     <tui-segmented
         [size]="'s'"
         [style.width]="'max-content'"
@@ -44,13 +56,23 @@
         />
         Toggle
     </label>
-    <div class="vericalLine"></div>
-    <div class="result">Result: 999</div>
-    <div class="vericalLine"></div>
-    <div tuiLink>
+    <div class="verticalLine"></div>
+    <div
+        tuiSubtitle
+        class="result"
+    >
+        Result: 999
+    </div>
+    <div class="verticalLine"></div>
+    <button
+        appearance="link"
+        apper
+        tuiButton
+        [style.padding]="'0.2rem'"
+    >
         <img src="./clean.svg" />
         <p>Clean (12)</p>
-    </div>
+    </button>
 </div>
 <table
     tuiTable
