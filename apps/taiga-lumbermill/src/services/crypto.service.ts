@@ -42,7 +42,7 @@ export class CryptoService {
         return this.http
             .get<ResponseData>(this.API)
             .pipe(map((info) => info.data))
-            .pipe(shareReplay({bufferSize: 10, refCount: true}));
+            .pipe(shareReplay({bufferSize: 1, refCount: true}));
     }
 
     public getHistory(id: string, interval: string): Observable<HistoryData[]> {
