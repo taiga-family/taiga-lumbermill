@@ -62,15 +62,13 @@
             [style.margin-bottom]="'0.8rem'"
             [style.margin-right]="'auto'"
         />
-        @if (form.hasError('differentPasswords') && (form.touched || form.dirty)) {
-            <p
-                class="error"
-                [style.margin-bottom]="'0.8rem'"
-                [style.margin-top]="'0'"
-            >
-                Passwords should be the same
-            </p>
-        }
+        <tui-error
+            [error]="[] | tuiFieldError | async"
+            [formGroup]="form"
+            [style.margin-bottom]="'0.8rem'"
+            [style.margin-right]="'auto'"
+            [style.margin-top]="'0'"
+        />
         <div class="under-password">
             <label tuiLabel>
                 <input
@@ -120,7 +118,7 @@
                 class="iconSignUp"
             >
                 <img
-                    alt=""
+                    alt="google icon"
                     src="./google.svg"
                     class="iconSignUp"
                 />
@@ -131,7 +129,7 @@
                 class="iconSignUp"
             >
                 <img
-                    alt=""
+                    alt="github icon"
                     src="./github-mark.svg"
                     class="iconSignUp"
                 />
@@ -142,7 +140,7 @@
                 class="iconSignUp"
             >
                 <img
-                    alt=""
+                    alt="apple icon"
                     src="./apple.svg"
                     class="iconSignUp"
                 />

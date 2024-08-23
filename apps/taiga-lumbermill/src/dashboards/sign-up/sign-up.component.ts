@@ -21,10 +21,12 @@ import {map, of, startWith, Subject, switchMap, timer} from 'rxjs';
 export const checkPasswords: ValidatorFn = (
     control: AbstractControl,
 ): ValidationErrors | null => {
-    const name = control.get('password');
-    const role = control.get('confirmPassword');
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
 
-    return name && role && name.value === role.value ? null : {differentPasswords: true};
+    return password && confirmPassword && password.value === confirmPassword.value
+        ? null
+        : {differentPasswords: true};
 };
 
 @Component({
@@ -60,6 +62,7 @@ export const checkPasswords: ValidatorFn = (
                     `Maximum length — ${requiredLength}`,
                 minlength: ({requiredLength}: {requiredLength: string}) =>
                     of(`Minimum length — ${requiredLength}`),
+                differentPasswords: 'Passwords should be the same',
             },
         },
     ],
