@@ -96,6 +96,10 @@ export class SignUpComponent {
     }
 
     protected onSubmit(): void {
+        if (!this.form.valid) {
+            return;
+        }
+
         this.submit$.next();
     }
 }
