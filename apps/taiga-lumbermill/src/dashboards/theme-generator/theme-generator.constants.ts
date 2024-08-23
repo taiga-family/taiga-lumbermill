@@ -5,6 +5,7 @@ interface ThemeData {
 }
 
 export const data: ThemeData[] = [
+    {name: 'Backgrounds', initialValue: '', variable: ''},
     {name: 'background-base', initialValue: '#fff', variable: '--tui-background-base'},
     {
         name: 'background-base-alt',
@@ -101,6 +102,7 @@ export const data: ThemeData[] = [
         initialValue: '#fff5c0',
         variable: '--tui-service-autofill-background',
     },
+    {name: 'Others', initialValue: '', variable: ''},
     {
         name: 'border-normal',
         initialValue: 'rgba(0, 0, 0, 0.1)',
@@ -116,6 +118,7 @@ export const data: ThemeData[] = [
         initialValue: 'rgba(51, 51, 51, 0.64)',
         variable: '--tui-border-focus',
     },
+    {name: 'Statuses', initialValue: '', variable: ''},
     {
         name: 'status-negative',
         initialValue: 'rgba(244, 87, 37, 1)',
@@ -181,6 +184,7 @@ export const data: ThemeData[] = [
         initialValue: 'rgb(121, 129, 140)',
         variable: '--tui-status-neutral',
     },
+    {name: 'Text', initialValue: '', variable: ''},
     {
         name: 'text-primary',
         initialValue: 'rgba(27, 31, 59, 1)',

@@ -45,7 +45,8 @@ export class ThemeGeneratorComponent {
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly window = inject(WA_WINDOW);
     protected params = toSignal(this.activatedRoute.queryParams)();
-    protected themeData = data;
+    protected themeData = data.filter((val) => val.initialValue);
+    protected colorsList = data;
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
     protected colors = this.themeData.map((val) => {
         const result = this.params?.[val.variable] ?? val.initialValue;
