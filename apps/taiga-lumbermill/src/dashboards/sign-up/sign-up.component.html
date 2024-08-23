@@ -1,0 +1,152 @@
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    <header tuiHeader>
+        <h2
+            tuiTitle
+            [style.text-align]="'center'"
+        >
+            Sign up
+        </h2>
+    </header>
+    <form
+        [formGroup]="form"
+        (submit)="onSubmit()"
+    >
+        <tui-input
+            formControlName="email"
+            type="email"
+            class="block-input"
+        >
+            email
+            <input tuiTextfieldLegacy />
+        </tui-input>
+
+        <tui-error
+            formControlName="email"
+            [error]="[] | tuiFieldError | async"
+            [style.margin-bottom]="'0.8rem'"
+            [style.margin-right]="'auto'"
+        />
+
+        <tui-input-password
+            formControlName="password"
+            type="password"
+            class="block-input"
+        >
+            password
+            <input tuiTextfieldLegacy />
+        </tui-input-password>
+        <tui-error
+            formControlName="password"
+            [error]="[] | tuiFieldError | async"
+            [style.margin-bottom]="'0.8rem'"
+            [style.margin-right]="'auto'"
+        />
+        <tui-input-password
+            formControlName="confirmPassword"
+            type="password"
+            class="block-input"
+        >
+            confirm password
+            <input tuiTextfieldLegacy />
+        </tui-input-password>
+        <tui-error
+            formControlName="confirmPassword"
+            [error]="[] | tuiFieldError | async"
+            [style.margin-bottom]="'0.8rem'"
+            [style.margin-right]="'auto'"
+        />
+        <tui-error
+            class="error-passwords"
+            [error]="[] | tuiFieldError | async"
+            [formGroup]="form"
+        />
+        <div class="under-password">
+            <label tuiLabel>
+                <input
+                    checked
+                    formControlName="rememberMe"
+                    tuiCheckbox
+                    type="checkbox"
+                />
+                <span
+                    tuiTitle
+                    [style.color]="'var(--tui-text-secondary)'"
+                >
+                    Remember me
+                </span>
+            </label>
+        </div>
+        <tui-loader
+            [inheritColor]="true"
+            [overlay]="true"
+            [showLoader]="submitLoader()"
+            [style.width]="'100%'"
+        >
+            <button
+                size="m"
+                tuiButton
+                [style.width]="'100%'"
+            >
+                Sign up
+            </button>
+        </tui-loader>
+        <div class="or">
+            <hr class="line" />
+            <p
+                tuiSubtitle
+                class="tui-space_top-0 tui-space_bottom-0"
+            >
+                or
+            </p>
+            <hr class="line" />
+        </div>
+        <p class="tui-space_top-2 tui-space_bottom-2 icons-title">Sign up with</p>
+        <div class="icons">
+            <button
+                appearance="icon"
+                tuiButton
+                class="icon-sign-up"
+            >
+                <img
+                    alt="google icon"
+                    src="./google.svg"
+                    class="icon-sign-up"
+                />
+            </button>
+            <button
+                appearance="icon"
+                tuiButton
+                class="icon-sign-up"
+            >
+                <img
+                    alt="github icon"
+                    src="./github-mark.svg"
+                    class="icon-sign-up"
+                />
+            </button>
+            <button
+                appearance="icon"
+                tuiButton
+                class="icon-sign-up"
+            >
+                <img
+                    alt="apple icon"
+                    src="./apple.svg"
+                    class="icon-sign-up"
+                />
+            </button>
+        </div>
+        <a
+            tuiLink
+            class="center"
+            [style.margin-top]="'0.5rem'"
+        >
+            Already have an account?
+            <span [style.font-weight]="'500'">Login</span>
+        </a>
+    </form>
+</div>
