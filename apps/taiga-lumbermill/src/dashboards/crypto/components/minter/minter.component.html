@@ -12,8 +12,14 @@
         </h2>
     </header>
     @if (!token) {
-        <lmb-minter-deploy (tokenChange)="token = $event" />
+        <lmb-minter-deploy
+            [style.flex-grow]="1"
+            (tokenChange)="token = $event"
+        />
     } @else {
-        <lmb-minter-created [(token)]="token" />
+        <lmb-minter-created
+            [style.flex-grow]="1"
+            [(token)]="token"
+        />
     }
 </div>
