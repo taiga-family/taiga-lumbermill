@@ -7,12 +7,14 @@
         <h2
             tuiTitle
             [style.text-align]="'center'"
+            [tuiSkeleton]="!tokens()"
         >
             Pools
         </h2>
     </header>
     <tui-input
         tuiTextfieldIconLeft="@tui.search"
+        [tuiSkeleton]="!tokens()"
         [(ngModel)]="search"
     >
         Search
