@@ -24,7 +24,9 @@ export const checkPasswords: ValidatorFn = (
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
-    return password && confirmPassword && password.value === confirmPassword.value
+    return (password && confirmPassword && password?.value === confirmPassword?.value) ||
+        !password?.touched ||
+        !confirmPassword?.touched
         ? null
         : {differentPasswords: true};
 };
@@ -60,7 +62,7 @@ export const checkPasswords: ValidatorFn = (
                 email: 'Invalid email',
                 minlength: ({requiredLength}: {requiredLength: string}) =>
                     of(`Minimum length — ${requiredLength}`),
-                differentPasswords: 'Passwords should be the same',
+                differentPasswords: 'Passwords must be the same',
             },
         },
     ],
