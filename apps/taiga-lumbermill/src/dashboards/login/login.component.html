@@ -26,9 +26,8 @@
 
         <tui-error
             formControlName="email"
+            class="error"
             [error]="[] | tuiFieldError | async"
-            [style.margin-bottom]="'0.8rem'"
-            [style.margin-right]="'auto'"
         />
 
         <tui-input-password
@@ -41,9 +40,8 @@
         </tui-input-password>
         <tui-error
             formControlName="password"
+            class="error"
             [error]="[] | tuiFieldError | async"
-            [style.margin-bottom]="'0.8rem'"
-            [style.margin-right]="'auto'"
         />
         <div class="under-password">
             <label tuiLabel>
@@ -53,12 +51,7 @@
                     tuiCheckbox
                     type="checkbox"
                 />
-                <span
-                    tuiTitle
-                    [style.color]="'var(--tui-text-secondary)'"
-                >
-                    Remember me
-                </span>
+                <span [style.color]="'var(--tui-text-secondary)'">Remember me</span>
             </label>
             <a tuiLink>Forgot password?</a>
         </div>
@@ -74,7 +67,7 @@
                 tuiButton
                 [style.width]="'100%'"
             >
-                Login
+                Login in
             </button>
         </tui-loader>
         <div class="or">
