@@ -1,18 +1,45 @@
 <div class="list-colors">
     <div tuiHeader="m">
-        <h3 tuiTitle>Colors</h3>
-    </div>
-    @for (inputColor of themeData; track $index) {
-        <tui-input-color
-            tuiTextfieldSize="m"
-            [colors]="palette"
-            [(ngModel)]="colors[$index]"
-            (ngModelChange)="colors[$index].set($event)"
+        <h3
+            tuiTitle
+            [style.flex-grow]="0"
+            [style.margin-bottom]="'auto'"
+            [style.margin-top]="'auto'"
         >
-            {{ inputColor.name }}
-        </tui-input-color>
-    }
+            Colors
+        </h3>
+        <button
+            appearance="icon"
+            size="m"
+            tuiButton
+            class="share"
+            [iconStart]="iconShare()"
+            (click)="share()"
+        ></button>
+    </div>
+    <div
+        class="colors"
+        (focusout)="queryParams()"
+    >
+        @for (inputColor of themeData; track $index) {
+            <tui-input-color
+                tuiTextfieldSize="m"
+                [colors]="palette"
+                [(ngModel)]="colors[$index]"
+            >
+                {{ inputColor.name }}
+            </tui-input-color>
+        }
+    </div>
     <code>
+        <button
+            appearance="icon"
+            size="m"
+            tuiButton
+            class="copy"
+            [iconStart]="iconCopy()"
+            (click)="copy()"
+        ></button>
         :root {{ '{' }}
         @for (inputColor of themeData; track $index) {
             <br />
