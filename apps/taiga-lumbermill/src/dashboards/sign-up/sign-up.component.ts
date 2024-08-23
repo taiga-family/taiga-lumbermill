@@ -16,7 +16,7 @@ import {
 import {TUI_VALIDATION_ERRORS, TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/legacy';
-import {map, startWith, Subject, switchMap, timer} from 'rxjs';
+import {map, of, startWith, Subject, switchMap, timer} from 'rxjs';
 
 export const checkPasswords: ValidatorFn = (
     control: AbstractControl,
@@ -24,7 +24,7 @@ export const checkPasswords: ValidatorFn = (
     const name = control.get('password');
     const role = control.get('confirmPassword');
 
-    return name && role && name.value === role.value ? {unambiguousRole: true} : null;
+    return name && role && name.value === role.value ? null : {differentPasswords: true};
 };
 
 @Component({
@@ -56,6 +56,10 @@ export const checkPasswords: ValidatorFn = (
             useValue: {
                 required: "Value can't be empty",
                 email: 'Invalid email',
+                maxlength: ({requiredLength}: {requiredLength: string}) =>
+                    `Maximum length — ${requiredLength}`,
+                minlength: ({requiredLength}: {requiredLength: string}) =>
+                    of(`Minimum length — ${requiredLength}`),
             },
         },
     ],

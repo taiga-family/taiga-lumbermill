@@ -62,7 +62,7 @@
             [style.margin-bottom]="'0.8rem'"
             [style.margin-right]="'auto'"
         />
-        @if (!form.hasError('unambiguousRole') && (form.touched || form.dirty)) {
+        @if (form.hasError('differentPasswords') && (form.touched || form.dirty)) {
             <p
                 class="error"
                 [style.margin-bottom]="'0.8rem'"
