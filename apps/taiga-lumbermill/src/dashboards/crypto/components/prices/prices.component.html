@@ -1,3 +1,4 @@
+@let data = tokens$ | async;
 <div
     tuiAppearance="whiteblock"
     tuiCardLarge="normal"
@@ -7,6 +8,7 @@
         <h2
             tuiTitle
             [style.text-align]="'center'"
+            [tuiSkeleton]="!data"
         >
             Cryptocurrency Prices
         </h2>
