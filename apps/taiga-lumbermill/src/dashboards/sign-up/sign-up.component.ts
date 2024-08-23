@@ -58,8 +58,6 @@ export const checkPasswords: ValidatorFn = (
             useValue: {
                 required: "Value can't be empty",
                 email: 'Invalid email',
-                maxlength: ({requiredLength}: {requiredLength: string}) =>
-                    `Maximum length — ${requiredLength}`,
                 minlength: ({requiredLength}: {requiredLength: string}) =>
                     of(`Minimum length — ${requiredLength}`),
                 differentPasswords: 'Passwords should be the same',
