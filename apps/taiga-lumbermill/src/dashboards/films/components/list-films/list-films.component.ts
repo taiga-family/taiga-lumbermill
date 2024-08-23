@@ -2,9 +2,15 @@ import {CommonModule, DatePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
-import {TuiBreakpointService, TuiButton, TuiExpand, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAppearance,
+    TuiBreakpointService,
+    TuiButton,
+    TuiExpand,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiCarousel, TuiRating} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 import {FilmsService} from '../../films.service';
 
@@ -16,8 +22,10 @@ import {FilmsService} from '../../films.service';
         DatePipe,
         FormsModule,
         RouterLink,
+        TuiAppearance,
         TuiButton,
         TuiButton,
+        TuiCardLarge,
         TuiCarousel,
         TuiExpand,
         TuiHeader,
@@ -31,10 +39,8 @@ import {FilmsService} from '../../films.service';
 export class ListFilmsComponent {
     protected readonly breakpoint$ = inject(TuiBreakpointService);
     protected listFilmsService = inject(FilmsService).filmsData;
-    protected index = 0;
-    protected open = -1;
-
-    protected openFilm(value: number): void {
-        this.open = value;
-    }
+    protected indexTop = 0;
+    protected indexBottom = 0;
+    protected openTop = -1;
+    protected openBottom = -1;
 }

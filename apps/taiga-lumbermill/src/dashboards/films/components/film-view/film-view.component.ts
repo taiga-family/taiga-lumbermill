@@ -5,7 +5,7 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
 import {TuiMedia} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 import {FilmsService} from '../../films.service';
 
@@ -16,7 +16,9 @@ import {FilmsService} from '../../films.service';
         FormsModule,
         RouterLink,
         TuiAppearance,
+        TuiAppearance,
         TuiButton,
+        TuiCardLarge,
         TuiHeader,
         TuiIcon,
         TuiMedia,

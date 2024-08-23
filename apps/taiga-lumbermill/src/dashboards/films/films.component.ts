@@ -19,7 +19,6 @@ import {ListFilmsComponent} from './components/list-films/list-films.component';
         TuiCardLarge,
     ],
     templateUrl: './films.component.html',
-    styleUrl: './films.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilmComponent {}

@@ -1,33 +1,39 @@
-@let item = filmsService[id];
-<div class="player">
-    <div class="blackout"></div>
-    <video
-        #video
-        controls
-        tuiMedia
-        class="video"
-        [(currentTime)]="currentTime"
-        [(paused)]="paused"
-        [(volume)]="volume"
-    >
-        <source
-            src="./example.mp4"
-            type="video/mp4"
-        />
-    </video>
-    <header
-        tuiHeader="l"
-        class="title"
-    >
-        <h2 tuiTitle>
-            {{ item.title }}
-        </h2>
-    </header>
-    <button
-        appearance="icon"
-        iconStart="@tui.circle-x"
-        tuiIconButton
-        class="close"
-        [routerLink]="'/dashboards/films/'"
-    ></button>
+<div
+    tuiAppearance="whiteblock"
+    tuiCardLarge="normal"
+    class="card"
+>
+    @let item = filmsService[id];
+    <div class="player">
+        <div class="blackout"></div>
+        <video
+            #video
+            controls
+            tuiMedia
+            class="video"
+            [(currentTime)]="currentTime"
+            [(paused)]="paused"
+            [(volume)]="volume"
+        >
+            <source
+                src="./example.mp4"
+                type="video/mp4"
+            />
+        </video>
+        <header
+            tuiHeader="l"
+            class="title"
+        >
+            <h2 tuiTitle>
+                {{ item.title }}
+            </h2>
+        </header>
+        <button
+            appearance="icon"
+            iconStart="@tui.circle-x"
+            tuiIconButton
+            class="close"
+            [routerLink]="'/dashboards/films/'"
+        ></button>
+    </div>
 </div>
