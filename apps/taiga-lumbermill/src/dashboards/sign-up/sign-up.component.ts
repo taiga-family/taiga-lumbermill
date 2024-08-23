@@ -107,6 +107,7 @@ export class SignUpComponent {
             return;
         }
 
+        this.form.disable();
         this.submit$.next();
     }
 }

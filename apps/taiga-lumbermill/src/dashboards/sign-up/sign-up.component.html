@@ -19,7 +19,6 @@
             formControlName="email"
             type="email"
             class="block-input"
-            [readOnly]="submitLoader()"
         >
             email
             <input tuiTextfieldLegacy />
@@ -36,7 +35,6 @@
             formControlName="password"
             type="password"
             class="block-input"
-            [readOnly]="submitLoader()"
         >
             password
             <input tuiTextfieldLegacy />
@@ -51,7 +49,6 @@
             formControlName="confirmPassword"
             type="password"
             class="block-input"
-            [readOnly]="submitLoader()"
         >
             confirm password
             <input tuiTextfieldLegacy />
@@ -76,7 +73,6 @@
                     formControlName="rememberMe"
                     tuiCheckbox
                     type="checkbox"
-                    [disabled]="submitLoader()"
                 />
                 <span
                     tuiTitle
@@ -115,34 +111,34 @@
             <button
                 appearance="icon"
                 tuiButton
-                class="iconSignUp"
+                class="icon-sign-up"
             >
                 <img
                     alt="google icon"
                     src="./google.svg"
-                    class="iconSignUp"
+                    class="icon-sign-up"
                 />
             </button>
             <button
                 appearance="icon"
                 tuiButton
-                class="iconSignUp"
+                class="icon-sign-up"
             >
                 <img
                     alt="github icon"
                     src="./github-mark.svg"
-                    class="iconSignUp"
+                    class="icon-sign-up"
                 />
             </button>
             <button
                 appearance="icon"
                 tuiButton
-                class="iconSignUp"
+                class="icon-sign-up"
             >
                 <img
                     alt="apple icon"
                     src="./apple.svg"
-                    class="iconSignUp"
+                    class="icon-sign-up"
                 />
             </button>
         </div>
