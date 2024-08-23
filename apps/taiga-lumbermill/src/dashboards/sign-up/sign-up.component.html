@@ -48,7 +48,7 @@
             [style.margin-right]="'auto'"
         />
         <tui-input-password
-            formControlName="passwordAgain"
+            formControlName="confirmPassword"
             type="password"
             class="block-input"
             [readOnly]="submitLoader()"
@@ -57,7 +57,7 @@
             <input tuiTextfieldLegacy />
         </tui-input-password>
         <tui-error
-            formControlName="passwordAgain"
+            formControlName="confirmPassword"
             [error]="[] | tuiFieldError | async"
             [style.margin-bottom]="'0.8rem'"
             [style.margin-right]="'auto'"

@@ -49,10 +49,10 @@ export const appRoutes: Route[] = [
             ),
     },
     {
-        path: 'register',
+        path: 'sign-up',
         loadComponent: async () =>
-            import('../../dashboards/register/register.component').then(
-                (mod) => mod.RegisterComponent,
+            import('../../dashboards/sign-up/sign-up.component').then(
+                (mod) => mod.SignUpComponent,
             ),
     },
     {path: '**', redirectTo: 'dashboards'},

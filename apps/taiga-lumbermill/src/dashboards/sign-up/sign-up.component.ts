@@ -2,15 +2,8 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {
-    FormControl,
-    FormGroup,
-    FormsModule,
-    ReactiveFormsModule,
-    Validators,
-} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-// import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
@@ -29,17 +22,16 @@ export const checkPasswords: ValidatorFn = (
     control: AbstractControl,
 ): ValidationErrors | null => {
     const name = control.get('password');
-    const role = control.get('passwordAgain');
+    const role = control.get('confirmPassword');
 
     return name && role && name.value === role.value ? {unambiguousRole: true} : null;
 };
 
 @Component({
     standalone: true,
-    selector: 'lmb-register',
+    selector: 'lmb-sign-up',
     imports: [
         CommonModule,
-        FormsModule,
         ReactiveFormsModule,
         TuiAppearance,
         TuiButton,
@@ -55,8 +47,8 @@ export const checkPasswords: ValidatorFn = (
         TuiLoader,
         TuiTitle,
     ],
-    templateUrl: './register.component.html',
-    styleUrl: './register.component.less',
+    templateUrl: './sign-up.component.html',
+    styleUrl: './sign-up.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -68,13 +60,16 @@ export const checkPasswords: ValidatorFn = (
         },
     ],
 })
-export class RegisterComponent {
+export class SignUpComponent {
     private readonly router = inject(Router);
     protected readonly form = new FormGroup(
         {
             email: new FormControl('', [Validators.required, Validators.email]),
-            password: new FormControl('', [Validators.required]),
-            passwordAgain: new FormControl('', [Validators.required]),
+            password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+            confirmPassword: new FormControl('', [
+                Validators.required,
+                Validators.minLength(5),
+            ]),
             rememberMe: new FormControl(false),
         },
         {validators: checkPasswords},
