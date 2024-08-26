@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable, InjectionToken} from '@angular/core';
-import {map, type Observable} from 'rxjs';
+import {map, type Observable, shareReplay} from 'rxjs';
 
 export interface PricesData {
     readonly id: string;
@@ -36,9 +36,13 @@ export class CryptoService {
     private readonly http = inject(HttpClient);
 
     private readonly API = inject(CryptoApi);
+    public readonly tokens = this.getTokens();
 
     public getTokens(): Observable<PricesData[]> {
-        return this.http.get<ResponseData>(this.API).pipe(map((info) => info.data));
+        return this.http
+            .get<ResponseData>(this.API)
+            .pipe(map((info) => info.data))
+            .pipe(shareReplay({bufferSize: 1, refCount: true}));
     }
 
     public getHistory(id: string, interval: string): Observable<HistoryData[]> {

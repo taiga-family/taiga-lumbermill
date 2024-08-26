@@ -59,7 +59,7 @@ export interface TableData {
 })
 export class PoolsComponent {
     protected cryptoService = inject(CryptoService);
-    protected tokens = toSignal(this.cryptoService.getTokens());
+    protected tokens = toSignal(this.cryptoService.tokens);
     protected tableData: Signal<TableData[]> = computed(() => {
         const tokens = this.tokens() || [];
 
