@@ -45,8 +45,15 @@ export class ThemeGeneratorComponent {
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly window = inject(WA_WINDOW);
     protected params = toSignal(this.activatedRoute.queryParams)();
-    protected themeData = data.filter((val) => val.initialValue);
-    protected colorsList = data;
+    protected themeGroups = data;
+    protected themeData = this.themeGroups
+        .map((val) => val.colors)
+        .reduce((result, value) => {
+            value.forEach((val) => result.push(val));
+
+            return result;
+        }, []);
+
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
     protected colors = this.themeData.map((val) => {
         const result = this.params?.[val.variable] ?? val.initialValue;
