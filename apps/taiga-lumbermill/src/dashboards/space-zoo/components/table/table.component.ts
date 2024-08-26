@@ -99,54 +99,54 @@ export class TableComponent {
                 a.checkbox.title.localeCompare(b.checkbox.title),
         },
         {
-            title: '2',
+            title: 'Table',
             sorter: (a: DataTable, b: DataTable) =>
                 a.analytic.title.localeCompare(b.analytic.title),
         },
         {
-            title: '3',
+            title: 'File',
             sorter: (a: DataTable, b: DataTable) =>
                 a.file.title.localeCompare(b.file.title),
         },
         {
-            title: '4',
+            title: 'About',
             sorter: (a: DataTable, b: DataTable) =>
                 a.file.title.localeCompare(b.file.title),
         },
         {
-            title: '5',
+            title: 'Label',
             sorter: (a: DataTable, b: DataTable) =>
                 a.date.time.localeCompare(b.date.time),
         },
         {
-            title: '6',
+            title: 'Creator',
             sorter: (a: DataTable, b: DataTable) =>
                 a.cell.name.localeCompare(b.cell.name),
         },
         {
-            title: '7',
+            title: 'Creator Info',
             sorter: (a: DataTable, b: DataTable) =>
                 a.cell.name.localeCompare(b.cell.name),
         },
         {
-            title: '8',
+            title: 'Status',
             sorter: (a: DataTable, b: DataTable) =>
                 a.status.value.localeCompare(b.status.value),
         },
         {
-            title: '9',
+            title: 'Labels',
             sorter: null,
         },
         {
-            title: '10',
+            title: 'Tags',
             sorter: null,
         },
         {
-            title: 'duration',
+            title: 'Duration',
             sorter: (a: any, b: any) => a.duration.localeCompare(b.duration),
         },
         {
-            title: 'progress',
+            title: 'Progress',
             sorter: (a: any, b: any) => a.progress - b.progress,
         },
         {

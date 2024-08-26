@@ -146,7 +146,7 @@
                 </div>
             </td>
             <td
-                *tuiCell="'2'"
+                *tuiCell="'Table'"
                 tuiTd
             >
                 <div [tuiCell]="size">
@@ -157,7 +157,7 @@
                 </div>
             </td>
             <td
-                *tuiCell="'3'"
+                *tuiCell="'File'"
                 tuiTd
             >
                 <div [tuiCell]="size">
@@ -179,7 +179,7 @@
                 </div>
             </td>
             <td
-                *tuiCell="'4'"
+                *tuiCell="'About'"
                 tuiTd
             >
                 <div [tuiCell]="size">
@@ -199,7 +199,7 @@
                 </div>
             </td>
             <td
-                *tuiCell="'5'"
+                *tuiCell="'Label'"
                 tuiTd
             >
                 <div [tuiCell]="size">
@@ -210,7 +210,7 @@
                 </div>
             </td>
             <td
-                *tuiCell="'6'"
+                *tuiCell="'Creator'"
                 tuiTd
             >
                 <div [tuiCell]="size">
@@ -225,7 +225,7 @@
                 </div>
             </td>
             <td
-                *tuiCell="'7'"
+                *tuiCell="'Creator Info'"
                 tuiTd
             >
                 <div [tuiCell]="size">
@@ -236,17 +236,22 @@
                     <span tuiTitle>
                         {{ item.cell.name }}
                     </span>
-                    <span tuiSubtitle>{{ item.cell.email }}</span>
+                    <span
+                        tuiSubtitle
+                        [style.margin-left]="0"
+                    >
+                        {{ item.cell.email }}
+                    </span>
                 </div>
             </td>
             <td
-                *tuiCell="'8'"
+                *tuiCell="'Status'"
                 tuiTd
             >
                 <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
             </td>
             <td
-                *tuiCell="'9'"
+                *tuiCell="'Labels'"
                 tuiTd
             >
                 <tui-items-with-more [style.gap.rem]="0.25">
@@ -287,7 +292,7 @@
                 </tui-items-with-more>
             </td>
             <td
-                *tuiCell="'10'"
+                *tuiCell="'Tags'"
                 tuiTd
             >
                 <tui-items-with-more [style.gap.rem]="0.25">
@@ -326,7 +331,7 @@
                 </tui-items-with-more>
             </td>
             <td
-                *tuiCell="'duration'"
+                *tuiCell="'Duration'"
                 tuiTd
             >
                 <div [tuiCell]="size">
@@ -336,7 +341,7 @@
                 </div>
             </td>
             <td
-                *tuiCell="'progress'"
+                *tuiCell="'Progress'"
                 tuiTd
             >
                 <span tuiStatus>
@@ -409,9 +414,7 @@
         appearance="whiteblock"
         size="s"
         tuiButton
-        [style.background-color]="'#FFCD33'"
-        [style.height]="'2rem'"
-        [style.width]="'2rem'"
+        class="menu-clicked"
     >
         1
     </button>
