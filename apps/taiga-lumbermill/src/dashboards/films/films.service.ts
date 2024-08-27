@@ -15,7 +15,20 @@ interface Films {
 
 export const INITIAL_DATA: Films[] = [
     {
-        title: 'Deadpool & Wolverine',
+        title: 'Random name',
+        durationMinutes: 127,
+        img: './movies/1.jpg',
+        description:
+            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
+        link: '',
+        country: 'Russia',
+        rating: 7.8,
+        year: 2024,
+        genre: 'Comedy',
+        restrictionsYears: 18,
+    },
+    {
+        title: 'Random name #2',
         durationMinutes: 127,
         img: './movies/2.jpg',
         description:
@@ -28,9 +41,9 @@ export const INITIAL_DATA: Films[] = [
         restrictionsYears: 18,
     },
     {
-        title: 'Deadpool & Wolverine',
+        title: 'Random name #3',
         durationMinutes: 127,
-        img: './movies/2.jpg',
+        img: './movies/3.jpg',
         description:
             'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
         link: '',
@@ -41,22 +54,9 @@ export const INITIAL_DATA: Films[] = [
         restrictionsYears: 18,
     },
     {
-        title: 'Deadpool & Wolverine',
+        title: 'Random name #4',
         durationMinutes: 127,
-        img: './movies/2.jpg',
-        description:
-            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
-        link: '',
-        country: 'Russia',
-        rating: 7.8,
-        year: 2024,
-        genre: 'Comedy',
-        restrictionsYears: 18,
-    },
-    {
-        title: 'Deadpool & Wolverine',
-        durationMinutes: 127,
-        img: './movies/2.jpg',
+        img: './movies/4.jpg',
         description:
             'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
         link: '',
