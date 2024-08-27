@@ -48,11 +48,7 @@ export class ThemeGeneratorComponent {
     protected themeGroups = data;
     protected themeData = this.themeGroups
         .map((val) => val.colors)
-        .reduce((acc, curr) => {
-            curr.forEach((val) => acc.push(val));
-
-            return acc;
-        }, []);
+        .reduce((acc, curr) => acc.concat(curr), []);
 
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
     protected colors = this.themeData.map((val) => {
