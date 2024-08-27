@@ -5,7 +5,6 @@ interface Films {
     readonly durationMinutes: number;
     readonly img: string;
     readonly description: string;
-    readonly link: string;
     readonly country: string;
     readonly rating: number;
     readonly year: number;
@@ -18,9 +17,7 @@ export const INITIAL_DATA: Films[] = [
         title: 'Random name',
         durationMinutes: 127,
         img: './movies/1.jpg',
-        description:
-            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
-        link: '',
+        description: 'Random description',
         country: 'Russia',
         rating: 7.8,
         year: 2024,
@@ -31,24 +28,20 @@ export const INITIAL_DATA: Films[] = [
         title: 'Random name #2',
         durationMinutes: 127,
         img: './movies/2.jpg',
-        description:
-            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
-        link: '',
-        country: 'Russia',
-        rating: 7.8,
+        description: 'Random description',
+        country: 'USA',
+        rating: 6.0,
         year: 2024,
         genre: 'Comedy',
-        restrictionsYears: 18,
+        restrictionsYears: 16,
     },
     {
         title: 'Random name #3',
         durationMinutes: 127,
         img: './movies/3.jpg',
-        description:
-            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
-        link: '',
+        description: 'Random description',
         country: 'Russia',
-        rating: 7.8,
+        rating: 7.0,
         year: 2024,
         genre: 'Comedy',
         restrictionsYears: 18,
@@ -57,11 +50,9 @@ export const INITIAL_DATA: Films[] = [
         title: 'Random name #4',
         durationMinutes: 127,
         img: './movies/4.jpg',
-        description:
-            'A wisecracking mutant mercenary with accelerated healing, but severe scarring over his body after undergoing an experimental cancer treatment',
-        link: '',
+        description: 'Random description',
         country: 'Russia',
-        rating: 7.8,
+        rating: 8.8,
         year: 2024,
         genre: 'Comedy',
         restrictionsYears: 18,
