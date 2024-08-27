@@ -48,10 +48,10 @@ export class ThemeGeneratorComponent {
     protected themeGroups = data;
     protected themeData = this.themeGroups
         .map((val) => val.colors)
-        .reduce((result, value) => {
-            value.forEach((val) => result.push(val));
+        .reduce((acc, curr) => {
+            curr.forEach((val) => acc.push(val));
 
-            return result;
+            return acc;
         }, []);
 
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;

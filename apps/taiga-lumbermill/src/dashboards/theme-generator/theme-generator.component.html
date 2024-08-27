@@ -21,9 +21,9 @@
         class="colors"
         (focusout)="queryParams()"
     >
-        @for (data of themeGroups; track $index) {
-            <h4 class="tui-space_top-0 tui-space_bottom-0 title-colors">{{ data.title }}</h4>
-            @for (inputColor of data.colors; track $index) {
+        @for (group of themeGroups; track $index) {
+            <h4 class="tui-space_top-0 tui-space_bottom-0 title-colors">{{ group.title }}</h4>
+            @for (inputColor of group.colors; track $index) {
                 <tui-input-color
                     tuiTextfieldSize="m"
                     [colors]="palette"
