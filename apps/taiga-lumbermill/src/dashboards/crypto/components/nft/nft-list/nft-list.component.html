@@ -1,60 +1,64 @@
 <div class="info">
     <h3 class="row-title tui-space_top-0 tui-space_bottom-0">Top NFTs</h3>
-    <div class="list">
-        @for (nft of nfts; track $index) {
-            <button
-                tuiCardLarge
-                tuiSurface="elevated"
-                class="card-nft"
-                (click)="updateItem($index)"
-            >
-                <tui-avatar
-                    class="logo-nft"
-                    [src]="nft.src"
-                />
-                <div
-                    class="text"
-                    [style.margin-top]="0"
+    <tui-scrollbar>
+        <div class="list">
+            @for (nft of nfts; track $index) {
+                <button
+                    tuiCardLarge
+                    tuiSurface="elevated"
+                    class="card-nft"
+                    (click)="updateItem($index)"
                 >
-                    <p class="nft-name tui-space_top-1 tui-space_bottom-0">{{ nft.name }}</p>
-                    <p
-                        tuiSubtitle
-                        class="tui-space_top-0 tui-space_bottom-0"
+                    <tui-avatar
+                        class="logo-nft"
+                        [src]="nft.src"
+                    />
+                    <div
+                        class="text"
+                        [style.margin-top]="0"
                     >
-                        {{ nft.price | tuiAmount: 'USD' | async }}
-                    </p>
-                </div>
-            </button>
-        }
-    </div>
+                        <p class="nft-name tui-space_top-1 tui-space_bottom-0">{{ nft.name }}</p>
+                        <p
+                            tuiSubtitle
+                            class="tui-space_top-0 tui-space_bottom-0"
+                        >
+                            {{ nft.price | tuiAmount: 'USD' | async }}
+                        </p>
+                    </div>
+                </button>
+            }
+        </div>
+    </tui-scrollbar>
 </div>
 <div class="info">
     <h3 class="row-title tui-space_top-0 tui-space_bottom-0">Recent bought NFTs</h3>
-    <div class="list">
-        @for (nft of nfts; track $index) {
-            <button
-                tuiCardLarge
-                tuiSurface="elevated"
-                class="card-nft"
-                (click)="updateItem($index)"
-            >
-                <tui-avatar
-                    class="logo-nft"
-                    [src]="nft.src"
-                />
-                <div
-                    class="text"
-                    [style.margin-top]="0"
+    <tui-scrollbar>
+        <div class="list">
+            @for (nft of nfts; track $index) {
+                <button
+                    tuiCardLarge
+                    tuiSurface="elevated"
+                    class="card-nft"
+                    (click)="updateItem($index)"
                 >
-                    <p class="nft-name tui-space_top-1 tui-space_bottom-0">{{ nft.name }}</p>
-                    <p
-                        tuiSubtitle
-                        class="tui-space_top-0 tui-space_bottom-0"
+                    <tui-avatar
+                        class="logo-nft"
+                        [src]="nft.src"
+                    />
+                    <div
+                        class="text"
+                        [style.margin-top]="0"
                     >
-                        {{ nft.price | tuiAmount: 'USD' | async }}
-                    </p>
-                </div>
-            </button>
-        }
-    </div>
+                        <p class="nft-name tui-space_top-1 tui-space_bottom-0">{{ nft.name }}</p>
+                        <p
+                            tuiSubtitle
+                            class="tui-space_top-0 tui-space_bottom-0"
+                        >
+                            {{ nft.price | tuiAmount: 'USD' | async }}
+                        </p>
+                    </div>
+                </button>
+            }
+        </div>
+    </tui-scrollbar>
 </div>
