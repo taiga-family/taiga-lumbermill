@@ -1,37 +1,45 @@
 <div class="row-search">
-    <tui-input
-        tuiTextfieldIconLeft="@tui.search"
-        tuiTextfieldSize="m"
-        [style.flex-grow]="1"
-        [(ngModel)]="search"
-    >
-        Search by name
-    </tui-input>
-    <tui-badged-content>
-        <tui-avatar
-            tuiSlot="top"
-            class="point"
-            [style.background-color]="'#FFCD33'"
-        />
+    <search tuiSearch>
+        <form
+            [formGroup]="form"
+            [style.flex-grow]="1"
+        >
+            <fieldset tuiTextfieldSize="m">
+                <tui-textfield iconStart="@tui.search">
+                    <input
+                        formControlName="search"
+                        placeholder="Search by name"
+                        tuiTextfield
+                    />
+                </tui-textfield>
+            </fieldset>
+        </form>
+        <tui-badged-content>
+            <tui-avatar
+                tuiSlot="top"
+                class="point"
+                [style.background-color]="'#FFCD33'"
+            />
+            <button
+                appearance="secondary"
+                size="m"
+                tuiButton
+            >
+                <img
+                    alt=""
+                    src="./filter.svg"
+                />
+            </button>
+        </tui-badged-content>
         <button
-            appearance="secondary"
+            appearance="primary"
             size="m"
             tuiButton
+            (click)="search.set(form.value.search)"
         >
-            <img
-                alt=""
-                src="./filter.svg"
-            />
+            Search
         </button>
-    </tui-badged-content>
-    <button
-        appearance="whiteblock"
-        size="m"
-        tuiButton
-        [style.background-color]="'#FFCD33'"
-    >
-        Search
-    </button>
+    </search>
 </div>
 <div
     class="row-search"
@@ -411,7 +419,7 @@
         <tui-icon icon="@tui.chevron-left" />
     </button>
     <button
-        appearance="whiteblock"
+        appearance="primary"
         size="s"
         tuiButton
         class="menu-clicked"

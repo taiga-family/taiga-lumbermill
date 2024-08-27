@@ -8,7 +8,7 @@ import {
     signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
@@ -21,6 +21,7 @@ import {
     TuiInitialsPipe,
     TuiLabel,
     TuiLink,
+    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {
@@ -37,7 +38,7 @@ import {
     TuiStatus,
     TuiSwitch,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell, TuiSearch} from '@taiga-ui/layout';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
@@ -49,6 +50,7 @@ import type {DataTable} from './table.interface';
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         TuiActionBar,
         TuiAppearance,
         TuiAutoColorPipe,
@@ -70,10 +72,12 @@ import type {DataTable} from './table.interface';
         TuiProgressBar,
         TuiRadioList,
         TuiRepeatTimes,
+        TuiSearch,
         TuiSegmented,
         TuiStatus,
         TuiSwitch,
         TuiTable,
+        TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
     ],
@@ -85,6 +89,9 @@ export class TableComponent {
     protected search = signal('');
     protected expanded = false;
     protected readonly sizes = ['l', 'm', 's'] as const;
+    protected readonly form = new FormGroup({
+        search: new FormControl(),
+    });
 
     protected size = this.sizes[1];
 
