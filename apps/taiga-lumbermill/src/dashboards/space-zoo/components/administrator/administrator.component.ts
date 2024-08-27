@@ -77,7 +77,6 @@ export const animals = [
         TuiButton,
         TuiCalendarRange,
         TuiCardLarge,
-        TuiCardLarge,
         TuiCell,
         TuiExpand,
         TuiHeader,

@@ -10,7 +10,6 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiAutoColorPipe,
@@ -63,7 +62,6 @@ import type {DataTable} from './table.interface';
         TuiChip,
         TuiDropdown,
         TuiIcon,
-        TuiIcon,
         TuiInitialsPipe,
         TuiInputModule,
         TuiItemsWithMore,
@@ -71,7 +69,6 @@ import type {DataTable} from './table.interface';
         TuiLink,
         TuiProgressBar,
         TuiRadioList,
-        TuiRepeatTimes,
         TuiSearch,
         TuiSegmented,
         TuiStatus,
