@@ -1,0 +1,82 @@
+:host {
+    height: calc(100vh - 3rem);
+}
+
+.card {
+    top: 50%;
+    bottom: 50%;
+    width: max-content;
+    margin: auto;
+    transform: translateY(-50%);
+    height: max-content;
+}
+
+.block-input {
+    margin-bottom: 0.3rem;
+    width: 20rem;
+
+    @media (max-width: 29rem) {
+        width: 16rem;
+    }
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.under-password {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.or {
+    display: flex;
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: var(--tui-text-secondary);
+    gap: 0.5rem;
+}
+
+.line {
+    flex-grow: 1;
+}
+
+.icon-login {
+    transition: opacity 0.3s;
+    width: 1.8rem;
+    height: 1.8rem;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active {
+        opacity: 0.95;
+    }
+}
+
+.icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.icons-title {
+    font-weight: 700;
+}
+
+.error {
+    margin-right: auto;
+    margin-bottom: 0.8rem;
+}

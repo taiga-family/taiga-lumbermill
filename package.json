@@ -95,7 +95,7 @@
         "@playwright/test": "1.46.1",
         "@schematics/angular": "18.2.1",
         "@swc-node/register": "1.10.9",
-        "@swc/core": "1.7.14",
+        "@swc/core": "1.7.18",
         "@swc/helpers": "0.5.12",
         "@taiga-ui/browserslist-config": "0.125.3",
         "@taiga-ui/commitlint-config": "0.125.3",
@@ -112,7 +112,7 @@
         "jest-environment-jsdom": "29.7.0",
         "jest-preset-angular": "14.2.2",
         "nx": "19.6.2",
-        "ts-jest": "29.2.4",
+        "ts-jest": "29.2.5",
         "ts-node": "10.9.2",
         "typescript": "5.4.5"
     },

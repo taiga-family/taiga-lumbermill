@@ -91,5 +91,19 @@ export const appRoutes: Route[] = [
                 (mod) => mod.CommonPageComponent,
             ),
     },
+    {
+        path: 'login',
+        loadComponent: async () =>
+            import('../../dashboards/login/login.component').then(
+                (mod) => mod.LoginComponent,
+            ),
+    },
+    {
+        path: 'sign-up',
+        loadComponent: async () =>
+            import('../../dashboards/sign-up/sign-up.component').then(
+                (mod) => mod.SignUpComponent,
+            ),
+    },
     {path: '**', redirectTo: 'dashboards'},
 ];

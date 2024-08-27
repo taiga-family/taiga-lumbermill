@@ -50,7 +50,7 @@ import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
 export class StakingComponent {
     private readonly dialogs = inject(TuiDialogService);
     private readonly cryptoService = inject(CryptoService);
-    protected tokens = toSignal(this.cryptoService.getTokens());
+    protected tokens = toSignal(this.cryptoService.tokens);
     protected price = computed(
         () =>
             this.amount() *

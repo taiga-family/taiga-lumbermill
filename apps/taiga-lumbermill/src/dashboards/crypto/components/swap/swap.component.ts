@@ -48,7 +48,7 @@ import {CryptoService} from '../../../../services/crypto.service';
 })
 export class SwapComponent {
     protected readonly cryptoService = inject(CryptoService);
-    protected readonly tokens = toSignal(this.cryptoService.getTokens());
+    protected readonly tokens = toSignal(this.cryptoService.tokens);
     protected readonly priceFrom = computed(() => this.getPrice(this.tokenFrom()));
 
     protected readonly priceTo = computed(() => this.getPrice(this.tokenTo()));
