@@ -20,6 +20,7 @@ import {
     TuiInitialsPipe,
     TuiLabel,
     TuiLink,
+    TuiScrollbar,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
@@ -69,6 +70,7 @@ import type {DataTable} from './table.interface';
         TuiLink,
         TuiProgressBar,
         TuiRadioList,
+        TuiScrollbar,
         TuiSearch,
         TuiSegmented,
         TuiStatus,

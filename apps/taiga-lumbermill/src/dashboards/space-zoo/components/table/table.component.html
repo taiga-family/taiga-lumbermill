@@ -99,317 +99,319 @@
         <p>Clean (12)</p>
     </button>
 </div>
-<table
-    tuiTable
-    [columns]="columnsTitles"
-    [size]="size"
->
-    <thead>
-        <tr tuiThGroup>
-            @for (column of columns; track $index) {
-                <th
-                    *tuiHead="column.title"
-                    tuiTh
-                    [sorter]="column.sorter"
-                    [sticky]="true"
+<tui-scrollbar>
+    <table
+        tuiTable
+        [columns]="columnsTitles"
+        [size]="size"
+    >
+        <thead>
+            <tr tuiThGroup>
+                @for (column of columns; track $index) {
+                    <th
+                        *tuiHead="column.title"
+                        tuiTh
+                        [sorter]="column.sorter"
+                        [sticky]="true"
+                    >
+                        @if (column.title === 'Name') {
+                            <div [tuiCell]="size">
+                                <input
+                                    tuiCheckbox
+                                    type="checkbox"
+                                    [ngModel]="checked"
+                                    [size]="'s'"
+                                    (ngModelChange)="onCheck($event)"
+                                />
+                                <span tuiTitle>{{ column.title }}</span>
+                            </div>
+                        } @else {
+                            {{ column.title }}
+                        }
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody tuiTbody>
+            <tr
+                *ngFor="let item of searchedData() | tuiTableSort"
+                tuiTr
+            >
+                <td
+                    *tuiCell="'Name'"
+                    tuiTd
                 >
-                    @if (column.title === 'Name') {
-                        <div [tuiCell]="size">
-                            <input
-                                tuiCheckbox
-                                type="checkbox"
-                                [ngModel]="checked"
-                                [size]="'s'"
-                                (ngModelChange)="onCheck($event)"
-                            />
-                            <span tuiTitle>{{ column.title }}</span>
-                        </div>
-                    } @else {
-                        {{ column.title }}
-                    }
-                </th>
-            }
-        </tr>
-    </thead>
-    <tbody tuiTbody>
-        <tr
-            *ngFor="let item of searchedData() | tuiTableSort"
-            tuiTr
-        >
-            <td
-                *tuiCell="'Name'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <input
-                        tuiCheckbox
-                        type="checkbox"
-                        [size]="'s'"
-                        [(ngModel)]="item.selected"
-                    />
-                    <span tuiTitle>
-                        {{ item.checkbox.title }}
-                        <span tuiSubtitle>{{ item.checkbox.subtitle }}</span>
-                    </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'Table'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <span tuiTitle>
-                        {{ item.analytic.title }}
-                        <span tuiSubtitle>{{ item.analytic.subtitle }}</span>
-                    </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'File'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <span tuiTitle>
-                        <span tuiStatus>
-                            <tui-icon [icon]="item.file.icon" />
-                            {{ item.file.title }}
-                            <tui-chip *ngIf="item.file.chip && item.file.subtitle">{{ item.file.chip }}</tui-chip>
+                    <div [tuiCell]="size">
+                        <input
+                            tuiCheckbox
+                            type="checkbox"
+                            [size]="'s'"
+                            [(ngModel)]="item.selected"
+                        />
+                        <span tuiTitle>
+                            {{ item.checkbox.title }}
+                            <span tuiSubtitle>{{ item.checkbox.subtitle }}</span>
                         </span>
-                        <tui-chip *ngIf="!item.file.subtitle && item.file.chip; else subtitle">
-                            {{ item.file.chip }}
-                        </tui-chip>
-                        <ng-template #subtitle>
-                            <span tuiSubtitle>
-                                {{ item.file.subtitle }}
-                            </span>
-                        </ng-template>
-                    </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'About'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <span tuiTitle>
-                        <span tuiStatus>
-                            <tui-icon [icon]="item.file.icon" />
-                            {{ item.file.title }}
-                            <span tuiSubtitle>
-                                {{ item.file.subtitle }}
-                            </span>
-                            <tui-icon
-                                icon="./table/question.svg"
-                                [style.cursor]="'pointer'"
-                            />
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'Table'"
+                    tuiTd
+                >
+                    <div [tuiCell]="size">
+                        <span tuiTitle>
+                            {{ item.analytic.title }}
+                            <span tuiSubtitle>{{ item.analytic.subtitle }}</span>
                         </span>
-                    </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'Label'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <span tuiTitle>
-                        {{ item.date.time }}
-                        <tui-chip>{{ item.date.chip }}</tui-chip>
-                    </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'Creator'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <tui-avatar
-                        [src]="item.cell.name | tuiInitials"
-                        [style.background]="item.cell.name | tuiAutoColor"
-                    />
-                    <span tuiTitle>
-                        {{ item.cell.name }}
-                        <span tuiSubtitle>{{ item.cell.email }}</span>
-                    </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'Creator Info'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <tui-avatar
-                        src="./table/person.svg"
-                        [style.background]="item.cell.name | tuiAutoColor"
-                    />
-                    <span tuiTitle>
-                        {{ item.cell.name }}
-                    </span>
-                    <span
-                        tuiSubtitle
-                        [style.margin-left]="0"
-                    >
-                        {{ item.cell.email }}
-                    </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'Status'"
-                tuiTd
-            >
-                <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
-            </td>
-            <td
-                *tuiCell="'Labels'"
-                tuiTd
-            >
-                <tui-items-with-more [style.gap.rem]="0.25">
-                    <ng-container *ngFor="let chip of item.labels">
-                        <tui-badge *tuiItem>
-                            <tui-icon icon="./table/lock.svg" />
-                            {{ chip }}
-                        </tui-badge>
-                    </ng-container>
-                    <ng-template
-                        let-number
-                        tuiMore
-                    >
-                        <button
-                            appearance="icon"
-                            tuiDropdownAlign="right"
-                            tuiDropdownOpen
-                            tuiLink
-                            [pseudo]="true"
-                            [tuiDropdown]="dropdown"
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'File'"
+                    tuiTd
+                >
+                    <div [tuiCell]="size">
+                        <span tuiTitle>
+                            <span tuiStatus>
+                                <tui-icon [icon]="item.file.icon" />
+                                {{ item.file.title }}
+                                <tui-chip *ngIf="item.file.chip && item.file.subtitle">{{ item.file.chip }}</tui-chip>
+                            </span>
+                            <tui-chip *ngIf="!item.file.subtitle && item.file.chip; else subtitle">
+                                {{ item.file.chip }}
+                            </tui-chip>
+                            <ng-template #subtitle>
+                                <span tuiSubtitle>
+                                    {{ item.file.subtitle }}
+                                </span>
+                            </ng-template>
+                        </span>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'About'"
+                    tuiTd
+                >
+                    <div [tuiCell]="size">
+                        <span tuiTitle>
+                            <span tuiStatus>
+                                <tui-icon [icon]="item.file.icon" />
+                                {{ item.file.title }}
+                                <span tuiSubtitle>
+                                    {{ item.file.subtitle }}
+                                </span>
+                                <tui-icon
+                                    icon="./table/question.svg"
+                                    [style.cursor]="'pointer'"
+                                />
+                            </span>
+                        </span>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'Label'"
+                    tuiTd
+                >
+                    <div [tuiCell]="size">
+                        <span tuiTitle>
+                            {{ item.date.time }}
+                            <tui-chip>{{ item.date.chip }}</tui-chip>
+                        </span>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'Creator'"
+                    tuiTd
+                >
+                    <div [tuiCell]="size">
+                        <tui-avatar
+                            [src]="item.cell.name | tuiInitials"
+                            [style.background]="item.cell.name | tuiAutoColor"
+                        />
+                        <span tuiTitle>
+                            {{ item.cell.name }}
+                            <span tuiSubtitle>{{ item.cell.email }}</span>
+                        </span>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'Creator Info'"
+                    tuiTd
+                >
+                    <div [tuiCell]="size">
+                        <tui-avatar
+                            src="./table/person.svg"
+                            [style.background]="item.cell.name | tuiAutoColor"
+                        />
+                        <span tuiTitle>
+                            {{ item.cell.name }}
+                        </span>
+                        <span
+                            tuiSubtitle
+                            [style.margin-left]="0"
                         >
-                            + {{ item.labels.length - number - 1 }}
-                        </button>
-                        <ng-template #dropdown>
-                            <div
-                                tuiStatus
-                                [style.padding.rem]="1"
-                            >
-                                <ng-container *ngFor="let chip of item.labels; let index = index">
-                                    <tui-badge *ngIf="index > number">
-                                        <tui-icon icon="./table/lock.svg" />
-                                        {{ chip }}
-                                    </tui-badge>
-                                </ng-container>
-                            </div>
-                        </ng-template>
-                    </ng-template>
-                </tui-items-with-more>
-            </td>
-            <td
-                *tuiCell="'Tags'"
-                tuiTd
-            >
-                <tui-items-with-more [style.gap.rem]="0.25">
-                    <ng-container *ngFor="let chip of item.tags">
-                        <tui-badge *tuiItem>
-                            {{ chip }}
-                        </tui-badge>
-                    </ng-container>
-                    <ng-template
-                        let-number
-                        tuiMore
-                    >
-                        <button
-                            appearance="icon"
-                            tuiDropdownAlign="right"
-                            tuiDropdownOpen
-                            tuiLink
-                            [pseudo]="true"
-                            [tuiDropdown]="dropdown"
+                            {{ item.cell.email }}
+                        </span>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'Status'"
+                    tuiTd
+                >
+                    <span [tuiStatus]="item.status.color">{{ item.status.value }}</span>
+                </td>
+                <td
+                    *tuiCell="'Labels'"
+                    tuiTd
+                >
+                    <tui-items-with-more [style.gap.rem]="0.25">
+                        <ng-container *ngFor="let chip of item.labels">
+                            <tui-badge *tuiItem>
+                                <tui-icon icon="./table/lock.svg" />
+                                {{ chip }}
+                            </tui-badge>
+                        </ng-container>
+                        <ng-template
+                            let-number
+                            tuiMore
                         >
-                            + {{ item.tags.length - number - 1 }}
-                        </button>
-                        <ng-template #dropdown>
-                            <div
-                                tuiStatus
-                                [style.padding.rem]="1"
+                            <button
+                                appearance="icon"
+                                tuiDropdownAlign="right"
+                                tuiDropdownOpen
+                                tuiLink
+                                [pseudo]="true"
+                                [tuiDropdown]="dropdown"
                             >
-                                <ng-container *ngFor="let chip of item.tags; let index = index">
-                                    <tui-badge *ngIf="index > number">
-                                        {{ chip }}
-                                    </tui-badge>
-                                </ng-container>
-                            </div>
+                                + {{ item.labels.length - number - 1 }}
+                            </button>
+                            <ng-template #dropdown>
+                                <div
+                                    tuiStatus
+                                    [style.padding.rem]="1"
+                                >
+                                    <ng-container *ngFor="let chip of item.labels; let index = index">
+                                        <tui-badge *ngIf="index > number">
+                                            <tui-icon icon="./table/lock.svg" />
+                                            {{ chip }}
+                                        </tui-badge>
+                                    </ng-container>
+                                </div>
+                            </ng-template>
                         </ng-template>
-                    </ng-template>
-                </tui-items-with-more>
-            </td>
-            <td
-                *tuiCell="'Duration'"
-                tuiTd
-            >
-                <div [tuiCell]="size">
-                    <span tuiTitle>
-                        {{ item.duration }}
+                    </tui-items-with-more>
+                </td>
+                <td
+                    *tuiCell="'Tags'"
+                    tuiTd
+                >
+                    <tui-items-with-more [style.gap.rem]="0.25">
+                        <ng-container *ngFor="let chip of item.tags">
+                            <tui-badge *tuiItem>
+                                {{ chip }}
+                            </tui-badge>
+                        </ng-container>
+                        <ng-template
+                            let-number
+                            tuiMore
+                        >
+                            <button
+                                appearance="icon"
+                                tuiDropdownAlign="right"
+                                tuiDropdownOpen
+                                tuiLink
+                                [pseudo]="true"
+                                [tuiDropdown]="dropdown"
+                            >
+                                + {{ item.tags.length - number - 1 }}
+                            </button>
+                            <ng-template #dropdown>
+                                <div
+                                    tuiStatus
+                                    [style.padding.rem]="1"
+                                >
+                                    <ng-container *ngFor="let chip of item.tags; let index = index">
+                                        <tui-badge *ngIf="index > number">
+                                            {{ chip }}
+                                        </tui-badge>
+                                    </ng-container>
+                                </div>
+                            </ng-template>
+                        </ng-template>
+                    </tui-items-with-more>
+                </td>
+                <td
+                    *tuiCell="'Duration'"
+                    tuiTd
+                >
+                    <div [tuiCell]="size">
+                        <span tuiTitle>
+                            {{ item.duration }}
+                        </span>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'Progress'"
+                    tuiTd
+                >
+                    <span tuiStatus>
+                        <progress
+                            tuiProgressBar
+                            [style.width.rem]="6"
+                            [value]="item.progress / 100"
+                        ></progress>
+                        {{ item.progress }}ms
                     </span>
-                </div>
-            </td>
-            <td
-                *tuiCell="'Progress'"
-                tuiTd
-            >
-                <span tuiStatus>
-                    <progress
-                        tuiProgressBar
-                        [style.width.rem]="6"
-                        [value]="item.progress / 100"
-                    ></progress>
-                    {{ item.progress }}ms
-                </span>
-            </td>
-            <td
-                *tuiCell="''"
-                tuiTd
-            >
-                <span tuiStatus>
-                    <button
-                        appearance="link"
-                        iconStart="@tui.pencil"
-                        size="xs"
-                        tuiIconButton
-                    >
-                        Edit
-                    </button>
-                    <button
-                        appearance="link"
-                        iconStart="@tui.ellipsis"
-                        size="xs"
-                        tuiButton
-                        tuiDropdownOpen
-                        type="button"
-                        [tuiDropdown]="dropdownContent"
-                    >
-                        <ng-template #dropdownContent>
-                            <div class="dropdown">
-                                <button
-                                    appearance="link"
-                                    iconStart="@tui.move"
-                                    size="xs"
-                                    tuiButton
-                                >
-                                    Move
-                                </button>
-                                <button
-                                    appearance="link"
-                                    iconStart="@tui.trash-2"
-                                    size="xs"
-                                    tuiButton
-                                    [style.color]="'var(--tui-text-negative)'"
-                                >
-                                    Delete
-                                </button>
-                            </div>
-                        </ng-template>
-                    </button>
-                </span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+                <td
+                    *tuiCell="''"
+                    tuiTd
+                >
+                    <span tuiStatus>
+                        <button
+                            appearance="link"
+                            iconStart="@tui.pencil"
+                            size="xs"
+                            tuiIconButton
+                        >
+                            Edit
+                        </button>
+                        <button
+                            appearance="link"
+                            iconStart="@tui.ellipsis"
+                            size="xs"
+                            tuiButton
+                            tuiDropdownOpen
+                            type="button"
+                            [tuiDropdown]="dropdownContent"
+                        >
+                            <ng-template #dropdownContent>
+                                <div class="dropdown">
+                                    <button
+                                        appearance="link"
+                                        iconStart="@tui.move"
+                                        size="xs"
+                                        tuiButton
+                                    >
+                                        Move
+                                    </button>
+                                    <button
+                                        appearance="link"
+                                        iconStart="@tui.trash-2"
+                                        size="xs"
+                                        tuiButton
+                                        [style.color]="'var(--tui-text-negative)'"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </ng-template>
+                        </button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</tui-scrollbar>
 <div class="footer">
     <button
         appearance="icon"

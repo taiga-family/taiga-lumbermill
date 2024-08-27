@@ -7,7 +7,6 @@ import {RouterOutlet} from '@angular/router';
     selector: 'lmb-space-zoo',
     imports: [CommonModule, RouterOutlet],
     templateUrl: './space-zoo.component.html',
-    styleUrl: './space-zoo.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpaceZooComponent {}
