@@ -2,7 +2,7 @@
     <search tuiSearch>
         <form
             [formGroup]="form"
-            [style.flex-grow]="1"
+            [style.width]="'100%'"
         >
             <fieldset tuiTextfieldSize="m">
                 <tui-textfield iconStart="@tui.search">
@@ -12,92 +12,54 @@
                         tuiTextfield
                     />
                 </tui-textfield>
+                <button
+                    size="m"
+                    tuiButton
+                    (click)="search.set(form.value.search)"
+                >
+                    Search
+                </button>
+            </fieldset>
+            <fieldset>
+                <tui-segmented>
+                    <label *ngFor="let segment of segments">
+                        <input
+                            formControlName="segmented"
+                            type="radio"
+                            [value]="segment"
+                        />
+                        {{ segment || 'All' }}
+                    </label>
+                </tui-segmented>
+                <tui-filter
+                    formControlName="filter"
+                    size="s"
+                    [items]="filters"
+                />
+                Results: 999
+                <hr />
+                <label tuiLabel>
+                    <input
+                        formControlName="switch"
+                        tuiSwitch
+                        type="checkbox"
+                    />
+                    Assigned to me
+                </label>
+                <hr />
+                <button
+                    appearance="flat"
+                    iconStart="@tui.rotate-cw"
+                    size="xs"
+                    tuiButton
+                    type="reset"
+                    [disabled]="!count()"
+                >
+                    Clear {{ count() ? '(' + count() + ')' : '' }}
+                </button>
             </fieldset>
         </form>
-        <tui-badged-content>
-            <tui-avatar
-                tuiSlot="top"
-                class="point"
-                [style.background-color]="'#FFCD33'"
-            />
-            <button
-                appearance="secondary"
-                size="m"
-                tuiButton
-            >
-                <img
-                    alt=""
-                    src="./filter.svg"
-                />
-            </button>
-        </tui-badged-content>
-        <button
-            appearance="primary"
-            size="m"
-            tuiButton
-            (click)="search.set(form.value.search)"
-        >
-            Search
-        </button>
     </search>
-</div>
-<div
-    class="row-search"
-    [style.margin-top]="0"
->
-    <tui-segmented
-        [size]="'s'"
-        [style.width]="'max-content'"
-    >
-        <button>
-            <tui-icon icon="@tui.sun" />
-            All
-        </button>
-        <button>Incoming</button>
-        <button>Outgoing</button>
-    </tui-segmented>
-    <section>
-        <tui-chip
-            *tuiRepeatTimes="let i of 3"
-            appearance=""
-        >
-            Radio {{ i + 1 }}
-            <input
-                appearance="whiteblock"
-                name="radio"
-                size="m"
-                tuiChip
-                type="radio"
-                [value]="i"
-            />
-        </tui-chip>
-    </section>
-    <label tuiLabel>
-        <input
-            size="s"
-            tuiSwitch
-            type="checkbox"
-            [style.margin-bottom]="'auto'"
-            [style.margin-top]="'auto'"
-        />
-        Toggle
-    </label>
-    <div class="verticalLine"></div>
-    <div
-        tuiSubtitle
-        class="result"
-    >
-        Result: 999
-    </div>
-    <div class="verticalLine"></div>
-    <button
-        appearance="link"
-        tuiButton
-        [style.padding]="'0.2rem'"
-    >
-        <img src="./clean.svg" />
-        <p>Clean (12)</p>
-    </button>
 </div>
 <tui-scrollbar>
     <table

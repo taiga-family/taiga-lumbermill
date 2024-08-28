@@ -10,6 +10,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
+import {tuiCountFilledControls} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiAutoColorPipe,
@@ -31,6 +32,8 @@ import {
     TuiBadgedContent,
     TuiCheckbox,
     TuiChip,
+    TuiDataListWrapper,
+    TuiFilter,
     TuiItemsWithMore,
     TuiProgressBar,
     TuiRadioList,
@@ -61,7 +64,9 @@ import type {DataTable} from './table.interface';
         TuiCell,
         TuiCheckbox,
         TuiChip,
+        TuiDataListWrapper,
         TuiDropdown,
+        TuiFilter,
         TuiIcon,
         TuiInitialsPipe,
         TuiInputModule,
@@ -88,11 +93,25 @@ export class TableComponent {
     protected search = signal('');
     protected expanded = false;
     protected readonly sizes = ['l', 'm', 's'] as const;
+    protected size = this.sizes[1];
+
     protected readonly form = new FormGroup({
         search: new FormControl(),
+        select: new FormControl(),
+        date: new FormControl(),
+        switch: new FormControl(),
+        filter: new FormControl(),
+        segmented: new FormControl(),
     });
 
-    protected size = this.sizes[1];
+    protected readonly items = ['Python', 'JavaScript', 'TypeScript'];
+    protected readonly filters = ['Python', 'JavaScript', 'TypeScript'];
+    protected readonly segments = [null, 'Unread', 'Archived'];
+
+    protected readonly count = toSignal(
+        this.form.valueChanges.pipe(map(() => tuiCountFilledControls(this.form))),
+        {initialValue: 0},
+    );
 
     protected readonly isMobile = toSignal(
         inject(TuiBreakpointService).pipe(map((size) => size === 'mobile')),
