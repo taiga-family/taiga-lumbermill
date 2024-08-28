@@ -63,12 +63,12 @@ export class PriceChartComponent {
 
     protected chart = computed(() => this.processData(this.history()));
 
-    protected minPrice = computed(() =>
-        Math.min(...(this.history() ?? []).map((val) => Number(val.priceUsd))),
+    protected minPrice = computed(
+        () => Math.min(...(this.history() ?? []).map((val) => Number(val.priceUsd))) || 0,
     );
 
-    protected maxPrice = computed(() =>
-        Math.max(...(this.history() ?? []).map((val) => Number(val.priceUsd))),
+    protected maxPrice = computed(
+        () => Math.max(...(this.history() ?? []).map((val) => Number(val.priceUsd))) || 0,
     );
 
     protected filterButtons = ['D', 'W', 'M', 'M6', 'Y'];
@@ -92,6 +92,10 @@ export class PriceChartComponent {
         ]);
 
         return fullSize.filter((_, i) => i % this.step() === 0);
+    }
+
+    protected checkInfinity(value: number): boolean {
+        return Number.isFinite(value);
     }
 
     protected readonly yStringify: TuiStringHandler<number> = (y) =>
