@@ -12,6 +12,25 @@
                         tuiTextfield
                     />
                 </tui-textfield>
+                <tui-badged-content>
+                    <tui-avatar
+                        tuiSlot="top"
+                        class="point"
+                        [style.background-color]="'#FFCD33'"
+                        [style.height]="'0.8rem'"
+                        [style.width]="'0.8rem'"
+                    />
+                    <button
+                        appearance="secondary"
+                        size="m"
+                        tuiButton
+                    >
+                        <img
+                            alt=""
+                            src="./filter.svg"
+                        />
+                    </button>
+                </tui-badged-content>
                 <button
                     size="m"
                     tuiButton
@@ -27,6 +46,7 @@
                             formControlName="segmented"
                             type="radio"
                             [value]="segment"
+                            (ngModelChange)="segmentSort.set(form.controls.segmented.value)"
                         />
                         {{ segment || 'All' }}
                     </label>
@@ -43,6 +63,7 @@
                         formControlName="switch"
                         tuiSwitch
                         type="checkbox"
+                        (ngModelChange)="successSort.set(form.controls.switch.value)"
                     />
                     Success
                 </label>

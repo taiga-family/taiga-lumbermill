@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import type {Signal} from '@angular/core';
+import type {Signal, WritableSignal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -114,7 +114,7 @@ export const INITIAL_DATA = [
         labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
         tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
         duration: '30 days',
-        progress: 43.7,
+        progress: 53.2,
         selected: false,
     },
     {
@@ -215,8 +215,10 @@ export class TableComponent {
     protected sizeSort = signal(10);
     protected readonly itemsSort = [10, 50, 100];
 
-    protected readonly items = ['Python', 'JavaScript', 'TypeScript'];
-    protected readonly segments = [null, 'Unread', 'Archived'];
+    protected readonly items = ['43.7ms', '45.7ms', '53.2ms'];
+    protected readonly segments = [null, '29 days', '30 days'];
+    protected readonly segmentSort: WritableSignal<string | null> = signal(null);
+    protected readonly successSort: WritableSignal<boolean> = signal(false);
 
     protected readonly count = toSignal(
         this.form.valueChanges.pipe(map(() => tuiCountFilledControls(this.form))),
@@ -314,7 +316,10 @@ export class TableComponent {
     );
 
     protected searchedData = computed(() =>
-        this.data().filter((val) => val.checkbox.title.includes(this.search())),
+        this.data()
+            .filter((val) => val.checkbox.title.includes(this.search()))
+            .filter((val) => !this.segmentSort() || val.duration === this.segmentSort())
+            .filter((val) => !this.successSort() || val.status.value === 'Success'),
     );
 
     protected length = computed(() =>
