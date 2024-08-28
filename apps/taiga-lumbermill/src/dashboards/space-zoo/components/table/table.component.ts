@@ -219,6 +219,7 @@ export class TableComponent {
     protected readonly segments = [null, '29 days', '30 days'];
     protected readonly segmentSort: WritableSignal<string | null> = signal(null);
     protected readonly successSort: WritableSignal<boolean> = signal(false);
+    protected readonly progressSort: WritableSignal<string[]> = signal([]);
 
     protected readonly count = toSignal(
         this.form.valueChanges.pipe(map(() => tuiCountFilledControls(this.form))),
@@ -319,7 +320,12 @@ export class TableComponent {
         this.data()
             .filter((val) => val.checkbox.title.includes(this.search()))
             .filter((val) => !this.segmentSort() || val.duration === this.segmentSort())
-            .filter((val) => !this.successSort() || val.status.value === 'Success'),
+            .filter((val) => !this.successSort() || val.status.value === 'Success')
+            .filter(
+                (val) =>
+                    !this.progressSort().length ||
+                    this.progressSort().includes(`${val.progress.toString()}ms`),
+            ),
     );
 
     protected length = computed(() =>

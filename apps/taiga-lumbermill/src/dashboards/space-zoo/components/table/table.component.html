@@ -55,8 +55,9 @@
                     formControlName="filter"
                     size="s"
                     [items]="items"
+                    (ngModelChange)="progressSort.set(form.controls.filter.value)"
                 />
-                Results: {{ searchedData().length }}
+                Results: {{ searchedData().length }} {{ progressSort() }}
                 <hr />
                 <label tuiLabel>
                     <input
