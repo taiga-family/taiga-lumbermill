@@ -10,6 +10,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiCountFilledControls} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -30,11 +31,13 @@ import {
     TuiAvatar,
     TuiBadge,
     TuiBadgedContent,
+    TuiButtonSelect,
     TuiCheckbox,
     TuiChip,
     TuiDataListWrapper,
     TuiFilter,
     TuiItemsWithMore,
+    TuiPagination,
     TuiProgressBar,
     TuiRadioList,
     TuiSegmented,
@@ -61,6 +64,7 @@ import type {DataTable} from './table.interface';
         TuiBadge,
         TuiBadgedContent,
         TuiButton,
+        TuiButtonSelect,
         TuiCell,
         TuiCheckbox,
         TuiChip,
@@ -73,6 +77,7 @@ import type {DataTable} from './table.interface';
         TuiItemsWithMore,
         TuiLabel,
         TuiLink,
+        TuiPagination,
         TuiProgressBar,
         TuiRadioList,
         TuiScrollbar,
@@ -104,8 +109,12 @@ export class TableComponent {
         segmented: new FormControl(),
     });
 
+    protected index = 4;
+    protected length = 10;
+    protected sizeSort = 10;
+    protected readonly itemsSort = [10, 50, 100];
+
     protected readonly items = ['Python', 'JavaScript', 'TypeScript'];
-    protected readonly filters = ['Python', 'JavaScript', 'TypeScript'];
     protected readonly segments = [null, 'Unread', 'Archived'];
 
     protected readonly count = toSignal(
@@ -332,4 +341,7 @@ export class TableComponent {
             item.selected = checked;
         });
     }
+
+    protected readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
+        `${$implicit} items per page`;
 }

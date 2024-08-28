@@ -34,7 +34,7 @@
                 <tui-filter
                     formControlName="filter"
                     size="s"
-                    [items]="filters"
+                    [items]="items"
                 />
                 Results: 999
                 <hr />
@@ -67,6 +67,26 @@
         [columns]="columnsTitles"
         [size]="size"
     >
+        <caption tuiCaption>
+            <span>999 rows</span>
+            <button
+                appearance="flat"
+                tuiButton
+                tuiButtonSelect
+                [(ngModel)]="sizeSort"
+            >
+                {{ index * sizeSort + 1 }}-{{ (index + 1) * sizeSort }} rows
+                <tui-data-list-wrapper
+                    *tuiTextfieldDropdown
+                    [itemContent]="content"
+                    [items]="itemsSort"
+                />
+            </button>
+            <tui-pagination
+                [length]="length"
+                [(index)]="index"
+            />
+        </caption>
         <thead>
             <tr tuiThGroup>
                 @for (column of columns; track $index) {
@@ -374,66 +394,6 @@
         </tbody>
     </table>
 </tui-scrollbar>
-<div class="footer">
-    <button
-        appearance="icon"
-        tuiButton
-        [style.color]="'var(--tui-text-action)'"
-    >
-        <tui-icon icon="@tui.chevron-left" />
-    </button>
-    <button
-        appearance="primary"
-        size="s"
-        tuiButton
-        class="menu-clicked"
-    >
-        1
-    </button>
-    <a
-        tuiLink
-        [style.font-weight]="500"
-    >
-        2
-    </a>
-    <a
-        tuiLink
-        [style.font-weight]="500"
-    >
-        3
-    </a>
-    <a
-        tuiLink
-        [style.font-weight]="500"
-    >
-        4
-    </a>
-    <a
-        tuiLink
-        [style.font-weight]="500"
-    >
-        ...
-    </a>
-    <a
-        tuiLink
-        [style.font-weight]="500"
-    >
-        13
-    </a>
-    <button
-        appearance="icon"
-        tuiButton
-        [style.color]="'var(--tui-text-action)'"
-    >
-        <tui-icon icon="@tui.chevron-right" />
-    </button>
-    <a
-        tuiLink
-        [style.font-weight]="500"
-    >
-        1-7 on page
-    </a>
-</div>
 <tui-action-bar
     *tuiActionBar="open"
     [expanded]="!!isMobile() && expanded"
