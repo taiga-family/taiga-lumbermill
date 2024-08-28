@@ -24,6 +24,8 @@ import {
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
+export const actions = ['doctor', 'play', 'clean', 'feed'];
+
 export const animals = [
     {
         src: './nft/1.jpg',

@@ -7,7 +7,7 @@ import {TuiAvatar, TuiBadge, TuiProgress} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {map, startWith, takeWhile, timer} from 'rxjs';
 
-import {animals} from '../administrator/administrator.component';
+import {actions, animals} from '../administrator/administrator.component';
 
 @Component({
     standalone: true,
@@ -31,6 +31,7 @@ export class AnimalComponent {
     private readonly activatedRoute = inject(ActivatedRoute);
     protected id = toSignal(this.activatedRoute.params)()?.['id'];
     protected animals = animals;
+    protected actions = actions;
     protected readonly max = 100;
     protected readonly value$ = timer(140, 80).pipe(
         map((i) => i + 30),
@@ -39,4 +40,8 @@ export class AnimalComponent {
     );
 
     protected states = animals[this.id].action.map((_) => false);
+
+    protected inArray(value: string): boolean {
+        return this.animals[this.id].action.includes(value);
+    }
 }

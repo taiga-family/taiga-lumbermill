@@ -47,9 +47,10 @@
             </h2>
         </header>
         <div>
-            <h3 class="about">From: {{ animal.from }}</h3>
-            <h4 class="about">Description: {{ animal.about }}</h4>
+            <p class="about">From: {{ animal.from }}</p>
+            <p class="about">Description: {{ animal.about }}</p>
         </div>
+        <div></div>
     </div>
     <div
         tuiAppearance="whiteblock"
@@ -65,8 +66,9 @@
             </h2>
         </header>
         <div class="list">
-            @for (act of animal.action; track $index) {
+            @for (act of actions; track $index) {
                 <div
+                    [class.disable]="!inArray(act)"
                     [style.display]="'flex'"
                     [style.gap]="'1rem'"
                 >
@@ -76,14 +78,11 @@
                         class="card"
                         [style.margin-bottom]="'auto'"
                         [style.margin-top]="'auto'"
-                        (click)="states[$index] = !states[$index]"
+                        (click)="inArray(act) ? (states[$index] = !states[$index]) : ''"
                     >
-                        <h3
-                            tuiTitle="m"
-                            class="tui-space_top-0 tui-space_bottom-0"
-                        >
+                        <p class="tui-space_top-0 tui-space_bottom-0 action-text">
                             {{ act }}
-                        </h3>
+                        </p>
                     </button>
                     @if (states[$index]) {
                         <label
