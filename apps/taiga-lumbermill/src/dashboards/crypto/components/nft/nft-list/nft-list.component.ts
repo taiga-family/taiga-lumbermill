@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAppearance, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, TuiScrollbar, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
@@ -24,6 +24,7 @@ import {NftService} from '../nft.service';
         TuiAvatar,
         TuiCardLarge,
         TuiHeader,
+        TuiScrollbar,
         TuiSurface,
         TuiTitle,
     ],
