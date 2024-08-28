@@ -36,7 +36,7 @@
                     size="s"
                     [items]="items"
                 />
-                Results: 999
+                Results: {{ searchedData().length }}
                 <hr />
                 <label tuiLabel>
                     <input
@@ -44,7 +44,7 @@
                         tuiSwitch
                         type="checkbox"
                     />
-                    Assigned to me
+                    Success
                 </label>
                 <hr />
                 <button
@@ -68,14 +68,14 @@
         [size]="size"
     >
         <caption tuiCaption>
-            <span>999 rows</span>
+            <span>{{ searchedData().length }} rows</span>
             <button
                 appearance="flat"
                 tuiButton
                 tuiButtonSelect
                 [(ngModel)]="sizeSort"
             >
-                {{ index * sizeSort + 1 }}-{{ (index + 1) * sizeSort }} rows
+                {{ index * sizeSort() + 1 }}-{{ (index + 1) * sizeSort() }} rows
                 <tui-data-list-wrapper
                     *tuiTextfieldDropdown
                     [itemContent]="content"
@@ -83,7 +83,7 @@
                 />
             </button>
             <tui-pagination
-                [length]="length"
+                [length]="length()"
                 [(index)]="index"
             />
         </caption>
@@ -116,7 +116,7 @@
         </thead>
         <tbody tuiTbody>
             <tr
-                *ngFor="let item of searchedData() | tuiTableSort"
+                *ngFor="let item of searchedData().slice(index * sizeSort(), (index + 1) * sizeSort()) | tuiTableSort"
                 tuiTr
             >
                 <td

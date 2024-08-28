@@ -50,6 +50,108 @@ import {map} from 'rxjs';
 
 import type {DataTable} from './table.interface';
 
+export const INITIAL_DATA = [
+    {
+        checkbox: {
+            title: 'INN Checking in database_part_1',
+            subtitle: 'Connection throttled because max number',
+        },
+        analytic: {
+            title: 'WO_analytic',
+            subtitle: 'Greenplum Table',
+        },
+        file: {
+            icon: './table/file.svg',
+            title: 'Stability hamcejdc #195',
+            chip: 'label',
+            subtitle: 'k6-tenant-manager ・ master',
+        },
+        date: {
+            time: '13.03.2022 13:45:48',
+            chip: 'ExecuteSasScriptOnAllContours',
+        },
+        cell: {
+            name: 'Misha Zhem',
+            email: 'silly@walk.uk',
+        },
+        status: {
+            value: 'Success',
+            color: 'var(--tui-status-positive)',
+        },
+        labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
+        tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
+        duration: '30 days',
+        progress: 43.7,
+        selected: false,
+    },
+    {
+        checkbox: {
+            title: 'INN Checking in database_part_2',
+            subtitle: 'Connection throttled because max number',
+        },
+        analytic: {
+            title: 'WO_analytic',
+            subtitle: 'Greenplum Table',
+        },
+        file: {
+            icon: './table/file.svg',
+            title: 'Stability hamcejdc #195',
+            chip: 'label',
+            subtitle: 'k6-tenant-manager ・ master',
+        },
+        date: {
+            time: '13.03.2022 13:45:48',
+            chip: 'ExecuteSasScriptOnAllContours',
+        },
+        cell: {
+            name: 'Misha Zhem',
+            email: 'silly@walk.uk',
+        },
+        status: {
+            value: 'Success',
+            color: 'var(--tui-status-positive)',
+        },
+        labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
+        tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
+        duration: '30 days',
+        progress: 43.7,
+        selected: false,
+    },
+    {
+        checkbox: {
+            title: 'INN Checking in database_part_3',
+            subtitle: 'Connection throttled because max number',
+        },
+        analytic: {
+            title: 'WO_analytic33',
+            subtitle: 'Greenplum Table',
+        },
+        file: {
+            icon: './table/file.svg',
+            title: 'Stability hamcejdc #195212',
+            chip: 'label',
+            subtitle: 'k6-tenant-manager ・ master',
+        },
+        date: {
+            time: '13.03.2022 15:45:48',
+            chip: 'ExecuteSasScriptOnAllContours',
+        },
+        cell: {
+            name: 'Misha Zhem32',
+            email: 'silly@walk.uk',
+        },
+        status: {
+            value: 'Warning',
+            color: 'var(--tui-status-negative)',
+        },
+        labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
+        tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
+        duration: '29 days',
+        progress: 45.7,
+        selected: false,
+    },
+];
+
 @Component({
     standalone: true,
     selector: 'lmb-table',
@@ -109,9 +211,8 @@ export class TableComponent {
         segmented: new FormControl(),
     });
 
-    protected index = 4;
-    protected length = 10;
-    protected sizeSort = 10;
+    protected index = 0;
+    protected sizeSort = signal(10);
     protected readonly itemsSort = [10, 50, 100];
 
     protected readonly items = ['Python', 'JavaScript', 'TypeScript'];
@@ -191,110 +292,33 @@ export class TableComponent {
 
     protected columnsTitles = this.columns.map((val) => val.title);
 
-    protected readonly data: Signal<DataTable[]> = signal([
-        {
-            checkbox: {
-                title: 'INN Checking in database_part_1',
-                subtitle: 'Connection throttled because max number',
-            },
-            analytic: {
-                title: 'WO_analytic',
-                subtitle: 'Greenplum Table',
-            },
-            file: {
-                icon: './table/file.svg',
-                title: 'Stability hamcejdc #195',
-                chip: 'label',
-                subtitle: 'k6-tenant-manager ・ master',
-            },
-            date: {
-                time: '13.03.2022 13:45:48',
-                chip: 'ExecuteSasScriptOnAllContours',
-            },
-            cell: {
-                name: 'Misha Zhem',
-                email: 'silly@walk.uk',
-            },
-            status: {
-                value: 'Success',
-                color: 'var(--tui-status-positive)',
-            },
-            labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
-            tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
-            duration: '30 days',
-            progress: 43.7,
-            selected: false,
-        },
-        {
-            checkbox: {
-                title: 'INN Checking in database_part_2',
-                subtitle: 'Connection throttled because max number',
-            },
-            analytic: {
-                title: 'WO_analytic',
-                subtitle: 'Greenplum Table',
-            },
-            file: {
-                icon: './table/file.svg',
-                title: 'Stability hamcejdc #195',
-                chip: 'label',
-                subtitle: 'k6-tenant-manager ・ master',
-            },
-            date: {
-                time: '13.03.2022 13:45:48',
-                chip: 'ExecuteSasScriptOnAllContours',
-            },
-            cell: {
-                name: 'Misha Zhem',
-                email: 'silly@walk.uk',
-            },
-            status: {
-                value: 'Success',
-                color: 'var(--tui-status-positive)',
-            },
-            labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
-            tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
-            duration: '30 days',
-            progress: 43.7,
-            selected: false,
-        },
-        {
-            checkbox: {
-                title: 'INN Checking in database_part_3',
-                subtitle: 'Connection throttled because max number',
-            },
-            analytic: {
-                title: 'WO_analytic33',
-                subtitle: 'Greenplum Table',
-            },
-            file: {
-                icon: './table/file.svg',
-                title: 'Stability hamcejdc #195212',
-                chip: 'label',
-                subtitle: 'k6-tenant-manager ・ master',
-            },
-            date: {
-                time: '13.03.2022 15:45:48',
-                chip: 'ExecuteSasScriptOnAllContours',
-            },
-            cell: {
-                name: 'Misha Zhem32',
-                email: 'silly@walk.uk',
-            },
-            status: {
-                value: 'Warning',
-                color: 'var(--tui-status-negative)',
-            },
-            labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
-            tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
-            duration: '29 days',
-            progress: 45.7,
-            selected: false,
-        },
-    ]);
+    protected readonly data: Signal<DataTable[]> = signal(
+        INITIAL_DATA.concat(
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+            INITIAL_DATA,
+        ),
+    );
 
     protected searchedData = computed(() =>
         this.data().filter((val) => val.checkbox.title.includes(this.search())),
+    );
+
+    protected length = computed(() =>
+        Math.ceil(this.searchedData().length / this.sizeSort()),
     );
 
     protected get open(): boolean {
