@@ -61,7 +61,7 @@ export const INITIAL_DATA = [
             subtitle: 'Greenplum Table',
         },
         file: {
-            icon: './table/file.svg',
+            icon: '@tui.file',
             title: 'Stability hamcejdc #195',
             chip: 'label',
             subtitle: 'k6-tenant-manager ・ master',
@@ -94,7 +94,7 @@ export const INITIAL_DATA = [
             subtitle: 'Greenplum Table',
         },
         file: {
-            icon: './table/file.svg',
+            icon: '@tui.file',
             title: 'Stability hamcejdc #195',
             chip: 'label',
             subtitle: 'k6-tenant-manager ・ master',
@@ -127,7 +127,7 @@ export const INITIAL_DATA = [
             subtitle: 'Greenplum Table',
         },
         file: {
-            icon: './table/file.svg',
+            icon: '@tui.file',
             title: 'Stability hamcejdc #195212',
             chip: 'label',
             subtitle: 'k6-tenant-manager ・ master',

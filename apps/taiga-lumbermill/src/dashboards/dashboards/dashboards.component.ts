@@ -5,6 +5,7 @@ import {
     ActivationEnd,
     Router,
     RouterLink,
+    RouterLinkActive,
     RouterOutlet,
 } from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
@@ -19,6 +20,7 @@ import {filter, map, startWith} from 'rxjs';
         AsyncPipe,
         CommonModule,
         RouterLink,
+        RouterLinkActive,
         RouterOutlet,
         TuiCardLarge,
         TuiFade,

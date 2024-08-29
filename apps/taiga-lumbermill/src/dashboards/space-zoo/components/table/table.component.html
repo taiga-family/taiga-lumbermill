@@ -25,10 +25,7 @@
                         size="m"
                         tuiButton
                     >
-                        <img
-                            alt=""
-                            src="./filter.svg"
-                        />
+                        <tui-icon icon="@tui.filter" />
                     </button>
                 </tui-badged-content>
                 <button
@@ -204,7 +201,7 @@
                                     {{ item.file.subtitle }}
                                 </span>
                                 <tui-icon
-                                    icon="./table/question.svg"
+                                    icon="@tui.circle-help"
                                     [style.cursor]="'pointer'"
                                 />
                             </span>
@@ -243,7 +240,7 @@
                 >
                     <div [tuiCell]="size">
                         <tui-avatar
-                            src="./table/person.svg"
+                            src="@tui.user"
                             [style.background]="item.cell.name | tuiAutoColor"
                         />
                         <span tuiTitle>
@@ -270,7 +267,7 @@
                     <tui-items-with-more [style.gap.rem]="0.25">
                         <ng-container *ngFor="let chip of item.labels">
                             <tui-badge *tuiItem>
-                                <tui-icon icon="./table/lock.svg" />
+                                <tui-icon icon="@tui.lock" />
                                 {{ chip }}
                             </tui-badge>
                         </ng-container>
