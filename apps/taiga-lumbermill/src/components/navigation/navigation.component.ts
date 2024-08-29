@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
@@ -18,13 +18,13 @@ import {
     TuiBadge,
     TuiBadgeNotification,
     TuiChevron,
+    TuiDataListDropdownManager,
     TuiFade,
     TuiTabs,
 } from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
-import {IotComponent} from '../../dashboards/iot/iot.component';
 import {ThemeService} from '../../services/theme.service';
 
 @Component({
@@ -32,10 +32,9 @@ import {ThemeService} from '../../services/theme.service';
     selector: 'app-navigation',
     imports: [
         CommonModule,
-        IotComponent,
         RouterLink,
         RouterLinkActive,
-        RouterModule,
+        RouterOutlet,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
@@ -44,6 +43,7 @@ import {ThemeService} from '../../services/theme.service';
         TuiCardLarge,
         TuiChevron,
         TuiDataList,
+        TuiDataListDropdownManager,
         TuiDropdown,
         TuiExpand,
         TuiFade,
