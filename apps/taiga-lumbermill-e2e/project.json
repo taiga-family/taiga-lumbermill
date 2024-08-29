@@ -4,7 +4,6 @@
     "projectType": "application",
     "sourceRoot": "apps/taiga-lumbermill-e2e/src",
     "implicitDependencies": ["taiga-lumbermill"],
-    "// targets": "to see all targets run: nx show project taiga-lumbermill-e2e --web",
     "targets": {
         "test": {
             "executor": "nx:run-commands",
