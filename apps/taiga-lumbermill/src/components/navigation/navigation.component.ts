@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {
@@ -7,13 +7,12 @@ import {
     TuiButton,
     TuiDataList,
     TuiDropdown,
-    TuiExpand,
     TuiIcon,
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiChevron} from '@taiga-ui/kit';
-import {TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {TuiChevron, TuiFade} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 import {ThemeService} from '../../services/theme.service';
@@ -22,16 +21,18 @@ import {ThemeService} from '../../services/theme.service';
     standalone: true,
     selector: 'app-navigation',
     imports: [
+        AsyncPipe,
         CommonModule,
         RouterLink,
         RouterLinkActive,
         RouterOutlet,
         TuiAppearance,
         TuiButton,
+        TuiCardLarge,
         TuiChevron,
         TuiDataList,
         TuiDropdown,
-        TuiExpand,
+        TuiFade,
         TuiHeader,
         TuiIcon,
         TuiNavigation,

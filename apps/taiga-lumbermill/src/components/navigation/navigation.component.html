@@ -16,11 +16,11 @@
         tuiButton
         tuiChevron
         type="button"
-        [tuiDropdown]="products"
+        [tuiDropdown]="theme"
         [(tuiDropdownOpen)]="openTheme"
     >
         <span tuiFade>{{ themeService.theme }}</span>
-        <ng-template #products>
+        <ng-template #theme>
             <tui-data-list size="s">
                 @for (theme of themeService.themes; track $index) {
                     <button
@@ -50,41 +50,31 @@
         [tuiNavigationAside]="expanded"
     >
         <header>
-            <a
+            <button
                 iconStart="@tui.home"
                 routerLink="/"
                 tuiAsideItem
             >
                 <span tuiFade>Taiga lumbermill</span>
-            </a>
+            </button>
         </header>
-        <a
+        <button
             iconStart="@tui.palette"
             routerLink="/theme"
             tuiAsideItem
         >
             Theme Generator
-        </a>
+        </button>
         <tui-aside-group>
             <button
-                iconStart="@tui.layout-dashboard"
+                iconStart="@tui.settings"
                 tuiAsideItem
                 tuiChevron
             >
                 Dashboards
                 <ng-template>
-                    <button
-                        routerLink="/dashboards/iot"
-                        tuiAsideItem
-                    >
-                        IOT
-                    </button>
-                    <button
-                        routerLink="/dashboards/crypto"
-                        tuiAsideItem
-                    >
-                        Crypto
-                    </button>
+                    <button tuiAsideItem>IOT</button>
+                    <button tuiAsideItem>Crypto</button>
                 </ng-template>
             </button>
         </tui-aside-group>
