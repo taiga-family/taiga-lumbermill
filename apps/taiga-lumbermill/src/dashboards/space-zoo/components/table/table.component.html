@@ -5,33 +5,39 @@
             [style.width]="'100%'"
         >
             <fieldset tuiTextfieldSize="m">
-                <tui-textfield iconStart="@tui.search">
-                    <input
-                        formControlName="search"
-                        placeholder="Search by name"
-                        tuiTextfield
-                    />
-                </tui-textfield>
-                <tui-badged-content>
-                    <tui-avatar
-                        tuiSlot="top"
-                        class="point"
-                        [style.background-color]="'#FFCD33'"
-                        [style.height]="'0.8rem'"
-                        [style.width]="'0.8rem'"
-                    />
+                <tui-search-filters>
+                    Filters
                     <button
-                        appearance="secondary"
-                        size="m"
                         tuiButton
+                        type="reset"
                     >
-                        <tui-icon icon="@tui.filter" />
+                        Reset
                     </button>
-                </tui-badged-content>
+                    <tui-textfield
+                        *tuiItem
+                        iconStart="@tui.search"
+                    >
+                        <input
+                            formControlName="searchByName"
+                            placeholder="Search by name"
+                            tuiTextfield
+                        />
+                    </tui-textfield>
+                    <tui-textfield
+                        *tuiItem
+                        iconStart="@tui.search"
+                    >
+                        <input
+                            formControlName="searchByCreator"
+                            placeholder="Search by creator"
+                            tuiTextfield
+                        />
+                    </tui-textfield>
+                </tui-search-filters>
                 <button
                     size="m"
                     tuiButton
-                    (click)="search.set(form.value.search)"
+                    (click)="submitSearch()"
                 >
                     Search
                 </button>

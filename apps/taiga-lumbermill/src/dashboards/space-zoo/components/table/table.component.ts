@@ -197,13 +197,15 @@ export const INITIAL_DATA = [
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
-    protected search = signal('');
+    protected searchByName = signal('');
+    protected searchByCreator = signal('');
     protected expanded = false;
     protected readonly sizes = ['l', 'm', 's'] as const;
     protected size = this.sizes[1];
 
     protected readonly form = new FormGroup({
-        search: new FormControl(),
+        searchByName: new FormControl(),
+        searchByCreator: new FormControl(),
         select: new FormControl(),
         date: new FormControl(),
         switch: new FormControl(),
@@ -318,7 +320,16 @@ export class TableComponent {
 
     protected searchedData = computed(() =>
         this.data()
-            .filter((val) => val.checkbox.title.includes(this.search()))
+            .filter(
+                (val) =>
+                    !this.searchByName() ||
+                    val.checkbox.title.includes(this.searchByName()),
+            )
+            .filter(
+                (val) =>
+                    !this.searchByCreator() ||
+                    val.cell.name.includes(this.searchByCreator()),
+            )
             .filter((val) => !this.segmentSort() || val.duration === this.segmentSort())
             .filter((val) => !this.successSort() || val.status.value === 'Success')
             .filter(
@@ -375,6 +386,11 @@ export class TableComponent {
         this.searchedData().forEach((item) => {
             item.selected = checked;
         });
+    }
+
+    protected submitSearch(): void {
+        this.searchByName.set(this.form.value.searchByName);
+        this.searchByCreator.set(this.form.value.searchByCreator);
     }
 
     protected readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
