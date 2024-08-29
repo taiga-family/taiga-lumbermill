@@ -2,6 +2,7 @@
     class="axes"
     [axisYLabels]="[(minPrice() | tuiAmount | async) || '', (maxPrice() | tuiAmount | async) || '']"
     [horizontalLines]="4"
+    [tuiSkeleton]="!history()"
     [verticalLines]="4"
 >
     <tui-line-chart

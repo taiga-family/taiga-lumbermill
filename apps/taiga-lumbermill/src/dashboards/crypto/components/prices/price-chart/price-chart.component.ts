@@ -18,6 +18,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {TuiAppearance, TuiButton, TuiHint, TuiSurface} from '@taiga-ui/core';
+import {TuiSkeleton} from '@taiga-ui/kit';
 import {combineLatest, switchMap} from 'rxjs';
 
 import type {HistoryData} from '../../../../../services/crypto.service';
@@ -38,6 +39,7 @@ import {INTERVALS} from './price-chart.constant';
         TuiLineChart,
         TuiLineDaysChart,
         TuiLineDaysChartHint,
+        TuiSkeleton,
         TuiSurface,
     ],
     templateUrl: './price-chart.component.html',

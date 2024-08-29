@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
+import {TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 import {CryptoService} from '../../../../services/crypto.service';
@@ -17,6 +18,7 @@ import {PriceListComponent} from './price-list/price-list.component';
         TuiAppearance,
         TuiCardLarge,
         TuiHeader,
+        TuiSkeleton,
         TuiTitle,
     ],
     templateUrl: './prices.component.html',
@@ -24,5 +26,6 @@ import {PriceListComponent} from './price-list/price-list.component';
 })
 export class PricesComponent {
     protected pricesService = inject(CryptoService);
+    protected tokens$ = this.pricesService.getTokens();
     protected token = '';
 }

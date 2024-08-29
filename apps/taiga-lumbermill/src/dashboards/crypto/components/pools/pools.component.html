@@ -7,17 +7,22 @@
         <h2
             tuiTitle
             [style.text-align]="'center'"
+            [tuiSkeleton]="!tokens()"
         >
             Pools
         </h2>
     </header>
     <tui-input
         tuiTextfieldIconLeft="@tui.search"
+        [tuiSkeleton]="!tokens()"
         [(ngModel)]="search"
     >
         Search
     </tui-input>
-    <div class="list-pools">
+    <div
+        class="list-pools"
+        [tuiSkeleton]="!tokens()"
+    >
         <tui-scrollbar>
             <cdk-virtual-scroll-viewport
                 #viewport
