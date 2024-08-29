@@ -1,0 +1,115 @@
+@let animal = animals[id];
+<div class="info">
+    <button
+        appearance="icon"
+        iconStart="@tui.log-out"
+        routerLink="/dashboards/space-zoo/"
+        tuiIconButton
+        class="exit"
+    ></button>
+    <tui-avatar
+        [size]="'xxl'"
+        [src]="animal.src"
+        [style.border-radius]="'9rem'"
+        [style.height]="'9rem'"
+        [style.width]="'9rem'"
+    />
+    <header tuiHeader>
+        <h3 tuiTitle>
+            {{ animal.title }}
+            <div
+                [style.align-items]="'center'"
+                [style.display]="'flex'"
+                [style.gap]="'0.5rem'"
+            >
+                <span tuiSubtitle>Health:</span>
+                @let HealthValue = values$[0]() | async;
+                <tui-badge
+                    tuiStatus
+                    [appearance]="animal.health === 'good' || HealthValue === max ? 'success' : 'warning'"
+                >
+                    {{ HealthValue === max ? 'good' : animal.health }}
+                </tui-badge>
+            </div>
+            <div class="tags">
+                @for (tag of tags(); track $index) {
+                    <tui-badge appearance="primary">{{ tag }}</tui-badge>
+                }
+            </div>
+        </h3>
+    </header>
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        class="card"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                Process
+            </h2>
+        </header>
+        <div class="list">
+            @for (act of actions; track $index) {
+                @let value = values$[$index]() | async;
+                <div
+                    class="action"
+                    [class.disable]="!inArray(act)"
+                >
+                    <button
+                        tuiCardLarge="normal"
+                        tuiSurface="elevated"
+                        class="card"
+                        (click)="inArray(act) ? states[$index].set(!states[$index]()) : ''"
+                    >
+                        <p class="tui-space_top-0 tui-space_bottom-0 action-text">{{ act }}</p>
+                    </button>
+                    @if (states[$index]()) {
+                        <label
+                            *ngIf="value"
+                            tuiProgressLabel
+                            [style.width]="'max-content'"
+                        >
+                            <span class="text">COMPLETED</span>
+                            <span class="percent">{{ value }}%</span>
+
+                            <tui-progress-circle
+                                size="l"
+                                [max]="max"
+                                [value]="value"
+                            />
+                        </label>
+                    } @else {
+                        <div
+                            [style.height]="'5rem'"
+                            [style.width]="'5rem'"
+                        ></div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div
+        tuiAppearance="whiteblock"
+        tuiCardLarge="normal"
+        class="card"
+    >
+        <header tuiHeader>
+            <h2
+                tuiTitle
+                [style.text-align]="'center'"
+            >
+                About animal
+            </h2>
+        </header>
+        <div>
+            <p class="about">From: {{ animal.from }}</p>
+            <p class="about">Description: {{ animal.about }}</p>
+        </div>
+        <div></div>
+    </div>
+</div>

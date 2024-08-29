@@ -1,0 +1,88 @@
+:host {
+    padding: 2rem;
+}
+
+.animal-info {
+    display: flex;
+    gap: 2rem;
+}
+
+.info {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+    margin: 0 2rem;
+
+    @media (max-width: 86.25rem) {
+        justify-content: center;
+    }
+
+    @media (max-width: 62.5rem) {
+        flex-wrap: wrap;
+    }
+}
+
+.tags {
+    display: flex;
+    margin-top: 0.3rem;
+    gap: 0.3rem;
+}
+
+.main {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+.card[tuiCardLarge][data-space] {
+    flex-grow: 1;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    height: min-content;
+    max-width: 100%;
+}
+
+.about {
+    margin: 0.3rem 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.text {
+    font-size: 0.625rem;
+    color: var(--tui-text-tertiary);
+}
+
+.percent {
+    font: var(--tui-font-heading-7);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.disable {
+    color: var(--tui-text-tertiary);
+}
+
+.action-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.action {
+    display: flex;
+    gap: 1rem;
+    height: max-content;
+}
+
+.exit {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

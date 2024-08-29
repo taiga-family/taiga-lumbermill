@@ -32,6 +32,49 @@ export const appRoutes: Route[] = [
                     ),
                 data: {title: 'Crypto'},
             },
+            {
+                path: 'space-zoo',
+                loadComponent: async () =>
+                    import('../../dashboards/space-zoo/space-zoo.component').then(
+                        (mod) => mod.SpaceZooComponent,
+                    ),
+                data: {
+                    title: 'Space zoo',
+                    links: [
+                        {
+                            name: 'Main',
+                            to: 'space-zoo',
+                        },
+                        {
+                            name: 'Table',
+                            to: 'space-zoo/table',
+                        },
+                    ],
+                },
+                children: [
+                    {
+                        path: '',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/space-zoo/components/administrator/administrator.component'
+                            ).then((mod) => mod.AdministratorComponent),
+                    },
+                    {
+                        path: 'table',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/space-zoo/components/table/table.component'
+                            ).then((mod) => mod.TableComponent),
+                    },
+                    {
+                        path: 'animal/:id',
+                        loadComponent: async () =>
+                            import(
+                                '../../dashboards/space-zoo/components/animal/animal.component'
+                            ).then((mod) => mod.AnimalComponent),
+                    },
+                ],
+            },
         ],
     },
     {
