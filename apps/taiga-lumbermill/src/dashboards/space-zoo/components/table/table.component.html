@@ -105,6 +105,7 @@
                     *tuiTextfieldDropdown
                     [itemContent]="content"
                     [items]="itemsSort"
+                    (itemClick)="changePage()"
                 />
             </button>
             <tui-pagination

@@ -215,6 +215,7 @@ export class TableComponent {
 
     protected index = 0;
     protected sizeSort = signal(10);
+    protected sizeSortPrevious = signal(10);
     protected readonly itemsSort = [10, 50, 100];
 
     protected readonly items = ['43.7ms', '45.7ms', '53.2ms'];
@@ -391,6 +392,11 @@ export class TableComponent {
     protected submitSearch(): void {
         this.searchByName.set(this.form.value.searchByName);
         this.searchByCreator.set(this.form.value.searchByCreator);
+    }
+
+    protected changePage(): void {
+        this.index = Math.floor((this.index * this.sizeSortPrevious()) / this.sizeSort());
+        this.sizeSortPrevious.set(this.sizeSort());
     }
 
     protected readonly content: TuiStringHandler<TuiContext<number>> = ({$implicit}) =>
