@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiBreakpointService,
@@ -13,16 +12,8 @@ import {
     TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiBadge,
-    TuiBadgeNotification,
-    TuiChevron,
-    TuiDataListDropdownManager,
-    TuiFade,
-    TuiTabs,
-} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {TuiChevron} from '@taiga-ui/kit';
+import {TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 import {ThemeService} from '../../services/theme.service';
@@ -36,23 +27,15 @@ import {ThemeService} from '../../services/theme.service';
         RouterLinkActive,
         RouterOutlet,
         TuiAppearance,
-        TuiAvatar,
-        TuiBadge,
-        TuiBadgeNotification,
         TuiButton,
-        TuiCardLarge,
         TuiChevron,
         TuiDataList,
-        TuiDataListDropdownManager,
         TuiDropdown,
         TuiExpand,
-        TuiFade,
         TuiHeader,
         TuiIcon,
         TuiNavigation,
-        TuiRepeatTimes,
         TuiSurface,
-        TuiTabs,
         TuiTitle,
     ],
     templateUrl: './navigation.component.html',
