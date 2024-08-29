@@ -5,7 +5,6 @@
 .info {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 2rem;
     text-align: center;
 
@@ -27,8 +26,11 @@
     flex-wrap: wrap;
 }
 
-.card {
+.card[tuiCardLarge][data-space] {
     flex-grow: 1;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    height: min-content;
 }
 
 .about {
@@ -49,7 +51,6 @@
 .list {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
 }
 
 .disable {
@@ -60,4 +61,10 @@
     font-size: 1.3rem;
     font-weight: 600;
     text-align: left;
+}
+
+.action {
+    display: flex;
+    gap: 1rem;
+    height: max-content;
 }

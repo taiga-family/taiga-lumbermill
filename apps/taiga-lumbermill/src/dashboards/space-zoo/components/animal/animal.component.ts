@@ -1,5 +1,11 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    signal,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ActivatedRoute} from '@angular/router';
 import {TuiAppearance, TuiSurface, TuiTitle} from '@taiga-ui/core';
@@ -39,7 +45,18 @@ export class AnimalComponent {
         takeWhile((value) => value <= this.max),
     );
 
-    protected states = animals[this.id].action.map((_) => false);
+    protected states = actions.map((_) => signal(false));
+    protected values$ = actions.map((_, ind) =>
+        computed(() =>
+            this.states[ind]()
+                ? timer(140, 80).pipe(
+                      map((i) => i + 30),
+                      startWith(30),
+                      takeWhile((value) => value <= this.max),
+                  )
+                : null,
+        ),
+    );
 
     protected inArray(value: string): boolean {
         return this.animals[this.id].action.includes(value);
