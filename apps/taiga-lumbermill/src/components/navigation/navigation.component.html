@@ -67,17 +67,41 @@
         </button>
         <tui-aside-group>
             <button
-                iconStart="@tui.settings"
+                iconStart="@tui.layout-dashboard"
                 tuiAsideItem
                 tuiChevron
             >
                 Dashboards
                 <ng-template>
-                    <button tuiAsideItem>IOT</button>
-                    <button tuiAsideItem>Crypto</button>
+                    <button
+                        routerLink="/dashboards/iot"
+                        tuiAsideItem
+                    >
+                        IOT
+                    </button>
+                    <button
+                        routerLink="/dashboards/crypto"
+                        tuiAsideItem
+                    >
+                        Crypto
+                    </button>
                 </ng-template>
             </button>
         </tui-aside-group>
+        <button
+            iconStart="@tui.log-in"
+            routerLink="/theme"
+            tuiAsideItem
+        >
+            Log in
+        </button>
+        <button
+            iconStart="@tui.key-round"
+            routerLink="/theme"
+            tuiAsideItem
+        >
+            Sign up
+        </button>
         <footer>
             <button
                 tuiAsideItem
