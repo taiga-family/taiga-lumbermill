@@ -7,8 +7,8 @@ import {
     signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ActivatedRoute} from '@angular/router';
-import {TuiAppearance, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {TuiAppearance, TuiButton, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiProgress} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {map, startWith, takeWhile, timer} from 'rxjs';
@@ -20,9 +20,11 @@ import {actions, animals} from '../administrator/administrator.component';
     selector: 'lmb-animal-page',
     imports: [
         CommonModule,
+        RouterLink,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
+        TuiButton,
         TuiCardLarge,
         TuiHeader,
         TuiProgress,

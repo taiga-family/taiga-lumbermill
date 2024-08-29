@@ -1,5 +1,12 @@
 @let animal = animals[id];
 <div class="info">
+    <button
+        appearance="icon"
+        iconStart="@tui.log-out"
+        routerLink="/dashboards/space-zoo/"
+        tuiIconButton
+        class="exit"
+    ></button>
     <tui-avatar
         [size]="'xxl'"
         [src]="animal.src"
