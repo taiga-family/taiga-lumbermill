@@ -38,7 +38,7 @@ export const INITIAL_DATA = [
             subtitle: 'Connection throttled because max number',
         },
         analytic: {
-            title: 'WO_analytic',
+            title: 'WO_analytic2',
             subtitle: 'Greenplum Table',
         },
         file: {
@@ -71,7 +71,7 @@ export const INITIAL_DATA = [
             subtitle: 'Connection throttled because max number',
         },
         analytic: {
-            title: 'WO_analytic33',
+            title: 'WO_analytic3',
             subtitle: 'Greenplum Table',
         },
         file: {

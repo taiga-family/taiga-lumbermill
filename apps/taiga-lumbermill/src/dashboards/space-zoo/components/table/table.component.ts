@@ -117,11 +117,11 @@ export class TableComponent {
     protected sizeSortPrevious = signal(10);
     protected readonly itemsSort = [10, 50, 100];
 
-    protected readonly items = ['43.7ms', '45.7ms', '53.2ms'];
+    protected readonly items = ['WO_analytic', 'WO_analytic2', 'WO_analytic3'];
     protected readonly segments = [null, '29 days', '30 days'];
     protected readonly segmentSort: WritableSignal<string | null> = signal(null);
     protected readonly successSort: WritableSignal<boolean> = signal(false);
-    protected readonly progressSort: WritableSignal<string[]> = signal([]);
+    protected readonly analyticSort: WritableSignal<string[]> = signal([]);
     protected states = computed(() => this.searchedData().map((_) => signal(false)));
 
     protected readonly count = toSignal(
@@ -234,8 +234,8 @@ export class TableComponent {
             .filter((val) => !this.successSort() || val.status.value === 'Success')
             .filter(
                 (val) =>
-                    !this.progressSort().length ||
-                    this.progressSort().includes(`${val.progress.toString()}ms`),
+                    !this.analyticSort()?.length ||
+                    this.analyticSort().includes(val.analytic.title),
             ),
     );
 
