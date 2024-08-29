@@ -4,7 +4,7 @@
     [horizontalLines]="4"
     [verticalLines]="4"
 >
-    @if (checkInfinity(maxPrice()) && checkInfinity(minPrice())) {
+    @if (history()) {
         <tui-line-chart
             class="chart"
             [height]="maxPrice() * (maxPrice() > 10 ? 1 : 100) - minPrice() * (maxPrice() > 10 ? 1 : 100)"
