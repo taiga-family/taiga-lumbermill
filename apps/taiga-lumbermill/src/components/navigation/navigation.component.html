@@ -65,6 +65,29 @@
         >
             Theme Generator
         </a>
+        <tui-aside-group>
+            <button
+                iconStart="@tui.layout-dashboard"
+                tuiAsideItem
+                tuiChevron
+            >
+                Dashboards
+                <ng-template>
+                    <button
+                        routerLink="/dashboards/iot"
+                        tuiAsideItem
+                    >
+                        IOT
+                    </button>
+                    <button
+                        routerLink="/dashboards/crypto"
+                        tuiAsideItem
+                    >
+                        Crypto
+                    </button>
+                </ng-template>
+            </button>
+        </tui-aside-group>
         <footer>
             <button
                 tuiAsideItem
