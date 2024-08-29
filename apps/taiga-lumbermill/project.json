@@ -1,104 +1,110 @@
 {
-    "name": "taiga-lumbermill",
-    "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "projectType": "application",
-    "prefix": "app",
-    "sourceRoot": "apps/taiga-lumbermill/src",
-    "tags": [],
-    "targets": {
-        "build": {
-            "executor": "@angular-devkit/build-angular:application",
-            "outputs": ["{options.outputPath}"],
-            "options": {
-                "outputPath": "dist/apps/taiga-lumbermill",
-                "index": "apps/taiga-lumbermill/src/index.html",
-                "browser": "apps/taiga-lumbermill/src/main.ts",
-                "polyfills": ["zone.js"],
-                "tsConfig": "apps/taiga-lumbermill/tsconfig.app.json",
-                "inlineStyleLanguage": "less",
-                "assets": [
-                    {
-                        "glob": "**/*",
-                        "input": "apps/taiga-lumbermill/public"
-                    },
-                    {
-                        "glob": "**/*",
-                        "input": "node_modules/@taiga-ui/icons/src",
-                        "output": "assets/taiga-ui/icons"
-                    }
-                ],
-                "styles": [
-                    "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                    "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-                    "node_modules/@taiga-ui/styles/taiga-ui-global.less",
-                    "apps/taiga-lumbermill/src/styles.less"
-                ],
-                "scripts": []
+  "name": "taiga-lumbermill",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/taiga-lumbermill/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/taiga-lumbermill",
+        "index": "apps/taiga-lumbermill/src/index.html",
+        "browser": "apps/taiga-lumbermill/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/taiga-lumbermill/tsconfig.app.json",
+        "inlineStyleLanguage": "less",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/taiga-lumbermill/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons/src",
+            "output": "assets/taiga-ui/icons"
+          }
+        ],
+        "styles": [
+          "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+          "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+          "apps/taiga-lumbermill/src/styles.less"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
             },
-            "configurations": {
-                "production": {
-                    "budgets": [
-                        {
-                            "type": "initial",
-                            "maximumWarning": "500kb",
-                            "maximumError": "1mb"
-                        },
-                        {
-                            "type": "anyComponentStyle",
-                            "maximumWarning": "2kb",
-                            "maximumError": "4kb"
-                        }
-                    ],
-                    "outputHashing": "all"
-                },
-                "development": {
-                    "optimization": false,
-                    "extractLicenses": false,
-                    "sourceMap": true
-                }
-            },
-            "defaultConfiguration": "production"
-        },
-        "build-gh-pages": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "echo 'Github pages require special 404.html'",
-                    "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
-                    "echo ------",
-                    "nx build taiga-lumbermill -c production --base-href='/taiga-lumbermill/'",
-                    "cp dist/apps/taiga-lumbermill/browser/index.html dist/apps/taiga-lumbermill/browser/404.html"
-                ]
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
             }
+          ],
+          "outputHashing": "all"
         },
-        "serve": {
-            "executor": "@angular-devkit/build-angular:dev-server",
-            "configurations": {
-                "production": {
-                    "buildTarget": "taiga-lumbermill:build:production"
-                },
-                "development": {
-                    "buildTarget": "taiga-lumbermill:build:development"
-                }
-            },
-            "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-            "executor": "@angular-devkit/build-angular:extract-i18n",
-            "options": {
-                "buildTarget": "taiga-lumbermill:build"
-            }
-        },
-        "lint": {
-            "executor": "@nx/eslint:lint"
-        },
-        "test": {
-            "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-            "options": {
-                "jestConfig": "apps/taiga-lumbermill/jest.config.ts"
-            }
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
         }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build-gh-pages": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "echo 'Github pages require special 404.html'",
+          "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
+          "echo ------",
+          "nx build taiga-lumbermill -c production --base-href='/taiga-lumbermill/'",
+          "cp dist/apps/taiga-lumbermill/browser/index.html dist/apps/taiga-lumbermill/browser/404.html"
+        ]
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "taiga-lumbermill:build:production"
+        },
+        "development": {
+          "buildTarget": "taiga-lumbermill:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "taiga-lumbermill:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/taiga-lumbermill/jest.config.ts"
+      }
     }
+  }
 }
