@@ -2,10 +2,54 @@
     <button
         appearance="secondary"
         iconStart="@tui.layout-grid"
+        tuiDropdownOpen
         tuiIconButton
         type="button"
+        [tuiDropdown]="menu"
     >
         Menu
+        <ng-template #menu>
+            <tui-data-list
+                *ngIf="mobile$ | async"
+                size="s"
+            >
+                <button
+                    iconStart="@tui.palette"
+                    routerLink="/theme"
+                    tuiOption
+                >
+                    Theme Generator
+                </button>
+                <button
+                    iconStart="@tui.layout-dashboard"
+                    routerLink="/dashboards/iot"
+                    tuiOption
+                >
+                    Iot dashboard
+                </button>
+                <button
+                    iconStart="@tui.layout-dashboard"
+                    routerLink="/dashboards/crypto"
+                    tuiOption
+                >
+                    Crypto dashboard
+                </button>
+                <button
+                    iconStart="@tui.log-in"
+                    routerLink="/theme"
+                    tuiOption
+                >
+                    Log in
+                </button>
+                <button
+                    iconStart="@tui.key-round"
+                    routerLink="/theme"
+                    tuiOption
+                >
+                    Sign up
+                </button>
+            </tui-data-list>
+        </ng-template>
     </button>
     <span tuiNavigationLogo>
         <tui-icon icon="@tui.home" />
