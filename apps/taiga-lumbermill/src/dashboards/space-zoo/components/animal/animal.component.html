@@ -16,12 +16,12 @@
                 [style.gap]="'0.5rem'"
             >
                 <span tuiSubtitle>Health:</span>
-                @let HealthvValue = values$[0]() | async;
+                @let HealthValue = values$[0]() | async;
                 <tui-badge
                     tuiStatus
-                    [appearance]="animal.health === 'good' || HealthvValue === max ? 'success' : 'warning'"
+                    [appearance]="animal.health === 'good' || HealthValue === max ? 'success' : 'warning'"
                 >
-                    {{ HealthvValue === max ? 'good' : animal.health }}
+                    {{ HealthValue === max ? 'good' : animal.health }}
                 </tui-badge>
             </div>
             <div class="tags">
