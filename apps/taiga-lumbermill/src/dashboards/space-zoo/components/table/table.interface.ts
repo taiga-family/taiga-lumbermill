@@ -9,7 +9,6 @@ export interface DataTable {
     readonly tags: string[];
     readonly duration: string;
     readonly progress: number;
-    selected: boolean;
 }
 
 export interface TableCheckbox {

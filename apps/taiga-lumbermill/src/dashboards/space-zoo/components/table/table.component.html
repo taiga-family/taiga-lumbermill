@@ -142,7 +142,10 @@
         </thead>
         <tbody tuiTbody>
             <tr
-                *ngFor="let item of searchedData().slice(index * sizeSort(), (index + 1) * sizeSort()) | tuiTableSort"
+                *ngFor="
+                    let item of searchedData().slice(index * sizeSort(), (index + 1) * sizeSort()) | tuiTableSort;
+                    let ind = index
+                "
                 tuiTr
             >
                 <td
@@ -154,7 +157,7 @@
                             tuiCheckbox
                             type="checkbox"
                             [size]="'s'"
-                            [(ngModel)]="item.selected"
+                            [(ngModel)]="states()[ind]"
                         />
                         <span tuiTitle>
                             {{ item.checkbox.title }}

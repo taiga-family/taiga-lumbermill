@@ -48,109 +48,8 @@ import {TuiCell, TuiSearch} from '@taiga-ui/layout';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
+import {INITIAL_DATA} from './table.constants';
 import type {DataTable} from './table.interface';
-
-export const INITIAL_DATA = [
-    {
-        checkbox: {
-            title: 'INN Checking in database_part_1',
-            subtitle: 'Connection throttled because max number',
-        },
-        analytic: {
-            title: 'WO_analytic',
-            subtitle: 'Greenplum Table',
-        },
-        file: {
-            icon: '@tui.file',
-            title: 'Stability hamcejdc #195',
-            chip: 'label',
-            subtitle: 'k6-tenant-manager ・ master',
-        },
-        date: {
-            time: '13.03.2022 13:45:48',
-            chip: 'ExecuteSasScriptOnAllContours',
-        },
-        cell: {
-            name: 'Misha Zhem',
-            email: 'silly@walk.uk',
-        },
-        status: {
-            value: 'Success',
-            color: 'var(--tui-status-positive)',
-        },
-        labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
-        tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
-        duration: '30 days',
-        progress: 43.7,
-        selected: false,
-    },
-    {
-        checkbox: {
-            title: 'INN Checking in database_part_2',
-            subtitle: 'Connection throttled because max number',
-        },
-        analytic: {
-            title: 'WO_analytic',
-            subtitle: 'Greenplum Table',
-        },
-        file: {
-            icon: '@tui.file',
-            title: 'Stability hamcejdc #195',
-            chip: 'label',
-            subtitle: 'k6-tenant-manager ・ master',
-        },
-        date: {
-            time: '13.03.2022 13:45:48',
-            chip: 'ExecuteSasScriptOnAllContours',
-        },
-        cell: {
-            name: 'Misha Zhem',
-            email: 'silly@walk.uk',
-        },
-        status: {
-            value: 'Success',
-            color: 'var(--tui-status-positive)',
-        },
-        labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
-        tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
-        duration: '30 days',
-        progress: 53.2,
-        selected: false,
-    },
-    {
-        checkbox: {
-            title: 'INN Checking in database_part_3',
-            subtitle: 'Connection throttled because max number',
-        },
-        analytic: {
-            title: 'WO_analytic33',
-            subtitle: 'Greenplum Table',
-        },
-        file: {
-            icon: '@tui.file',
-            title: 'Stability hamcejdc #195212',
-            chip: 'label',
-            subtitle: 'k6-tenant-manager ・ master',
-        },
-        date: {
-            time: '13.03.2022 15:45:48',
-            chip: 'ExecuteSasScriptOnAllContours',
-        },
-        cell: {
-            name: 'Misha Zhem32',
-            email: 'silly@walk.uk',
-        },
-        status: {
-            value: 'Warning',
-            color: 'var(--tui-status-negative)',
-        },
-        labels: ['Label', 'Label', 'displayed', 'here', 'and', 'can', 'overflow'],
-        tags: ['Tag', 'Tag', 'displayed', 'here', 'and', 'can', 'overflow'],
-        duration: '29 days',
-        progress: 45.7,
-        selected: false,
-    },
-];
 
 @Component({
     standalone: true,
@@ -223,6 +122,7 @@ export class TableComponent {
     protected readonly segmentSort: WritableSignal<string | null> = signal(null);
     protected readonly successSort: WritableSignal<boolean> = signal(false);
     protected readonly progressSort: WritableSignal<string[]> = signal([]);
+    protected states = computed(() => this.searchedData().map((_) => signal(false)));
 
     protected readonly count = toSignal(
         this.form.valueChanges.pipe(map(() => tuiCountFilledControls(this.form))),
@@ -299,24 +199,23 @@ export class TableComponent {
     protected columnsTitles = this.columns.map((val) => val.title);
 
     protected readonly data: Signal<DataTable[]> = signal(
-        INITIAL_DATA.concat(
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-            INITIAL_DATA,
-        ),
+        INITIAL_DATA.map((result) => [
+            result,
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+            structuredClone(result),
+        ]).reduce((acc, curr) => acc.concat(curr), []),
     );
 
     protected searchedData = computed(() =>
@@ -351,8 +250,8 @@ export class TableComponent {
     protected get selected(): number {
         let result = 0;
 
-        this.searchedData().forEach((item) => {
-            if (item.selected) {
+        this.states().forEach((item) => {
+            if (item()) {
                 result++;
             }
         });
@@ -361,8 +260,8 @@ export class TableComponent {
     }
 
     protected get checked(): boolean | null {
-        const every = this.searchedData().every(({selected}) => selected);
-        const some = this.searchedData().some(({selected}) => selected);
+        const every = this.states().every((val) => val());
+        const some = this.states().some((val) => val());
 
         return every || (some && null);
     }
@@ -370,11 +269,11 @@ export class TableComponent {
     protected toggleSelect(): void {
         const all = this.selected < this.searchedData().length;
 
-        this.searchedData().forEach((item) => {
+        this.states().forEach((item) => {
             if (all) {
-                item.selected = true;
+                item.set(true);
             } else {
-                item.selected = false;
+                item.set(false);
             }
         });
     }
@@ -384,8 +283,8 @@ export class TableComponent {
     }
 
     protected onCheck(checked: boolean): void {
-        this.searchedData().forEach((item) => {
-            item.selected = checked;
+        this.states().forEach((item) => {
+            item.set(checked);
         });
     }
 
