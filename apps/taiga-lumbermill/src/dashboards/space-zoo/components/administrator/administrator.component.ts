@@ -57,11 +57,11 @@ export const animals = [
     {
         src: './nft/4.jpg',
         title: 'Robo frog Pepe',
-        health: 'hungry',
-        tags: ['need food', 'play'],
+        health: 'seek',
+        tags: ['Needs a doctor', 'Need food'],
         from: 'Mars',
         about: 'Some information about this animal',
-        action: ['feed', 'play'],
+        action: ['doctor', 'feed'],
     },
 ];
 

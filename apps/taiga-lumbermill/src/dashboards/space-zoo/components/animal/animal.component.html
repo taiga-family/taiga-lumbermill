@@ -25,7 +25,7 @@
                 </tui-badge>
             </div>
             <div class="tags">
-                @for (tag of animal.tags; track $index) {
+                @for (tag of tags(); track $index) {
                     <tui-badge appearance="primary">{{ tag }}</tui-badge>
                 }
             </div>

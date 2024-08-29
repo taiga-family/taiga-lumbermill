@@ -39,13 +39,12 @@ export class AnimalComponent {
     protected animals = animals;
     protected actions = actions;
     protected readonly max = 100;
-    protected readonly value$ = timer(140, 80).pipe(
-        map((i) => i + 30),
-        startWith(30),
-        takeWhile((value) => value <= this.max),
-    );
 
     protected states = actions.map((_) => signal(false));
+    protected tags = computed(() =>
+        this.animals[this.id].tags.filter((val) => this.checkComplete(val)),
+    );
+
     protected values$ = actions.map((_, ind) =>
         computed(() =>
             this.states[ind]()
@@ -57,6 +56,15 @@ export class AnimalComponent {
                 : null,
         ),
     );
+
+    protected checkComplete(value: string): boolean {
+        return (
+            !(value === 'Needs a doctor' && this.states[0]()) &&
+            !(value === 'Play' && this.states[1]()) &&
+            !(value === 'Needs to be cleaned' && this.states[2]()) &&
+            !(value === 'Need food' && this.states[3]())
+        );
+    }
 
     protected inArray(value: string): boolean {
         return this.animals[this.id].action.includes(value);
