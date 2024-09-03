@@ -1,0 +1,63 @@
+.video {
+    display: block;
+    width: 100%;
+}
+
+.blackout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset 0 10rem 7rem -5rem var(--tui-background-accent-opposite);
+}
+
+.player {
+    position: relative;
+    margin: 0;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--tui-background-base-alt);
+
+    @media (max-width: 700px) {
+        top: 0.4rem;
+        right: 0.4rem;
+    }
+
+    @media (max-width: 420px) {
+        top: 0.1rem;
+        right: 0.1rem;
+    }
+}
+
+.title[tuiHeader][data-size='l'] {
+    position: absolute;
+    top: 1rem;
+    right: 50%;
+    left: 50%;
+    width: max-content;
+    transform: translateX(-50%);
+    color: var(--tui-background-base-alt);
+
+    @media (max-width: 700px) {
+        & h2 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 420px) {
+        & h2 {
+            font-size: 1rem;
+        }
+    }
+}
+
+.card[tuiCardLarge] {
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    background-color: var(--tui-background-base-alt);
+}

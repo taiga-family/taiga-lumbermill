@@ -31,9 +31,11 @@
         "forecastday",
         "mintemp",
         "maxtemp",
+        "Create",
+        "Unstake",
+        "Unstaking",
         "Tiko",
         "Create",
-        "NFTTABLE",
         "Unstake",
         "Unstaking"
     ]
