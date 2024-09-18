@@ -95,7 +95,7 @@
         "@nx/js": "19.6.4",
         "@nx/playwright": "19.6.4",
         "@nx/workspace": "19.6.4",
-        "@playwright/test": "1.46.1",
+        "@playwright/test": "1.47.1",
         "@schematics/angular": "18.2.1",
         "@swc-node/register": "1.10.9",
         "@swc/core": "1.7.26",
