@@ -34,6 +34,7 @@
         <button
             appearance="accent"
             tuiButton
+            type="button"
             [tuiSkeleton]="!data"
             (click)="[(stake = true), showDialog(template)]"
         >
@@ -42,6 +43,7 @@
         <button
             appearance="whiteblock"
             tuiButton
+            type="button"
             [tuiSkeleton]="!data"
             (click)="[(stake = false), showDialog(template)]"
         >

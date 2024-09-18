@@ -38,13 +38,14 @@
                 />
             </ng-container>
             <ng-template #line>
-                <tui-line-chart
-                    *ngFor="let chart of days"
-                    class="chart"
-                    [height]="200"
-                    [value]="chart | tuiFilter: filter : range | tuiMapper: toNumbers : range"
-                    [width]="getWidth(range)"
-                />
+                @for (day of days; track day) {
+                    <tui-line-chart
+                        class="chart"
+                        [height]="200"
+                        [value]="day | tuiFilter: filter : range | tuiMapper: toNumbers : range"
+                        [width]="getWidth(range)"
+                    />
+                }
             </ng-template>
         </tui-axes>
     </div>
@@ -57,12 +58,11 @@
             <strong>{{ getDate(data[0][0], range.from) }}</strong>
         </div>
         <div>
-            <div
-                *ngFor="let point of data"
-                class="item"
-            >
-                <span class="value">${{ point[1].toFixed(0) }}</span>
-            </div>
+            @for (point of data; track point) {
+                <div class="item">
+                    <span class="value">${{ point[1].toFixed(0) }}</span>
+                </div>
+            }
         </div>
     </ng-template>
 </div>

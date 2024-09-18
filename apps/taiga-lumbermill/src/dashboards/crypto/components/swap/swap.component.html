@@ -54,6 +54,7 @@
                         @for (token of data; track token.symbol) {
                             <button
                                 tuiOption
+                                type="button"
                                 [value]="token.symbol"
                                 (click)="[current ? newTokenTo(token.symbol) : newTokenFrom(token.symbol), close()]"
                             >
@@ -112,6 +113,7 @@
     <button
         appearance="primary"
         tuiButton
+        type="button"
         [tuiSkeleton]="!data"
     >
         Swap

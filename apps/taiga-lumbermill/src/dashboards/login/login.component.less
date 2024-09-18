@@ -1,22 +1,22 @@
 :host {
-    height: calc(100vh - 3rem);
+    block-size: calc(100vh - 3rem);
 }
 
 .card {
     top: 50%;
     bottom: 50%;
-    width: max-content;
+    inline-size: max-content;
     margin: auto;
     transform: translateY(-50%);
-    height: max-content;
+    block-size: max-content;
 }
 
 .block-input {
     margin-bottom: 0.3rem;
-    width: 20rem;
+    inline-size: 20rem;
 
     @media (max-width: 29rem) {
-        width: 16rem;
+        inline-size: 16rem;
     }
 }
 
@@ -35,14 +35,14 @@ form {
 .under-password {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    inline-size: 100%;
     margin-bottom: 1.5rem;
 }
 
 .or {
     display: flex;
     margin-top: 0.5rem;
-    width: 100%;
+    inline-size: 100%;
     justify-content: center;
     align-items: center;
     color: var(--tui-text-secondary);
@@ -55,8 +55,8 @@ form {
 
 .icon-login {
     transition: opacity 0.3s;
-    width: 1.8rem;
-    height: 1.8rem;
+    inline-size: 1.8rem;
+    block-size: 1.8rem;
 
     &:hover {
         opacity: 0.8;
@@ -73,7 +73,7 @@ form {
 }
 
 .icons-title {
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .error {
