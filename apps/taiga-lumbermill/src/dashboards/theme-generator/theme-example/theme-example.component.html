@@ -33,6 +33,7 @@
                     tuiCell="l"
                     tuiDropdownAlign="right"
                     tuiDropdownOpen
+                    type="button"
                     [tuiDropdown]="dropdown"
                     [tuiDropdownSided]="true"
                 >
@@ -66,16 +67,19 @@
             >
                 <tui-data-list>
                     <tui-opt-group>
-                        <button
-                            *ngFor="let item of ['Edit', 'Download', 'Rename', 'Delete']"
-                            tuiOption
-                        >
-                            {{ item }}
-                        </button>
+                        @for (item of ['Edit', 'Download', 'Rename', 'Delete']; track item) {
+                            <button
+                                tuiOption
+                                type="button"
+                            >
+                                {{ item }}
+                            </button>
+                        }
                     </tui-opt-group>
                     <tui-opt-group>
                         <button
                             tuiOption
+                            type="button"
                             (click)="close()"
                         >
                             Nevermind
@@ -126,6 +130,7 @@
         @for (button of buttons; track $index) {
             <button
                 tuiButton
+                type="button"
                 [appearance]="button"
             >
                 {{ button.charAt(0).toUpperCase() + button.slice(1) }}

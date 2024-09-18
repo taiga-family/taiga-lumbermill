@@ -21,5 +21,5 @@ test('Can change lighting status', async ({page}) => {
 
     const statusNow = await inputs.first().getAttribute('appearance');
 
-    expect(statusBefore !== statusNow);
+    expect(statusBefore).toBe(statusNow);
 });

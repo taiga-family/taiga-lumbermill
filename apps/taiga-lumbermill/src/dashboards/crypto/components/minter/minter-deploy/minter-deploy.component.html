@@ -14,8 +14,8 @@
                 (click)="showDialog()"
             />
             <div tuiTitle>
-                {{ token == '' ? 'Jetton Name' : token }} ({{ symbol == '' ? 'Symbol' : symbol }})
-                <div tuiSubtitle>{{ description == '' ? 'Description' : description }}</div>
+                {{ token === '' ? 'Jetton Name' : token }} ({{ symbol === '' ? 'Symbol' : symbol }})
+                <div tuiSubtitle>{{ description === '' ? 'Description' : description }}</div>
             </div>
         </div>
     </div>
@@ -101,6 +101,7 @@
         <p>
             <button
                 tuiButton
+                type="button"
                 (click)="icon !== '' ? observer.complete() : ''"
             >
                 Submit

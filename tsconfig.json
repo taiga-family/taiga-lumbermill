@@ -3,7 +3,8 @@
     "compilerOptions": {
         "target": "ES2022",
         "useDefineForClassFields": false,
-        "typeRoots": ["node_modules/@types"]
+        "typeRoots": ["node_modules/@types"],
+        "noUncheckedIndexedAccess": false
     },
     "exclude": ["apps/**/*.spec.ts"],
     "angularCompilerOptions": {

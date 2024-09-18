@@ -13,8 +13,9 @@
     </header>
     <div class="info">
         <img
+            alt="logo"
             class="logo"
-            [src]="tracks[activeIndex].logo"
+            [ngSrc]="tracks[activeIndex].logo"
         />
         <h2 class="tui-space_top-4 tui-space_bottom-2">
             {{ tracks[activeIndex].name }}
@@ -55,6 +56,7 @@
             appearance="icon"
             iconStart="@tui.shuffle"
             tuiIconButton
+            type="button"
             [tuiAppearanceState]="shuffle ? 'active' : null"
             (click)="shuffle = !shuffle"
         ></button>
@@ -62,11 +64,13 @@
             appearance="icon"
             iconStart="@tui.skip-back"
             tuiIconButton
+            type="button"
             (click)="previousTrack(audio)"
         ></button>
         <button
             appearance="icon"
             tuiIconButton
+            type="button"
             [iconStart]="this.paused ? '@tui.circle-play' : '@tui.circle-stop'"
             (click)="paused = !paused"
         ></button>
@@ -74,12 +78,14 @@
             appearance="icon"
             iconStart="@tui.skip-forward"
             tuiIconButton
+            type="button"
             (click)="nextTrack(audio)"
         ></button>
         <button
             appearance="icon"
             iconStart="@tui.repeat"
             tuiIconButton
+            type="button"
             [tuiAppearanceState]="repeat ? 'active' : null"
             (click)="repeat = !repeat"
         ></button>

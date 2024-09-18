@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiMedia} from '@taiga-ui/cdk';
@@ -14,6 +14,7 @@ import {getRandomInt, MusicService} from './music.service';
     imports: [
         CommonModule,
         FormsModule,
+        NgOptimizedImage,
         ReactiveFormsModule,
         TuiAppearance,
         TuiButton,

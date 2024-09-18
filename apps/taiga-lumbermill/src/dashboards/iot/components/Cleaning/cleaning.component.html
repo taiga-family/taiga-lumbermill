@@ -16,10 +16,9 @@
             @for (i of forms['controls']; track $index) {
                 <tui-input-date
                     class="input-date"
-                    [ariaValueMin]="now"
                     [formControl]="i"
                     [min]="now"
-                    [readOnly]="$index == 0 ? true : false"
+                    [readOnly]="$index === 0 ? true : false"
                 >
                     cleaning time
                     <input tuiTextfieldLegacy />
@@ -44,6 +43,7 @@
     <button
         appearance="primary"
         tuiButton
+        type="button"
         class="add-button"
         (click)="addNew()"
     >
