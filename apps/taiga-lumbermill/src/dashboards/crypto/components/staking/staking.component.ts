@@ -22,8 +22,8 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {CryptoService} from '../../../../services/crypto.service';
 import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
+import {CryptoService} from '../../services/crypto.service';
 
 @Component({
     standalone: true,

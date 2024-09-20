@@ -4,7 +4,7 @@ import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
-import {CryptoService} from '../../../../services/crypto.service';
+import {CryptoService} from '../../services/crypto.service';
 import {PriceChartComponent} from './price-chart/price-chart.component';
 import {PriceListComponent} from './price-list/price-list.component';
 

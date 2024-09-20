@@ -1,42 +1,37 @@
-import {AsyncPipe, CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {NgIf} from '@angular/common';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {
+    TUI_DARK_MODE,
     TuiAppearance,
     TuiBreakpointService,
     TuiButton,
     TuiDataList,
     TuiDropdown,
     TuiIcon,
-    TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiChevron, TuiFade} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {TuiNavigation} from '@taiga-ui/layout';
 import {map} from 'rxjs';
-
-import {ThemeService} from '../../services/theme.service';
 
 @Component({
     standalone: true,
     selector: 'app-navigation',
     imports: [
-        AsyncPipe,
-        CommonModule,
+        NgIf,
         RouterLink,
         RouterLinkActive,
         RouterOutlet,
         TuiAppearance,
         TuiButton,
-        TuiCardLarge,
         TuiChevron,
         TuiDataList,
         TuiDropdown,
         TuiFade,
-        TuiHeader,
         TuiIcon,
         TuiNavigation,
-        TuiSurface,
         TuiTitle,
     ],
     templateUrl: './navigation.component.html',
@@ -44,18 +39,14 @@ import {ThemeService} from '../../services/theme.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
-    protected themeService = inject(ThemeService);
-    protected readonly mobile$ = inject(TuiBreakpointService).pipe(
-        map((key) => key === 'mobile'),
+    protected readonly mobile = toSignal(
+        inject(TuiBreakpointService).pipe(map((key) => key === 'mobile')),
     );
 
-    protected open = false;
-    protected expanded = false;
-    protected submenu = false;
-    protected openTheme = false;
+    protected readonly darkMode = inject(TUI_DARK_MODE);
+    protected readonly icon = computed(() =>
+        this.darkMode() ? '@tui.sun' : '@tui.moon',
+    );
 
-    public chooseTheme(theme: string): void {
-        this.themeService.theme = theme;
-        this.openTheme = false;
-    }
+    protected expanded = false;
 }

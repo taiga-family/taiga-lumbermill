@@ -12,7 +12,7 @@ export const appRoutes: Route[] = [
                 path: '',
                 loadComponent: async () =>
                     import(
-                        '../../dashboards/dashboards-list/dashboards-list.component'
+                        '../../components/dashboards-list/dashboards-list.component'
                     ).then((mod) => mod.DashboardsListComponent),
                 data: {title: ''},
             },
@@ -37,28 +37,28 @@ export const appRoutes: Route[] = [
     {
         path: 'theme',
         loadComponent: async () =>
-            import('../../dashboards/theme-generator/theme-generator.component').then(
+            import('../../features/theme-generator/theme-generator.component').then(
                 (mod) => mod.ThemeGeneratorComponent,
             ),
     },
     {
         path: '',
         loadComponent: async () =>
-            import('../../dashboards/common-page/common-page.component').then(
+            import('../../components/common-page/common-page.component').then(
                 (mod) => mod.CommonPageComponent,
             ),
     },
     {
         path: 'login',
         loadComponent: async () =>
-            import('../../dashboards/login/login.component').then(
+            import('../../features/login/login.component').then(
                 (mod) => mod.LoginComponent,
             ),
     },
     {
         path: 'sign-up',
         loadComponent: async () =>
-            import('../../dashboards/sign-up/sign-up.component').then(
+            import('../../features/sign-up/sign-up.component').then(
                 (mod) => mod.SignUpComponent,
             ),
     },

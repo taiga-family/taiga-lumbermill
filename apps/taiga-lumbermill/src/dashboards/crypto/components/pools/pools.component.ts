@@ -20,8 +20,8 @@ import {TuiAvatar, TuiAvatarStack, TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
-import {CryptoService} from '../../../../services/crypto.service';
 import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
+import {CryptoService} from '../../services/crypto.service';
 
 export interface TableData {
     readonly Pair: string;
