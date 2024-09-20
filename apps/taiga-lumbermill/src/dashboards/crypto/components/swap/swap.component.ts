@@ -20,7 +20,7 @@ import {
 import {TuiAvatar, TuiChevron, TuiInputInline, TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
-import {CryptoService} from '../../../../services/crypto.service';
+import {CryptoService} from '../../services/crypto.service';
 
 @Component({
     standalone: true,

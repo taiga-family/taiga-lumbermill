@@ -2,69 +2,158 @@
     <button
         appearance="secondary"
         iconStart="@tui.layout-grid"
+        tuiDropdownOpen
         tuiIconButton
         type="button"
+        [tuiDropdown]="menu"
     >
         Menu
+        <ng-template #menu>
+            <tui-data-list
+                *ngIf="mobile()"
+                size="s"
+            >
+                <button
+                    iconStart="@tui.palette"
+                    routerLink="/theme"
+                    tuiOption
+                    type="button"
+                >
+                    Theme Generator
+                </button>
+                <button
+                    iconStart="@tui.layout-dashboard"
+                    routerLink="/dashboards/iot"
+                    tuiOption
+                    type="button"
+                >
+                    Iot dashboard
+                </button>
+                <button
+                    iconStart="@tui.layout-dashboard"
+                    routerLink="/dashboards/crypto"
+                    tuiOption
+                    type="button"
+                >
+                    Crypto dashboard
+                </button>
+                <button
+                    iconStart="@tui.log-in"
+                    routerLink="/theme"
+                    tuiOption
+                    type="button"
+                >
+                    Log in
+                </button>
+                <button
+                    iconStart="@tui.key-round"
+                    routerLink="/theme"
+                    tuiOption
+                    type="button"
+                >
+                    Sign up
+                </button>
+            </tui-data-list>
+        </ng-template>
     </button>
     <span tuiNavigationLogo>
         <tui-icon icon="@tui.home" />
         <span tuiFade>Taiga lumbermill</span>
     </span>
+
+    <hr />
+
     <button
         appearance="secondary"
-        tuiButton
-        tuiChevron
+        size="s"
+        tuiIconButton
         type="button"
-        [tuiDropdown]="products"
-        [(tuiDropdownOpen)]="openTheme"
-    >
-        <span tuiFade>{{ themeService.theme }}</span>
-        <ng-template #products>
-            <tui-data-list size="s">
-                @for (theme of themeService.themes; track $index) {
-                    <button
-                        tuiOption
-                        type="button"
-                        [value]="theme"
-                        (click)="chooseTheme(theme)"
-                    >
-                        {{ theme }}
-                        <tui-icon
-                            *ngIf="themeService.theme === theme"
-                            icon="@tui.check"
-                            [style.font-size.em]="1"
-                            [style.margin-left.rem]="0.5"
-                        />
-                    </button>
-                }
-            </tui-data-list>
-        </ng-template>
-    </button>
-    <hr />
+        class="tui-doc-dark-mode-switch"
+        [iconStart]="icon()"
+        [style.border-radius.%]="100"
+        (click)="darkMode.set(!darkMode())"
+    ></button>
 </header>
 <div [style.display]="'flex'">
     <aside
-        *ngIf="!(mobile$ | async)"
+        *ngIf="!mobile()"
         class="aside-bar"
         [tuiNavigationAside]="expanded"
     >
         <header>
-            <a
+            <button
                 iconStart="@tui.home"
                 routerLink="/"
                 tuiAsideItem
+                type="button"
+                [routerLinkActiveOptions]="{exact: true}"
             >
                 <span tuiFade>Taiga lumbermill</span>
-            </a>
+            </button>
         </header>
-        <a
+        <tui-aside-group>
+            <button
+                iconStart="@tui.layout-dashboard"
+                tuiAsideItem
+                tuiChevron
+                type="button"
+            >
+                Dashboards
+                <ng-template>
+                    <button
+                        routerLink="/dashboards/iot"
+                        tuiAsideItem
+                        type="button"
+                    >
+                        IOT
+                    </button>
+                    <button
+                        routerLink="/dashboards/crypto"
+                        tuiAsideItem
+                        type="button"
+                    >
+                        Crypto
+                    </button>
+                </ng-template>
+            </button>
+        </tui-aside-group>
+        <tui-aside-group>
+            <button
+                iconStart="@tui.square-library"
+                tuiAsideItem
+                tuiChevron
+                type="button"
+            >
+                Features
+                <ng-template>
+                    <button
+                        iconStart="@tui.log-in"
+                        routerLink="/login"
+                        tuiAsideItem
+                        type="button"
+                    >
+                        Log in
+                    </button>
+                    <button
+                        iconStart="@tui.key-round"
+                        routerLink="/sign-up"
+                        tuiAsideItem
+                        type="button"
+                    >
+                        Sign up
+                    </button>
+                </ng-template>
+            </button>
+        </tui-aside-group>
+        <hr />
+        <button
             iconStart="@tui.palette"
             routerLink="/theme"
             tuiAsideItem
+            type="button"
         >
             Theme Generator
-        </a>
+        </button>
         <footer>
             <button
                 tuiAsideItem
