@@ -5,7 +5,7 @@ jobs:
   typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/setup/node@v1.85.0
       - run: npm run typecheck
@@ -13,7 +13,7 @@ jobs:
   cspell:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/setup/node@v1.85.0
       - run: npm run cspell -- --no-progress
@@ -21,7 +21,7 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/setup/node@v1.85.0
       - run: npm run prettier -- --check
@@ -29,7 +29,7 @@ jobs:
   stylelint:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/setup/node@v1.85.0
       - run: npm run stylelint
@@ -37,7 +37,7 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.85.0
+      - uses: actions/checkout@v4.2.0
       - uses: taiga-family/ci/actions/setup/variables@v1.85.0
       - uses: taiga-family/ci/actions/setup/node@v1.85.0
       - run: npm run lint
@@ -50,5 +50,5 @@ jobs:
       - run: echo "Success"
 
 concurrency:
-  group: lint-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
