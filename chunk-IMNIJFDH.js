@@ -1,1 +1,0 @@
-import{Ea as i}from"./chunk-ODLYB7N5.js";var p=(()=>{let e=class e{transform(n,r,...o){return r(n,...o)}};e.\u0275fac=function(r){return new(r||e)},e.\u0275pipe=i({name:"tuiMapper",type:e,pure:!0,standalone:!0});let t=e;return t})();export{p as a};
