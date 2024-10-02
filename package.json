@@ -83,10 +83,10 @@
         "tslib": "2.7.0"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "18.2.6",
-        "@angular-devkit/core": "18.2.6",
-        "@angular-devkit/schematics": "18.2.6",
-        "@angular/cli": "18.2.6",
+        "@angular-devkit/build-angular": "18.2.7",
+        "@angular-devkit/core": "18.2.7",
+        "@angular-devkit/schematics": "18.2.7",
+        "@angular/cli": "18.2.7",
         "@angular/compiler-cli": "18.2.6",
         "@angular/language-service": "18.2.6",
         "@nx/devkit": "19.8.3",
@@ -95,7 +95,7 @@
         "@nx/playwright": "19.8.3",
         "@nx/workspace": "19.8.3",
         "@playwright/test": "1.47.2",
-        "@schematics/angular": "18.2.6",
+        "@schematics/angular": "18.2.7",
         "@swc-node/register": "1.10.9",
         "@swc/core": "1.7.28",
         "@swc/helpers": "0.5.13",
