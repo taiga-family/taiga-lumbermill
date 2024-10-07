@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {inject, Injectable, InjectionToken} from '@angular/core';
-import {map, type Observable, shareReplay} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map, shareReplay} from 'rxjs';
 
 export interface PricesData {
     readonly id: string;
