@@ -1,7 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {TuiAppearance, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiLink, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
@@ -11,8 +12,11 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         CommonModule,
         RouterLink,
         TuiAppearance,
+        TuiAvatar,
+        TuiButton,
         TuiCardLarge,
         TuiHeader,
+        TuiLink,
         TuiSurface,
         TuiTitle,
     ],

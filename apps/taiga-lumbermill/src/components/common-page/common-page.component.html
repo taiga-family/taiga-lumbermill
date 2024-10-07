@@ -1,94 +1,78 @@
 <header
-    tuiHeader="l"
-    [style.margin-top]="'1.25rem'"
+    tuiHeader="xxl"
+    class="header"
 >
-    <h2
-        tuiTitle
-        [style.text-align]="'center'"
-    >
+    <h2 tuiTitle>
         Taiga Lumbermill
+        <span tuiSubtitle>
+            A set of comprehensive examples of
+            <a
+                href="https://taiga-ui.dev"
+                target="_blank"
+                tuiLink
+            >
+                Taiga UI
+            </a>
+            use in the wild. Our goal is to provide developers with a robust foundation for quickly creating beautiful
+            and functional web applications.
+        </span>
     </h2>
 </header>
-<p class="description">
-    This project contains a comprehensive set of ready-made templates, dashboards, and pages built using the Taiga UI
-    component library. Our goal is to provide developers with a robust foundation for quickly creating beautiful and
-    functional web applications.
-</p>
-<div class="row">
+<a
+    appearance="opposite"
+    href="https://github.com/taiga-family/taiga-lumbermill"
+    size="s"
+    tuiButton
+    type="button"
+    class="action-button"
+>
+    Explore
+</a>
+
+<div class="cards">
     <button
         routerLink="/dashboards"
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
+        tuiCardLarge
         tuiSurface="elevated"
         type="button"
-        class="card"
     >
-        <div>
-            <header tuiHeader>
-                <h2
-                    tuiTitle
-                    [style.text-align]="'center'"
-                >
-                    Dashboards
-                </h2>
-            </header>
+        <tui-avatar
+            appearance="opposite"
+            src="@tui.circle-gauge"
+        />
+        <div tuiTitle>
+            Dashboards
+            <div tuiSubtitle>Examples of complex pages and dashboards</div>
         </div>
     </button>
+
+    <div
+        tuiCardLarge
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="opposite"
+            src="@tui.panel-top"
+        />
+        <div tuiTitle>
+            Pages
+            <div tuiSubtitle>Some common pages such as login, registration</div>
+        </div>
+    </div>
+
     <button
         routerLink="/theme"
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
+        tuiCardLarge
         tuiSurface="elevated"
         type="button"
-        class="card"
     >
-        <div>
-            <header tuiHeader>
-                <h2
-                    tuiTitle
-                    [style.text-align]="'center'"
-                >
-                    Theme generator
-                </h2>
-            </header>
-        </div>
-    </button>
-    <button
-        routerLink="/login"
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
-        tuiSurface="elevated"
-        type="button"
-        class="card"
-    >
-        <div>
-            <header tuiHeader>
-                <h2
-                    tuiTitle
-                    [style.text-align]="'center'"
-                >
-                    Log in
-                </h2>
-            </header>
-        </div>
-    </button>
-    <button
-        routerLink="/sign-up"
-        tuiAppearance="whiteblock"
-        tuiCardLarge="normal"
-        tuiSurface="elevated"
-        type="button"
-        class="card"
-    >
-        <div>
-            <header tuiHeader>
-                <h2
-                    tuiTitle
-                    [style.text-align]="'center'"
-                >
-                    Sign up
-                </h2>
-            </header>
+        <tui-avatar
+            appearance="opposite"
+            src="@tui.palette"
+        />
+        <div tuiTitle>
+            Color generator
+            <div tuiSubtitle>Customize Taiga UI theme</div>
         </div>
     </button>
 </div>
