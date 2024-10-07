@@ -57,12 +57,25 @@
         </ng-template>
     </button>
     <span tuiNavigationLogo>
-        <tui-icon icon="@tui.home" />
-        <span tuiFade>Taiga lumbermill</span>
+        <img
+            alt="logo"
+            height="32px"
+            src="/logo-white-transparent.png"
+        />
+        Taiga Lumbermill
     </span>
 
     <hr />
 
+    <a
+        appearance="secondary"
+        href="https://github.com/taiga-family/taiga-lumbermill"
+        iconStart="@tui.github"
+        size="s"
+        target="_blank"
+        tuiIconButton
+        [style.border-radius.%]="100"
+    ></a>
     <button
         appearance="secondary"
         size="s"
@@ -88,7 +101,7 @@
                 type="button"
                 [routerLinkActiveOptions]="{exact: true}"
             >
-                <span tuiFade>Taiga lumbermill</span>
+                <span>Home</span>
             </button>
         </header>
         <tui-aside-group>

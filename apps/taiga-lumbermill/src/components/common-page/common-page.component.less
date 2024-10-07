@@ -1,27 +1,31 @@
-.description {
-    margin-top: 0.75rem;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    max-inline-size: 40rem;
+:host {
+    display: grid;
 }
 
-.row {
-    display: flex;
-    margin-top: 1.25rem;
-    gap: 1.25rem;
-    justify-content: space-between;
+.header {
+    padding-top: 10rem;
+    margin: 0 auto;
+    align-items: center;
+    max-inline-size: 40rem;
 
-    @media (max-width: 800px) {
-        flex-direction: column;
+    & > [tuiTitle] {
+        text-align: center;
     }
 }
 
-.card {
-    flex-grow: 1;
+.action-button {
+    margin: 0 auto;
+}
 
-    @media (max-width: 800px) {
-        inline-size: 100%;
+.cards {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    gap: 1rem;
+
+    [tuiCardLarge] {
+        inline-size: 25rem;
     }
 }
