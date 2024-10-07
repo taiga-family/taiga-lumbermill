@@ -9,7 +9,7 @@ interface ThemeData {
     readonly variable: string;
 }
 
-export const data: ThemeGroup[] = [
+export const theme: ThemeGroup[] = [
     {
         title: 'Backgrounds',
         colors: [
