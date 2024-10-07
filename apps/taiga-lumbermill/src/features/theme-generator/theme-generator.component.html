@@ -8,29 +8,21 @@
         >
             Colors
         </h3>
-        <button
-            appearance="icon"
-            size="m"
-            tuiButton
-            type="button"
-            class="share"
-            [iconStart]="iconShare()"
-            (click)="share()"
-        ></button>
+        <lmb-share-button (click)="share()" />
     </div>
     <div
         class="colors"
-        (focusout)="queryParams()"
+        (focusout)="updateQueryParams()"
     >
-        @for (group of themeGroups; track $index) {
+        @for (group of themeGroups; let i = $index; track i) {
             <h6 class="tui-space_top-0 tui-space_bottom-0 title-colors">{{ group.title }}</h6>
-            @for (inputColor of group.colors; track $index) {
+            @for (color of group.colors; let j = $index; track j) {
                 <tui-input-color
                     tuiTextfieldSize="m"
                     [colors]="palette"
-                    [(ngModel)]="colors[$index]"
+                    [(ngModel)]="colors[i][j]"
                 >
-                    {{ inputColor.name }}
+                    {{ color.name }}
                 </tui-input-color>
             }
         }
@@ -46,11 +38,14 @@
             (click)="copy()"
         ></button>
         :root {{ '{' }}
-        @for (inputColor of themeData; track $index) {
-            <br />
-            {{ inputColor.variable }}: {{ colors[$index]() }};
-        }
         <br />
+
+        @for (group of themeData; let i = $index; track i) {
+            @for (color of group; let j = $index; track j) {
+                {{ color.variable }}: {{ colors[i][j]() }};
+                <br />
+            }
+        }
         {{ '}' }}
     </code>
 </div>
