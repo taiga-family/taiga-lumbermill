@@ -22,10 +22,14 @@
     align-items: baseline;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 5rem;
+    margin-top: 3rem;
     gap: 1rem;
 
     [tuiCardLarge] {
-        inline-size: 25rem;
+        inline-size: 100%;
+
+        :host-context([data-platform='web']) & {
+            inline-size: 25rem;
+        }
     }
 }
