@@ -1,5 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {TuiIcon} from '@taiga-ui/core';
+import {TuiFade} from '@taiga-ui/kit';
+import {TuiLogoComponent, TuiNavigation} from '@taiga-ui/layout';
 
 import {MinterComponent} from './components/minter/minter.component';
 import {NFTComponent} from './components/nft/nft.component';
@@ -17,8 +21,13 @@ import {SwapComponent} from './components/swap/swap.component';
         NFTComponent,
         PoolsComponent,
         PricesComponent,
+        RouterLink,
         StakingComponent,
         SwapComponent,
+        TuiFade,
+        TuiIcon,
+        TuiLogoComponent,
+        TuiNavigation,
     ],
     templateUrl: './crypto.component.html',
     styleUrl: './crypto.component.less',
