@@ -5,14 +5,12 @@
         tuiDropdownOpen
         tuiIconButton
         type="button"
+        class="menu"
         [tuiDropdown]="menu"
     >
         Menu
         <ng-template #menu>
-            <tui-data-list
-                *ngIf="mobile()"
-                size="s"
-            >
+            <tui-data-list size="s">
                 <button
                     iconStart="@tui.palette"
                     routerLink="/color-generator"
@@ -89,7 +87,6 @@
 </header>
 <div [style.display]="'flex'">
     <aside
-        *ngIf="!mobile()"
         class="aside-bar"
         [tuiNavigationAside]="expanded"
     >
