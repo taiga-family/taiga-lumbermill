@@ -1,3 +1,11 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 .aside-bar {
     block-size: calc(100vh - 3rem);
+}
+
+@media @tui-mobile {
+    .aside-bar {
+        display: none;
+    }
 }

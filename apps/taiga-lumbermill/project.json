@@ -32,8 +32,7 @@
                     "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
                     "node_modules/@taiga-ui/styles/taiga-ui-global.less",
                     "apps/taiga-lumbermill/src/styles.less"
-                ],
-                "scripts": []
+                ]
             },
             "configurations": {
                 "production": {
@@ -49,6 +48,15 @@
                             "maximumError": "4kb"
                         }
                     ],
+                    "outputHashing": "all"
+                },
+                "ssr": {
+                    "server": "apps/taiga-lumbermill/src/main.server.ts",
+                    "prerender": true,
+                    "ssr": {
+                        "entry": "apps/taiga-lumbermill/server.ts"
+                    },
+                    "scripts": [],
                     "outputHashing": "all"
                 },
                 "development": {
@@ -83,6 +91,15 @@
                 }
             },
             "defaultConfiguration": "development"
+        },
+        "serve-ssr": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "buildTarget": "taiga-lumbermill:build:ssr"
+                }
+            },
+            "defaultConfiguration": "production"
         },
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
