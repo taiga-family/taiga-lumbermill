@@ -51,5 +51,6 @@
             "style": "less",
             "unitTestRunner": "jest"
         }
-    }
+    },
+    "useLegacyCache": true
 }
