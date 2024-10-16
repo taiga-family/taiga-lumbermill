@@ -87,7 +87,7 @@
         "@taiga-ui/tsconfig": "0.225.0",
         "express": "4.21.1",
         "rxjs": "7.8.1",
-        "tslib": "2.7.0"
+        "tslib": "2.8.0"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "18.2.8",
