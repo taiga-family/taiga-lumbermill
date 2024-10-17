@@ -115,7 +115,7 @@
         "@taiga-ui/stylelint-config": "0.222.5",
         "@types/express": "5.0.0",
         "@types/jest": "29.5.13",
-        "@types/node": "22.7.5",
+        "@types/node": "22.7.6",
         "cspell": "8.15.3",
         "gh-pages": "6.2.0",
         "husky": "9.1.6",
