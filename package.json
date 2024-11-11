@@ -84,7 +84,7 @@
         "@taiga-ui/layout": "4.14.0",
         "@taiga-ui/legacy": "4.14.0",
         "@taiga-ui/styles": "4.14.0",
-        "@taiga-ui/tsconfig": "0.232.0",
+        "@taiga-ui/tsconfig": "0.234.0",
         "express": "4.21.1",
         "rxjs": "7.8.1",
         "tslib": "2.8.1"
