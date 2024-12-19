@@ -17,7 +17,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiAppearance, TuiScrollable, TuiScrollbar, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiSkeleton} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {CoinIconPipe} from '../../pipes/coin-icon.pipe';
@@ -45,7 +45,6 @@ export interface TableData {
         TuiAvatar,
         TuiAvatarStack,
         TuiCardLarge,
-        TuiCell,
         TuiHeader,
         TuiInputModule,
         TuiScrollable,

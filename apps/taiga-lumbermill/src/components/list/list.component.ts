@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader, TuiLogoComponent, TuiNavigation} from '@taiga-ui/layout';
 import {filter, map, startWith} from 'rxjs';
@@ -45,7 +45,6 @@ const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
     imports: [
         CommonModule,
         RouterLink,
-        RouterOutlet,
         TuiCardLarge,
         TuiHeader,
         TuiIcon,

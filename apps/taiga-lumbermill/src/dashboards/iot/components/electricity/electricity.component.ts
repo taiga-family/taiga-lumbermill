@@ -48,7 +48,7 @@ export class ElectricityComponent {
 
     protected show = new TuiDayRange(
         TuiDay.currentLocal(),
-        TuiDay.currentLocal().append({month: 3}),
+        TuiDay.currentLocal().append({month: 4}),
     );
 
     protected days = this.electricityService.random(this.show);

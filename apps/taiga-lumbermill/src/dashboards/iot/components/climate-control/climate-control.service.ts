@@ -6,7 +6,7 @@ interface ClimateControlData {
 }
 
 export const INITIAL_DATA: ClimateControlData[] = [
-    {name: 'Room temperature С°', value: 32},
+    {name: 'Room temperature C°', value: 32},
     {name: 'Water temperature', value: 0},
     {name: 'Air humidity, %', value: 10},
 ];

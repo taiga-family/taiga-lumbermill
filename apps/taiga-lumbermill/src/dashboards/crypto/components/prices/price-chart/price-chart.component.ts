@@ -8,16 +8,11 @@ import {
     signal,
 } from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {
-    TuiAxes,
-    TuiLineChart,
-    TuiLineDaysChart,
-    TuiLineDaysChartHint,
-} from '@taiga-ui/addon-charts';
+import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
-import {TuiAppearance, TuiButton, TuiHint, TuiSurface} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiSkeleton} from '@taiga-ui/kit';
 import {combineLatest, switchMap} from 'rxjs';
 
@@ -32,15 +27,10 @@ import {INTERVALS} from './price-chart.constant';
         AsyncPipe,
         CommonModule,
         TuiAmountPipe,
-        TuiAppearance,
         TuiAxes,
         TuiButton,
-        TuiHint,
         TuiLineChart,
-        TuiLineDaysChart,
-        TuiLineDaysChartHint,
         TuiSkeleton,
-        TuiSurface,
     ],
     templateUrl: './price-chart.component.html',
     styleUrl: './price-chart.component.less',

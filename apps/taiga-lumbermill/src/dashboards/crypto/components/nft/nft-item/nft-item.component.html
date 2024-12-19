@@ -35,7 +35,9 @@
             tuiIconButton
             type="button"
             (click)="goBack()"
-        ></button>
+        >
+            Back
+        </button>
     </div>
     <tui-scrollbar>
         <cdk-virtual-scroll-viewport
@@ -86,7 +88,7 @@
                                 *tuiCell="column"
                                 tuiTd
                             >
-                                {{ column === 'time' ? (item[column] | date: 'dd.MM.yyyy') : item[column] }}
+                                {{ column === 'time' ? (item[column] | date: 'dd.MM.yyyy') : item[column]! }}
                             </td>
                         }
                     </tr>

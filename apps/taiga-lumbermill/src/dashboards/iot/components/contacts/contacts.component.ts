@@ -12,7 +12,6 @@ import {
     TuiIcon,
     TuiScrollable,
     TuiScrollbar,
-    TuiSurface,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiTab, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
@@ -38,7 +37,6 @@ import {ContactsService} from './contacts.service';
         TuiIcon,
         TuiScrollable,
         TuiScrollbar,
-        TuiSurface,
         TuiTab,
         TuiTabs,
     ],
