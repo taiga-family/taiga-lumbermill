@@ -10,13 +10,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {
-    TuiAppearance,
-    TuiButton,
-    TuiDialog,
-    TuiDialogService,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSkeleton} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
@@ -38,7 +32,6 @@ import {CryptoService} from '../../services/crypto.service';
         TuiAvatar,
         TuiButton,
         TuiCardLarge,
-        TuiDialog,
         TuiHeader,
         TuiInputNumberModule,
         TuiSkeleton,

@@ -13,17 +13,11 @@ import {
 } from '@angular/core';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {
-    TuiAppearance,
-    TuiAutoColorPipe,
-    TuiButton,
-    TuiScrollbar,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiButton, TuiScrollbar} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
-import type {NFT} from '../nft.service';
+import type {NFT, Transaction} from '../nft.service';
 
 @Component({
     standalone: true,
@@ -35,7 +29,6 @@ import type {NFT} from '../nft.service';
         CommonModule,
         DatePipe,
         TuiAmountPipe,
-        TuiAppearance,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiBadge,
@@ -43,14 +36,19 @@ import type {NFT} from '../nft.service';
         TuiHeader,
         TuiScrollbar,
         TuiTable,
-        TuiTitle,
     ],
     templateUrl: './nft-item.component.html',
     styleUrl: './nft-item.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NftItemComponent {
-    protected readonly columns = ['type', 'priceUsd', 'from', 'to', 'time'];
+    protected readonly columns: Array<keyof Transaction> = [
+        'type',
+        'priceUsd',
+        'from',
+        'to',
+        'time',
+    ];
 
     @Output()
     public readonly nftChange = new EventEmitter<NFT | null>();

@@ -2,7 +2,7 @@ import {AsyncPipe, CommonModule, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiDateFormat} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
@@ -22,7 +22,6 @@ import {CleaningService} from './cleaning.service';
         TuiAppearance,
         TuiButton,
         TuiCardLarge,
-        TuiDateFormat,
         TuiInputDateModule,
         TuiProgress,
     ],

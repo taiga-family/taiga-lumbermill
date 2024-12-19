@@ -7,9 +7,9 @@ import {
     Output,
 } from '@angular/core';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAppearance, TuiScrollbar, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiScrollbar, TuiSurface} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 import type {NFT} from '../nft.service';
 import {NftService} from '../nft.service';
@@ -20,13 +20,10 @@ import {NftService} from '../nft.service';
     imports: [
         CommonModule,
         TuiAmountPipe,
-        TuiAppearance,
         TuiAvatar,
         TuiCardLarge,
-        TuiHeader,
         TuiScrollbar,
         TuiSurface,
-        TuiTitle,
     ],
     templateUrl: './nft-list.component.html',
     styleUrl: './nft-list.component.less',

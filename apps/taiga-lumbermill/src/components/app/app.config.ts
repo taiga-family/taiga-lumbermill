@@ -10,6 +10,7 @@ import {appRoutes} from './app.routes';
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        provideClientHydration(),
         provideAnimations(),
         provideZoneChangeDetection({eventCoalescing: true}),
         provideRouter(appRoutes),

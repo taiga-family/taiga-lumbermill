@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormArray, FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAppearance, TuiGroup} from '@taiga-ui/core';
-import {TuiBlock, TuiCheckbox, TuiFade, TuiRadio} from '@taiga-ui/kit';
+import {TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 import {SafetyService} from './safety.service';
@@ -17,9 +17,7 @@ import {SafetyService} from './safety.service';
         TuiBlock,
         TuiCardLarge,
         TuiCheckbox,
-        TuiFade,
         TuiGroup,
-        TuiRadio,
     ],
     templateUrl: './safety.component.html',
     styleUrl: './safety.component.less',

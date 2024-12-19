@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {TuiAppearance, TuiIcon} from '@taiga-ui/core';
-import {TuiCardLarge, TuiLogoComponent, TuiNavComponent} from '@taiga-ui/layout';
+import {TuiIcon} from '@taiga-ui/core';
+import {TuiLogoComponent, TuiNavComponent} from '@taiga-ui/layout';
 
 import {CleaningComponent} from './components/cleaning/cleaning.component';
 import {ClimateControlComponent} from './components/climate-control/climate-control.component';
@@ -30,8 +30,6 @@ import {WeatherComponent} from './components/weather/weather.component';
         MusicComponent,
         RouterLink,
         SafetyComponent,
-        TuiAppearance,
-        TuiCardLarge,
         TuiIcon,
         TuiLogoComponent,
         TuiNavComponent,

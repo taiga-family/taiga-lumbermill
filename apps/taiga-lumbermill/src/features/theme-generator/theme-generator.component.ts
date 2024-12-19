@@ -11,8 +11,8 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TuiAppearance, TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -28,11 +28,8 @@ import {theme} from './theme-generator.constants';
         FormsModule,
         ShareButtonComponent,
         ThemeExampleComponent,
-        TuiAppearance,
         TuiButton,
-        TuiCardLarge,
         TuiHeader,
-        TuiIcon,
         TuiInputColorModule,
         TuiTitle,
     ],
