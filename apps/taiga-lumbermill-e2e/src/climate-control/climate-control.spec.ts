@@ -21,7 +21,7 @@ test('Have right names', async ({page}) => {
 
     const inputs = page.locator('tui-input-number');
 
-    await expect(inputs.nth(0).locator('label')).toHaveText('Room temperature С° ');
+    await expect(inputs.nth(0).locator('label')).toHaveText('Room temperature C° ');
     await expect(inputs.nth(1).locator('label')).toHaveText('Water temperature ');
     await expect(inputs.nth(2).locator('label')).toHaveText('Air humidity, % ');
 });

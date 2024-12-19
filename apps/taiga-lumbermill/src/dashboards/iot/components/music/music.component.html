@@ -59,28 +59,36 @@
             type="button"
             [tuiAppearanceState]="shuffle ? 'active' : null"
             (click)="shuffle = !shuffle"
-        ></button>
+        >
+            Shuffle
+        </button>
         <button
             appearance="icon"
             iconStart="@tui.skip-back"
             tuiIconButton
             type="button"
             (click)="previousTrack(audio)"
-        ></button>
+        >
+            Previous
+        </button>
         <button
             appearance="icon"
             tuiIconButton
             type="button"
             [iconStart]="this.paused ? '@tui.circle-play' : '@tui.circle-stop'"
             (click)="paused = !paused"
-        ></button>
+        >
+            Pause
+        </button>
         <button
             appearance="icon"
             iconStart="@tui.skip-forward"
             tuiIconButton
             type="button"
             (click)="nextTrack(audio)"
-        ></button>
+        >
+            Next
+        </button>
         <button
             appearance="icon"
             iconStart="@tui.repeat"
@@ -88,7 +96,9 @@
             type="button"
             [tuiAppearanceState]="repeat ? 'active' : null"
             (click)="repeat = !repeat"
-        ></button>
+        >
+            Repeat
+        </button>
     </div>
     <hr />
     <div class="volume">

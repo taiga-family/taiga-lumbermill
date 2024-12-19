@@ -10,6 +10,13 @@
             "options": {
                 "command": "playwright test --config {projectRoot}/playwright.config.ts"
             }
+        },
+        "e2e-ui": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "playwright test --config {projectRoot}/playwright.config.ts --ui --debug --update-snapshots",
+                "forwardAllArgs": true
+            }
         }
     }
 }
