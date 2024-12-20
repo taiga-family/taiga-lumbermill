@@ -2,10 +2,19 @@
 
 .aside-bar {
     block-size: calc(100vh - 3rem);
+
+    & + main[tuiNavigationMain] {
+        grid-auto-rows: min-content;
+    }
 }
 
 @media @tui-mobile {
     .aside-bar {
         display: none;
+        inline-size: 100%;
+
+        & + main[tuiNavigationMain] {
+            max-inline-size: 100%;
+        }
     }
 }
