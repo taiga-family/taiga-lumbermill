@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TUI_DARK_MODE, TuiRoot} from '@taiga-ui/core';
 
-import {NavigationComponent} from '../navigation/navigation.component';
+import {NavigationComponent} from '../components/navigation/navigation.component';
 
 @Component({
     standalone: true,

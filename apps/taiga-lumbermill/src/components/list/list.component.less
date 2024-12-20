@@ -1,5 +1,19 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 :host {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-gap: 1rem;
+}
+
+.lmb-list-card {
+    grid-column: span 6;
+    grid-gap: 1rem;
+}
+
+@media @tui-mobile {
+    .lmb-list-card {
+        grid-column: span 12;
+        grid-gap: 1rem;
+    }
 }
