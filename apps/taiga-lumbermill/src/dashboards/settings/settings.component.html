@@ -1,0 +1,56 @@
+<nav
+    tuiNavigationNav
+    [style.position]="'sticky'"
+>
+    <a routerLink="/dashboards">
+        <tui-icon icon="@tui.chevron-left" />
+        Back
+    </a>
+    /
+    <span tuiNavigationLogo>
+        <span tuiFade>Settings</span>
+    </span>
+    <hr />
+</nav>
+
+<div
+    tuiHeader="l"
+    class="header"
+>
+    <h2 tuiTitle>
+        Settings
+        <div tuiSubtitle>Your personal account</div>
+    </h2>
+</div>
+
+<tui-segmented
+    size="m"
+    class="menu"
+    [style.flex-direction]="'column'"
+>
+    <a
+        routerLink="profile"
+        routerLinkActive
+    >
+        <tui-icon icon="@tui.user" />
+        Profile
+    </a>
+    <a
+        routerLink="notifications"
+        routerLinkActive
+    >
+        <tui-icon icon="@tui.bell" />
+        Notifications
+    </a>
+    <a
+        routerLink="appearance"
+        routerLinkActive
+    >
+        <tui-icon icon="@tui.brush" />
+        Appearance
+    </a>
+</tui-segmented>
+
+<div class="form">
+    <router-outlet />
+</div>

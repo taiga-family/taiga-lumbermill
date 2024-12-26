@@ -21,6 +21,13 @@ export const appRoutes: Route[] = [
         data: {title: 'Crypto'},
     },
     {
+        path: 'dashboards/settings',
+        loadChildren: async () =>
+            import('../dashboards/settings/settings.routes').then(
+                (mod) => mod.settingsRoutes,
+            ),
+    },
+    {
         path: 'pages',
         loadComponent: async () =>
             import('../components/list/list.component').then((mod) => mod.ListComponent),

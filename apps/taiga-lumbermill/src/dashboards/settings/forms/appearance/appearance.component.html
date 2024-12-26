@@ -1,0 +1,83 @@
+<div tuiHeader="s">
+    <h2 tuiTitle>
+        Appearance
+        <div tuiSubtitle>Choose how site looks to you</div>
+    </h2>
+</div>
+
+<form
+    tuiForm="m"
+    tuiTextfieldSize="m"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+>
+    <div tuiHeader="xs">
+        <h3
+            tuiTitle
+            class="links"
+        >
+            Font
+        </h3>
+    </div>
+
+    <tui-select formControlName="font">
+        Font style
+        <tui-data-list-wrapper
+            *tuiDataList
+            [items]="fonts"
+        />
+    </tui-select>
+
+    <tui-input-number
+        formControlName="fontSize"
+        [step]="1"
+    >
+        Font size
+    </tui-input-number>
+
+    <div tuiHeader="xs">
+        <h3
+            tuiTitle
+            class="links"
+        >
+            Theme
+        </h3>
+    </div>
+
+    <label
+        tuiBlock
+        tuiTheme="dark"
+        [style.backgroundColor]="'#222'"
+    >
+        <span tuiTitle>Dark theme</span>
+        <input
+            formControlName="theme"
+            tuiRadio
+            type="radio"
+            value="dark"
+        />
+    </label>
+    <label
+        tuiBlock
+        tuiTheme="light"
+        [style.backgroundColor]="'#fff'"
+    >
+        <span tuiTitle>Light theme</span>
+        <input
+            formControlName="theme"
+            tuiRadio
+            type="radio"
+            value="light"
+        />
+    </label>
+
+    <button
+        appearance="opposite"
+        size="m"
+        tuiButton
+        type="submit"
+        class="submit-button"
+    >
+        Update appearance
+    </button>
+</form>
