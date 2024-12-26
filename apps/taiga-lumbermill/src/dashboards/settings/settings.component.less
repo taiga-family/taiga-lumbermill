@@ -1,0 +1,46 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+:host {
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+.header {
+    grid-column: span 12;
+    margin-bottom: 2rem;
+}
+
+.menu {
+    grid-column: span 4;
+    margin-bottom: auto;
+
+    > a {
+        justify-content: start;
+    }
+
+    background: var(--tui-background-base);
+
+    &::before {
+        color: var(--tui-background-neutral-1);
+        filter: none;
+    }
+}
+
+.form {
+    grid-column: 5 / 10;
+}
+
+@media @tui-mobile {
+    .menu {
+        grid-column: span 12;
+        margin-bottom: 2rem;
+
+        > a {
+            justify-content: center;
+        }
+    }
+
+    .form {
+        grid-column: span 12;
+    }
+}

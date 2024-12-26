@@ -1,0 +1,103 @@
+<div tuiHeader="s">
+    <h2 tuiTitle>
+        Notifications
+        <div tuiSubtitle>You can specify notification level per group or per project.</div>
+    </h2>
+</div>
+
+<form
+    tuiForm="m"
+    tuiTextfieldSize="m"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+>
+    <label tuiLabel>
+        <tui-select
+            formControlName="level"
+            [valueContent]="valueContent"
+        >
+            Global notification level
+            <tui-data-list-wrapper
+                *tuiDataList
+                [itemContent]="itemContent"
+                [items]="items"
+            />
+
+            <ng-template
+                #itemContent
+                let-item
+            >
+                <span tuiCell="m">
+                    <tui-avatar
+                        appearance="opposite"
+                        [src]="item.icon"
+                    />
+                    <span tuiTitle>
+                        {{ item.title }}
+                        <span tuiSubtitle>{{ item.description }}</span>
+                    </span>
+                </span>
+            </ng-template>
+            <ng-template
+                #valueContent
+                let-item
+            >
+                <span>{{ item.title }}</span>
+            </ng-template>
+        </tui-select>
+        By default, all projects and groups use the global notifications setting.
+    </label>
+
+    <div tuiHeader="xs">
+        <h3
+            tuiTitle
+            class="links"
+        >
+            Email notifications
+        </h3>
+    </div>
+
+    <label tuiBlock="m">
+        <span tuiTitle>
+            Marketing emails
+            <span tuiSubtitle>Receive emails about new products, features, and more.</span>
+        </span>
+        <input
+            formControlName="marketing"
+            tuiCheckbox
+            type="checkbox"
+        />
+    </label>
+    <label tuiBlock="m">
+        <span tuiTitle>
+            Social emails
+            <span tuiSubtitle>Receive emails for friend requests, follows, and more.</span>
+        </span>
+        <input
+            formControlName="social"
+            tuiCheckbox
+            type="checkbox"
+        />
+    </label>
+    <label tuiBlock="m">
+        <span tuiTitle>
+            Security emails
+            <span tuiSubtitle>Receive emails about your account activity and security.</span>
+        </span>
+        <input
+            formControlName="security"
+            tuiCheckbox
+            type="checkbox"
+        />
+    </label>
+
+    <button
+        appearance="opposite"
+        size="m"
+        tuiButton
+        type="submit"
+        class="submit-button"
+    >
+        Update notifications
+    </button>
+</form>

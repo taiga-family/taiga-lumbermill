@@ -24,6 +24,11 @@ const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
             link: '/dashboards/crypto',
             description: 'Crypto token dashboard',
         },
+        {
+            title: 'Settings page',
+            link: '/dashboards/settings',
+            description: 'Various forms of user settings',
+        },
     ],
     Pages: [
         {

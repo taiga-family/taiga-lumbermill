@@ -1,0 +1,90 @@
+<div
+    tuiHeader="s"
+    class="header"
+>
+    <h2 tuiTitle>
+        Profile
+        <div tuiSubtitle>This is how others will see you on the site.</div>
+    </h2>
+</div>
+
+<form
+    tuiForm="m"
+    tuiTextfieldSize="m"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+>
+    <label tuiLabel>
+        <tui-input
+            formControlName="name"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            Public name
+            <input
+                placeholder="Public name"
+                tuiTextfieldLegacy
+            />
+        </tui-input>
+        Your name may appear around system where you contribute or are mentioned. You can remove it at any time.
+    </label>
+
+    <label tuiLabel>
+        <tui-select
+            formControlName="email"
+            tuiTextfieldIconLeft="@tui.mail"
+            [tuiTextfieldLabelOutside]="true"
+        >
+            Public email
+            <tui-data-list-wrapper
+                *tuiDataList
+                [items]="emails"
+            />
+        </tui-select>
+        You can manage verified email addresses in your email settings.
+    </label>
+
+    <label tuiLabel>
+        <tui-textarea formControlName="bio">Tell us a little bit about yourself</tui-textarea>
+        You can &#64;mention other users and organizations to link to them.
+    </label>
+
+    <div tuiHeader="xs">
+        <h3
+            tuiTitle
+            class="links"
+        >
+            Links
+            <div tuiSubtitle="">Add links to your social media profiles.</div>
+        </h3>
+    </div>
+
+    <tui-input
+        formControlName="twitter"
+        tuiTextfieldIconLeft="@tui.twitter"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        twitter
+        <input tuiTextfieldLegacy />
+    </tui-input>
+    <tui-input
+        formControlName="github"
+        tuiTextfieldIconLeft="@tui.github"
+        [tuiTextfieldLabelOutside]="true"
+    >
+        github
+        <input
+            placeholder="Public name"
+            tuiTextfieldLegacy
+        />
+    </tui-input>
+
+    <button
+        appearance="opposite"
+        size="m"
+        tuiButton
+        type="submit"
+        class="submit-button"
+    >
+        Update profile
+    </button>
+</form>
