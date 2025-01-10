@@ -13,7 +13,7 @@
     </header>
     <form
         [formGroup]="form"
-        (submit)="onSubmit()"
+        (ngSubmit)="onSubmit()"
     >
         <tui-input
             formControlName="email"
@@ -65,7 +65,7 @@
             <button
                 size="m"
                 tuiButton
-                type="button"
+                type="submit"
                 [style.width]="'100%'"
             >
                 Log in
