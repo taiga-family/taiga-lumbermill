@@ -38,7 +38,7 @@ const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
         },
         {
             title: 'Sign up',
-            link: '/pages/login',
+            link: '/pages/sign-up',
             description: 'Ready to use registration page',
         },
     ],
