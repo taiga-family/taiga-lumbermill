@@ -1,0 +1,1 @@
+import{Na as n}from"./chunk-PGVB56R4.js";var a=(()=>{let e=class e{transform(i,r,...o){return r(i,...o)}};e.\u0275fac=function(r){return new(r||e)},e.\u0275pipe=n({name:"tuiMapper",type:e,pure:!0});let t=e;return t})();export{a};
