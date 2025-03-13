@@ -103,7 +103,7 @@
         "@nx/workspace": "20.5.0",
         "@playwright/test": "1.51.0",
         "@schematics/angular": "18.2.14",
-        "@swc-node/register": "1.10.9",
+        "@swc-node/register": "1.10.10",
         "@swc/core": "1.11.9",
         "@swc/helpers": "0.5.15",
         "@taiga-ui/browserslist-config": "0.263.0",
