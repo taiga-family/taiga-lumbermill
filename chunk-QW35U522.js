@@ -1,0 +1,1 @@
+import{sa as e}from"./chunk-Y7WAQWOC.js";function n(r,o=0){return t(r)?Number(r):arguments.length===2?o:0}function t(r){return!isNaN(parseFloat(r))&&!isNaN(Number(r))}function s(r){return r instanceof e?r.nativeElement:r}function u(r){return r!=null&&`${r}`!="false"}export{n as a,s as b,u as c};
