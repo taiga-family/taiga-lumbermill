@@ -121,7 +121,7 @@
         "jest-environment-jsdom": "29.7.0",
         "jest-preset-angular": "14.5.4",
         "nx": "20.7.2",
-        "ts-jest": "29.3.1",
+        "ts-jest": "29.3.2",
         "ts-node": "10.9.2",
         "typescript": "5.7.3"
     },
