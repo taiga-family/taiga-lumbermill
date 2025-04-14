@@ -6,40 +6,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
       - run: npm run typecheck
 
   cspell:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
       - run: npm run cspell -- --no-progress
 
   prettier:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
       - run: npm run prettier -- --check
 
   stylelint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
       - run: npm run stylelint
 
   eslint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
       - run: npm run lint
 
   result:
