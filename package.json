@@ -94,7 +94,7 @@
         "@angular/cli": "19.2.14",
         "@angular/compiler-cli": "19.2.14",
         "@angular/language-service": "19.2.14",
-        "@angular/ssr": "19.2.14",
+        "@angular/ssr": "19.2.25",
         "@nx/devkit": "20.8.2",
         "@nx/jest": "20.8.2",
         "@nx/js": "20.8.2",
