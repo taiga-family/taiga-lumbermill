@@ -7,20 +7,6 @@ export const appRoutes: Route[] = [
             import('../components/list/list.component').then((mod) => mod.ListComponent),
     },
     {
-        path: 'dashboards/iot',
-        loadComponent: async () =>
-            import('../dashboards/iot/iot.component').then((mod) => mod.IotComponent),
-        data: {title: 'Iot'},
-    },
-    {
-        path: 'dashboards/crypto',
-        loadComponent: async () =>
-            import('../dashboards/crypto/crypto.component').then(
-                (mod) => mod.CryptoComponent,
-            ),
-        data: {title: 'Crypto'},
-    },
-    {
         path: 'dashboards/settings',
         loadChildren: async () =>
             import('../dashboards/settings/settings.routes').then(

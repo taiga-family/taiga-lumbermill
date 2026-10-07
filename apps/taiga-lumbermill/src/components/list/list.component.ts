@@ -14,16 +14,6 @@ interface CardData {
 const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
     Dashboards: [
         {
-            title: 'Iot Dashboard',
-            link: '/dashboards/iot',
-            description: 'Smart home dashboard',
-        },
-        {
-            title: 'Crypto Dashboard',
-            link: '/dashboards/crypto',
-            description: 'Crypto token dashboard',
-        },
-        {
             title: 'Settings page',
             link: '/dashboards/settings',
             description: 'Various forms of user settings',

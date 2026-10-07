@@ -21,7 +21,8 @@ export default defineConfig({
         toHaveScreenshot: {
             animations: 'disabled',
             caret: 'hide',
-            maxDiffPixelRatio: 0.01,
+            // Absolute limit: white-on-white cards differ only by text pixels, a ratio hides them
+            maxDiffPixels: 50,
         },
     },
     use: {

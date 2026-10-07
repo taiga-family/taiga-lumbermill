@@ -3,8 +3,6 @@ import {expect, test} from '@playwright/test';
 const PAGES = [
     {name: 'home', path: '/'},
     {name: 'dashboards', path: '/dashboards'},
-    {name: 'iot', path: '/dashboards/iot'},
-    {name: 'crypto', path: '/dashboards/crypto'},
     {name: 'settings-profile', path: '/dashboards/settings/profile'},
     {name: 'settings-notifications', path: '/dashboards/settings/notifications'},
     {name: 'settings-appearance', path: '/dashboards/settings/appearance'},
@@ -29,7 +27,7 @@ test.beforeEach(async ({page}) => {
         };
     });
 
-    // External APIs (coincap, weatherapi, coin icons) make screenshots flaky
+    // External requests make screenshots flaky
     await page.route(
         (url) => url.hostname !== 'localhost',
         async (route) => route.abort(),
