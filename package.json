@@ -59,7 +59,7 @@
         "@angular/platform-browser": "22.1.8",
         "@angular/platform-browser-dynamic": "22.1.8",
         "@angular/platform-server": "22.1.8",
-        "@angular/router": "22.1.8",
+        "@angular/router": "22.2.0",
         "@ng-web-apis/universal": "5.4.0",
         "@nx/angular": "23.2.1",
         "@taiga-ui/addon-charts": "5.27.0",
