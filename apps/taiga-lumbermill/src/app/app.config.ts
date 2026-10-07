@@ -1,5 +1,5 @@
 import {provideHttpClient, withXhr} from '@angular/common/http';
-import {type ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
+import {type ApplicationConfig, provideZonelessChangeDetection} from '@angular/core';
 import {
     provideClientHydration,
     withNoIncrementalHydration,
@@ -12,7 +12,7 @@ import {appRoutes} from './app.routes';
 export const appConfig: ApplicationConfig = {
     providers: [
         provideClientHydration(withNoIncrementalHydration()),
-        provideZoneChangeDetection({eventCoalescing: true}),
+        provideZonelessChangeDetection(),
         provideRouter(appRoutes),
         provideHttpClient(withXhr()),
         provideTaiga(),

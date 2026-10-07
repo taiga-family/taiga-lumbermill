@@ -56,7 +56,6 @@
                 "index": "apps/taiga-lumbermill/src/index.html",
                 "inlineStyleLanguage": "less",
                 "outputPath": "dist/apps/taiga-lumbermill",
-                "polyfills": ["zone.js"],
                 "styles": [
                     "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
                     "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
