@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
@@ -14,7 +13,6 @@ import {CostService} from './cost.service';
     standalone: true,
     selector: 'lmb-cost',
     imports: [
-        CommonModule,
         FormsModule,
         TuiAppearance,
         TuiAxes,

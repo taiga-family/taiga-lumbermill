@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
@@ -9,7 +8,6 @@ import {TuiHeader, TuiNavigation} from '@taiga-ui/layout';
     standalone: true,
     selector: 'lmb-settings',
     imports: [
-        CommonModule,
         RouterLink,
         RouterLinkActive,
         RouterOutlet,

@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import type {Signal} from '@angular/core';
 import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -29,7 +28,6 @@ import {
     standalone: true,
     selector: 'lmb-theme-example',
     imports: [
-        CommonModule,
         FormsModule,
         ReactiveFormsModule,
         TuiAppearance,

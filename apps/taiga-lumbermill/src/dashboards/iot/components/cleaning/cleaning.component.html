@@ -25,20 +25,20 @@
                 </tui-input-date>
             }
         </div>
-        <label
-            *ngIf="cleaningService.progress$ | async as value"
-            tuiProgressLabel
-            [style.margin-bottom]="'auto'"
-        >
-            <span class="percent">{{ value }}%</span>
-
-            <tui-progress-circle
-                size="s"
-                [max]="100"
-                [style.color]="color$ | async"
-                [value]="value"
-            />
-        </label>
+        @if (cleaningService.progress$ | async; as value) {
+            <label
+                tuiProgressLabel
+                [style.margin-bottom]="'auto'"
+            >
+                <span class="percent">{{ value }}%</span>
+                <tui-progress-circle
+                    size="s"
+                    [max]="100"
+                    [style.color]="color$ | async"
+                    [value]="value"
+                />
+            </label>
+        }
     </div>
     <button
         appearance="primary"

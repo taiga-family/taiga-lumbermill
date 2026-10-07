@@ -16,27 +16,28 @@
         tuiGroup
         [collapsed]="true"
     >
-        <label
-            *ngFor="let control of lightingForm['controls']; let ind = index"
-            tuiBlock
-            [ngClass]="{checked: control!.value}"
-        >
-            <div class="title-room">
-                <input
-                    tuiCheckbox
-                    type="checkbox"
-                    [formControl]="control"
-                    [style.display]="'none'"
+        @for (control of lightingForm['controls']; track control; let ind = $index) {
+            <label
+                tuiBlock
+                [ngClass]="{checked: control!.value}"
+            >
+                <div class="title-room">
+                    <input
+                        tuiCheckbox
+                        type="checkbox"
+                        [formControl]="control"
+                        [style.display]="'none'"
+                    />
+                    {{ lightingService[ind].room }}
+                </div>
+                <tui-icon
+                    alt=""
+                    icon="@tui.lightbulb"
+                    class="light-svg"
+                    [ngClass]="{hidden: !control!.value}"
+                    [style.color]="'var(--tui-chart-categorical-12)'"
                 />
-                {{ lightingService[ind].room }}
-            </div>
-            <tui-icon
-                alt=""
-                icon="@tui.lightbulb"
-                class="light-svg"
-                [ngClass]="{hidden: !control!.value}"
-                [style.color]="'var(--tui-chart-categorical-12)'"
-            />
-        </label>
+            </label>
+        }
     </form>
 </div>

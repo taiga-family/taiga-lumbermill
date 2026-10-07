@@ -3,7 +3,6 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
     TuiAppearance,
@@ -26,7 +25,6 @@ import {ContactsService} from './contacts.service';
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        CommonModule,
         TuiAppearance,
         TuiAutoColorPipe,
         TuiAvatar,

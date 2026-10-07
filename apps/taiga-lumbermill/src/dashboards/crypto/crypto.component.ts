@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {TuiIcon} from '@taiga-ui/core';
@@ -16,7 +15,6 @@ import {SwapComponent} from './components/swap/swap.component';
     standalone: true,
     selector: 'lmb-crypto',
     imports: [
-        CommonModule,
         MinterComponent,
         NFTComponent,
         PoolsComponent,

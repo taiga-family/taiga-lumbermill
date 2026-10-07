@@ -12,11 +12,10 @@
         </h2>
     </header>
     <div class="group">
-        <tui-input-number
-            *ngFor="let input of climateControlService"
-            [(ngModel)]="input.value"
-        >
-            {{ input.name }}
-        </tui-input-number>
+        @for (input of climateControlService; track input) {
+            <tui-input-number [(ngModel)]="input.value">
+                {{ input.name }}
+            </tui-input-number>
+        }
     </div>
 </div>

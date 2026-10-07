@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
@@ -17,7 +16,6 @@ export interface Token {
     standalone: true,
     selector: 'lmb-minter',
     imports: [
-        CommonModule,
         MinterCreatedComponent,
         MinterDeployComponent,
         TuiAppearance,

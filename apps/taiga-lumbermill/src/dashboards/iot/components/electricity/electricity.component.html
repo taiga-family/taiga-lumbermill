@@ -14,40 +14,40 @@
     </p>
     <div>
         <p class="legend tui-space_top-0">
-            <span
-                *ngFor="let chart of days; let index = index"
-                class="item"
-            >
-                <small class="name">Electricity bills</small>
-            </span>
+            @for (chart of days; track chart; let index = $index) {
+                <span class="item">
+                    <small class="name">Electricity bills</small>
+                </span>
+            }
         </p>
-        <tui-axes
-            *ngIf="labels(show) | async as labels"
-            class="axes"
-            [axisXLabels]="labels"
-            [horizontalLines]="4"
-            [tuiLineChartHint]="hint"
-            [verticalLines]="labels.length"
-        >
-            <ng-container *ngIf="getWidth(show) > 90; else line">
-                <tui-line-days-chart
-                    *ngFor="let chart of days"
-                    class="chart"
-                    [height]="200"
-                    [value]="chart | tuiFilter: filter : range"
-                />
-            </ng-container>
-            <ng-template #line>
-                @for (day of days; track day) {
-                    <tui-line-chart
-                        class="chart"
-                        [height]="200"
-                        [value]="day | tuiFilter: filter : range | tuiMapper: toNumbers : range"
-                        [width]="getWidth(range)"
-                    />
+        @if (labels(show) | async; as labels) {
+            <tui-axes
+                class="axes"
+                [axisXLabels]="labels"
+                [horizontalLines]="4"
+                [tuiLineChartHint]="hint"
+                [verticalLines]="labels.length"
+            >
+                @if (getWidth(show) > 90) {
+                    @for (chart of days; track chart) {
+                        <tui-line-days-chart
+                            class="chart"
+                            [height]="200"
+                            [value]="chart | tuiFilter: filter : range"
+                        />
+                    }
+                } @else {
+                    @for (day of days; track day) {
+                        <tui-line-chart
+                            class="chart"
+                            [height]="200"
+                            [value]="day | tuiFilter: filter : range | tuiMapper: toNumbers : range"
+                            [width]="getWidth(range)"
+                        />
+                    }
                 }
-            </ng-template>
-        </tui-axes>
+            </tui-axes>
+        }
     </div>
 
     <ng-template

@@ -1,4 +1,4 @@
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiMedia} from '@taiga-ui/cdk';
@@ -12,7 +12,6 @@ import {getRandomInt, MusicService} from './music.service';
     standalone: true,
     selector: 'lmb-music',
     imports: [
-        CommonModule,
         FormsModule,
         NgOptimizedImage,
         ReactiveFormsModule,

@@ -16,17 +16,16 @@
         tuiGroup
         [collapsed]="true"
     >
-        <label
-            *ngFor="let control of safetyForm['controls']; let ind = index"
-            tuiBlock
-        >
-            {{ safetyService[ind].name }}
-            <input
-                tuiCheckbox
-                type="checkbox"
-                [formControl]="control"
-                [style.margin-left]="'auto'"
-            />
-        </label>
+        @for (control of safetyForm['controls']; track control; let ind = $index) {
+            <label tuiBlock>
+                {{ safetyService[ind].name }}
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [formControl]="control"
+                    [style.margin-left]="'auto'"
+                />
+            </label>
+        }
     </form>
 </div>

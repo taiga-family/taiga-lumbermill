@@ -1,5 +1,4 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -24,7 +23,6 @@ import {theme} from './theme-generator.constants';
     standalone: true,
     selector: 'lmb-theme-generator',
     imports: [
-        CommonModule,
         FormsModule,
         ShareButtonComponent,
         ThemeExampleComponent,

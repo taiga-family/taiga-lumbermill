@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -14,7 +13,7 @@ import type {Token} from '../minter.component';
 @Component({
     standalone: true,
     selector: 'lmb-minter-created',
-    imports: [CommonModule, TuiAvatar, TuiButton, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiTitle],
     templateUrl: './minter-created.component.html',
     styleUrl: './minter-created.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

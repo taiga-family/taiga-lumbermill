@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormArray, FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAppearance, TuiGroup, TuiTitle} from '@taiga-ui/core';
@@ -11,7 +10,6 @@ import {SafetyService} from './safety.service';
     standalone: true,
     selector: 'lmb-safety',
     imports: [
-        CommonModule,
         ReactiveFormsModule,
         TuiAppearance,
         TuiBlock,

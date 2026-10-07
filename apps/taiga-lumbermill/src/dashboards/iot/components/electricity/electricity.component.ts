@@ -1,4 +1,4 @@
-import {AsyncPipe, CommonModule, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
@@ -25,8 +25,6 @@ import {ElectricityService} from './electricity.service';
         AsyncPipe,
         CommonModule,
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAppearance,
         TuiAxes,
         TuiCardLarge,

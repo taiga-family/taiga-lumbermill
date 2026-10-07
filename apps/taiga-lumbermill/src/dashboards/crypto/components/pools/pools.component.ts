@@ -3,7 +3,6 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {CommonModule} from '@angular/common';
 import type {Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -39,7 +38,6 @@ export interface TableData {
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
         CoinIconPipe,
-        CommonModule,
         FormsModule,
         TuiAppearance,
         TuiAvatar,

@@ -1,4 +1,4 @@
-import {AsyncPipe, CommonModule, NgIf} from '@angular/common';
+import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormArray, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay} from '@taiga-ui/cdk';
@@ -17,7 +17,6 @@ import {CleaningService} from './cleaning.service';
         AsyncPipe,
         CommonModule,
         FormsModule,
-        NgIf,
         ReactiveFormsModule,
         TuiAppearance,
         TuiButton,

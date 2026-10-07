@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {TuiIcon} from '@taiga-ui/core';
@@ -21,7 +20,6 @@ import {WeatherComponent} from './components/weather/weather.component';
     imports: [
         CleaningComponent,
         ClimateControlComponent,
-        CommonModule,
         ContactsComponent,
         ControlPanelComponent,
         CostComponent,

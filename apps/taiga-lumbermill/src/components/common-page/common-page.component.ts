@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {TuiAppearance, TuiButton, TuiLink, TuiSurface, TuiTitle} from '@taiga-ui/core';
@@ -9,7 +8,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     selector: 'lmb-common-page',
     imports: [
-        CommonModule,
         RouterLink,
         TuiAppearance,
         TuiAvatar,

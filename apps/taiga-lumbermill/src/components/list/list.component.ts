@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterLink} from '@angular/router';
@@ -48,7 +47,6 @@ const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
     standalone: true,
     selector: 'lmb-dashboards-list',
     imports: [
-        CommonModule,
         RouterLink,
         TuiCardLarge,
         TuiHeader,
