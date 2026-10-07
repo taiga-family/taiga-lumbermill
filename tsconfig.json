@@ -6,7 +6,9 @@
         "moduleResolution": "bundler",
         "useDefineForClassFields": false,
         "typeRoots": ["node_modules/@types"],
-        "noUncheckedIndexedAccess": false
+        "noUncheckedIndexedAccess": false,
+        "ignoreDeprecations": "6.0",
+        "rootDir": "."
     },
     "exclude": ["apps/**/*.spec.ts", "dist", "prettier.config.js"],
     "angularCompilerOptions": {

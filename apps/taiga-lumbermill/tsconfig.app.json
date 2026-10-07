@@ -3,9 +3,18 @@
     "compilerOptions": {
         "outDir": "../../dist/out-tsc",
         "types": ["node"],
-        "moduleResolution": "bundler"
+        "moduleResolution": "bundler",
+        "rootDir": "."
     },
     "files": ["src/main.ts", "src/main.server.ts", "server.ts"],
     "include": ["src/**/*.d.ts"],
-    "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
+    "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"],
+    "angularCompilerOptions": {
+        "extendedDiagnostics": {
+            "checks": {
+                "nullishCoalescingNotNullable": "suppress",
+                "optionalChainNotNullable": "suppress"
+            }
+        }
+    }
 }

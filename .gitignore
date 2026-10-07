@@ -53,3 +53,5 @@ apps/taiga-lumbermill-e2e/visual/*-snapshots/
 .claude/worktrees
 .nx/polygraph
 .nx/self-healing
+
+.nx/migrate-runs

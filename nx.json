@@ -16,7 +16,7 @@
         "sharedGlobals": []
     },
     "targetDefaults": {
-        "@angular-devkit/build-angular:application": {
+        "@angular/build:application": {
             "cache": true,
             "dependsOn": ["^build"],
             "inputs": ["production", "^production"]
