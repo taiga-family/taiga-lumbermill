@@ -1,14 +1,21 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {TuiAlertService, TuiButton, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
-    TuiInputModule,
-    TuiMultiSelectModule,
-    TuiSelectModule,
-    TuiTextareaModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+    TuiButton,
+    TuiDropdown,
+    TuiInput,
+    TuiLabel,
+    TuiNotificationService,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiMultiSelect,
+    TuiSelect,
+    TuiTextarea,
+} from '@taiga-ui/kit';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -16,14 +23,16 @@ import {
     imports: [
         ReactiveFormsModule,
         TuiButton,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdown,
         TuiForm,
         TuiHeader,
-        TuiInputModule,
+        TuiInput,
         TuiLabel,
-        TuiMultiSelectModule,
-        TuiSelectModule,
-        TuiTextareaModule,
-        TuiTextfieldControllerModule,
+        TuiMultiSelect,
+        TuiSelect,
+        TuiTextarea,
         TuiTitle,
     ],
     templateUrl: './profile.component.html',
@@ -31,7 +40,8 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent {
-    private readonly alert = inject(TuiAlertService);
+    private readonly alert = inject(TuiNotificationService);
+
     protected readonly emails = ['my@example.com', 'ersatz@example.com'];
 
     protected readonly form = new FormGroup({
@@ -44,7 +54,7 @@ export class ProfileComponent {
 
     protected submit(): void {
         this.alert
-            .open(`${JSON.stringify(this.form.value)}`, {label: 'Profile updated'})
+            .open(JSON.stringify(this.form.value), {label: 'Profile updated'})
             .subscribe();
     }
 }

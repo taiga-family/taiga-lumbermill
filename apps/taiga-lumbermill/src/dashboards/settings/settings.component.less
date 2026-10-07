@@ -1,18 +1,19 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.less';
+@import '@taiga-ui/styles/utils.less';
 
 :host {
     display: grid;
+    // stylelint-disable-next-line plugin/no-unsupported-browser-features, plugin/use-baseline -- older browsers ignore subgrid and fall back to a single grid track
     grid-template-columns: subgrid;
 }
 
 .header {
     grid-column: span 12;
-    margin-bottom: 2rem;
+    margin-block-end: 2rem;
 }
 
 .menu {
     grid-column: span 4;
-    margin-bottom: auto;
+    margin-block-end: auto;
 
     > a {
         justify-content: start;
@@ -33,7 +34,7 @@
 @media @tui-mobile {
     .menu {
         grid-column: span 12;
-        margin-bottom: 2rem;
+        margin-block-end: 2rem;
 
         > a {
             justify-content: center;

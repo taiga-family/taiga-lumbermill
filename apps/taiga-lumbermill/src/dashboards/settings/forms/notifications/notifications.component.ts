@@ -1,15 +1,25 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {TuiAlertService, TuiButton, TuiLabel, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
-import {TuiCell, TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
-    TuiInputModule,
-    TuiMultiSelectModule,
-    TuiSelectModule,
-    TuiTextareaModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+    TuiButton,
+    TuiCell,
+    TuiCheckbox,
+    TuiDropdown,
+    TuiInput,
+    TuiLabel,
+    TuiNotificationService,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {
+    TuiAvatar,
+    TuiBlock,
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiMultiSelect,
+    TuiSelect,
+    TuiTextarea,
+} from '@taiga-ui/kit';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -21,14 +31,16 @@ import {
         TuiButton,
         TuiCell,
         TuiCheckbox,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdown,
         TuiForm,
         TuiHeader,
-        TuiInputModule,
+        TuiInput,
         TuiLabel,
-        TuiMultiSelectModule,
-        TuiSelectModule,
-        TuiTextareaModule,
-        TuiTextfieldControllerModule,
+        TuiMultiSelect,
+        TuiSelect,
+        TuiTextarea,
         TuiTitle,
     ],
     templateUrl: './notifications.component.html',
@@ -36,7 +48,8 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationsComponent {
-    private readonly alert = inject(TuiAlertService);
+    private readonly alert = inject(TuiNotificationService);
+
     protected items = [
         {
             title: 'watch',
@@ -66,7 +79,7 @@ export class NotificationsComponent {
 
     protected submit(): void {
         this.alert
-            .open(`${JSON.stringify(this.form.value)}`, {label: 'Profile updated'})
+            .open(JSON.stringify(this.form.value), {label: 'Profile updated'})
             .subscribe();
     }
 }

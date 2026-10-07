@@ -2,7 +2,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 1rem;
+    margin-block-start: 1rem;
 
     @media (max-width: 570px) {
         grid-template-columns: 1fr;
@@ -11,14 +11,14 @@
 
 .list-colors {
     display: flex;
-    padding-right: 3rem;
+    padding-inline-end: 3rem;
     flex-direction: column;
     gap: 1rem;
 }
 
 code {
     position: relative;
-    margin-top: 2rem;
+    margin-block-start: 2rem;
     padding: 1rem;
     background: var(--tui-background-base-alt);
     font-family: monospace;
@@ -26,13 +26,13 @@ code {
 
 .copy {
     position: absolute;
-    right: 0.2rem;
-    top: 0.2rem;
+    inset-inline-end: 0.2rem;
+    inset-block-start: 0.2rem;
 }
 
 .share {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-block-start: auto;
+    margin-block-end: auto;
 }
 
 .colors {
@@ -42,5 +42,6 @@ code {
 }
 
 .title-colors {
-    font: var(--tui-font-heading-6);
+    margin-block: 0;
+    font: var(--tui-typography-heading-h6);
 }

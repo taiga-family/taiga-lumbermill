@@ -252,3 +252,65 @@ export const theme: ThemeGroup[] = [
         ],
     },
 ];
+
+// Swatches from the Taiga UI 4 TUI_DEFAULT_INPUT_COLORS palette, shown by the native color picker via <datalist>
+export const PALETTE = [
+    '#909090',
+    '#666666',
+    '#333333',
+    '#1771e6',
+    '#1464cc',
+    '#0953b3',
+    '#f5f5f6',
+    '#e7e8ea',
+    '#cbcfd3',
+    '#959ba4',
+    '#79818c',
+    '#616871',
+    '#39b54a',
+    '#2ca53a',
+    '#168a21',
+    '#ecf1f7',
+    '#e4ebf3',
+    '#dde4ed',
+    '#e01f19',
+    '#d3120e',
+    '#c40b08',
+    '#ffdd2c',
+    '#fcc521',
+    '#fab618',
+] as const;
+
+const toHex2 = (value: number): string =>
+    Math.round(Math.min(Math.max(value, 0), 255))
+        .toString(16)
+        .padStart(2, '0');
+
+/**
+ * Taiga UI 5 input-color accepts only hex, so every theme value
+ * (#rgb, #rrggbb, rgb(), rgba() — including ones from old share links) is normalized to #rrggbbaa
+ */
+export function toHexa(value: string): string {
+    if (value.startsWith('#')) {
+        const hex = value.slice(1).toLowerCase();
+        const full =
+            hex.length <= 4
+                ? hex
+                      .split('')
+                      .map((char) => `${char}${char}`)
+                      .join('')
+                : hex;
+
+        return `#${full.length === 6 ? `${full}ff` : full}`;
+    }
+
+    const match = /^rgba?\(([^)]+)\)$/.exec(value.trim());
+
+    if (!match) {
+        return value;
+    }
+
+    const [r = 0, g = 0, b = 0, a = 1] = match[1].split(',').map(Number);
+
+    return `#${toHex2(r)}${toHex2(g)}${toHex2(b)}${toHex2(a * 255)}`;
+}

@@ -10,6 +10,7 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
     template: `
         <button
             appearance="icon"
+            aria-label="Share"
             size="m"
             tuiButton
             type="button"

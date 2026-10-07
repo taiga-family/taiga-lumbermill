@@ -4,8 +4,7 @@
 }
 
 .card {
-    top: 50%;
-    bottom: 50%;
+    inset-block: 50%;
     inline-size: max-content;
     margin: auto;
     transform: translateY(-50%);
@@ -13,7 +12,7 @@
 }
 
 .block-input {
-    margin-bottom: 0.3rem;
+    margin-block-end: 0.3rem;
     inline-size: 20rem;
 
     @media (max-width: 29rem) {
@@ -22,8 +21,8 @@
 }
 
 .center {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
     text-align: center;
 }
 
@@ -37,12 +36,12 @@ form {
     display: flex;
     justify-content: space-between;
     inline-size: 100%;
-    margin-bottom: 1.5rem;
+    margin-block-end: 1.5rem;
 }
 
 .or {
     display: flex;
-    margin-top: 0.5rem;
+    margin-block-start: 0.5rem;
     inline-size: 100%;
     justify-content: center;
     align-items: center;
@@ -73,11 +72,16 @@ form {
     gap: 1rem;
 }
 
+.divider-text {
+    margin-block: 0;
+}
+
 .icons-title {
+    margin-block: 0.5rem;
     font-weight: bold;
 }
 
 .error {
-    margin-right: auto;
-    margin-bottom: 0.8rem;
+    margin-inline-end: auto;
+    margin-block-end: 0.8rem;
 }

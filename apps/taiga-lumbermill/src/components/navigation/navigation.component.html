@@ -2,7 +2,7 @@
     <button
         appearance="secondary"
         iconStart="@tui.layout-grid"
-        tuiDropdownOpen
+        tuiDropdownAuto
         tuiIconButton
         type="button"
         class="menu"
@@ -20,20 +20,12 @@
                     Theme Generator
                 </button>
                 <button
-                    iconStart="@tui.layout-dashboard"
-                    routerLink="/dashboards/iot"
+                    iconStart="@tui.settings"
+                    routerLink="/dashboards/settings"
                     tuiOption
                     type="button"
                 >
-                    Iot dashboard
-                </button>
-                <button
-                    iconStart="@tui.layout-dashboard"
-                    routerLink="/dashboards/crypto"
-                    tuiOption
-                    type="button"
-                >
-                    Crypto dashboard
+                    Settings
                 </button>
                 <button
                     iconStart="@tui.log-in"
@@ -115,18 +107,11 @@
                 Dashboards
                 <ng-template>
                     <button
-                        routerLink="/dashboards/iot"
+                        routerLink="/dashboards/settings"
                         tuiAsideItem
                         type="button"
                     >
-                        IOT
-                    </button>
-                    <button
-                        routerLink="/dashboards/crypto"
-                        tuiAsideItem
-                        type="button"
-                    >
-                        Crypto
+                        Settings
                     </button>
                 </ng-template>
             </button>

@@ -1,7 +1,8 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@import '@taiga-ui/styles/utils';
 
 :host {
     display: grid;
+    // stylelint-disable-next-line plugin/no-unsupported-browser-features, plugin/use-baseline -- older browsers ignore subgrid and fall back to a single grid track
     grid-template-columns: subgrid;
     grid-gap: 1rem;
 }

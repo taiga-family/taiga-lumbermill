@@ -1,5 +1,5 @@
 <header
-    tuiHeader="xxl"
+    tuiHeader="h1"
     class="header"
 >
     <h2 tuiTitle>
@@ -19,7 +19,7 @@
     </h2>
 </header>
 <a
-    appearance="opposite"
+    appearance="primary-grayscale"
     href="https://github.com/taiga-family/taiga-lumbermill"
     size="s"
     tuiButton
@@ -31,15 +31,16 @@
 
 <div class="cards">
     <button
+        appearance="floating"
         routerLink="/dashboards"
         tuiCardLarge
-        tuiSurface="elevated"
         type="button"
     >
-        <tui-avatar
-            appearance="opposite"
-            src="@tui.circle-gauge"
-        />
+        <span
+            appearance="primary-grayscale"
+            size="l"
+            tuiAvatar="@tui.circle-gauge"
+        ></span>
         <div tuiTitle>
             Dashboards
             <div tuiSubtitle>Examples of complex pages and dashboards</div>
@@ -47,15 +48,16 @@
     </button>
 
     <button
+        appearance="floating"
         routerLink="/pages"
         tuiCardLarge
-        tuiSurface="elevated"
         type="button"
     >
-        <tui-avatar
-            appearance="opposite"
-            src="@tui.panel-top"
-        />
+        <span
+            appearance="primary-grayscale"
+            size="l"
+            tuiAvatar="@tui.panel-top"
+        ></span>
         <div tuiTitle>
             Pages
             <div tuiSubtitle>Some common pages such as login, registration</div>
@@ -63,15 +65,16 @@
     </button>
 
     <button
+        appearance="floating"
         routerLink="/color-generator"
         tuiCardLarge
-        tuiSurface="elevated"
         type="button"
     >
-        <tui-avatar
-            appearance="opposite"
-            src="@tui.palette"
-        />
+        <span
+            appearance="primary-grayscale"
+            size="l"
+            tuiAvatar="@tui.palette"
+        ></span>
         <div tuiTitle>
             Color generator
             <div tuiSubtitle>Customize Taiga UI theme</div>

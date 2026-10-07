@@ -1,16 +1,23 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
-    TuiInputModule,
-    TuiInputNumberModule,
-    TuiMultiSelectModule,
-    TuiSelectModule,
-    TuiTextareaModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+    TuiButton,
+    TuiDropdown,
+    TuiInput,
+    TuiNotificationService,
+    TuiRadio,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {
+    TuiBlock,
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiInputNumber,
+    TuiMultiSelect,
+    TuiSelect,
+    TuiTextarea,
+} from '@taiga-ui/kit';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -19,15 +26,17 @@ import {
         ReactiveFormsModule,
         TuiBlock,
         TuiButton,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiDropdown,
         TuiForm,
         TuiHeader,
-        TuiInputModule,
-        TuiInputNumberModule,
-        TuiMultiSelectModule,
+        TuiInput,
+        TuiInputNumber,
+        TuiMultiSelect,
         TuiRadio,
-        TuiSelectModule,
-        TuiTextareaModule,
-        TuiTextfieldControllerModule,
+        TuiSelect,
+        TuiTextarea,
         TuiTitle,
     ],
     templateUrl: './appearance.component.html',
@@ -35,7 +44,8 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppearanceComponent {
-    private readonly alert = inject(TuiAlertService);
+    private readonly alert = inject(TuiNotificationService);
+
     protected fonts = ['Manrope', 'Roboto', 'System'] as const;
 
     protected readonly form = new FormGroup({
@@ -46,7 +56,7 @@ export class AppearanceComponent {
 
     protected submit(): void {
         this.alert
-            .open(`${JSON.stringify(this.form.value)}`, {label: 'Appearance updated'})
+            .open(JSON.stringify(this.form.value), {label: 'Appearance updated'})
             .subscribe();
     }
 }

@@ -1,24 +1,10 @@
-import type {Route} from '@angular/router';
+import {type Route} from '@angular/router';
 
 export const appRoutes: Route[] = [
     {
         path: 'dashboards',
         loadComponent: async () =>
             import('../components/list/list.component').then((mod) => mod.ListComponent),
-    },
-    {
-        path: 'dashboards/iot',
-        loadComponent: async () =>
-            import('../dashboards/iot/iot.component').then((mod) => mod.IotComponent),
-        data: {title: 'Iot'},
-    },
-    {
-        path: 'dashboards/crypto',
-        loadComponent: async () =>
-            import('../dashboards/crypto/crypto.component').then(
-                (mod) => mod.CryptoComponent,
-            ),
-        data: {title: 'Crypto'},
     },
     {
         path: 'dashboards/settings',

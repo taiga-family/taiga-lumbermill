@@ -1,13 +1,38 @@
 {
-    "extends": "./node_modules/@taiga-ui/tsconfig/tsconfig.json",
+    "$schema": "https://json.schemastore.org/tsconfig.json",
     "compilerOptions": {
+        "rootDir": ".",
+        "strict": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "esModuleInterop": true,
+        "importHelpers": true,
+        "isolatedModules": true,
+        "lib": [
+            "es2021",
+            "dom",
+            "dom.iterable"
+        ],
+        "module": "preserve",
+        "moduleDetection": "force",
+        "moduleResolution": "bundler",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "skipLibCheck": true,
         "target": "ES2022",
-        "useDefineForClassFields": false,
-        "typeRoots": ["node_modules/@types"],
-        "noUncheckedIndexedAccess": false
+        "types": ["node"],
+        "useDefineForClassFields": false
     },
-    "exclude": ["apps/**/*.spec.ts"],
     "angularCompilerOptions": {
-        "compilationMode": "full"
-    }
+        "extendedDiagnostics": {
+            "defaultCategory": "error"
+        },
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
+    },
+    "exclude": ["apps/**/*.spec.ts", "dist"]
 }

@@ -1,25 +1,28 @@
 <div
-    tuiAppearance="whiteblock"
+    appearance="outline-grayscale"
     tuiCardLarge="normal"
     class="example-block"
 >
-    <div tuiHeader="l">
+    <div tuiHeader="h3">
         <h3 tuiTitle>
             Title example
             <div tuiSubtitle>Subtitle example</div>
         </h3>
     </div>
-    <tui-input-number
-        [formControl]="exampleControl"
-        [tuiTextfieldPrefix]="'USD' | tuiCurrency"
-    >
-        Type a sum
-    </tui-input-number>
-    <div class="tui-row">
-        <div class="tui-col_md-6">
+    <tui-textfield>
+        <label tuiLabel>Type a sum</label>
+
+        <input
+            tuiInputNumber
+            [formControl]="exampleControl"
+            [prefix]="'USD' | tuiCurrency"
+        />
+    </tui-textfield>
+    <div class="row">
+        <div class="col">
             <div
+                appearance="floating"
                 tuiCardLarge
-                tuiSurface="elevated"
             >
                 <header tuiHeader>
                     <h1 tuiTitle>
@@ -28,30 +31,32 @@
                     </h1>
                 </header>
 
-                <button
-                    *tuiRepeatTimes="let index of 3"
-                    tuiCell="l"
-                    tuiDropdownAlign="right"
-                    tuiDropdownOpen
-                    type="button"
-                    [tuiDropdown]="dropdown"
-                    [tuiDropdownSided]="true"
-                >
-                    <tui-avatar
-                        appearance="primary"
-                        src="@tui.star"
-                    />
+                @for (_ of '-'.repeat(3); track $index) {
+                    <button
+                        tuiCell="l"
+                        tuiDropdownAlign="end"
+                        tuiDropdownAuto
+                        type="button"
+                        [tuiDropdown]="dropdown"
+                        [tuiDropdownSided]="true"
+                    >
+                        <span
+                            appearance="primary"
+                            size="l"
+                            tuiAvatar="@tui.star"
+                        ></span>
 
-                    <div tuiTitle>
-                        Title
-                        <div tuiSubtitle>Description</div>
-                    </div>
+                        <div tuiTitle>
+                            Title
+                            <div tuiSubtitle>Description</div>
+                        </div>
 
-                    <tui-icon
-                        icon="@tui.chevron-right"
-                        tuiAppearance="icon"
-                    />
-                </button>
+                        <tui-icon
+                            icon="@tui.chevron-right"
+                            tuiAppearance="icon"
+                        />
+                    </button>
+                }
 
                 <button
                     tuiLink
@@ -88,26 +93,29 @@
                 </tui-data-list>
             </ng-template>
         </div>
-        <div class="tui-col_md-6">
+        <div class="col">
             <div
+                appearance="floating"
                 tuiCardLarge
-                tuiSurface="elevated"
             >
-                <tui-input-year
-                    [formControl]="exampleYearControl"
-                    [tuiTextfieldCleaner]="true"
-                >
-                    Choose a year
+                <tui-textfield [tuiTextfieldCleaner]="true">
+                    <label tuiLabel>Choose a year</label>
                     <input
                         placeholder="Not 2022 please"
-                        tuiTextfieldLegacy
+                        tuiInputYear
+                        [formControl]="exampleYearControl"
                     />
-                </tui-input-year>
+
+                    <tui-calendar-year *tuiDropdown />
+                </tui-textfield>
                 <div class="list">
                     @for (badge of badges; track $index) {
-                        <tui-badge [appearance]="badge">
-                            {{ badge.charAt(0).toUpperCase() + badge.slice(1) }}
-                        </tui-badge>
+                        <span
+                            tuiBadge
+                            [appearance]="badge"
+                        >
+                            {{ badge | titlecase }}
+                        </span>
                     }
                 </div>
                 <input
@@ -133,7 +141,7 @@
                 type="button"
                 [appearance]="button"
             >
-                {{ button.charAt(0).toUpperCase() + button.slice(1) }}
+                {{ button | titlecase }}
             </button>
         }
     </div>

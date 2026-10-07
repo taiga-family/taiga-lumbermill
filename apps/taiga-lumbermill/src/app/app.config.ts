@@ -1,21 +1,20 @@
-import {provideHttpClient} from '@angular/common/http';
-import type {ApplicationConfig} from '@angular/core';
-import {provideZoneChangeDetection} from '@angular/core';
-import {provideClientHydration} from '@angular/platform-browser';
-import {provideAnimations} from '@angular/platform-browser/animations';
+import {provideHttpClient, withXhr} from '@angular/common/http';
+import {type ApplicationConfig, provideZonelessChangeDetection} from '@angular/core';
+import {
+    provideClientHydration,
+    withNoIncrementalHydration,
+} from '@angular/platform-browser';
 import {provideRouter} from '@angular/router';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 
 import {appRoutes} from './app.routes';
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideClientHydration(),
-        provideAnimations(),
-        provideZoneChangeDetection({eventCoalescing: true}),
+        provideClientHydration(withNoIncrementalHydration()),
+        provideZonelessChangeDetection(),
         provideRouter(appRoutes),
-        provideHttpClient(),
-        NG_EVENT_PLUGINS,
-        provideClientHydration(),
+        provideHttpClient(withXhr()),
+        provideTaiga(),
     ],
 };

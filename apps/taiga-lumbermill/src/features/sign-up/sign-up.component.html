@@ -1,5 +1,5 @@
 <div
-    tuiAppearance="whiteblock"
+    appearance="outline-grayscale"
     tuiCardLarge="normal"
     class="card"
 >
@@ -15,53 +15,51 @@
         [formGroup]="form"
         (ngSubmit)="onSubmit()"
     >
-        <tui-input
-            formControlName="email"
-            type="email"
-            class="block-input"
-        >
-            email
-            <input tuiTextfieldLegacy />
-        </tui-input>
+        <tui-textfield class="block-input">
+            <label tuiLabel>email</label>
+            <input
+                formControlName="email"
+                tuiInput
+                type="email"
+            />
+        </tui-textfield>
 
         <tui-error
             formControlName="email"
-            [error]="[] | tuiFieldError | async"
-            [style.margin-bottom]="'0.8rem'"
-            [style.margin-right]="'auto'"
+            [style.margin-block-end]="'0.8rem'"
+            [style.margin-inline-end]="'auto'"
         />
 
-        <tui-input-password
-            formControlName="password"
-            type="password"
-            class="block-input"
-        >
-            password
-            <input tuiTextfieldLegacy />
-        </tui-input-password>
+        <tui-textfield class="block-input">
+            <label tuiLabel>password</label>
+            <input
+                formControlName="password"
+                tuiInput
+                type="password"
+            />
+            <tui-icon tuiPassword />
+        </tui-textfield>
         <tui-error
             formControlName="password"
-            [error]="[] | tuiFieldError | async"
-            [style.margin-bottom]="'0.8rem'"
-            [style.margin-right]="'auto'"
+            [style.margin-block-end]="'0.8rem'"
+            [style.margin-inline-end]="'auto'"
         />
-        <tui-input-password
-            formControlName="confirmPassword"
-            type="password"
-            class="block-input"
-        >
-            confirm password
-            <input tuiTextfieldLegacy />
-        </tui-input-password>
+        <tui-textfield class="block-input">
+            <label tuiLabel>confirm password</label>
+            <input
+                formControlName="confirmPassword"
+                tuiInput
+                type="password"
+            />
+            <tui-icon tuiPassword />
+        </tui-textfield>
         <tui-error
             formControlName="confirmPassword"
-            [error]="[] | tuiFieldError | async"
-            [style.margin-bottom]="'0.8rem'"
-            [style.margin-right]="'auto'"
+            [style.margin-block-end]="'0.8rem'"
+            [style.margin-inline-end]="'auto'"
         />
         <tui-error
             class="error-passwords"
-            [error]="[] | tuiFieldError | async"
             [formGroup]="form"
         />
         <div class="under-password">
@@ -82,8 +80,8 @@
         </div>
         <tui-loader
             [inheritColor]="true"
+            [loading]="submitLoader()"
             [overlay]="true"
-            [showLoader]="submitLoader()"
             [style.width]="'100%'"
         >
             <button
@@ -99,13 +97,13 @@
             <hr class="line" />
             <p
                 tuiSubtitle
-                class="tui-space_top-0 tui-space_bottom-0"
+                class="divider-text"
             >
                 or
             </p>
             <hr class="line" />
         </div>
-        <p class="tui-space_top-2 tui-space_bottom-2 icons-title">Sign up with</p>
+        <p class="icons-title">Sign up with</p>
         <div class="icons">
             <button
                 appearance="icon"
@@ -147,7 +145,7 @@
         <a
             tuiLink
             class="center"
-            [style.margin-top]="'0.5rem'"
+            [style.margin-block-start]="'0.5rem'"
         >
             Already have an account?
             <span [style.font-weight]="'500'">Login</span>

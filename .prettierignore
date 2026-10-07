@@ -4,3 +4,11 @@
 /.nx/cache
 /.nx/workspace-data
 .angular
+
+.nx/self-healing
+
+# Agent skills installed from taiga-family/skills, kept byte-exact (hashes in skills-lock.json)
+.agents
+.claude
+agent
+skills-lock.json

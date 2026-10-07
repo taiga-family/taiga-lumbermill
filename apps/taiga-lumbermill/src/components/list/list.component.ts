@@ -1,9 +1,8 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterLink} from '@angular/router';
-import {TuiIcon, TuiSurface, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge, TuiHeader, TuiLogoComponent, TuiNavigation} from '@taiga-ui/layout';
+import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader, TuiNavigation, TuiSurface} from '@taiga-ui/layout';
 import {filter, map, startWith} from 'rxjs';
 
 interface CardData {
@@ -14,16 +13,6 @@ interface CardData {
 
 const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
     Dashboards: [
-        {
-            title: 'Iot Dashboard',
-            link: '/dashboards/iot',
-            description: 'Smart home dashboard',
-        },
-        {
-            title: 'Crypto Dashboard',
-            link: '/dashboards/crypto',
-            description: 'Crypto token dashboard',
-        },
         {
             title: 'Settings page',
             link: '/dashboards/settings',
@@ -48,12 +37,10 @@ const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
     standalone: true,
     selector: 'lmb-dashboards-list',
     imports: [
-        CommonModule,
         RouterLink,
         TuiCardLarge,
         TuiHeader,
         TuiIcon,
-        TuiLogoComponent,
         TuiNavigation,
         TuiSurface,
         TuiTitle,
