@@ -5,4 +5,11 @@ export default [
         ignores: ['dist/**', 'coverage/**', '.angular/**', '.nx/**', '.agents/**', '.claude/**', 'agent/**'],
     },
     ...taiga.configs.recommended,
+    {
+        files: ['package.json'],
+        rules: {
+            // "nx.includedScripts": [] stops Nx from inferring a recursive root `test` target from npm scripts
+            'package-json/no-empty-fields': ['error', {ignoreProperties: ['files', 'nx']}],
+        },
+    },
 ];
