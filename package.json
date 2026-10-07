@@ -10,7 +10,7 @@
         "format": "npm run prettier -- --write",
         "lint": "eslint .",
         "prepare": "husky",
-        "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
+        "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore --ignore-path .prettierignore",
         "serve:ssr:taiga-lumbermill": "node dist/apps/taiga-lumbermill/server/server.mjs",
         "start": "nx serve taiga-lumbermill",
         "start:ssr": "nx serve-ssr taiga-lumbermill",

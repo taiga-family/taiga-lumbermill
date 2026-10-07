@@ -1,6 +1,68 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "defaultProject": "taiga-lumbermill",
+    "generators": {
+        "@nx/angular:application": {
+            "e2eTestRunner": "playwright",
+            "linter": "eslint",
+            "style": "less",
+            "unitTestRunner": "jest"
+        },
+        "@nx/angular:component": {
+            "type": "component"
+        },
+        "@nx/angular:directive": {
+            "type": "directive"
+        },
+        "@nx/angular:guard": {
+            "typeSeparator": "."
+        },
+        "@nx/angular:interceptor": {
+            "typeSeparator": "."
+        },
+        "@nx/angular:module": {
+            "typeSeparator": "."
+        },
+        "@nx/angular:pipe": {
+            "typeSeparator": "."
+        },
+        "@nx/angular:resolver": {
+            "typeSeparator": "."
+        },
+        "@nx/angular:scam": {
+            "type": "component"
+        },
+        "@nx/angular:scam-directive": {
+            "type": "directive"
+        },
+        "@nx/angular:service": {
+            "type": "service"
+        },
+        "@schematics/angular:component": {
+            "type": "component"
+        },
+        "@schematics/angular:directive": {
+            "type": "directive"
+        },
+        "@schematics/angular:guard": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:interceptor": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:module": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:pipe": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:resolver": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:service": {
+            "type": "service"
+        }
+    },
     "namedInputs": {
         "default": ["{projectRoot}/**/*", "sharedGlobals"],
         "production": [
@@ -32,78 +94,20 @@
         },
         "@nx/jest:jest": {
             "cache": true,
-            "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-            "options": {
-                "passWithNoTests": true
-            },
             "configurations": {
                 "ci": {
                     "ci": true,
                     "codeCoverage": true
                 }
+            },
+            "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+            ],
+            "options": {
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:application": {
-            "e2eTestRunner": "playwright",
-            "linter": "eslint",
-            "style": "less",
-            "unitTestRunner": "jest"
-        },
-        "@nx/angular:component": {
-            "type": "component"
-        },
-        "@schematics/angular:component": {
-            "type": "component"
-        },
-        "@nx/angular:directive": {
-            "type": "directive"
-        },
-        "@schematics/angular:directive": {
-            "type": "directive"
-        },
-        "@nx/angular:service": {
-            "type": "service"
-        },
-        "@schematics/angular:service": {
-            "type": "service"
-        },
-        "@nx/angular:scam": {
-            "type": "component"
-        },
-        "@nx/angular:scam-directive": {
-            "type": "directive"
-        },
-        "@nx/angular:guard": {
-            "typeSeparator": "."
-        },
-        "@schematics/angular:guard": {
-            "typeSeparator": "."
-        },
-        "@nx/angular:interceptor": {
-            "typeSeparator": "."
-        },
-        "@schematics/angular:interceptor": {
-            "typeSeparator": "."
-        },
-        "@nx/angular:module": {
-            "typeSeparator": "."
-        },
-        "@schematics/angular:module": {
-            "typeSeparator": "."
-        },
-        "@nx/angular:pipe": {
-            "typeSeparator": "."
-        },
-        "@schematics/angular:pipe": {
-            "typeSeparator": "."
-        },
-        "@nx/angular:resolver": {
-            "typeSeparator": "."
-        },
-        "@schematics/angular:resolver": {
-            "typeSeparator": "."
         }
     }
 }

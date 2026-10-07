@@ -1,21 +1,21 @@
 {
-    "name": "taiga-lumbermill-e2e",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "name": "taiga-lumbermill-e2e",
+    "implicitDependencies": ["taiga-lumbermill"],
     "projectType": "application",
     "sourceRoot": "apps/taiga-lumbermill-e2e/src",
-    "implicitDependencies": ["taiga-lumbermill"],
     "targets": {
-        "test": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "playwright test --config {projectRoot}/playwright.config.ts"
-            }
-        },
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "playwright test --config {projectRoot}/playwright.config.ts --ui --debug --update-snapshots",
                 "forwardAllArgs": true
+            }
+        },
+        "test": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "playwright test --config {projectRoot}/playwright.config.ts"
             }
         },
         "visual": {
