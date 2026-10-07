@@ -2,27 +2,28 @@ import type {Signal} from '@angular/core';
 import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
+    TuiCell,
+    TuiCheckbox,
     TuiDataList,
     TuiDropdown,
     TuiHint,
     TuiIcon,
+    TuiInput,
     TuiLink,
     TuiOptGroup,
-    TuiSurface,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiCheckbox, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 import {
-    TuiInputNumberModule,
-    TuiInputYearModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+    TuiAvatar,
+    TuiBadge,
+    TuiInputNumber,
+    TuiInputYear,
+    TuiSwitch,
+} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -43,15 +44,13 @@ import {
         TuiHeader,
         TuiHint,
         TuiIcon,
-        TuiInputNumberModule,
-        TuiInputYearModule,
+        TuiInput,
+        TuiInputNumber,
+        TuiInputYear,
         TuiLink,
         TuiOptGroup,
-        TuiRepeatTimes,
         TuiSurface,
         TuiSwitch,
-        TuiTextfield,
-        TuiTextfieldControllerModule,
         TuiTitle,
     ],
     templateUrl: './theme-example.component.html',
@@ -67,14 +66,20 @@ export class ThemeExampleComponent {
     protected readonly badges = [
         'primary',
         'accent',
-        'success',
-        'error',
+        'positive',
+        'negative',
         'warning',
         'neutral',
         'info',
     ];
 
-    protected readonly buttons = ['primary', 'accent', 'destructive', 'flat', 'outline'];
+    protected readonly buttons = [
+        'primary',
+        'accent',
+        'secondary-destructive',
+        'flat',
+        'outline',
+    ];
 
     @Input()
     public theme: Signal<string> = signal('');

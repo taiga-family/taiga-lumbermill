@@ -1,9 +1,28 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline-start: -1.25rem;
+    margin-inline-end: -1.25rem;
+
+    @media (min-width: 1280px) {
+        margin-inline-start: -1.5rem;
+        margin-inline-end: -1.5rem;
+    }
+}
+
+.col {
+    inline-size: 50%;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 1.25rem;
+    box-sizing: border-box;
+}
+
 @media (max-width: 1250px) {
-    .tui-row {
+    .row {
         gap: 1rem;
     }
 
-    .tui-col_md-6 {
+    .col {
         inline-size: 100%;
     }
 }

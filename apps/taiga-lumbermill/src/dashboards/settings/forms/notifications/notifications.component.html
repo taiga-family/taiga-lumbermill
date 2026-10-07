@@ -1,4 +1,4 @@
-<div tuiHeader="s">
+<div tuiHeader="h5">
     <h2 tuiTitle>
         Notifications
         <div tuiSubtitle>You can specify notification level per group or per project.</div>
@@ -12,13 +12,19 @@
     (ngSubmit)="submit()"
 >
     <label tuiLabel>
-        <tui-select
-            formControlName="level"
-            [valueContent]="valueContent"
+        <tui-textfield
+            tuiChevron
+            [content]="valueContent"
+            [tuiTextfieldCleaner]="false"
         >
-            Global notification level
+            <label tuiLabel>Global notification level</label>
+
+            <input
+                formControlName="level"
+                tuiSelect
+            />
             <tui-data-list-wrapper
-                *tuiDataList
+                *tuiDropdown
                 [itemContent]="itemContent"
                 [items]="items"
             />
@@ -28,10 +34,11 @@
                 let-item
             >
                 <span tuiCell="m">
-                    <tui-avatar
-                        appearance="opposite"
-                        [src]="item.icon"
-                    />
+                    <span
+                        appearance="primary-grayscale"
+                        size="l"
+                        [tuiAvatar]="item.icon"
+                    ></span>
                     <span tuiTitle>
                         {{ item.title }}
                         <span tuiSubtitle>{{ item.description }}</span>
@@ -44,11 +51,11 @@
             >
                 <span>{{ item.title }}</span>
             </ng-template>
-        </tui-select>
+        </tui-textfield>
         By default, all projects and groups use the global notifications setting.
     </label>
 
-    <div tuiHeader="xs">
+    <div tuiHeader="h6">
         <h3
             tuiTitle
             class="links"
@@ -92,7 +99,7 @@
     </label>
 
     <button
-        appearance="opposite"
+        appearance="primary-grayscale"
         size="m"
         tuiButton
         type="submit"

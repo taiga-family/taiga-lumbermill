@@ -1,4 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Base resets formerly provided by Taiga UI 4 taiga-ui-global.less
+html {
+    block-size: 100%;
+    font-size: 16px;
+}
+
+body {
+    block-size: 100%;
+    min-block-size: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ul:where(:not([tuiList])),
+ol:where(:not([tuiList])) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    color: inherit;
+}
+
+iframe {
+    border: none;
+}
+
+::selection {
+    background-color: var(--tui-service-selection-background);
+}
+
 [tuiNavigationNav] {
     grid-column: span 12;
 }

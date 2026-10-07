@@ -9,7 +9,7 @@ const PAGES = [
     {path: '/pages', text: 'Login'},
     {path: '/pages/login', text: 'Log in'},
     {path: '/pages/sign-up', text: 'Sign up'},
-    {path: '/color-generator', text: 'Theme Generator'},
+    {path: '/color-generator', text: 'Colors'},
 ];
 
 PAGES.forEach(({path, text}) => {
@@ -20,7 +20,8 @@ PAGES.forEach(({path, text}) => {
 
         await page.goto(path);
 
-        await expect(page.getByText(text).first()).toBeVisible();
+        // Scoped to <main>: the navigation renders hidden items with the same labels
+        await expect(page.locator('main').getByText(text).first()).toBeVisible();
         expect(errors).toEqual([]);
     });
 });

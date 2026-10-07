@@ -11,13 +11,13 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiInputColor} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
-import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 import {ShareButtonComponent} from './share-button/share-button.component';
 import {ThemeExampleComponent} from './theme-example/theme-example.component';
-import {theme} from './theme-generator.constants';
+import {PALETTE, theme, toHexa} from './theme-generator.constants';
 
 @Component({
     standalone: true,
@@ -28,7 +28,7 @@ import {theme} from './theme-generator.constants';
         ThemeExampleComponent,
         TuiButton,
         TuiHeader,
-        TuiInputColorModule,
+        TuiInputColor,
         TuiTitle,
     ],
     templateUrl: './theme-generator.component.html',
@@ -44,12 +44,14 @@ export class ThemeGeneratorComponent {
     protected readonly themeGroups = theme;
     protected readonly themeData = theme.map((val) => val.colors);
 
-    protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
+    protected readonly palette = PALETTE;
     protected readonly colors = this.themeData.map((group) =>
         group.map((value) => {
             const result = this.params?.[value.variable] ?? value.initialValue;
 
-            return signal((result[0] !== 'r' && result[0] !== '#' ? '#' : '') + result);
+            return signal(
+                toHexa((result[0] !== 'r' && result[0] !== '#' ? '#' : '') + result),
+            );
         }),
     );
 

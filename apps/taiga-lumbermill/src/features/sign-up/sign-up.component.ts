@@ -5,17 +5,20 @@ import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/form
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {
+    TUI_VALIDATION_ERRORS,
     TuiAppearance,
     TuiButton,
+    TuiCheckbox,
     TuiError,
+    TuiIcon,
+    TuiInput,
     TuiLabel,
     TuiLink,
     TuiLoader,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TUI_VALIDATION_ERRORS, TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TuiPassword} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
-import {TuiInputModule, TuiInputPasswordModule} from '@taiga-ui/legacy';
 import {map, of, startWith, Subject, switchMap, timer} from 'rxjs';
 
 export const checkPasswords: ValidatorFn = (
@@ -42,13 +45,13 @@ export const checkPasswords: ValidatorFn = (
         TuiCardLarge,
         TuiCheckbox,
         TuiError,
-        TuiFieldErrorPipe,
         TuiHeader,
-        TuiInputModule,
-        TuiInputPasswordModule,
+        TuiIcon,
+        TuiInput,
         TuiLabel,
         TuiLink,
         TuiLoader,
+        TuiPassword,
         TuiTitle,
     ],
     templateUrl: './sign-up.component.html',

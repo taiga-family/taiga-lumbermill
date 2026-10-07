@@ -1,5 +1,5 @@
 <div
-    tuiHeader="s"
+    tuiHeader="h5"
     class="header"
 >
     <h2 tuiTitle>
@@ -15,40 +15,49 @@
     (ngSubmit)="submit()"
 >
     <label tuiLabel>
-        <tui-input
-            formControlName="name"
-            [tuiTextfieldLabelOutside]="true"
-        >
-            Public name
+        <tui-textfield>
+            <label tuiLabel>Public name</label>
             <input
+                formControlName="name"
                 placeholder="Public name"
-                tuiTextfieldLegacy
+                tuiInput
             />
-        </tui-input>
+        </tui-textfield>
         Your name may appear around system where you contribute or are mentioned. You can remove it at any time.
     </label>
 
     <label tuiLabel>
-        <tui-select
-            formControlName="email"
-            tuiTextfieldIconLeft="@tui.mail"
-            [tuiTextfieldLabelOutside]="true"
+        <tui-textfield
+            iconStart="@tui.mail"
+            tuiChevron
+            [tuiTextfieldCleaner]="false"
         >
-            Public email
+            <input
+                formControlName="email"
+                placeholder="Public email"
+                tuiSelect
+            />
             <tui-data-list-wrapper
-                *tuiDataList
+                *tuiDropdown
                 [items]="emails"
             />
-        </tui-select>
+        </tui-textfield>
         You can manage verified email addresses in your email settings.
     </label>
 
     <label tuiLabel>
-        <tui-textarea formControlName="bio">Tell us a little bit about yourself</tui-textarea>
+        <tui-textfield>
+            <label tuiLabel>Tell us a little bit about yourself</label>
+            <textarea
+                formControlName="bio"
+                tuiTextarea
+                [min]="3"
+            ></textarea>
+        </tui-textfield>
         You can &#64;mention other users and organizations to link to them.
     </label>
 
-    <div tuiHeader="xs">
+    <div tuiHeader="h6">
         <h3
             tuiTitle
             class="links"
@@ -58,28 +67,24 @@
         </h3>
     </div>
 
-    <tui-input
-        formControlName="twitter"
-        tuiTextfieldIconLeft="@tui.twitter"
-        [tuiTextfieldLabelOutside]="true"
-    >
-        twitter
-        <input tuiTextfieldLegacy />
-    </tui-input>
-    <tui-input
-        formControlName="github"
-        tuiTextfieldIconLeft="@tui.github"
-        [tuiTextfieldLabelOutside]="true"
-    >
-        github
+    <tui-textfield iconStart="@tui.at-sign">
+        <label tuiLabel>twitter</label>
         <input
-            placeholder="Public name"
-            tuiTextfieldLegacy
+            formControlName="twitter"
+            tuiInput
         />
-    </tui-input>
+    </tui-textfield>
+    <tui-textfield iconStart="@tui.github">
+        <label tuiLabel>github</label>
+        <input
+            formControlName="github"
+            placeholder="Public name"
+            tuiInput
+        />
+    </tui-textfield>
 
     <button
-        appearance="opposite"
+        appearance="primary-grayscale"
         size="m"
         tuiButton
         type="submit"

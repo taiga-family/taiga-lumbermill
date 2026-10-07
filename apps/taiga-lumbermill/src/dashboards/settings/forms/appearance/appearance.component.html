@@ -1,4 +1,4 @@
-<div tuiHeader="s">
+<div tuiHeader="h5">
     <h2 tuiTitle>
         Appearance
         <div tuiSubtitle>Choose how site looks to you</div>
@@ -11,7 +11,7 @@
     [formGroup]="form"
     (ngSubmit)="submit()"
 >
-    <div tuiHeader="xs">
+    <div tuiHeader="h6">
         <h3
             tuiTitle
             class="links"
@@ -20,22 +20,33 @@
         </h3>
     </div>
 
-    <tui-select formControlName="font">
-        Font style
+    <tui-textfield
+        tuiChevron
+        [tuiTextfieldCleaner]="false"
+    >
+        <label tuiLabel>Font style</label>
+
+        <input
+            formControlName="font"
+            tuiSelect
+        />
         <tui-data-list-wrapper
-            *tuiDataList
+            *tuiDropdown
             [items]="fonts"
         />
-    </tui-select>
+    </tui-textfield>
 
-    <tui-input-number
-        formControlName="fontSize"
-        [step]="1"
-    >
-        Font size
-    </tui-input-number>
+    <tui-textfield [tuiTextfieldCleaner]="false">
+        <label tuiLabel>Font size</label>
 
-    <div tuiHeader="xs">
+        <input
+            formControlName="fontSize"
+            tuiInputNumber
+            [step]="1"
+        />
+    </tui-textfield>
+
+    <div tuiHeader="h6">
         <h3
             tuiTitle
             class="links"
@@ -72,7 +83,7 @@
     </label>
 
     <button
-        appearance="opposite"
+        appearance="primary-grayscale"
         size="m"
         tuiButton
         type="submit"
