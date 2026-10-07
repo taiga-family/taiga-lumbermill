@@ -5,5 +5,4 @@ export default [
         ignores: ['dist/**', 'coverage/**', '.angular/**', '.nx/**', '.agents/**', '.claude/**', 'agent/**'],
     },
     ...taiga.configs.recommended,
-    ...taiga.configs.jest,
 ];

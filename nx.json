@@ -6,7 +6,7 @@
             "e2eTestRunner": "playwright",
             "linter": "eslint",
             "style": "less",
-            "unitTestRunner": "jest"
+            "unitTestRunner": "vitest-angular"
         },
         "@nx/angular:component": {
             "type": "component"
@@ -71,7 +71,6 @@
             "!{projectRoot}/eslint.config.js",
             "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
             "!{projectRoot}/tsconfig.spec.json",
-            "!{projectRoot}/jest.config.[jt]s",
             "!{projectRoot}/src/test-setup.[jt]s",
             "!{projectRoot}/test-setup.[jt]s"
         ],
@@ -83,6 +82,10 @@
             "dependsOn": ["^build"],
             "inputs": ["production", "^production"]
         },
+        "@angular/build:unit-test": {
+            "cache": true,
+            "inputs": ["default", "^production"]
+        },
         "@nx/eslint:lint": {
             "cache": true,
             "inputs": [
@@ -91,23 +94,6 @@
                 "{workspaceRoot}/.eslintignore",
                 "{workspaceRoot}/eslint.config.js"
             ]
-        },
-        "@nx/jest:jest": {
-            "cache": true,
-            "configurations": {
-                "ci": {
-                    "ci": true,
-                    "codeCoverage": true
-                }
-            },
-            "inputs": [
-                "default",
-                "^production",
-                "{workspaceRoot}/jest.preset.js"
-            ],
-            "options": {
-                "passWithNoTests": true
-            }
         }
     }
 }

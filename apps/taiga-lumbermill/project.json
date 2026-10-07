@@ -111,12 +111,12 @@
             "executor": "@angular/build:dev-server"
         },
         "test": {
-            "executor": "@nx/jest:jest",
+            "executor": "@angular/build:unit-test",
             "options": {
-                "jestConfig": "apps/taiga-lumbermill/jest.config.ts",
+                "buildTarget": "taiga-lumbermill:build:development",
+                "setupFiles": ["apps/taiga-lumbermill/src/test-setup.ts"],
                 "tsConfig": "apps/taiga-lumbermill/tsconfig.spec.json"
-            },
-            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+            }
         }
     }
 }

@@ -84,7 +84,6 @@
         "@angular/language-service": "22.1.8",
         "@angular/ssr": "22.1.9",
         "@nx/devkit": "23.2.1",
-        "@nx/jest": "23.2.1",
         "@nx/js": "23.2.1",
         "@nx/playwright": "23.2.1",
         "@nx/workspace": "23.2.1",
@@ -100,20 +99,16 @@
         "@taiga-ui/prettier-config": "0.564.0",
         "@taiga-ui/stylelint-config": "0.564.0",
         "@types/express": "5.0.2",
-        "@types/jest": "30.0.0",
         "@types/node": "24.19.1",
         "eslint": "9.39.5",
         "gh-pages": "6.3.0",
         "husky": "9.1.7",
-        "jest": "30.5.2",
-        "jest-environment-jsdom": "30.5.2",
-        "jest-preset-angular": "17.0.2",
+        "jsdom": "30.1.2",
         "less": "4.9.0",
         "lint-staged": "17.6.0",
         "nx": "23.2.1",
-        "ts-jest": "29.4.9",
-        "ts-node": "10.9.2",
-        "typescript": "6.0.3"
+        "typescript": "6.0.3",
+        "vitest": "4.1.11"
     },
     "engines": {
         "node": "^22.22.3 || ^24.15.0"

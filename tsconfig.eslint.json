@@ -4,14 +4,12 @@
         "rootDir": ".",
         "strict": true,
         "incremental": true,
-        "module": "esnext"
+        "module": "esnext",
+        "types": ["vitest/globals", "node"]
     },
     "include": [
         "apps/**/*.ts",
-        "apps/**/*.ts",
         "scripts",
-        "setup-jest.ts",
-        "jest.config.ts",
         "*.spec.ts",
         "*.cy.ts"
     ],

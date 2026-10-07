@@ -53,7 +53,6 @@
         "strictPropertyInitialization": true,
         "stripInternal": false,
         "target": "ES2022",
-        "typeRoots": ["node_modules/@types"],
         "types": ["node"],
         "useDefineForClassFields": false,
         "verbatimModuleSyntax": false
@@ -96,13 +95,5 @@
         "strictSafeNavigationTypes": true,
         "strictTemplates": true
     },
-    "exclude": ["apps/**/*.spec.ts", "dist"],
-    "ts-node": {
-        "compilerOptions": {
-            "module": "commonjs",
-            "types": ["node"]
-        },
-        "files": true,
-        "transpileOnly": true
-    }
+    "exclude": ["apps/**/*.spec.ts", "dist"]
 }

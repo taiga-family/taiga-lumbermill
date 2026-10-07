@@ -20,9 +20,5 @@
         "server.ts"
     ],
     "include": ["src/**/*.d.ts"],
-    "exclude": [
-        "jest.config.ts",
-        "src/**/*.test.ts",
-        "src/**/*.spec.ts"
-    ]
+    "exclude": ["src/**/*.test.ts", "src/**/*.spec.ts"]
 }

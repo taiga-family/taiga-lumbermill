@@ -1,14 +1,3 @@
-import {setupZonelessTestEnv} from 'jest-preset-angular/setup-env/zoneless';
-
-setupZonelessTestEnv();
-// @ts-expect-error https://thymikee.github.io/jest-preset-angular/docs/getting-started/test-environment
-globalThis.ngJest = {
-    testEnvironmentOptions: {
-        errorOnUnknownElements: true,
-        errorOnUnknownProperties: true,
-    },
-};
-
 // jsdom has no matchMedia, Taiga UI reads it for TUI_DARK_MODE
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -20,7 +9,6 @@ Object.defineProperty(window, 'matchMedia', {
         removeListener: () => {},
         addEventListener: () => {},
         removeEventListener: () => {},
-        // No Angular imports here: they would load before setupZoneTestEnv()
 
         dispatchEvent: () => false,
     }),
