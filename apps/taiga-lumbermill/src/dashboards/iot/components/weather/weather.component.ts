@@ -1,6 +1,6 @@
 import {AsyncPipe, CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiAppearance, TuiIcon} from '@taiga-ui/core';
+import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import type {Observable} from 'rxjs';
 
@@ -11,7 +11,7 @@ import {WeatherService} from './weather.service';
 @Component({
     standalone: true,
     selector: 'lmb-weather',
-    imports: [AsyncPipe, CommonModule, TuiAppearance, TuiCardLarge, TuiIcon],
+    imports: [AsyncPipe, CommonModule, TuiAppearance, TuiCardLarge, TuiIcon, TuiTitle],
     templateUrl: './weather.component.html',
     styleUrl: './weather.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

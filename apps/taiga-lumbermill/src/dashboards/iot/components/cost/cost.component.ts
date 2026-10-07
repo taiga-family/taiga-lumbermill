@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiAppearance, tuiFormatNumber, TuiHint} from '@taiga-ui/core';
+import {TuiAppearance, tuiFormatNumber, TuiHint, TuiTitle} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiSelectModule} from '@taiga-ui/legacy';
@@ -24,6 +24,7 @@ import {CostService} from './cost.service';
         TuiDataListWrapper,
         TuiHint,
         TuiSelectModule,
+        TuiTitle,
     ],
     templateUrl: './cost.component.html',
     styleUrl: './cost.component.less',

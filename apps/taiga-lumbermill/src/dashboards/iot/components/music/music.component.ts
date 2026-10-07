@@ -2,7 +2,7 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiMedia} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiIcon} from '@taiga-ui/core';
+import {TuiAppearance, TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiSliderComponent} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
@@ -22,6 +22,7 @@ import {getRandomInt, MusicService} from './music.service';
         TuiIcon,
         TuiMedia,
         TuiSliderComponent,
+        TuiTitle,
     ],
     templateUrl: './music.component.html',
     styleUrl: './music.component.less',

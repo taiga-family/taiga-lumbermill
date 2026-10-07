@@ -14,7 +14,7 @@ import {
     Validators,
 } from '@angular/forms';
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiButton, TuiDialog, TuiError, TuiHint} from '@taiga-ui/core';
+import {TuiButton, TuiDialog, TuiError, TuiHint, TuiTitle} from '@taiga-ui/core';
 import {
     TUI_VALIDATION_ERRORS,
     TuiAvatar,
@@ -44,6 +44,7 @@ import type {Token} from '../minter.component';
         TuiHint,
         TuiInputModule,
         TuiInputNumberModule,
+        TuiTitle,
     ],
     templateUrl: './minter-deploy.component.html',
     styleUrl: './minter-deploy.component.less',
