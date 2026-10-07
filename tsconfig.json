@@ -6,7 +6,7 @@
         "typeRoots": ["node_modules/@types"],
         "noUncheckedIndexedAccess": false
     },
-    "exclude": ["apps/**/*.spec.ts"],
+    "exclude": ["apps/**/*.spec.ts", "dist", "prettier.config.js"],
     "angularCompilerOptions": {
         "compilationMode": "full"
     }

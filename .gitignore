@@ -44,3 +44,6 @@ Thumbs.db
 .nx/workspace-data
 
 .angular
+
+# Visual regression baselines are generated locally, not stored in git
+apps/taiga-lumbermill-e2e/visual/*-snapshots/

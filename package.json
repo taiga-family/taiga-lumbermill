@@ -38,7 +38,6 @@
     "browserslist": [
         "extends @taiga-ui/browserslist-config"
     ],
-    "prettier": "@taiga-ui/prettier-config",
     "eslintConfig": {
         "extends": [
             "plugin:@taiga-ui/experience/all"
@@ -123,6 +122,9 @@
         "ts-jest": "29.3.4",
         "ts-node": "10.9.2",
         "typescript": "5.7.3"
+    },
+    "engines": {
+        "node": "^22.22.3 || ^24.15.0"
     },
     "nx": {}
 }
