@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - uses: taiga-family/ci/actions/setup/variables@e9c5cd341c28d9aeb357b757df41cddcbb674b2d # v1.222.0
       - uses: taiga-family/ci/actions/setup/node@e9c5cd341c28d9aeb357b757df41cddcbb674b2d # v1.222.0
-      - run: npx nx build
+      - run: npx nx build taiga-lumbermill
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
