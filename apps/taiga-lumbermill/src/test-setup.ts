@@ -21,7 +21,7 @@ Object.defineProperty(window, 'matchMedia', {
         addEventListener: () => {},
         removeEventListener: () => {},
         // No Angular imports here: they would load before setupZoneTestEnv()
-        // eslint-disable-next-line no-restricted-syntax
+
         dispatchEvent: () => false,
     }),
 });

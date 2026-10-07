@@ -2,13 +2,7 @@ import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/cor
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import {TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiCardLarge,
-    TuiHeader,
-    TuiLogoComponent,
-    TuiNavigation,
-    TuiSurface,
-} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiNavigation, TuiSurface} from '@taiga-ui/layout';
 import {filter, map, startWith} from 'rxjs';
 
 interface CardData {
@@ -47,7 +41,6 @@ const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
         TuiCardLarge,
         TuiHeader,
         TuiIcon,
-        TuiLogoComponent,
         TuiNavigation,
         TuiSurface,
         TuiTitle,

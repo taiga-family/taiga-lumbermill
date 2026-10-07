@@ -1,17 +1,17 @@
 {
     "extends": "./node_modules/@taiga-ui/tsconfig/tsconfig.json",
     "compilerOptions": {
-        "target": "ES2022",
+        "rootDir": ".",
+        "ignoreDeprecations": "6.0",
         "module": "preserve",
         "moduleResolution": "bundler",
-        "useDefineForClassFields": false,
-        "typeRoots": ["node_modules/@types"],
         "noUncheckedIndexedAccess": false,
-        "ignoreDeprecations": "6.0",
-        "rootDir": "."
+        "target": "ES2022",
+        "typeRoots": ["node_modules/@types"],
+        "useDefineForClassFields": false
     },
-    "exclude": ["apps/**/*.spec.ts", "dist", "prettier.config.js"],
     "angularCompilerOptions": {
         "compilationMode": "full"
-    }
+    },
+    "exclude": ["apps/**/*.spec.ts", "dist"]
 }

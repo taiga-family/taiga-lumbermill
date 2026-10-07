@@ -45,6 +45,7 @@ import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 })
 export class AppearanceComponent {
     private readonly alert = inject(TuiNotificationService);
+
     protected fonts = ['Manrope', 'Roboto', 'System'] as const;
 
     protected readonly form = new FormGroup({
@@ -55,7 +56,7 @@ export class AppearanceComponent {
 
     protected submit(): void {
         this.alert
-            .open(`${JSON.stringify(this.form.value)}`, {label: 'Appearance updated'})
+            .open(JSON.stringify(this.form.value), {label: 'Appearance updated'})
             .subscribe();
     }
 }

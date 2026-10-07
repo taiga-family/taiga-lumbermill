@@ -297,7 +297,7 @@ export function toHexa(value: string): string {
             hex.length <= 4
                 ? hex
                       .split('')
-                      .map((char) => char + char)
+                      .map((char) => `${char}${char}`)
                       .join('')
                 : hex;
 

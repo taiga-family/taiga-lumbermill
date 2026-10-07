@@ -57,6 +57,7 @@ import {map, of, startWith, Subject, switchMap, timer} from 'rxjs';
 })
 export class LoginComponent {
     private readonly router = inject(Router);
+
     protected readonly form = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(5)]),

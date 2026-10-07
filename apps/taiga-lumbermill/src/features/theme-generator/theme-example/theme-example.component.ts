@@ -1,5 +1,5 @@
-import type {Signal} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
+import {TitleCasePipe} from '@angular/common';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {
@@ -31,6 +31,7 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
     imports: [
         FormsModule,
         ReactiveFormsModule,
+        TitleCasePipe,
         TuiAppearance,
         TuiAvatar,
         TuiBadge,
@@ -56,9 +57,7 @@ import {TuiCardLarge, TuiHeader, TuiSurface} from '@taiga-ui/layout';
     templateUrl: './theme-example.component.html',
     styleUrl: './theme-example.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        '[style]': 'this.theme()',
-    },
+    host: {'[style]': 'this.theme()'},
 })
 export class ThemeExampleComponent {
     protected readonly exampleControl = new FormControl(100);
@@ -81,6 +80,5 @@ export class ThemeExampleComponent {
         'outline',
     ];
 
-    @Input()
-    public theme: Signal<string> = signal('');
+    public readonly theme = input('');
 }

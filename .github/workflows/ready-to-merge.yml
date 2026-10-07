@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.review.state == 'approved'
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@30acd5f9c51f51e47ceb0662ff16199c3628e1bf # v1.126.0
-      - uses: taiga-family/ci/actions/auto/label-when-approved@30acd5f9c51f51e47ceb0662ff16199c3628e1bf # v1.126.0
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: taiga-family/ci/actions/setup/variables@e9c5cd341c28d9aeb357b757df41cddcbb674b2d # v1.222.0
+      - uses: taiga-family/ci/actions/auto/label-when-approved@e9c5cd341c28d9aeb357b757df41cddcbb674b2d # v1.222.0
         with:
           approvals: 1
           token: ${{ secrets.GITHUB_TOKEN }}

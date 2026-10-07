@@ -1,5 +1,4 @@
-import type {ApplicationConfig} from '@angular/core';
-import {mergeApplicationConfig} from '@angular/core';
+import {type ApplicationConfig, mergeApplicationConfig} from '@angular/core';
 import {provideServerRendering} from '@angular/ssr';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 

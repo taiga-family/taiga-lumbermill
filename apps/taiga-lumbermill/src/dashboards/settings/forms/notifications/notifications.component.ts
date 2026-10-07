@@ -49,6 +49,7 @@ import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 })
 export class NotificationsComponent {
     private readonly alert = inject(TuiNotificationService);
+
     protected items = [
         {
             title: 'watch',
@@ -78,7 +79,7 @@ export class NotificationsComponent {
 
     protected submit(): void {
         this.alert
-            .open(`${JSON.stringify(this.form.value)}`, {label: 'Profile updated'})
+            .open(JSON.stringify(this.form.value), {label: 'Profile updated'})
             .subscribe();
     }
 }

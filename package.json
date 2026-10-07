@@ -4,19 +4,19 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "prepare": "husky",
-        "start": "nx serve taiga-lumbermill",
         "build": "npx nx build taiga-lumbermill",
-        "start:ssr": "nx serve-ssr taiga-lumbermill",
         "build:ssr": "npx nx build taiga-lumbermill --configuration=ssr",
-        "lint": "eslint .",
-        "test": "nx test taiga-lumbermill",
         "cspell": "cspell --relative --dot --gitignore .",
-        "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.json",
-        "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
         "format": "npm run prettier -- --write",
+        "lint": "eslint .",
+        "prepare": "husky",
+        "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
+        "serve:ssr:taiga-lumbermill": "node dist/apps/taiga-lumbermill/server/server.mjs",
+        "start": "nx serve taiga-lumbermill",
+        "start:ssr": "nx serve-ssr taiga-lumbermill",
         "stylelint": "stylelint './apps/**/*.{less,css}' --config package.json",
-        "serve:ssr:taiga-lumbermill": "node dist/apps/taiga-lumbermill/server/server.mjs"
+        "test": "nx test taiga-lumbermill",
+        "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.json"
     },
     "commitlint": {
         "extends": [
@@ -38,17 +38,7 @@
     "browserslist": [
         "extends @taiga-ui/browserslist-config"
     ],
-    "eslintConfig": {
-        "extends": [
-            "plugin:@taiga-ui/experience/all"
-        ],
-        "rules": {
-            "sonarjs/no-redundant-type-constituents": "off"
-        }
-    },
-    "eslintIgnore": [
-        "taiga-ui"
-    ],
+    "prettier": "@taiga-ui/prettier-config",
     "stylelint": {
         "extends": [
             "@taiga-ui/stylelint-config"
@@ -81,7 +71,7 @@
         "@taiga-ui/kit": "5.27.0",
         "@taiga-ui/layout": "5.27.0",
         "@taiga-ui/styles": "5.27.0",
-        "@taiga-ui/tsconfig": "0.280.0",
+        "@taiga-ui/tsconfig": "0.564.0",
         "express": "4.21.2",
         "rxjs": "7.8.2",
         "tslib": "2.8.1",
@@ -106,20 +96,22 @@
         "@swc/core": "1.16.2",
         "@swc/helpers": "0.5.23",
         "@taiga-ui/browserslist-config": "0.564.0",
-        "@taiga-ui/commitlint-config": "0.280.0",
-        "@taiga-ui/cspell-config": "0.280.0",
-        "@taiga-ui/eslint-plugin-experience": "0.249.0",
-        "@taiga-ui/prettier-config": "0.280.0",
-        "@taiga-ui/stylelint-config": "0.280.0",
+        "@taiga-ui/commitlint-config": "0.564.0",
+        "@taiga-ui/cspell-config": "0.564.0",
+        "@taiga-ui/eslint-plugin-experience-next": "0.564.0",
+        "@taiga-ui/prettier-config": "0.564.0",
+        "@taiga-ui/stylelint-config": "0.564.0",
         "@types/express": "5.0.2",
         "@types/jest": "30.0.0",
         "@types/node": "24.19.1",
+        "eslint": "9.39.5",
         "gh-pages": "6.3.0",
         "husky": "9.1.7",
         "jest": "30.5.2",
         "jest-environment-jsdom": "30.5.2",
         "jest-preset-angular": "17.0.2",
         "less": "4.9.0",
+        "lint-staged": "17.6.0",
         "nx": "23.2.1",
         "ts-jest": "29.4.9",
         "ts-node": "10.9.2",
@@ -127,6 +119,5 @@
     },
     "engines": {
         "node": "^22.22.3 || ^24.15.0"
-    },
-    "nx": {}
+    }
 }

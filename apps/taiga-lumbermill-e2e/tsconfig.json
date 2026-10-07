@@ -1,18 +1,17 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "allowJs": true,
-        "outDir": "../../dist/out-tsc",
-        "module": "preserve",
-        "sourceMap": false,
-        "forceConsistentCasingInFileNames": true,
+        "rootDir": ".",
         "strict": true,
-        "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noImplicitReturns": true,
+        "allowJs": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "preserve",
         "noFallthroughCasesInSwitch": true,
-        "ignoreDeprecations": "6.0",
-        "rootDir": "."
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "outDir": "../../dist/out-tsc",
+        "sourceMap": false
     },
     "include": [
         "**/*.ts",

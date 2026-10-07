@@ -11,30 +11,11 @@
         "**/node_modules/**",
         "*.{log,svg,snap,png,ogv,yml}",
         "**/package.json",
-        "**/tsconfig*.json"
+        "**/tsconfig*.json",
+        ".agents/**",
+        ".claude/**",
+        "agent/**",
+        "RENOVATION_PLAN.md"
     ],
-
-    "ignoreWords": [
-        "lumbermill",
-        "Segoe",
-        "Roboto",
-        "Consolas",
-        "Menlo",
-        "Neue",
-        "apos",
-        "stafffrter",
-        "Zhem",
-        "Oleg",
-        "Andrey",
-        "Gleb",
-        "heatindex",
-        "forecastday",
-        "mintemp",
-        "maxtemp",
-        "Tiko",
-        "Create",
-        "NFTTABLE",
-        "Unstake",
-        "Unstaking"
-    ]
+    "ignoreWords": ["lumbermill", "Roboto", "Create", "rrggbb", "rrggbbaa"]
 }

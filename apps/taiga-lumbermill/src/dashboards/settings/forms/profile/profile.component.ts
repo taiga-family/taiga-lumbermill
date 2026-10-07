@@ -41,6 +41,7 @@ import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 })
 export class ProfileComponent {
     private readonly alert = inject(TuiNotificationService);
+
     protected readonly emails = ['my@example.com', 'ersatz@example.com'];
 
     protected readonly form = new FormGroup({
@@ -53,7 +54,7 @@ export class ProfileComponent {
 
     protected submit(): void {
         this.alert
-            .open(`${JSON.stringify(this.form.value)}`, {label: 'Profile updated'})
+            .open(JSON.stringify(this.form.value), {label: 'Profile updated'})
             .subscribe();
     }
 }

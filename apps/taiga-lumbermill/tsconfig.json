@@ -1,16 +1,9 @@
 {
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "target": "es2022",
-        "useDefineForClassFields": false,
+        "strict": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "noImplicitOverride": true,
-        "noPropertyAccessFromIndexSignature": true,
-        "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true,
-        "module": "preserve",
-        "moduleResolution": "bundler",
         "lib": [
             "es2018.asynciterable",
             "es2018.promise",
@@ -21,7 +14,20 @@
             "dom",
             "es2022"
         ],
-        "ignoreDeprecations": "6.0"
+        "module": "preserve",
+        "moduleResolution": "bundler",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "target": "es2022",
+        "useDefineForClassFields": false
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
     },
     "files": [],
     "include": [],
@@ -35,12 +41,5 @@
         {
             "path": "./tsconfig.spec.json"
         }
-    ],
-    "extends": "../../tsconfig.json",
-    "angularCompilerOptions": {
-        "enableI18nLegacyMessageIdFormat": false,
-        "strictInjectionParameters": true,
-        "strictInputAccessModifiers": true,
-        "strictTemplates": true
-    }
+    ]
 }

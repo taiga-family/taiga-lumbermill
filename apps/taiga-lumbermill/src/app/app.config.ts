@@ -1,6 +1,5 @@
 import {provideHttpClient, withXhr} from '@angular/common/http';
-import type {ApplicationConfig} from '@angular/core';
-import {provideZoneChangeDetection} from '@angular/core';
+import {type ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import {
     provideClientHydration,
     withNoIncrementalHydration,

@@ -31,7 +31,7 @@
                     </h1>
                 </header>
 
-                @for (_ of '-'.repeat(3); track $index; let index = $index) {
+                @for (_ of '-'.repeat(3); track $index) {
                     <button
                         tuiCell="l"
                         tuiDropdownAlign="end"
@@ -114,7 +114,7 @@
                             tuiBadge
                             [appearance]="badge"
                         >
-                            {{ badge.charAt(0).toUpperCase() + badge.slice(1) }}
+                            {{ badge | titlecase }}
                         </span>
                     }
                 </div>
@@ -141,7 +141,7 @@
                 type="button"
                 [appearance]="button"
             >
-                {{ button.charAt(0).toUpperCase() + button.slice(1) }}
+                {{ button | titlecase }}
             </button>
         }
     </div>

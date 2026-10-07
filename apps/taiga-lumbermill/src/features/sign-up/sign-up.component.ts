@@ -1,8 +1,15 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+    type AbstractControl,
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    type ValidationErrors,
+    type ValidatorFn,
+    Validators,
+} from '@angular/forms';
 import {Router} from '@angular/router';
 import {
     TUI_VALIDATION_ERRORS,
@@ -72,6 +79,7 @@ export const checkPasswords: ValidatorFn = (
 })
 export class SignUpComponent {
     private readonly router = inject(Router);
+
     protected readonly form = new FormGroup(
         {
             email: new FormControl('', [Validators.required, Validators.email]),

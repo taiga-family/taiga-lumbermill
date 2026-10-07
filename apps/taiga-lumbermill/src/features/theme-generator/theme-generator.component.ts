@@ -40,10 +40,10 @@ export class ThemeGeneratorComponent {
     private readonly clipboard = inject(Clipboard);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly window = inject(WA_WINDOW);
+
     protected readonly params = toSignal(this.activatedRoute.queryParams)();
     protected readonly themeGroups = theme;
     protected readonly themeData = theme.map((val) => val.colors);
-
     protected readonly palette = PALETTE;
     protected readonly colors = this.themeData.map((group) =>
         group.map((value) => {
@@ -68,7 +68,7 @@ export class ThemeGeneratorComponent {
         {initialValue: '@tui.copy'},
     );
 
-    protected theme = computed(() =>
+    protected readonly theme = computed(() =>
         this.colors
             .map((group, i) =>
                 group
