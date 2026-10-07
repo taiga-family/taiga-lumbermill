@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "taiga-ui": {
+      "source": "taiga-family/skills",
+      "sourceType": "github",
+      "skillPath": "taiga-ui/SKILL.md",
+      "computedHash": "771fc9febd399cb36248837c11e3375f62c5051011439f564d0d4805a44e095c"
+    }
+  }
+}

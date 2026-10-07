@@ -14,7 +14,6 @@
         "**/tsconfig*.json",
         ".agents/**",
         ".claude/**",
-        "agent/**",
         "RENOVATION_PLAN.md"
     ],
     "ignoreWords": ["lumbermill", "Roboto", "Create", "rrggbb", "rrggbbaa"]
