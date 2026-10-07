@@ -8,7 +8,19 @@
         "noImplicitOverride": true,
         "noPropertyAccessFromIndexSignature": true,
         "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "module": "preserve",
+        "moduleResolution": "bundler",
+        "lib": [
+            "es2018.asynciterable",
+            "es2018.promise",
+            "es2019.array",
+            "es2019.object",
+            "es2019.string",
+            "es2021.string",
+            "dom",
+            "es2022"
+        ]
     },
     "files": [],
     "include": [],

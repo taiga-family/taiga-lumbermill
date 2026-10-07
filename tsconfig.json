@@ -2,6 +2,8 @@
     "extends": "./node_modules/@taiga-ui/tsconfig/tsconfig.json",
     "compilerOptions": {
         "target": "ES2022",
+        "module": "preserve",
+        "moduleResolution": "bundler",
         "useDefineForClassFields": false,
         "typeRoots": ["node_modules/@types"],
         "noUncheckedIndexedAccess": false
