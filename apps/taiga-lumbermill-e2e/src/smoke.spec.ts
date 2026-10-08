@@ -6,6 +6,8 @@ const PAGES = [
     {path: '/dashboards/settings/profile', text: 'Update profile'},
     {path: '/dashboards/settings/notifications', text: 'Notifications'},
     {path: '/dashboards/settings/appearance', text: 'Appearance'},
+    {path: '/apps', text: 'AI Chat'},
+    {path: '/apps/ai-chat', text: 'How can I help you today?'},
     {path: '/pages', text: 'Login'},
     {path: '/pages/login', text: 'Log in'},
     {path: '/pages/sign-up', text: 'Sign up'},

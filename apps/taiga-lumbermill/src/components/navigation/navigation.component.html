@@ -20,6 +20,14 @@
                     Theme Generator
                 </button>
                 <button
+                    iconStart="@tui.sparkles"
+                    routerLink="/apps/ai-chat"
+                    tuiOption
+                    type="button"
+                >
+                    AI Chat
+                </button>
+                <button
                     iconStart="@tui.settings"
                     routerLink="/dashboards/settings"
                     tuiOption
@@ -112,6 +120,26 @@
                         type="button"
                     >
                         Settings
+                    </button>
+                </ng-template>
+            </button>
+        </tui-aside-group>
+        <tui-aside-group>
+            <button
+                iconStart="@tui.app-window"
+                tuiAsideItem
+                tuiChevron
+                type="button"
+            >
+                Apps
+                <ng-template>
+                    <button
+                        iconStart="@tui.sparkles"
+                        routerLink="/apps/ai-chat"
+                        tuiAsideItem
+                        type="button"
+                    >
+                        AI Chat
                     </button>
                 </ng-template>
             </button>

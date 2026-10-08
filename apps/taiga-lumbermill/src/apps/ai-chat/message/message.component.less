@@ -1,0 +1,58 @@
+:host {
+    display: flex;
+    gap: 0.75rem;
+
+    &[data-role='user'] {
+        justify-content: flex-end;
+    }
+}
+
+.bubble {
+    max-inline-size: 80%;
+    padding: 0.75rem 1rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font: var(--tui-typography-body-m);
+}
+
+.answer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-inline-size: 0;
+    gap: 0.75rem;
+}
+
+.text {
+    margin: 0;
+    font: var(--tui-typography-body-m);
+    white-space: pre-wrap;
+}
+
+.code {
+    position: relative;
+    margin: 0;
+    padding: 2.25rem 1rem 1rem;
+    overflow: auto;
+    font: var(--tui-typography-body-s);
+    font-family: Menlo, Consolas, monospace;
+    border-radius: var(--tui-radius-l);
+    background: var(--tui-background-neutral-1);
+
+    &::before {
+        content: attr(data-language);
+        position: absolute;
+        inset-block-start: 0.5rem;
+        inset-inline-start: 1rem;
+        font: var(--tui-typography-ui-xs);
+        color: var(--tui-text-tertiary);
+        text-transform: uppercase;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-inline-start: -0.25rem;
+}
