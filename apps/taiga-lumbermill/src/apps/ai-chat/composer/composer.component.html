@@ -1,0 +1,81 @@
+<p class="banner">
+    Use our faster AI on Pro plan ·
+    <button
+        tuiLink
+        type="button"
+    >
+        Upgrade
+    </button>
+</p>
+<form
+    class="box"
+    (ngSubmit)="send()"
+>
+    <tui-textfield [tuiTextfieldCleaner]="false">
+        <textarea
+            name="prompt"
+            placeholder="Ask me anything..."
+            tuiTextarea
+            [maxRows]="8"
+            [minRows]="2"
+            [(ngModel)]="prompt"
+            (keydown.enter.prevent)="send()"
+        ></textarea>
+    </tui-textfield>
+    <div class="controls">
+        <button
+            iconStart="@tui.paperclip"
+            tuiIconButton
+            type="button"
+        >
+            Attach file
+        </button>
+        <button
+            appearance="outline-grayscale"
+            iconStart="@tui.globe"
+            tuiButton
+            tuiButtonSelect
+            tuiChevron
+            type="button"
+            [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="chat.model"
+        >
+            {{ chat.model() }}
+            <tui-data-list-wrapper
+                *tuiDropdown
+                [items]="models"
+            />
+        </button>
+        <button
+            iconStart="@tui.mic"
+            tuiIconButton
+            type="button"
+            class="mic"
+        >
+            Voice input
+        </button>
+        @if (chat.busy()) {
+            <button
+                appearance="primary-grayscale"
+                iconStart="@tui.square-filled"
+                tuiIconButton
+                type="button"
+                class="round"
+                (click)="chat.stop()"
+            >
+                Stop
+            </button>
+        } @else {
+            <button
+                appearance="primary-grayscale"
+                iconStart="@tui.arrow-up"
+                tuiIconButton
+                type="submit"
+                class="round"
+                [disabled]="!prompt().trim()"
+            >
+                Send
+            </button>
+        }
+    </div>
+</form>

@@ -1,0 +1,80 @@
+<tui-textfield
+    iconStart="@tui.search"
+    tuiTextfieldSize="m"
+    [tuiTextfieldCleaner]="true"
+>
+    <input
+        placeholder="Search chats..."
+        tuiInput
+        [(ngModel)]="search"
+    />
+</tui-textfield>
+
+<tui-scrollbar class="history">
+    @for (group of groups(); track group.name) {
+        <header
+            tuiHeader="body-s"
+            class="group"
+        >
+            <h3 tuiCaption>{{ group.name }}</h3>
+        </header>
+        @for (item of group.chats; track item.id) {
+            <div
+                tuiCell="s"
+                class="tui-interactive"
+                [tuiAppearance]="item.id === chat.activeId() ? 'secondary-grayscale' : 'flat-grayscale'"
+            >
+                <button
+                    tuiFade
+                    tuiTitle
+                    type="button"
+                    class="link"
+                    [attr.aria-current]="item.id === chat.activeId() || null"
+                    (click)="open(item.id)"
+                >
+                    {{ item.title }}
+                </button>
+                <div tuiCellActions>
+                    <button
+                        appearance="flat-grayscale"
+                        iconStart="@tui.trash"
+                        size="xs"
+                        tuiIconButton
+                        type="button"
+                        (click)="chat.remove(item.id)"
+                    >
+                        Delete chat
+                    </button>
+                </div>
+            </div>
+        }
+    } @empty {
+        <div tuiCell="s">
+            <span tuiSubtitle>No chats found</span>
+        </div>
+    }
+</tui-scrollbar>
+
+<nav class="links">
+    @for (link of links; track link.label) {
+        <button
+            tuiAppearance="flat-grayscale"
+            tuiCell="s"
+            type="button"
+        >
+            <tui-icon [icon]="link.icon" />
+            <span tuiTitle>{{ link.label }}</span>
+        </button>
+    }
+</nav>
+
+<button
+    appearance="primary-grayscale"
+    iconStart="@tui.plus"
+    size="m"
+    tuiButton
+    type="button"
+    (click)="open(null)"
+>
+    New chat
+</button>

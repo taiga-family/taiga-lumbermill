@@ -1,0 +1,111 @@
+<nav
+    tuiNavigationNav
+    [style.position]="'sticky'"
+>
+    <a routerLink="/apps">
+        <tui-icon icon="@tui.chevron-left" />
+        Back
+    </a>
+    /
+    <span tuiNavigationLogo>
+        <span tuiFade>AI Chat</span>
+    </span>
+    <hr />
+</nav>
+
+<section class="app">
+    <lmb-ai-chat-sidebar
+        class="sidebar"
+        [class._open]="sidebar()"
+        (navigate)="sidebar.set(false)"
+    />
+
+    <div class="main">
+        <header
+            tuiHeader="body-l"
+            class="toolbar"
+        >
+            <button
+                appearance="flat-grayscale"
+                iconStart="@tui.panel-left"
+                size="s"
+                tuiIconButton
+                type="button"
+                class="toggle"
+                (click)="sidebar.set(!sidebar())"
+            >
+                Toggle history
+            </button>
+            <h2
+                tuiFade
+                tuiTitle
+            >
+                {{ chat.active()?.title ?? 'New chat' }}
+            </h2>
+            <aside tuiAccessories>
+                <button
+                    appearance="flat-grayscale"
+                    iconStart="@tui.square-pen"
+                    size="s"
+                    tuiIconButton
+                    type="button"
+                    (click)="open(null)"
+                >
+                    New chat
+                </button>
+            </aside>
+        </header>
+
+        @if (chat.active()) {
+            <tui-scrollbar class="thread">
+                <div class="messages">
+                    @for (message of chat.thread(); track message.id) {
+                        <lmb-ai-chat-message
+                            [last]="$last"
+                            [message]="message"
+                        />
+                    }
+                    @if (chat.thinking()) {
+                        <div tuiCell="s">
+                            <span
+                                appearance="secondary"
+                                tuiAvatar="@tui.sparkles"
+                            ></span>
+                            <span
+                                tuiTitle
+                                [tuiShimmer]="true"
+                            >
+                                Thinking…
+                            </span>
+                        </div>
+                    }
+                </div>
+            </tui-scrollbar>
+        } @else {
+            <lmb-ai-chat-hero />
+        }
+
+        <lmb-ai-chat-composer />
+
+        @if (chat.active()) {
+            <p class="disclaimer">AI can make mistakes. Check important info.</p>
+        } @else {
+            <div
+                tuiItemGroup
+                class="suggestions"
+            >
+                @for (suggestion of suggestions; track suggestion.label) {
+                    <button
+                        appearance="outline-grayscale"
+                        tuiChip
+                        type="button"
+                        [iconStart]="suggestion.icon"
+                        (click)="chat.send(suggestion.prompt)"
+                    >
+                        {{ suggestion.label }}
+                    </button>
+                }
+            </div>
+        }
+    </div>
+</section>
