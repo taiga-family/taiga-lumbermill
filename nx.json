@@ -1,5 +1,6 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "analytics": false,
     "defaultProject": "taiga-lumbermill",
     "generators": {
         "@nx/angular:application": {

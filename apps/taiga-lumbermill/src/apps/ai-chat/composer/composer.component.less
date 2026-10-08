@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 48rem;
+    padding: 0 0.25rem 0.25rem;
+    border-radius: var(--tui-radius-xl);
+    background: var(--tui-background-neutral-1);
+}
+
+.banner {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    font: var(--tui-typography-body-s);
+    color: var(--tui-text-secondary);
+}
+
+.box {
+    --controls-height: 3.5rem;
+
+    position: relative;
+
+    tui-textfield {
+        padding-block-end: var(--controls-height);
+    }
+
+    // Keep the text above the controls row
+    textarea[tuiTextarea] {
+        block-size: calc(100% - var(--controls-height));
+    }
+}
+
+// Controls are laid over the bottom of the textarea, so its hover/focus covers the whole box
+.controls {
+    position: absolute;
+    inset: auto 0 0;
+    display: flex;
+    align-items: center;
+    block-size: var(--controls-height);
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+    pointer-events: none;
+
+    > * {
+        pointer-events: auto;
+    }
+}
+
+.mic {
+    margin-inline-start: auto;
+}
+
+.round {
+    border-radius: 100%;
+}

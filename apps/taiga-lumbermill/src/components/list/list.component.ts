@@ -11,7 +11,16 @@ interface CardData {
     readonly description: string;
 }
 
-const LIST: {Dashboards: CardData[]; Pages: CardData[]} = {
+type ListType = 'Apps' | 'Dashboards' | 'Pages';
+
+const LIST: Record<ListType, CardData[]> = {
+    Apps: [
+        {
+            title: 'AI Chat',
+            link: '/apps/ai-chat',
+            description: 'Chat with an AI assistant: history, model picker and prompts',
+        },
+    ],
     Dashboards: [
         {
             title: 'Settings page',
@@ -55,7 +64,13 @@ export class ListComponent {
         this.router.events.pipe(
             filter((event) => event instanceof NavigationEnd),
             startWith(null),
-            map(() => (this.router.url.includes('dashboards') ? 'Dashboards' : 'Pages')),
+            map((): ListType => {
+                if (this.router.url.includes('dashboards')) {
+                    return 'Dashboards';
+                }
+
+                return this.router.url.includes('apps') ? 'Apps' : 'Pages';
+            }),
         ),
     );
 
