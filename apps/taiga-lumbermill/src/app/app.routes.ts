@@ -14,6 +14,18 @@ export const appRoutes: Route[] = [
             ),
     },
     {
+        path: 'apps',
+        loadComponent: async () =>
+            import('../components/list/list.component').then((mod) => mod.ListComponent),
+    },
+    {
+        path: 'apps/ai-chat',
+        loadComponent: async () =>
+            import('../apps/ai-chat/ai-chat.component').then(
+                (mod) => mod.AiChatComponent,
+            ),
+    },
+    {
         path: 'pages',
         loadComponent: async () =>
             import('../components/list/list.component').then((mod) => mod.ListComponent),

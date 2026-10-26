@@ -1,0 +1,60 @@
+@if (message().role === 'user') {
+    <div
+        appearance="primary-grayscale"
+        tuiMessage
+        class="bubble"
+    >
+        @for (part of message().parts; track $index) {
+            @if (part.type === 'text') {
+                {{ part.text }}
+            }
+        }
+    </div>
+} @else {
+    <span
+        appearance="secondary"
+        size="s"
+        tuiAvatar="@tui.sparkles"
+    ></span>
+    <div class="answer">
+        @for (part of message().parts; track $index) {
+            @if (part.type === 'code') {
+                <pre
+                    class="code"
+                    [attr.data-language]="part.language"
+                ><code>{{ part.code }}</code></pre>
+            } @else {
+                <p class="text">{{ part.text }}</p>
+            }
+        }
+        @if (!(last() && chat.busy())) {
+            <div class="actions">
+                <button [tuiButtonCopy]="text()">Copy</button>
+                <input
+                    aria-label="Good response"
+                    checkedIcon="@tui.thumbs-up-filled"
+                    tuiLike
+                    type="checkbox"
+                    uncheckedIcon="@tui.thumbs-up"
+                />
+                <input
+                    aria-label="Bad response"
+                    checkedIcon="@tui.thumbs-down-filled"
+                    tuiLike
+                    type="checkbox"
+                    uncheckedIcon="@tui.thumbs-down"
+                />
+                @if (last()) {
+                    <button
+                        iconStart="@tui.refresh-cw"
+                        tuiIconButton
+                        type="button"
+                        (click)="chat.regenerate()"
+                    >
+                        Regenerate
+                    </button>
+                }
+            </div>
+        }
+    </div>
+}

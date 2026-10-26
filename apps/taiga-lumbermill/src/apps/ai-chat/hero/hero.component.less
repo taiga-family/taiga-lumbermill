@@ -1,0 +1,42 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 2rem;
+    text-align: center;
+}
+
+.orb {
+    inline-size: 9rem;
+    block-size: 9rem;
+    border-radius: 100%;
+    background:
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.9), transparent 35%),
+        radial-gradient(circle at 70% 80%, #b18cff, transparent 60%),
+        radial-gradient(circle at 25% 70%, #ff9a6b, transparent 55%),
+        linear-gradient(135deg, #ffb37c, #f2a7d8 50%, #a98bff);
+    box-shadow: 0 1.5rem 4rem rgba(177, 140, 255, 0.35);
+    animation: float 6s ease-in-out infinite;
+}
+
+.greeting {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font: var(--tui-typography-heading-h3);
+}
+
+.accent {
+    background: linear-gradient(90deg, #a98bff, #f28dc3);
+    // stylelint-disable-next-line plugin/use-baseline -- older browsers show the gradient as a plain block behind the text
+    background-clip: text;
+    color: transparent;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-0.5rem) scale(1.03);
+    }
+}

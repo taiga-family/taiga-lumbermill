@@ -1,0 +1,99 @@
+@import '@taiga-ui/styles/utils';
+
+:host {
+    display: grid;
+    grid-column: span 12;
+    grid-template: min-content 1fr / minmax(0, 1fr);
+    // Viewport minus header and paddings of the navigation layout
+    block-size: calc(100dvh - 6rem);
+    min-block-size: 30rem;
+}
+
+.app {
+    position: relative;
+    display: grid;
+    grid-template-columns: 17.5rem 1fr;
+    min-block-size: 0;
+    overflow: hidden;
+    border-radius: var(--tui-radius-xl);
+    background: var(--tui-background-base);
+    box-shadow: 0 0 0 1px var(--tui-border-normal);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-inline-size: 0;
+    min-block-size: 0;
+    padding: 0 1.5rem 1rem;
+}
+
+.toolbar {
+    align-self: stretch;
+    align-items: center;
+    padding-block: 0.75rem;
+    white-space: nowrap;
+}
+
+.toggle {
+    display: none;
+}
+
+.thread {
+    flex: 1;
+    align-self: stretch;
+    margin: 0 -1.5rem;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    max-inline-size: 48rem;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+}
+
+.suggestions {
+    justify-content: center;
+    margin-block-start: 1rem;
+}
+
+.disclaimer {
+    margin: 0.5rem 0 0;
+    font: var(--tui-typography-body-xs);
+    color: var(--tui-text-tertiary);
+}
+
+@media @tui-mobile {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: absolute;
+        inset: 0 auto 0 0;
+        z-index: 1;
+        inline-size: min(17.5rem, 85%);
+        transform: translateX(-100%);
+        transition: transform var(--tui-duration) ease-in-out;
+        box-shadow: var(--tui-shadow-medium);
+
+        &._open {
+            transform: none;
+        }
+    }
+
+    .toggle {
+        display: inline-flex;
+    }
+
+    .main {
+        padding-inline: 1rem;
+    }
+
+    .thread {
+        margin-inline: -1rem;
+    }
+}
